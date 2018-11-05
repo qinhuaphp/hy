@@ -1,0 +1,102 @@
+ 
+
+         <!--成功案例广告图01-->
+         <div class="caseBanner"> <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人"></a>
+         </div>        
+<!--location-->
+<div class="location mt10 magi">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a>  > <span>成功案例</span> 
+</div>
+
+<!--case sorts-->
+<script type="text/javascript">
+$(function(){
+	$(".caseCasesDo dl").hover(function(){
+		$(this).css({
+		"border-right":"1px solid #A20055",
+		"border-left":"1px solid #A20055"
+		});
+	},function(){
+		$(this).removeAttr("style");
+	}).parent().prev().hover(function(){
+		$(this).css({
+		"color":"#A20055"
+		});
+	},function(){
+		$(this).removeAttr("style");
+	});
+})
+
+</script>
+<a name="lable"></a>
+<div class="caseSorts magi">
+     <!-- caseSortsColor -->
+     <div class="caseSortsColor ml20 mt20 fl">
+     
+        <h1> <?php echo $lables['son']['婚礼色彩']['laname']; ?></h1>
+        <ul>
+        
+        <?php foreach ($lables['son']['婚礼色彩']['son'] as $k1 => $v1) : ?>
+            <li>
+                <span><?php echo $v1['laname']; ?></span>
+                <?php foreach ($v1['son'] as $k2 => $v2) : ?>
+                    <a <?php echo $color_id == $v2['laid']?'class="gghhh" id="color"':""?> href="<?php  echo site_url('article/index/cid/'.$cid.'/color/'.$v2['laid'].$style_url.$point_url)."#lable"; ?>" ><?php echo $v2['laname']; ?> </a>
+                <?php endforeach; ?>
+            </li>
+        <?php endforeach; ?>
+       </ul> 
+    </div>
+     <div class="caseSortsStyle ml20 mt20 fl">
+       <h1> <?php echo $lables['son']['婚礼风格']['laname']; ?></h1>
+        <ul>
+        <?php foreach ($lables['son']['婚礼风格']['son'] as $k3 => $v3) : ?>
+            <li <?php echo $style_id == $v3['laid']?'class="gghh"':""?>><a <?php echo $style_id == $v3['laid']?'id="style"':""?> href="<?php  echo site_url('article/index/cid/'.$cid.$color_url.'/style/'.$v3['laid'].$point_url)."#lable"; ?>" ><?php echo $v3['laname']; ?></a></li>
+        <?php endforeach; ?>
+       </ul> 
+     </div>
+     
+     <div class="caseSortsPoint ml20 mt20 fl">
+        <h1><?php echo $lables['son']['婚礼地点']['laname']; ?></h1>
+        <ul>
+        <?php foreach ($lables['son']['婚礼地点']['son'] as $k4 => $v4) : ?>
+            <li  <?php echo $point_id == $v4['laid']?'class="gghh"':""?>>  <a <?php echo $point_id == $v4['laid']?'id="point"':""?>  href="<?php  echo site_url('article/index/cid/'.$cid.$color_url.$style_url.'/point/'.$v4['laid'])."#lable"; ?>" ><?php echo $v4['laname']; ?></a></li>
+        <?php endforeach; ?>
+       </ul>
+     </div> 
+</div>
+<!-- caseCases -->
+<div class="caseCases">
+   <div class="caseCasesUp fs30">
+    - 经典案例CASE -
+       </div>
+    <div class="caseCasesDo">
+       <!--循环案例开始，总共循环30次，显示30个案例-->
+       <?php foreach ($res['rs'] as $k => $v) : ?>
+       <dl>
+          <dt><a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>"></a></dt>
+          <dd><a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid']); ?>" target="_blank"><?php echo mb_substr($v['artitle'], 0, 18, 'utf8');  ?></a></dd>
+       </dl> 
+       
+       <?php endforeach; ?>
+    </div>
+
+
+</div>
+
+ <!--分页-->
+ <div class="Page mt20">
+   <?php echo $link; ?>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        var color_url = "<?php  echo site_url('article/index/cid/'.$cid.$style_url.$point_url)."#lable"; ?>";
+        $("#color").attr("href", color_url);
+        var style_url = "<?php  echo site_url('article/index/cid/'.$cid.$color_url.$point_url)."#lable"; ?>";
+        $("#style").attr("href", style_url);
+        var point_url = "<?php  echo site_url('article/index/cid/'.$cid.$color_url.$style_url)."#lable"; ?>";
+        $("#point").attr("href", point_url);
+    });
+ </script>
+  
+
+ 

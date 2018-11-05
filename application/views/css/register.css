@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* 注册付款样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-17*/
+
+/*****************注册*********************/
+.reinput{ height:40px; text-indent:1em; background-color:#f7f7f7; line-height:40px; font-size:14px; border:1px #ccc solid; border-radius:15px; width:260px;}
+.rebutton{ width:85px; height:40px; background-color:#FFF; border:1px #f7597a solid; font-size:14px; text-align:center;border-radius:15px; color:#f7597a;}
+.container{ width:1200px; padding:10px; background-color:#FFF;}
+.register{ width:500px; height:600px;  border-radius:30px; margin:120px 345px 150px 345px;}
+.registerUp{ width:500px; height:90px; line-height:90px; text-align:center;}
+.registerDo{width:410px; height:430px; border:5px solid #f7597a; border-radius:30px; padding:40px; font-size:16px;}
+.regileft{ width:110px; float:left; text-align:right;  }
+.regiright{ width:260px; float:left; margin-left:10px; }
+.registerDo span{ display:block; height:55px; line-height:35px;}

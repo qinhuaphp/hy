@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+#ue{
+	margin:0 auto;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 注册婚庆公司</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+            
+            <div style="background-color: #fcfcfc;">
+			<form name="area" method="post" enctype="multipart/form-data" action="<?php echo site_url('admin/companymng/addcompany');?>">
+
+			<table style="margin:0 auto; padding-top:50px;">
+				<tr>
+                     <td height="35">公司名称&nbsp;&nbsp;:</td>
+                  <td><input type="text" name="coname" size="40"  value="<?php echo set_value('coname');?>"> <?php echo form_error('coname');?></td>
+                    
+            </tr>
+				<tr>
+                     <td height="35">银行账户&nbsp;&nbsp;:</td>
+                  <td><input type="text" name="coaccount" size="40"  value="<?php echo set_value('coaccount');?>"> <?php echo form_error('coaccount');?></td>
+                    
+          </tr>
+				<tr>
+                     <td height="35">公司地址&nbsp;&nbsp;:</td>
+                     <td><input type="text" name="colocation" size="40"  value="<?php echo set_value('colocation');?>"> <?php echo form_error('colocation');?></td>
+                     
+        </tr>
+				<tr>
+                    <td height="35">公司电话&nbsp;&nbsp;:</td>
+                    <td><input type="text" name="cophone" size="20"  value="<?php echo set_value('cophone');?>"><span>* 格式:13/15/18xxxx或0XXXX-XXXXXXXX</span> &nbsp;&nbsp;  <?php echo form_error('cophone');?></td>
+                    
+      </tr>
+                
+                <tr>
+                  <td height="35">公司风格&nbsp;&nbsp;:</td><td>  <input name="" type="text" /> <?php echo set_value('style');?> <?php echo form_error('style');?></td>
+                 
+    </tr>
+
+ 				<tr>
+                    <td height="35">公司成立时间&nbsp;&nbsp;:</td>
+                  <td> 
+                        <select name="year">
+                         <option value="">请选择</option>
+                         <?php for ($i = 1980; $i <= 2050; $i++) : ?>
+                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                          <?php endfor; ?>
+                    </select>年
+                         <select name="month">
+                         <option value="">请选择</option>
+                         <?php for ($i = 1; $i <= 12; $i++) : ?>
+                         <option value="<?php echo $i<10?'0'.$i:$i; ?>"><?php echo $i<10?'0'.$i:$i; ?></option>
+                         <?php endfor; ?>
+                         </select>月
+                    <select name="day">
+                        <option value="">请选择</option>
+                        <?php for ($i = 1; $i <= 31; $i++) : ?>
+                        <option value="<?php echo $i<10?'0'.$i:$i; ?>"><?php echo $i<10?'0'.$i:$i; ?></option>
+                        <?php endfor; ?>
+                    </select>日 
+                    <?php echo form_error('year');?><?php echo form_error('month');?><?php echo form_error('day');?>             
+                </td>
+              
+                </tr>
+ 
+				<tr>
+                     <td height="35">登录账户&nbsp;&nbsp;:</td>
+                     <td> <input type="text" name="loginname" size="20"  value="<?php echo set_value('loginname');?>"> <?php echo form_error('loginname');?></td>
+                     
+</tr>
+				<tr> 
+                     <td height="35">登录密码&nbsp;&nbsp;:</td>
+                   <td><input type="password" name="copwd" size="20"  value="<?php echo set_value('copwd');?>"/> <?php echo form_error('copwd');?></td>
+                     
+              </tr>
+                   
+			    <tr>
+                     <td height="35">确认密码&nbsp;&nbsp;:</td>
+                  <td><input type="password" name="repwd" size="20"  value="<?php echo set_value('repwd');?>"> <?php echo form_error('repwd');?></td>
+                   
+              </tr>
+				<tr>
+                       <td height="35">选择地区&nbsp;&nbsp;:</td>
+					   <td>
+                       <select name="aid">
+						<?php foreach($areas as $v){?>
+						<option value="<?php echo $v['aid'];?>"><?php echo $v['amark'];?></option>
+						<?php } ?>
+						</select>
+				  </td>       
+              </tr>
+                
+<tr>
+						<td height="35">设置公司属性&nbsp;&nbsp;:</td>
+		<td class="bb"colspan="2"><input type="radio" name="isaudit" value="0">未审核&nbsp;<input type="radio" name="isaudit" value="1" checked>已审核<input type="radio" name="isrecom" value="0">不推荐至首页&nbsp;<input type="radio" name="isrecom" value="1" checked>推荐至首页</td>
+						
+			  </tr>
+                
+             
+				<tr>
+                    <td height="35">选择星级:&nbsp;&nbsp;:</td>
+                    <td colspan="2">
+				    <select name="level">
+			          <option  value="1">1级</option>
+			          <option  value="2">2级</option>
+			          <option  value="3">3级</option>
+			          <option  value="4">4级</option>
+			          <option  value="5">5级</option>
+                     </select>
+			      </td>
+              </tr>	
+				 <tr>
+                     <td height="35">介召视频地址&nbsp;&nbsp;:</td>
+                     <td><input type="text" name="cointrolvideo" size="80" value="<?php echo set_value('cointrolvideo');?>"> <?php echo form_error('cointrolvideo');?></td>
+                     
+              </tr>
+			    <tr>
+                     <td>公司简介&nbsp;&nbsp;:</td>
+                     <td><textarea name="cointrol" cols="100" rows="8" ><?php echo set_value('cointrol');?></textarea> <?php echo form_error('cointrol');?></td>
+                     
+                </tr>
+				<tr>
+                     <td height="35">公司标志&nbsp;&nbsp;:</td>
+                     <td><input type="file" name="cologo"   ><span>* 图片格式限制：gif|png|jpg|jpeg,不能大于30KB</span> <?php echo isset($error)?$error:'';?></td>
+                     
+                </tr>
+
+			  <tr height="80" >
+                     <td colspan="3" align="center" >
+                         <input name="submit" type="image" alt="确定" src="<?php echo base_url();?>application/views/admin/images/tj.png">
+                     </td>
+</tr>
+				</table>
+			</form>       
+			</div>
+            
+</body>
+</html>

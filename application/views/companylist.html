@@ -1,0 +1,152 @@
+ 
+
+    <div class="companyMain magi">
+         <!--公司轮播图-->
+         <div id="companyBanner" class="fl">
+          <div id="Banner">
+              <div class="pre"></div>
+              <div class="next"></div>
+              <div class="smalltitle">
+              <ul>
+              <li class="thistitle"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+             </ul>
+             </div>
+            <ul class="oUlplay">
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner01.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner02.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner03.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner04.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner05.jpg" /></a></li>
+            </ul>
+         </div>
+         </div>
+         <!--婚贷广告-->
+         <div class="companyGg fr">
+             <img src="<?php echo base_url().'application/views/';?>images/gg/companyGg.jpg">
+         </div>
+   </div>
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > <span>婚礼梦工场</span>
+</div>
+<!--companySort--->
+<style type="text/css">
+.hover1{
+	background:#f1f1f1;
+}
+
+</style>
+<script type="text/javascript">
+//点击切换样式
+$(function(){
+	$("#paixu>li").css("cursor","pointer").click(function(){
+		$(this).attr("class","style1").find("span").css({"color":'white',"font-weight":"5","font-size":"14px"}).text("  ↑")
+		.parent().siblings().removeAttr("class").find("span").removeAttr("style").text("  ↓");
+	});
+//列表条目当鼠标移入的时候切换背景色
+	$(".companyLists").hover(function(){
+		//alert($(this).html())
+		$(this).addClass("hover1");
+	},function(){
+		$(this).removeClass("hover1");
+	});
+    $(".Page").delegate("a","click",function(){
+        var baseurl='<?php echo base_url();?>';
+        var indexpage="<?php echo index_page();?>";
+        $.ajax({
+            url:$(this).attr("href"),
+            type:'get',
+            dataType:'json',
+            success:function(data){
+               //console.log(data)
+                var link=data.link.replace(/&nbsp;/ig,'');
+                $(".Page").html(link);
+                $(".sort").nextAll(".companyLists").remove();
+                for(var a=0;a<data.res.length;a++){
+                    var str='<div class="companyLists mt20"><div class="companyListsCo fl"><dl><dt class="fl"><a href="'+baseurl
+                    +indexpage+'/company/detail/'+data.res[a].coid+'.html" target="_blank"><img src="'+baseurl+data.res[a].cologo
+                    +'"/></a></dt><dd class="fl ml10 fs16">公司名称：<a href="'+baseurl+indexpage+'/company/detail/'+data.res[a].coid
+                    +'.html" target="_blank">'+data.res[a].coname+'</a><br />擅长风格 :<span> 中式婚礼</span> <br /> 成交量：<span class="fs24">'
+                    +data.res[a].volume+'</span> 单<br /> 等级：'+data.res[a].level+'</dd></dl></div><div class="companyListsAn fl">';
+                  if($.isEmptyObject(data.res[a].works)==false){
+                     for(var b=0;b<data.res[a].works.length;b++){
+                       str+='<a href="'+baseurl+indexpage+'/company/detail/'+data.res[a].coid+'.html" target="_blank"><img src="'+baseurl
+                       +data.res[a].works[b].cover_thumb+'" title="'+data.res[a].works[b].wname+'"/></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+                     }
+                  }else{
+                    str+='<img src="'+baseurl+'application/views/images/case01.jpg"> &nbsp;&nbsp;&nbsp;&nbsp;<img src="'+baseurl
+                    +'application/views/images/companyCase.jpg"/>';
+                  }
+                    str+='</div><div class="companyListsPi ml20 fl"><ul> <li><img class="tImg70" src="'+baseurl
+                    +'application/views/images/touImages/tou_x.jpg" align="left">"赶快评论我吧，我非常期待您的评论！"</li><li><img class="tImg70" src="'+
+                    baseurl+'application/views/images/touImages/tou_x.jpg" align="left">"赶快评论我吧，我非常期待您的评论！"</ul></div></div>';
+                    $(".sort").after(str);
+                }//外层循环结束
+            }//success结束
+        });
+        return false;
+    });
+    /*当ajax请求成功后改变滚动条的位置*/
+   $(window).ajaxSuccess(function(){
+    var top=$(".sort").offset().top;
+    $(this).scrollTop(top);
+   });
+})
+
+</script>
+<div class="sort mt10">
+    <ul id="paixu">
+        <li class="style1">综合排序<span></span></li>
+        <li>成交量<span></span></li>
+        <li>等级<span></span></li>
+    </ul>
+</div>
+<!--companyLists-->
+<!--循环开始(每页显示10家婚庆公司)-->
+
+<?php foreach ($res as $k => $v) : ?>
+<div class="companyLists mt20">
+    <div class="companyListsCo fl">
+        <dl>
+            <dt class="fl"><a href="<?php echo site_url('company/detail/'.$v['coid']); ?>" target="_blank">
+            <img src="<?php echo base_url().$v['cologo']; ?>"></a></dt>
+            <dd class="fl ml10 fs16">
+           公司名称：<a href="<?php echo site_url('company/detail/'.$v['coid']); ?>" target="_blank"><?php echo $v['coname']; ?></a><br />
+                 擅长风格 :<span> 中式婚礼</span> <br />
+                 成交量：<span class="fs24"><?php echo $v['volume']; ?></span> 单<br />
+                 等级：<?php $str='<img src="'.base_url().'application/views/images'.'/star.png" align="center">';echo str_repeat($str,$v['level']);?>
+                 </dd>
+        </dl>
+    </div>
+    <div class="companyListsAn fl"> 
+    <?php if (!empty($v['works'])) : ?>
+	<?php foreach ($v['works'] as $key => $val) : ?>
+         <a href="<?php echo site_url('company/detail/'.$v['coid']); ?>" target="_blank">
+         <img src="<?php echo base_url().$val['cover_thumb']; ?>"></a>&nbsp;
+	<?php endforeach;?>
+    <?php else : ?>
+     <img src="<?php echo base_url().'application/views/';?>images/case01.jpg"> &nbsp;
+         <img src="<?php echo base_url().'application/views/';?>images/companyCase.jpg"> 
+    <?php endif; ?>   
+   </div>
+    <div class="companyListsPi ml20 fl">
+        <ul>
+           <li><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg" align="left"> 
+           "赶快评论我吧，我非常期待您的评论！"</li>
+           <li><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg" align="left"> 
+           "这里的环境很温馨很舒适，让顾客都有一种回到家的感觉。酒店的服务态度也很"</li>
+        </ul>
+    </div>
+</div> 
+<?php endforeach; ?>
+<!--循环结束-->
+    <!--分页-->
+ <div class="Page mt20">
+   <?php echo $link?>
+  </div>
+    
+ 

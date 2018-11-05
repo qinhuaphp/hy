@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="demo-2 no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<title>婚礼请柬</title>
+
+
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()."application/views/"?>css/lrtk.css" />
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+ 
+.pubiframe {
+   border: medium none; 
+  height: 1008px; 
+     left: -159px;
+    overflow: auto;
+    position: absolute; 
+   top: -219px; 
+
+
+    transform: scale(0.502, 0.5645);
+    -ms-transform:scale(0.502, 0.5645);   /* IE 9 */
+    -moz-transform:scale(0.502, 0.5645);  /* Firefox */
+    -webkit-transform:scale(0.504, 0.5645); /* Safari 和 Chrome */
+    -o-transform:scale(0.502, 0.5645);  /* Opera */
+    width: 640px; 
+    background: #fff;
+}
+
+ 
+</style>
+</head>
+<body>
+<?php
+$arr = explode("//", $res[0]['inurl']);
+$arr1 = explode('.', $arr[1]);
+if ($arr1[0] == "www") {
+    if ($arr1[1] == "iqingjian") {
+        $a = "";
+    } else {
+        $a = "a";
+    }
+} else {
+    if ($arr1[0] == "iqingjian") {
+        $a = "";
+    } else {
+        $a = "a";
+    }
+}
+?>
+  <div class="qingjian">
+        <div class="qingjianLe<?php echo $a; ?>">
+             <div class="qingjianLea<?php echo $a; ?>" >
+                 <iframe   class="qingjianWith<?php echo $a; ?> <?php echo $a == ""?"pubiframe":""; ?>"  frameborder="0"   src="<?php echo  $res[0]["inurl"]?>"></iframe>
+              </div>
+         </div>
+          <div class="qingjianRi">
+              <div class="qingjianRia">
+                  <img src="<?php echo base_url().$res[0]["qr_code"]; ?>">
+              </div>
+         </div>
+  </div>
+</body>
+</html>

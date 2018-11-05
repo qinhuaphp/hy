@@ -1,0 +1,180 @@
+@charset "utf-8";
+/* 公共样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-15*/
+
+/*****************重置样式****************/
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,table,td,tr,th,div,dl,dt,dd,form,fieldset,img,cite,strong,em,div{margin:0;padding:0;border:0;}
+img, table, td, th ,embed{ border:none;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0 none;}
+address,caption,cite,code,dfn,em,strong,th,var,i{font-style:normal;font-weight:normal;}  
+ul,ol, li{ list-style-type:none; padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}  
+q:before, q:after{content:''}  
+abbr,acronym{border:0;}
+a{text-decoration:none;color:#333;}
+a:hover {text-decoration:none; color:#f7597a;} 
+.tal{text-align:left;}  
+.tac{text-align:center;}  
+.tar{text-align:right;} 
+.magi{ margin:0px auto;} 
+.fl{float:left;display:inline;}  
+.fr{float:right;display:inline;}  
+.clearfix:after{content:'.';display:block;height:0;clear:both;visibility:hidden}  
+.clearfix{display:inline-block;}  
+*html .clearfix{height:1%}  
+.clearfix{display:block;}
+.ofh{white-space:nowrap;word-wrap:normal;word-break:normal;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden;}.clr{clear:both;}.clear_in{overflow:hidden;zoom:1;}
+.wbbw{word-wrap:break-word;word-break:break-all;display:block;}
+.block{display:block;}
+.dn{display:none;}
+.layout1200{width:1200px;margin:0 auto;}
+.hand{cursor:pointer;}
+body{font-family:"微软雅黑","方正兰亭黑";font-size:14px; color:#4c4c4c;}
+.fs12{font-size:12px;}
+.fs14{font-size:14px;}
+.fs16{font-size:16px;}
+.fs18{font-size:18px;}
+.fs20{font-size:20px;}
+.fs24{font-size:24px;}
+.fs26{font-size:26px;}
+.fs28{font-size:28px;}
+.fs30{font-size:30px;}
+.fs36{font-size:36px;}
+.mt0{margin-top:0!important;}
+.mt10{margin-top:10px!important;}
+.mt20{margin-top:20px!important;}
+.mr10{margin-right:10px!important;}
+.ml10{margin-left:10px!important;}
+.ml20{margin-left:20px!important;}
+.fc{ color:#ec7b90;}
+.cb{clear:both;}  
+.cl{clear:left;}  
+.cr{clear:right;}
+.cloF75{color:#f7597a ;}
+.more{ width:100px; height:25px; line-height:25px; border-radius:8px; background-color:#ee889c; text-align:center; font-size:16px; float:right; }
+.more a{ color:#FFF; }
+.more a:hover{ color:#FFF; }
+.button{ border:none; background-color:#f7597a; border-radius:10px; color:#FFF; height:25px; line-height:25px; padding:0px 25px; }
+.input{ width:300px;height:35px; line-height:35px; background-color:#fcfcfc; border:1px #ccc solid; text-indent:1em;}
+.textare{ width:600px; min-height:100px; line-height:25px; background-color:#fcfcfc; border:1px #ccc solid;}
+/*************按钮的集合********************/
+.rsbutton{ padding:0px 5px; background-color:#f7597a; color:#FFF; border-radius:5px; border:none; margin-top:5px;}
+.csbutton{ padding:0px 5px; background-color:#b5b5b5; color:#FFF; border-radius:5px; border:none;margin-top:5px;}
+/*文字预制框*/
+.phbg{ background:url(img/bg.jpg) 0 0 no-repeat;}
+.phcolor{ color:#a9a9a9;}
+/*正文框架*/
+.companyConents{ width:920px; height:auto; padding-bottom:20px;}
+.memRightUp{width:910px; font-size:16px; font-weight:bold; padding-left:10px; height:42px; line-height:42px; background-color:#fbfafa; border-bottom:3px #f7597a solid;}
+.memRightUp span{ float:right; margin-right:15px; display:block; font-size:14px;}
+.memRightUp span ul li{ width:90px; height:40px; text-align:center; display:block; float:left; margin-top:5px;}
+.spanSty1{ background-color:#f7597a;border-radius:15px 15px 0px 0px; color:#FFF;}
+.spanSty2{ background-color:#fbfafa;border-radius:15px 15px 0px 0px; color:#FFF;}
+.memRightDo{ width:900px; padding:20px 10px; height:auto;  font-size:16px;}
+
+/*************头像裁切********************/
+.cut{ width:850px; height:350px; margin:20px 25px;}
+/*************安全中心********************/
+.Security{ width:600px; height:400px; margin:50px 125px; border-radius:30px; border:3px #f7597a solid;}
+.Security span{ width:450px; height:50px; text-align:right;  display:block; margin-left:50px; margin-top:20px;}
+/*************上传头像********************/
+.Identitya{ width:140px; height:140px;background-color:#CCC;}
+/* 分页*/
+.Page{ width:600px; padding-right:10px; height:30px; text-align:right; margin-left:590px;line-height:30px; font-size:16px;}
+.Page a, .Page strong{ height:30px; background-color:#f6f6f6;  color:#333; margin-left:5px; padding:5px 10px;  }
+.Page a:hover{background-color:#ec728b; color:#fff; }
+
+/*************头像********************/
+.tImg70{ width:70px; height:70px; border-radius:70px; border:1px #cecece solid;}
+.tImg100{ width:100px; height:100px; border-radius:100px; border:1px #cecece solid;}
+.tImg132{ width:132px; height:132px; border-radius:132px; border:1px #cecece solid;}
+
+/*************我的消息********************/
+.news{ width:790px; height:auto; padding:55px; background-color:#f8f8f8;}
+.news span{ display:block;}
+.news p{ margin:10px; text-indent:2em;}
+/************个人资料********************/
+.sleft{ width:200px;  text-align:right; float:left;  }
+.sright{ width:650px; text-align:left; float:right; }
+.sleftt{ width:150px;  text-align:right; float:left;  }
+.srightt{ width:700px; text-align:left; float:right; }
+
+.zili{ width:850px; padding:25px; float:left}
+.zili span{ display:block; height:50px;  line-height:30px;}
+.ziliq{ width:880px; padding:10px; float:left; }
+.ziliq span{ display:block; height:50px;  line-height:30px;}
+/************作品案例********************/
+.case{ width:900px; height:auto; float:left;text-align:center;  }
+.case span img{ width:140px; height:98px;}
+.case li span{ display:block; height:98px; padding:25px 0px; text-align:center;}
+
+/*************评价管理********************/
+.comment,{ width:900px; height:auto}
+.commentXiu{ width:650px; position:absolute; top:100px; left:100px; background-color:#FFF; padding:50px 20px; border:5px #f7597a solid; border-radius:10px;}
+.memRightDo .proComet{ width:900px; height:125px; padding-bottom:10px;  border-bottom:2px #CCC dashed;}
+.memRightDo .proComet dl{ width:120px; height:125px; float:left;}
+.memRightDo .proComet dl dt,.Comet  dl dt img{ width:70px; height:70px;}
+.memRightDo .proComet dl dt{ margin-top:15px; margin-left:25px;}
+.memRightDo .proComet dl dd{ height:40px; line-height:40px; color:#f7597a; text-align:center; padding:0px 10px; width:100px; font-size:14px; }
+.memRightDo .proComet .proCometa{ width:750px; height:105px; font-size:14px; line-height:23px; display:block; padding:10px; float:right;}
+.memRightDo .star{ float:right; width:200px; height:23px; line-height:23px;}
+/*************查看订单详情********************/
+.liucengtu{ width:900px; height:160px; margin-top:20px;}
+.liucengtuUp,.liucengtuDo{ width:900px; height:40px; font-size:12px;}
+.liucengtuUp b,.liucengtuDo b{ line-height:15px; width:150px;  float:left; display:block; text-align:center;}
+.liucengtuDo b{ font-size:14px;}
+.liucengtuMid{ height:70px;}
+.liucengtuMid b{ width:150px;  float:left; display:block; text-align:center;}
+.dddetial{ width:900px; height:auto;}
+.dddetialUp{width:880px; padding:0px 10px; background-color:#efefef; height:40px; text-align:center;line-height:40px;}
+.ddddetialDo{width:880px; padding:10px;}
+.detialoImg{ width:100px; height:130px; margin:30px;}
+.detialdet{ width:730px;margin-top:30px; line-height:30px;font-size:14px; }
+.detialdet span{ background-color:#efefef; width:730px; padding:10px; display:block;} 
+
+/**************************************************************新 人*************************************************************************/
+
+.memContainer{ width:1200px; padding:10px; background-color:#FFF;}
+.cloF75{color:#f7597a ;}
+/************左边样式***************/
+.memLeft{ width:250px; height:auto; padding:15px 0px 0px 0px; margin-bottom:20px; border:1px #dbdbdb solid;}
+.memLeftTOu{ width:210px; padding:20px; height:auto;}
+.memLeftTOu dl,.memLeftTOu dl dt{ width:210px;}
+.memLeftTOu dl dt img{ width:132px; height:132px; margin-left:30px;}
+.memLeftTOu dl dd{ width:210px;line-height:25px; height:25px; text-align:center; }
+/************内容列表**************/
+.memLeftuUL{background-color:#efefef; padding-bottom:20px;}
+.memLeftuUL,.memLeftuUL ul{width:250px; height:auto; }
+.memLeftuUL ul li{ width:250px;}
+.memLeftuUL ul li span{ width:250px; height:35px; line-height:35px; color:#FFF; text-align:center; font-size:16px;  background-color:#f7597a; display:block;} 
+.memLeftuUL ul li ul{width:175px; margin-left:35px;}
+.memLeftuUL ul li ul li{width:175px;height:23px; line-height:23px;text-align:center; margin:10px 0px 10px 0px; display:block;background:url(../images/menlipoint.png) 40px no-repeat;}
+.memLeftuUL ul li ul li a:hover{  border-radius:10px;background:url(../images/menlipoint.png) 40px no-repeat;background-color:#FFF; display:block;block;}
+/************右边样式***************/
+.memRight{width:920px; height:auto; border:1px #dbdbdb solid;}
+
+/**************************************************************婚庆公司*************************************************************************/
+.menTab{ width:600px; height:200px;}
+.shopping  tr{ border-bottom:1px solid #ccc;}
+.shopping  th{ font-weight:bold;}
+.choice{ width:880px; height:40px; background-color:#fbfafa; line-height:40px; padding:0px 10px;}
+.choice span{ float:right; margin-right:10px;}
+.memRightDo ul li span{ display:block;}
+.memRightDo ul li{ height:70px; border-bottom:1px #ccc solid; padding-top:30px;}
+
+
+/**************************************************************婚礼人个人*************************************************************************/
+.addfuwu{ width:850px; height:380px;float:right;}
+.fuwuli{ width:605px; height:auto; border:1px solid #ccc; float:right;  margin:20px; margin-right:40px; font-size:13px;}
+.fuwuli ul li{  display:block;}
+.fuwuli ul li a{ display:block; float:left; text-align:center;}
+
+
+
+/**************************************************************婚礼人团队*************************************************************************/
+.teamNum{ width:850px; height:auto; padding:25px;}
+.teamNum dl{ width:220px; height:100px; margin:30px;  float:left;}
+.teamNum dl dt{ width:100px; height:100px; } 
+.teamNum dl dd{ height:95px; margin-top:5px;margin-left:10px; line-height:23px;}

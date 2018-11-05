@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url().'application/views/';?>css/home.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/srdz.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/lrtk.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.4.2.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtk.js"></script>
+<link href="<?php echo base_url().'application/views/';?>css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtkk.js"></script>
+<link href="<?php echo base_url().'application/views/';?>css/lrtkss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/koala.min.1.5.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/default_blue.css"/>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.7.2.min.js"></script>
+<script language="javascript" src="<?php echo base_url().'application/views/';?>js/jquery.Sonline.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("body").Sonline({
+		Position:"right",//left或right
+		Top:400,//顶部距离，默认430px
+		Effect:true, //滚动或者固定两种方式，布尔值：true或false
+		DefaultsOpen:true, //默认展开：true,默认收缩：false
+		Qqlist:"1404414903|客服01" //多个QQ用','隔开，QQ和客服名用'|'隔开
+	});
+})	
+</script>
+<link rel="stylesheet" href="<?php echo base_url().'application/views/';?>css/jquery.cxcalendar.css">
+<script src="<?php echo base_url().'application/views/';?>js/jquery-1.8.2.min.js"></script> 
+<script src="<?php echo base_url().'application/views/';?>js/jquery.cxcalendar.js"></script>
+<script src="<?php echo base_url().'application/views/';?>js/placeholder.js"></script>  
+<script>
+$.cxCalendar.defaults.startDate = 1980;  
+$.cxCalendar.defaults.language = { 
+  monthList: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], 
+  weekList: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] 
+}; 
+</script>
+
+
+
+
+<script  type="text/javascript">
+
+<!--
+
+
+function chingeTable(divName,count,currentNum,currtname){
+	for(var i=1;i<=count;i++){
+		if (currentNum==i)	{
+			document.getElementById(divName+currentNum).style.display = "";	
+			document.getElementById(currtname+currentNum).className = "up_right_2";	
+			}
+		else{
+		 document.getElementById(divName+i).style.display = "none";
+		 document.getElementById(currtname+i).className = "up_right_1";
+			}
+			}
+			}
+-->
+</script>
+
+	<table width="280" border="1"  class="tal_b">
+ <form id="form5" name="form5" method="post" action="<?php  echo site_url('hunyi/customform');?>">
+  <tr>
+   <td width="80" height="45" align="center" valign="middle"></td>
+    <td width="200" height="45"  align="center" valign="middle">私人订制</td>
+    </tr>
+    
+    
+    <tr>
+    <td width="80" height="30" align="center" valign="middle">姓名</td>
+    <td width="200" height="30" align="left" valign="middle">
+      <label for="textfield5"></label>
+      <input type="text" name="name" id="textfield5"  placeholder="请输入您的真实姓名"  style="width:200px; height:28px; text-indent:1em; line-height:28px; border-radius:8px; border:1px #ec728b solid;" value="<?php echo set_value('name');?>" /></td>
+    </tr>
+    <tr>
+    <td width="280" height="10"  align="center" valign="middle" colspan="2"><?php echo form_error('name');?></td>
+    </tr>
+    
+    
+    
+
+   <tr>
+    <td  width="80" height="30" align="center" valign="middle">手机号</td>
+    <td  width="200" height="30" align="left" valign="middle">
+      <label for="textfield4"></label>
+       <input type="text" name="phone" id="textfield5"  placeholder="请输入您的手机号码"   style="width:200px;text-indent:1em; height:28px; line-height:28px; border-radius:8px; border:1px #ec728b solid;" value="<?php echo set_value('phone');?>"/>
+   </td>
+    </tr>
+	<tr>
+    <td width="280" height="10"  align="center" valign="middle" colspan="2"><?php echo form_error('phone');?></td>
+    </tr>
+
+
+  <tr>
+    <td width="80" height="30" align="center" valign="middle">地点</td>
+    <td width="200" height="30" align="left" valign="middle">
+      <label for="textfield3"></label>
+      <input type="text" name="address" id="textfield5" placeholder="请输入您的结婚地点"    style="width:200px; text-indent:1em; height:28px; line-height:28px; border-radius:8px; border:1px #ec728b solid;" value="<?php echo set_value('address');?>"/>
+	</td>
+    </tr>
+	<tr>
+    <td width="280" height="10" align="center" valign="middle" colspan="2"><?php echo form_error('address');?></td>
+    </tr>
+    
+	  <tr>
+    <td width="80" height="30" align="center" valign="middle">预算</td>
+    <td width="200" height="30" align="left" valign="middle">
+     
+      <label for="textfield"> </label> 
+       <select name="budget" class="select" />
+         <option value="" >---------请选择预算----------</option>
+		 <option value="2W以下" >2W以下</option>
+         <option value="2W~5W"  >2W-5W</option>
+         <option value="5W~10W"  >5W-10W</option>
+         <option value="10W以上" >10W以上</option>
+       </select>
+      
+      
+       
+    </td>
+    </tr>
+		<tr>
+    <td width="280" height="10" align="center" valign="middle" colspan="2"><?php echo form_error('budget');?></td>
+    </tr>
+    
+    
+  <tr>
+    <td width="80" height="30" align="center" valign="middle">婚期</td>
+    <td width="200" height="30" align="left" valign="middle">
+      <label for="textfield2"></label>
+      <input id="element_id" type="text"  placeholder="请选择您的婚期"  name="marrydate" style="width:200px;text-indent:1em; height:28px; line-height:28px; border-radius:8px; border:1px #ec728b solid;" value="<?php echo set_value('marrydate');?>"/>
+	  
+<script>$('#element_id').cxCalendar();</script> </span>
+</td>
+    </tr>
+	
+	<tr>
+    <td width="280" height="10"  align="center" valign="middle" colspan="2"><?php echo form_error('marrydate');?></td>
+
+    </tr>
+    
+   <tr>
+    <td width="80" height="30" align="center" valign="middle"></td>
+    <td width="200" height="10" align="center" valign="middle"><input  id="submit" type="image" src="<?php echo base_url().'application/views/';?>images/buttom_a.png"  align="center" ></td>
+    </tr>
+
+ 
+	
+	</form><?php echo isset($msg)?$msg:'';?>
+	</table>

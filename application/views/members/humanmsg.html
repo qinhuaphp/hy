@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>婚礼人个人-个人资料</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views';?>/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"  src="<?php echo base_url().'application/views';?>/js/placeholder.js"></script>
+<style>
+#zzc{
+	position:absolute;
+	left:0;
+	top:0;
+	background:black;
+	opacity:0.3;
+	z-index:10;
+	display:none;
+}
+</style>
+</head>
+<body>
+<script>
+$(function(){
+	/*遮罩层*/
+	var zdiv='<div id="zzc"></div>';
+	$("body").append(zdiv);
+	var w=$(window).width();
+	var h=$(window).height();
+	$("#zzc").width(w).height(h);
+	/*让遮罩层自适应窗口*/
+	$(window).resize(function(){
+		if($("#zzc").is(":visible")){
+			var w=$(window).width();
+			var h=$(window).height();
+			$("#zzc").width(w).height(h);
+		}
+	});
+	/*显示增加服务类型表单特效*/			
+	$(".cloF75").click(function(){
+		$(".addfuwu").show().css({
+			"position":"absolute",
+			"z-index":"20",
+			"left":0,
+			"top":0,
+			"border":"1px solid #F7597A",
+			"background":"#FCFCFC"
+		}).animate({
+			"left":$(window).width()/2-$(".addfuwu").outerWidth(true)/2,
+			"top":$(window).height()/2-$(".addfuwu").outerHeight(true)/2
+		},200);
+		if($("#zzc").is(":hidden")){
+			$("#zzc").show();
+		}
+	});
+	$("#close").click(function(){
+		$(".addfuwu").hide();
+		$("#zzc").hide();
+	});
+	/*循环年龄*/
+	var agecanzhao=<?php echo $userinfo[0]['age'];?>;
+	for(var i=18;i<=50;i++){
+		var agexh='<option value="'+i+'" style="text-align:center;background:#F7597A;width:60px;"';
+		if(i==agecanzhao){
+			agexh+=' selected';
+		}
+		agexh+='>'+i+'</option>';
+		$(":input[name=age]").append(agexh);
+	}
+	/*完善资料表单验证*/
+	//初始化标记位
+	var hintrol=$(":input[name=hintrol]").val()==''?false:true;
+	var hintrolv=$(":text[name=hintrolvideo]").val()==''?false:true;
+	var haccount=$(":text[name=haccount]").val()==''?false:true;
+	//检测简介
+	$(":input[name=hintrol]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","请输入简介");
+			hintrol=false;
+		}
+		if($(this).val()!=''){
+			$(this).css({
+				"border":"1px solid green",
+				"color":"green"
+			});
+			hintrol=true;
+		}
+	}).focus(function(){
+		$(this).removeAtrr("style");
+	});
+	//检测视频地址
+	$(":text[name=hintrolvideo]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","请输入视频地址");
+			hintrolv=false;
+		}
+		if($(this).val()!=''){
+			var exp=/^http:\/\/.*\.swf$/;
+			if(exp.test($(this).val())==false){
+				$(this).css({
+					"border":"1px solid #F7597A",
+					"color":"red",
+					"font-size":"12px"
+				}).val('').attr("placeholder","视频地址格式不正确");
+				hintrolv=false;
+			}else{
+					$(this).css({
+					"border":"1px solid green",
+					"color":"green"
+					});
+					hintrolv=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAtrr("style");
+	});
+	//检测银行账户
+	$(":text[name=haccount]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","请输入银行账户");
+			haccount=false;
+		}
+		if($(this).val()!=''){
+			var expac=/^(\d{16,19})$/;
+			if(!expac.test($(this).val())){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","银行账户格式不正确");
+				haccount=false;	
+			}else{
+				$(this).css({
+					"border":"1px solid green",
+					"color":"green"
+				});
+				haccount=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAtrr("style");
+	});
+	//表单提交
+	$("#hmsg").submit(function(){
+		if(hintrol&&hintrolv&&haccount){
+			$.ajax({
+				url:$(this).attr("action"),
+				type:'post',
+				data:$(this).serialize(),
+				success:function(data){
+					if(data=='1'){
+						$("#tan").show().html("恭喜！更新成功").animate({
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+						//$(":rest").click();
+					}
+					if(data=='0'){
+						$("#tan").show().html("亲，没更新哟~~").animate({
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+					}
+				}
+			});
+		}
+		return false;
+	});
+})
+
+</script>
+<style>
+#tan{
+		display:none;
+		z-index:30;
+		position:absolute;
+		left:0;
+		top:0;
+		background:#FCFCFC;
+		border:1px solid #F7597A;
+		text-align:center;
+		line-height:300px;
+		width:400px;
+		height:300px;
+		font-size:26px;
+		color:#F7597A;
+}
+
+
+</style>
+	<div id="tan"></div>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 个人资料
+     </div>
+    <div class="memRightDo fl" >
+     <div class="zili" style="position:relative;"> 
+  <form id="hmsg" name="" method="post" action="<?php echo site_url('usercenter/pz/hid/'.$userinfo[0]['hid'].'');?>">  
+   <input type="hidden" name="hid" value="<?php echo $userinfo[0]['hid'];?>">
+  <span class="sleft">性  别 ：</span>
+  <span class="sright ">
+  <input name="sex" type="radio" value="0" <?php echo $userinfo[0]['sex']=='0'?'checked':'';?> /> 男
+  <input name="sex" type="radio" value="1"   <?php echo $userinfo[0]['sex']=='1'?'checked':'';?>/> 女
+  </span>
+   
+   <span class="sleft">年  龄 ：</span>
+           <span class="sright">
+		
+          <select name="age">
+          </select>
+   </span>
+
+  <span class="sleft"  style="height:120px;">个人简介 ：</span>
+  <span class="sright" style="height:120px;"><textarea class="textare" name="hintrol" placeholder="请输入简介" cols="" rows="">
+	<?php echo empty($userinfo[0]['hintrol'])?'':$userinfo[0]['hintrol'];?>
+  </textarea></span>
+  
+  <span class="sleft">介绍视频地址 ：</span>
+  <span class="sright"><input type="text" class="input"   style="width:460px;" placeholder="请以http://开头并以.swf结尾" name="hintrolvideo" value="<?php echo empty($userinfo[0]['hintrolvideo'])?'':$userinfo[0]['hintrolvideo'];?>"></span>
+  
+   <span class="sleft">选择团队 ：</span>
+  <span class="sright">
+  <select name="teamid" style="height:40px; padding-left:10px;">
+    <option value="0">--选择团队-- </option>
+	<?php foreach($teams as $k=>$v){?>
+    <option value="<?php echo $v['teamid'];?>" style="text-align:center; background:#F7597A;" <?php echo $v['teamid']==$userinfo[0]['teamid']?'selected':'';?>><?php echo $v['tname'];?> </option>
+	<?php } ?>
+  
+  </select>
+  </span>
+     <span class="sleft">银行账号 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入银行卡账号" name="haccount" value="<?php echo empty($userinfo[0]['haccount'])?'':$userinfo[0]['haccount'];?>"> </span>
+<!--<span class="sleft">添加服务类型 ：</span>
+  <span class="sright"><a href="#">
+  <img src="<?php echo base_url().'application/views/members';?>/images/addC.jpg" align="middle"></a>-
+  <a class="cloF75 fs14" style="cursor:pointer;">&nbsp;&nbsp; &nbsp;&nbsp;想添加多个服务类型，请点击添加,最多可添加6个</a> 
+  </span>
+  
+  <div class="fuwuli">
+ 
+      <ul>
+        <li style="height:45px; line-height:45px; padding-top:0px;"> 
+		<a style="width:120px;"> 服务类型</a> 
+		<a style="width:80px;"> 服务报价</a> 
+		<a style="width:80px;" >服务报价</a>  
+		<a style="width:325px;">服务说明 </a> </li>
+        
+        <li style="height:80px; padding-top:0px;"> 
+            <a style="width:120px; line-height:80px;">bzdgbdffbdfbfdbdf</a> 
+            <a style="width:80px;line-height:80px;"> bdbdbdb</a> 
+			<a style="width:80px;line-height:80px;" >dbdbdbdb</a> 
+            <a style="width:325px; text-align:left;">服务明服务明服务明服服务明服务明服务明 明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务
+			明服务明服务明服务明服务明服务明明服务服</a> 
+        </li>  
+
+          
+       
+      </ul>
+                           
+  </div>
+  
+  
+
+ 
+   <!------- 多次添加模块--------
+  <div class="addfuwu" style="display:none;" >
+  <span class="sleft" style="color:#F7597A;">服务类型 ：</span> 
+  <span class="sright">
+  <select name="type" style="height:40px; padding-left:10px;">
+  <option value="0">---选择服务类型--- </option>
+ 
+    <option value="" style="text-align:center; background:#F7597A;">类型名称 </option>
+	
+  </select>
+          
+  </span>
+  <span class="sleft"  style="color:#F7597A;">服务报价 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入合作报价" ></input></span>
+
+  <span class="sleft" style="height:220px;color:#F7597A;" >服务说明 ：</span>
+  <span class="sright" style="height:220px;"><textarea style="height:200px;"class="textare" name="" placeholder="请输入服务说明" cols="" rows=""></textarea></span>
+   <span style="width:500px; margin-left:300px;">
+			<input class="button" type="button"  value="提  交">&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="button" type="button"  value="关 闭" id="close">
+          </span>
+ </div>
+  <!------- 多次添加模块结束-------->
+  
+ 
+  <span style="width:500px; margin-left:300px;">
+  <input class="button" type="submit"  value="提  交">&nbsp;&nbsp;&nbsp;&nbsp;
+  <input class="button" type="reset"  value="重   置">
+  </span>    
+ 
+  </form>   
+    </div>
+    </div>
+    </div>
+    
+ 
+</body>
+
+
+</html>
+    <!--
+	  <!--
+	    <!--J
+  <span class="sleft">服务地区（省市） ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请选择服务地区" ></input></span>S,针对全国的省市-
+
+     <span class="sleft"  style="color:#F7597A;">市场报价 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入市场报价" ></input></span>
+   <span class="sleft">市场报价 ：</span>  <!------- 多次添加模块结束
+  <span class="sright"><input type="text" class="input" placeholder="请输入市场报价" ></input></span>
+   <span class="sleft">身  高 ：</span>
+   <span class="sright"><input type="text" class="input" placeholder="请以CM为单位" ></input></span>
+   
+   <span class="sleft">体  重 ：</span>
+   <span class="sright"><input type="text" class="input" placeholder="请以KG为单位" ></input></span>
+   
+   <span class="sleft">工作经验 ：</span>
+   <span class="sright"><input type="text" class="input" placeholder="请以年为单位" ></input></span>
+   
+   
+  <span class="sleft" >所在地区 ：</span>
+  <span class="sright" ><input type="text" class="input" placeholder="请选择所在地区" ></input></span>  
+   
+  <span class="sleft"> 联系Q Q ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入您的QQ号码" ></input></span>
+  -->
+<!--
+   <span class="sleft"  style="height:120px;">异地服务说明 ：</span>
+  <span class="sright" style="height:120px;"><textarea class="textare" name="" placeholder=" 限制在65个字以内" cols="" rows=""></textarea></span>
+  
+  <span class="sleft">身份证号码 ：</span>
+  <span class="sright  "><input type="text" class="input" placeholder="请输入负责人身份证号码" ></input></span>
+  
+  <span class="sleft"  style="height:200px;">手持身份证照 ：</span>
+  <span class="sright" style="height:200px;">
+  
+       <span style="width:140px;height:140px; float:left;" >
+        <dl style="width:140px; height:170px; float:left;">
+        <dt class="Identitya fl" > </dt>
+        <dd class="fl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name=""  type="button" value="上传并预览" /> </dd>
+        </dl>
+      </span>
+      <span class="fl" style="width:400px; height:125px;"><img src="images/case1.png" ></span>
+      <span class="fl cloF75">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （ 注：上传的照片大小2M以内 ）</span>
+      
+  
+  </span>
+  
+  <span class="sleft"  style="height:200px;">身份证正面照 ：</span>
+  <span class="sright" style="height:200px;">
+      <span style="width:140px;height:140px; float:left;" >
+        <dl style="width:140px; height:170px; float:left;">
+        <dt class="Identitya fl" > </dt>
+        <dd class="fl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name=""  type="button" value="上传并预览" /> </dd>
+        </dl>
+      </span>
+      <span class="fl" style="width:400px; height:125px;"><img src="images/case2.png" ></span>
+      <span class="fl cloF75">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （ 注：上传的照片大小2M以内 ）</span>
+ 
+  
+  </span>
+  
+  <span class="sleft"  style="height:200px;">身份证反面照 ：</span>
+  <span class="sright" style="height:200px;">
+    <span style="width:140px;height:140px; float:left;" >
+        <dl style="width:140px; height:170px; float:left;">
+        <dt class="Identitya fl" > </dt>
+        <dd class="fl">&nbsp;&nbsp;&nbsp;&nbsp; <input name=""  type="button" value="上传并预览" /> </dd>
+        </dl>
+      </span>
+      <span class="fl" style="width:400px; height:125px;"><img src="images/case3.jpg" ></span>
+      <span class="fl cloF75">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（ 注：上传的照片大小2M以内 ）</span>
+ 
+  </span>
+  -->
+  
+
+  <!--
+   <span class="sleft">支付宝账号 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入支付宝账号" ></input></span>
+  -->
+ 

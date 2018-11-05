@@ -1,0 +1,125 @@
+
+<!--个人中心部分开始-->
+<div class="geren">
+<div class="geren_left">
+	<div class="geren_left_tou">
+     <dl>
+     	<dt><img class="yuan_tou" src="<?php echo base_url().$userinfo['logo'];?>"></dt>
+        <dd><?php echo $userinfo['name']?></dd>
+        <dd>等级：<?php $str='<img src="'.base_url().'application/views/images'.'/star.jpg" align="center">';echo str_repeat($str,$userinfo['level']);?></dd>
+		<dd>成交量：<?php echo $userinfo['volume'];?></dd>
+     </dl>
+    </div>
+<!--头像资料-->
+	<div class="geren_left_list">
+     <ul>
+     
+     <li>会员中心
+       
+      <ul>
+          <li><a href="<?php echo site_url('usercenter/baseinfo/'.$idname.'/'.$userinfo['id'].'');?>" target="aaaa">· 基本信息</a></li>
+          <li><a href="<?php echo site_url('usercenter/pz/'.$idname.'/'.$userinfo['id'].'');?>" target="aaaa">· 个人资料</a></li>
+          <li><a href="<?php echo site_url('usercenter/updatepwd/'.$idname.'/'.$userinfo['id'].'');?>" target="aaaa">· 安全中心</a></li>
+         <!--<li><a href="#">· 密码管理</a></li>-->
+      </ul>
+     </li>
+	 <?php if($_SESSION['userid']['user']=='company'){?>
+         <li>我的收藏
+       
+      <ul>
+          <li><a href="<?php echo site_url('usercenter/myfavo/'.$idname.'/'.$userinfo['id'].'');?>" target="aaaa">· 我的收藏</a></li>
+         
+      </ul>
+     </li>
+	 <?php } ?>
+	 <?php if('member'!=$_SESSION['userid']['user']){?>
+     <li>我的案例
+       
+      <ul>
+          <li><a href="<?php echo site_url('usercenter/addworks/'.$idname.'/'.$userinfo['id'].'');?>" target="aaaa">· 发布案例</a></li>
+          <li><a href="<?php echo site_url('usercenter/workslist/'.$idname.'/'.$userinfo['id'].'');?>" target="aaaa">· 查看案例</a></li>
+      </ul>
+     </li>
+      <?php } ?>
+       <?php if('company'==$_SESSION['userid']['user']||'member'==$_SESSION['userid']['user']){?>
+     <li>我的预约
+       
+      <ul>
+          <li><a href="<?php echo site_url('order/olist/');?>" target="aaaa">查看我的预约</a></li>
+          <!--<li><a href="#">· 已完成</a></li>-->
+      </ul>
+     </li>
+     <?php }?>
+	        <?php if('human'==$_SESSION['userid']['user']){?>
+     <li>我的档期
+       
+      <ul>
+          <li><a href="<?php echo site_url('order/olist/');?>" target="aaaa">查看我的档期</a></li>
+          <!--<li><a href="#">· 已完成</a></li>-->
+      </ul>
+     </li>
+     <?php }?>
+       <!--
+     <li>我的评价
+       
+      <ul>
+          <li><a href="#">· 待评价</a></li>
+          <li><a href="#">· 已评价</a></li>
+      </ul>
+     </li>
+     -->
+       
+
+     
+     </ul>    
+     </div>
+<!--左侧列表-->
+</div>
+<!--个人左侧部分结束style="border:1px solid blue;" -->
+<iframe  name="aaaa" width="965"  height="1250" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" 
+src="<?php echo site_url('usercenter/baseinfo/'.$idname.'/'.$userinfo['id'].'');?>">
+<!--
+<div class="geren_right">
+	<div class="geren_right_up">
+    · 当前所在的位置：会员中心> <a href="#"> 基本信息</a>
+    </div>
+	<div class="geren_right_down">
+	  <table width="905" height="178" border="1" >
+      <tr>
+        <td height="38" colspan="3" bgcolor="#f9f8f8"><strong>基本信息</strong></td>
+      </tr>
+     
+      <tr>
+        <td width="98" height="35" align="center">用户名：</td>
+        <td width="371"><span class="color">静馨887</span></td>
+        <td width="414"><a href="#">修改</a></td>
+      </tr>
+      <tr>
+        <td height="35" align="center">登录密码：</td>
+        <td height="35"><span class="color"> ******** </span></td>
+        <td height="35"><a href="#">修改</a></td>
+      </tr>
+      <tr>
+        <td height="35" align="center">手机：</td>
+        <td height="35"><span style="font-size:22px; color:#ec728b;">136******456</span></td>
+        <td height="35"><a href="#">修改</a></td>
+      </tr>
+      <tr>
+        <td height="35" align="center">邮箱：  </td>
+        <td height="35"><span style="font-size:22px; color:#ec728b;">12131****8@qq.com</span></td>
+        <td height="35"></td>
+      </tr>
+    
+  
+     
+      </table>
+	</div>
+	
+</div>
+-->
+</iframe>
+<!--个人右侧部分结束-->
+</div>
+
+<!--个人中心部分结束-->
+  

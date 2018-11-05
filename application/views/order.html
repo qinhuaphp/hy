@@ -1,0 +1,120 @@
+<!--<div id="menu">
+
+菜单结束-->
+  
+  <div class="yuding margin">
+  <table width="1100" border="1">
+  <form name="order" method="post" action="<?php  if(isset($obinfo[0]['hid'])){$hid=$obinfo[0]['hid'];echo site_url('order/index/hid/'.$hid.'');}if(isset($obinfo[0]['teamid'])){$teamid=$obinfo[0]['teamid'];echo site_url('order/index/teamid/'.$teamid.'');}?>">
+  <input type="hidden"  name="<?php  if(isset($obinfo[0]['hid'])){echo 'hid';}?><?php  if(isset($obinfo[0]['teamid'])){echo 'teamid';}?>" value="<?php  if(isset($obinfo[0]['hid'])){echo $obinfo[0]['hid'];}?>
+	<?php  if(isset($obinfo[0]['teamid'])){echo $obinfo[0]['teamid'];}?>">
+	<input type="hidden" name="perprice" value="<?php echo isset($obinfo[0]['hprice'])?$obinfo[0]['hprice']:'';?>">
+  <tr>
+    <td height="42" colspan="3" align="center" valign="middle" bgcolor="#ec728b"><strong><span style="color:#FFF">预订信息</span></strong></td>
+    </tr>
+  <tr>
+    <td width="203" height="42" align="right" valign="middle"><strong>预订对象姓名：</strong></td>
+    <td width="446" height="42">
+		<?php echo isset($obinfo[0]['hname'])?$obinfo[0]['hname']:'';?>
+		<?php echo isset($obinfo[0]['tname'])?$obinfo[0]['tname']:'';?>
+	</td>
+    <td width="429" height="42">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="42" align="right" valign="middle"><strong>预定对象类型：</strong></td>
+    <td height="42">
+	<?php echo isset($obinfo[0]['cname'])?$obinfo[0]['cname']:'';?>
+	<?php echo isset($obinfo[0]['tlmark'])?$obinfo[0]['tlmark']:'';?>
+	</td>
+    <td height="42">&nbsp;</td>
+  </tr>
+   <tr>
+    <td height="42" align="right" valign="middle"><strong>预约对象联系电话：</strong></td>
+    <td height="42">
+	<?php echo isset($obinfo[0]['tellphone'])?$obinfo[0]['tellphone']:'';?>
+	<?php echo isset($obinfo[0]['phone'])?$obinfo[0]['phone']:'';?>
+	</td>
+    <td height="42">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td height="42" align="right" valign="middle"><strong> 婚艺价：</strong></td>
+    <td height="42">￥<?php echo isset($obinfo[0]['hprice'])?$obinfo[0]['hprice']:'';?></td>
+    <td height="42"></td>
+  </tr>
+  <!--<tr>
+    <td height="42" align="right" valign="middle"><strong>服务说明：</strong></td>
+    <td height="42">成都市区费用； 具体优惠电话详询； 含策划、沟通、彩排、主持</td>
+    <td height="42">&nbsp;</td>
+  </tr>-->
+  <tr>
+    <td height="42" align="right" valign="middle"><strong>婚礼时间：</strong></td>
+    <td height="42"><label for="textfield"></label>
+                        
+                             <span class="select01" > 
+								<select name="year">
+									<?php for($i=2015;$i<=3000;$i++){?>
+								   <option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php } ?>
+								</select>  
+								<select name="mouth">
+									<?php for($i=01;$i<=12;$i++){?>
+								   <option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php } ?>
+								</select>  
+								<select name="day">
+									<?php for($i=01;$i<=30;$i++){?>
+								   <option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php } ?>
+								</select>  
+							 </span>
+                             <span class="hlsj_a"> 
+							 
+							 <select name="otime">
+                               <option value="am">午宴</option>
+                               <option value="pm">晚宴</option>
+                             
+                             </select>  
+          </span>
+</td>
+    <td height="42">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="42" align="right" valign="middle"><strong>预约地址：</strong></td>
+    <td height="42"><label for="textarea"></label>
+      <label for="textfield2"></label>
+      <input name="address" type="text" id="textfield2" size="60"  value="<?php echo set_value('address');?>"/></td>
+    <td height="42"><?php echo form_error('address');?><td>
+  </tr>
+  <!----><tr>
+    <td height="42" align="right" valign="middle"><strong>订单备注：</strong></td>
+    <td height="42"><label for="textarea"></label>
+      <textarea name="omark" id="textarea" cols="60" rows="2"><?php echo set_value('omark');?></textarea></td>
+    <td height="42"><?php echo form_error('omark');?></td>
+  </tr>
+  <tr>
+    <td height="42" align="right" valign="middle"><strong>预定者姓名：</strong></td>
+    <td height="42"><label for="textfield3"></label>
+      <input name="oauthor" type="text" id="textfield3" size="30"  value="<?php echo set_value('oauthor');?>"/></td>
+    <td height="42"><?php echo form_error('oauthor');?></td>
+  </tr>
+  <tr>
+    <td height="42" align="right" valign="middle"><strong>预约者联系电话：</strong></td>
+    <td height="42"><label for="textfield4"></label>
+      <input name="ophone" type="text" id="textfield4" size="30"  value="<?php echo set_value('ophone');?>"/></td>
+    <td height="42"><?php echo form_error('ophone');?></td>
+  </tr>
+    <tr>
+    <td height="80" align="center" valign="middle">&nbsp;</td>
+    <td height="80" align="center" valign="middle"><label for="textfield4"><a href="#">  
+		<input type="image" src="<?php echo base_url().'application/views/';?>images/tijiao.jpg" >   </a>     </label></td>
+    <td height="80" align="center" valign="middle">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="42" align="right" valign="middle"><strong>订单流程：</strong></td>
+    <td height="98" colspan="2"><img src="<?php echo base_url().'application/views/';?>images/liucheng.jpg" width="850" height="90" /></td>
+    </tr>
+	</form>
+</table>
+
+</div>
+

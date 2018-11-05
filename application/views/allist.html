@@ -1,0 +1,101 @@
+<style type="text/css">
+#mainlevel_05{border-right:1px solid #fff; display:block; line-height:50px; background:#de627b; color:#FFF;}
+#mainlevel_05 a{ color:#FFF;}
+</style>
+<body>
+<div class="hlal_con">
+          <div class="hlal_banner"> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/hlal_head.jpg"></a>
+          </div>
+<!--轮播图部分结束-->  
+  <div class="point"><img src="<?php echo base_url().'application/views/images'?>/point.jpg" align="left"> 当前所在的位置 ：<a href="<?php  echo site_url('hunyi/index');?>">首页</a> &gt;
+  成功案例 </div>
+   <!--位置信息部分结束-->
+   
+<!---浮框部分开始-->
+  			<div class="fukuang">
+        		<div class="fukuang_con">
+                  你想要一个完美的婚礼吗？<br />
+                  1.提交个人信息<br />
+                  2.专业客服为您定制<br />
+                  3.线下沟通，统筹您的婚礼<br /><br />
+                  联系QQ:   <br />
+					<?php foreach($consults as $con){?>
+				  <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $con['con_qq'];?>&site=qq&menu=yes"><img border="0" src="<?php echo base_url().'application/views/images'?>/qq.png" align="middle" alt="点击这里给我发消息" title="<?php echo $con['con_name'];?>"/></a>
+					<?php }?>
+				  <br /><br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="#"><img src="<?php echo base_url().'application/views/images'?>/d_buttom.png"></a>
+
+
+
+                </div> 
+        </div> 
+  
+<!--浮框结束-->
+
+<!---列表部分开始-->
+<div class="hlal_list_fenlei">
+
+
+	<div class="hlal_list_fenlei_a">
+    <img src="<?php echo base_url().'application/views/images'?>/zh.jpg">
+    </div>
+    
+    
+    <div class="hlal_list_fenlei_b">
+    <strong>婚礼色彩</strong><br />
+    <br />
+    <ul>
+    	<li><strong>红色：</strong> <a target="_blank">玫红婚礼 </a> <a target="_blank">大红婚礼</a> <a target="_blank">粉红婚礼</a></li>
+        <li><strong>蓝色：</strong> <a target="_blank" >宝蓝婚礼 </a> <a target="_blank">天蓝婚礼</a> <a target="_blank">Tiffany蓝婚礼</a></li>
+        <li><strong>绿色：</strong> <a target="_blank">墨绿婚礼 </a> <a target="_blank">浅绿婚礼</a></li>
+        <li><strong>紫色：</strong> <a target="_blank">深紫婚礼 </a> <a target="_blank">浅紫婚礼</a></li>
+        <li><strong>橙色：</strong> <a target="_blank">土豪金婚礼</a></li>
+        <li><a target="_blank"><strong>混搭</strong></a></li>
+    </ul>
+   </div>
+
+    <div class="hlal_list_fenlei_b">
+    <strong>婚礼风格</strong><br /><br />
+    <ul><li><a target="_blank">可爱甜美</a> <a target="_blank">唯美浪漫</a> <a target="_blank">文艺清新</a> <a target="_blank">梦幻</a> <a target="_blank">复古怀旧</a> <br />
+        <a target="_blank">田园</a> <a target="_blank">欧式</a> <a target="_blank">英伦风</a> <a target="_blank">小清新</a> <a target="_blank">中国风</a> <a target="_blank">其他</a> <a target="_blank">异域</a> <a target="_blank">日式</a> <a target="_blank">美式</a></li>
+    </ul>
+   </div>
+
+
+
+
+</div>
+<!--婚礼案例分类-->
+
+
+
+
+
+
+
+
+<div class="hlal_list margin">
+	<div class="hlal_list_up">成功案例<br />
+ case</div>
+
+    <div class="hlal_list_down" >
+    <?php foreach($res['rs'] as $v){?>
+      <dl >
+        <dt> <a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid'].'');?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb'];?>" title="<?php echo $v['artitle'];?>"></a> </dt>
+        <dd ><a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid'].'');?>" target="_blank"> <?php echo strlen($v['artitle'])>12?mb_substr($v['artitle'],0,12,'utf8').'...':$v['artitle'];?></a> </dd>
+      <!--  &nbsp;<a><?php echo date('Y-m-d',$v['addtime']);?></a>-->
+	</dl>
+	  <?php } ?>
+</div>
+
+ </div>
+<!--婚礼案例列表-->  
+  <div class="page">
+  <?php echo $link;?>
+  </div>
+ <!--翻页功能结束--> 
+  
+  
+  
+  </div>
+  

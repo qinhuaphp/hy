@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+.hlal_con{ width:1200px; margin:0px auto;}
+.hlal_banner{ width:1200px; height:450px; float:left;}
+.hlal_list{ width:1200px;  float:left; font-size:14px;}
+.hlal_list_up{ width:1200px; height:53px; line-height:23px;  text-align:center; background:url(../images/hlal_bg.png) no-repeat;}
+
+
+
+.hlal_list_down{ width:1180px;  padding:45px 10px 45px 10px; height:auto; padding-bottom:20px; /*line-height:53px;clear:both;/*overflow:hidden;*/}
+
+.hlal_list_down dl{ width:370px; height:290px; margin-left:15px; font-size:12px; display:block; float:left; margin-bottom:30px; }
+.hlal_list_down dt{ width:370px; height:260px; float:left; clear:both; }
+.hlal_list_down dt img{ width:370px; height:260px;}
+.hlal_list_down dd{ width:370px; height:30px; float:left; line-height:30px; text-align:center; background-color:#fcfcfc;}
+.hlal_list_down dd a{ color:#333;}
+.hlal_list_down dd a:hover{color:#f7597a;}
+
+
+
+/*
+.hlal_list_down dl{ width:370px; height:320px; float:left; margin-left:14px; font-size:12px; display:block; clear:right; }
+.hlal_list_down dt{ width:370px; height:260px; float:left; clear:both;}
+.hlal_list_down dt img{ width:370px; height:260px;}
+.hlal_list_down dd{ float:left;}
+.hlal_list_down dd a:hover{color:#f7597a;}
+.hlal_list_down dd span{ color:#ec728b; font-weight:bold;}
+ */
+
+
+.hlal_list_fenlei{ width:1200px; height:230px; float:left; border:1px #f3f3f3 solid;font-size:14px; }
+.hlal_list_fenlei_a{ width:205px; height:228px; float:left;}
+.hlal_list_fenlei_b{ width:368px; height:210px; float:left; line-height:25px; margin-left:60px; margin-top:10px;}
+.hlal_list_fenlei_b a:hover{ color:#ec728b;}

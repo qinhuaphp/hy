@@ -1,0 +1,99 @@
+@charset "utf-8";
+/* 成功案例列表样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-6*/
+
+.caseContainer{ width:1200px; padding:10px; background-color:#FFF; padding-bottom:30px;}
+/*******广告图01********/
+.caseBanner,.caseBanner img{ width:1200px; height:435px; margin:0px auto; }
+/*******casesorts********/
+.caseSorts{ width:1180px; padding:10px; height:300px;}
+.caseSorts .caseSortsColor,.caseSorts .caseSortsStyle,.caseSorts .caseSortsPoint{ width:365px; height:265px; background-color:#fcfbfb;}
+/*******caseSortsColor ********/
+.caseSortsStyle ul,.caseSortsColor ul{ margin-left:10px; margin-top:40px;}
+.caseSortsColor h1,.caseSortsStyle h1,.caseSortsPoint h1{ width:120px; height:30px; line-height:30px; margin:20px 0px;margin-left:125px; text-align:center; font-size:18px; color:#FFF; border-radius:10px; background-color:#f7597a;}
+.caseSortsColor ul li{ height:30px; }
+.caseSortsColor span{ height:23px; line-height:23px; padding:0px 10px; text-align:center; font-size:14px; color:#f7597a; border-radius:8px; border:1px #f7597a solid; }
+/*******caseSortsStyle ********//*******caseSortsPoint ********/
+.caseSortsStyle ul,.caseSortsPoint ul{ width:330px; height:120px; margin-left:20px; margin-top:40px;}
+.caseSortsStyle ul li,.caseSortsPoint ul li{ width:130px;height:35px; line-height:35px;display:block; margin:10px 15px; text-align:center; border-radius:15px; font-size:14px; color:#999; float:left;border:2px #999 solid; }
+/*.caseSortsStyle ul li a:hover,.caseSortsPoint ul li a:hover{width:130px;height:35px; line-height:35px;border-radius:15px;display:block; color:#f7597a ; font-weight:bold;border:2px #f7597a solid;}*/
+/*******caseCases ********/
+.caseCases{ width:1180px; padding:10px;height:2900px;}
+.caseCases .caseCasesUp{ width:1180px; height:50px; line-height:50px; text-align:center;}
+.caseCases .caseCasesDo{ width:1180px; }
+.caseCases .caseCasesDo dl {float:left; margin-top:18px; margin-left:18px;}
+.caseCases .caseCasesDo dl,.caseCases .caseCasesDo dl dt,.caseCases .caseCasesDo dl dt img{ width:370px; height:260px;}
+.caseCasesDo dl dd{ width:370px; height:30px; line-height:30px; font-size:16px; text-align:center; margin-top:-30px;background-color:#fff;filter:Alpha(Opacity=50);position:absolute;opacity:0.5;/* background:rgba{0,0,0,0.8}; */}  
+
+
+
+
+/* 成功案例详情样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-6*/
+.cases{ width:1180px; padding:10px; margin:0px auto; height:auto;}
+.caseCaseLe{ width:300px; padding:20px; height:auto; background-color:#f6f6f6;}
+.caseCaseLe span { width:100px; height:60px; line-height:60px; text-align:center; color:#f7597a; font-size:24px; font-weight:bold; border-bottom:2px #f7597a solid; }
+.caseCaseLe dl { width:250px; height:176px; padding:12px 25px 13px 25px; background-color:#FFF; }
+.caseCaseLe dl dt,.caseCaseLe dl dt img{ width:250px; height:176px;}
+.caseCaseLe dl dd{ width:250px; height:25px; line-height:25px; text-align:center;margin-top:-25px;background-color:#fff;filter:Alpha(Opacity=50);position:absolute;opacity:0.5;}  
+.caseCaseLe .caseCaseCa,.caseCaseLe .caseCaseTe{ width:250px; height:auto;}
+.caseCaseLe .caseCaseTe ul li{ border-bottom:1px dashed #999; background-color:#FFF; width:280px; height:80px; padding:10px;}
+
+
+.caseCaseRi{ width:800px; padding:10px; height:auto;  line-height:28px; font-size:16px; }
+.caseCaseRi img{ max-width:800px; }
+.caseCaseRi span{ display:block;}
+.caseCaseRi .caseTitle,.caseCaseRi .caseTime,.caseCaseRi .caseAticle,.caseCaseRi .caseShare,.caseCaseRi .caseLable,.caseCaseRi .caseLable ul{ width:800px; text-align:center;}
+.caseCaseRi .caseLable,.caseCaseRi .caseLable ul{ width:480px;}
+.caseCaseRi .caseShare{ height:60px; line-height:60px;}
+.caseCaseRi .caseTitle{color:#f7597a; font-size:26px; font-weight:bold; height:60px; line-height:80px;}  
+.caseCaseRi .caseTime,.caseCaseRi .caseAticle { height:25px; line-height:25px;}
+.caseCaseRi .caseLable ul li{ width:100px; height:30px; line-height:30px; text-align:center; border-radius:15px; font-size:14px; color:#f7597a; border:1px #f7597a solid; margin-left:15px;float:left; }
+
+
+
+
+
+
+
+
+
+/* 婚礼教学列表样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:8-7*/
+
+.everyTech{ width:370px; height:450px; border:1px #ddd solid; border-radius:15px; margin:55px 10px 0px 10px; float:left; }
+.everyTech:hover{border:1px #f7597a solid; background-color:#eee;}
+.everyTech h1,.everyTech p,.everyTech span{ display:block; float:left;}
+.everyTech h1{ width:370px; height:60px;  line-height:60px; text-align:center; font-size:22px; float:left;border-radius:15px 15px 0px 0px;}
+.everyTech h1:hover{ background-color:#f7597a; color:#FFF;}
+.everyTech img{ width:370px; height:247px; float:left;}
+.everyTech p{ width:350px; line-height:23px; padding:10px; height:69px; font-size:14px; float:left; text-indent:2em;}
+.everyTech span{ width:365px; height:35px; line-height:35px; text-align:right; float:left; padding-right:5px;}
+.everyTech span img{ width:35px; height:35px; float:none; }
+.everyTech span:hover{background-color:#fff; color:#333;}
+
+
+/* 婚礼教学详情样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:8-6*/
+.casesa{ width:1180px; padding:10px; margin:0px auto; height:auto;}
+.caseCaseLea{ width:300px; padding:20px; height:auto; background-color:#f6f6f6; margin-right:50px;}
+.caseCaseLea span { width:100px; height:60px; line-height:60px; text-align:center; color:#f7597a; font-size:24px; font-weight:bold; border-bottom:2px #f7597a solid; }
+.caseCaseLea dl { width:250px; height:176px; padding:12px 25px 13px 25px; background-color:#FFF; }
+.caseCaseLea dl dt,.caseCaseLea dl dt img{ width:250px; height:176px;}
+.caseCaseLea dl dd{ width:250px; height:25px; line-height:25px; text-align:center;margin-top:-25px;background-color:#fff;filter:Alpha(Opacity=50);position:absolute;opacity:0.5;}  
+.caseCaseLea .caseCaseCa, { width:250px; height:auto;}
+
+
+.caseCaseRia{ width:600px; padding:10px; height:auto;  line-height:28px; font-size:16px;  margin-left:60px; }
+.caseCaseRia img{ max-width:600px; }
+.caseCaseRia span{ display:block;}
+.caseCaseRia .caseTitle,.caseCaseRia .caseTime,.caseCaseRia .caseAticle,.caseCaseRia .caseShare,.caseCaseRia .caseLable,.caseCaseRia .caseLable ul{ width:600px; text-align:center;}
+.caseCaseRia .caseLable,.caseCaseRia .caseLable ul{ width:480px;}
+.caseCaseRia .caseShare{ height:60px; line-height:60px;}
+.caseCaseRia .caseTitle{color:#f7597a; font-size:26px; font-weight:bold; height:60px; line-height:80px;}  
+.caseCaseRia .caseTime,.caseCaseRi .caseAticle { height:25px; line-height:25px;}
+.caseCaseRia .caseLable ul li{ width:100px; height:30px; line-height:30px; text-align:center; border-radius:15px; font-size:14px; color:#f7597a; border:1px #f7597a solid; margin-left:15px;float:left; }

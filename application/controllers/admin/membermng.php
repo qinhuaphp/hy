@@ -1,0 +1,79 @@
+<?php
+class Membermng extends MY_Controller{
+	function  memberlist(){
+		$this->checklogin();
+		  $this->load->model('Member_model','member');
+		  $fields='mid,mname,phone,realname,age,nickname,sex,address';
+		 //加载分页类
+		  $this->load->library('pagination');
+		  $post=$this->input->post();
+		 //var_dump($post);
+		  //var_dump(isset($post));
+		  /*判断是否提交查询条件，若无提交或查询条件为空则查询全部的数据并分页显示
+			如果提交了查询条件则以多条件复合查询处理
+		  */
+		if($post==false||($post['mname']==''&&$post['phone']=='')){ 
+			$per_page=20;
+			//获取偏移量
+		  $offset=intval($this->uri->segment(4));
+			$array=$this->member->getlimit($fields,$offset,$per_page);
+			 //把总行数传入分页类
+			$config['total_rows']=$this->member->getnums();	
+			//配置分页项目
+			  $config['per_page']=$per_page;
+			  $config['base_url']=site_url('admin/membermng/memberlist');
+			  $config['first_link']='<<';
+			  $config['num_links']=2;
+			  $config['prev_link']='<';
+			  $config['next_link']='>';
+			  $config['last_link']='>>';
+			  $config['uri_segment']=4;
+			  $config['display_pages']=true;
+			  $this->pagination->initialize($config);
+			 //创建链接
+			  $data['link']=$this->pagination->create_links();
+			  $data['total']=$config['total_rows']; 
+		}else{
+					/*多条件复合查询*/
+					$wh['mname']=trim($post['mname']);
+					$wh['phone']=trim($post['phone']);
+					//print_r($post);
+					//过滤掉where数组中的空的单元
+					$where=$this->member->screen($wh);
+					//print_r($where);
+					$array=$this->member->fetchall($fields,$where);
+					//print_r($array);
+		}
+		  $data['res']=$array;
+		  $this->load->view('admin/memberlist.html',$data);
+	}
+	function editmpwd(){
+		$this->checklogin();
+		$mid=$this->uri->segment(4);
+		$this->load->model('Member_model','member');
+		$lg=$this->member->fetchrow('mid,mname,realname',$mid);
+		//print_r($lg);
+		$data['rs']=$lg;
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('pwd','新密码','required|min_length[6]');
+		$this->form_validation->set_rules('repwd','确认密码','required|matches[pwd]');
+		$res=$this->form_validation->run();
+		if($res==false){
+				$this->form_validation->set_error_delimiters('<span>','</span>');
+				$this->load->view('admin/editmpwd.html',$data);	
+		}else{
+				$post=$this->input->post();
+				$da['passwd']=md5($post['pwd']);
+				$mid=$post['mid'];
+				$result=$this->member->renew($da,$mid);
+				if($result>0){
+						$d['msg']='成功修改密码';
+				}else{
+						$d['msg']='未修改密码';
+				}
+				$this->load->view('admin/msg.html',$d);
+		}
+  }
+
+}
+?>

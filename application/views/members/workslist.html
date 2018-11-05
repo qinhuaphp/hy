@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>统一 - 查看案例</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url().'application/views/';?>css/jquery.cxcalendar.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+<!--<script type="text/javascript" src="../js/jquery.cxcalendar.js"></script>日历JS-->
+<script type="text/javascript"  src="<?php echo base_url().'application/views/';?>/js/placeholder.js"></script><!--预制文字--->
+
+</head>
+<body>
+<script type="text/javascript">
+$(function(){
+var baseurl='<?php echo base_url();?>';
+var indexpage='<?php echo index_page();?>';
+	$(".renewtime").click(function(){
+		//alert($(this).attr("value"));
+		$.ajax({
+			url:baseurl+indexpage+'/ajaxcenter/ajaxuptime',
+			type:'post',
+			data:{
+					wid:$(this).attr("value")
+					},
+			success:function(data){
+				if(data=='1'){
+					$("#tan").show().html('√&nbsp;亲，时间已更新啦！').animate({
+						"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+						"top":$(window).height()/2-$("#tan").outerHeight(true)/2
+					},100);
+					setTimeout(function(){
+						$("#tan").hide();
+					},3000);
+				}
+				if(data=='0'){
+					$("#tan").show().html('×&nbsp;亲，没有更新时间哟~~').animate({
+						"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+						"top":$(window).height()/2-$("#tan").outerHeight(true)/2
+					},100);
+					setTimeout(function(){
+						$("#tan").hide();
+					},3000);
+				}
+			}
+		});//ajax结束
+	});
+})
+</script>
+<style>
+#tan{
+	position:absolute;
+	left:0;
+	top:0;
+	border:1px solid #F7597A;
+	width:300px;
+	height:300px;
+	background:#FBFAFA;
+	text-align:center;
+	line-height:300px;
+	font-size:16px;
+	color:#F7597A;
+	display:none;
+	z-index:5;
+}
+</style>
+<div id="tan"></div>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 查看案例
+     </div>
+    <div class="memRightDo fl" >
+      <table width="900" cellspacing="0" cellpadding="0" class="shopping fs20">
+  <tr>
+    <td width="220" height="40"  align="center" valign="middle" bgcolor="#fbfafa">作品案例 </td>
+    <td width="220" height="40" align="center" valign="middle" bgcolor="#fbfafa"> 案例名称 </td>
+    <td width="150" height="40" align="center" valign="middle" bgcolor="#fbfafa">  价格  </td>
+    <td width="210" height="40" align="center" valign="middle" bgcolor="#fbfafa">发布时间</td>
+    <td width="100" height="40" align="center" valign="middle" bgcolor="#fbfafa"> 操作</td>
+  </tr>
+      </table>
+      
+      
+      
+      <ul class="case fs16 fl">
+   <!-- 循环开始-->
+   <?php foreach($res as $v){?>
+      <li style=" height:150px;"> 
+      <span class="fl" style="width:220px;line-height:100px;">
+		<a href="<?php echo site_url(''.$controller.'/'.$func.'/'.$fieldone.'/'.$v['wid'].'/'.$fieldtwo.'/'.$fieldtwovalue.'');?>" target="_blank">
+			<img src="<?php echo base_url().$v['cover_thumb'];?>" width="140" height="98"></a></span> 
+      <span class="cloF75 fl" style="width:220px;line-height:100px;">
+		<a  class="cloF75" href="<?php echo site_url(''.$controller.'/'.$func.'/'.$fieldone.'/'.$v['wid'].'/'.$fieldtwo.'/'.$fieldtwovalue.'');?>" target="_blank">
+		<?php echo strlen($v['wname'])>12?mb_substr($v['wname'],0,12,'utf8').'...':$v['wname'];?> </a>
+	  </span>
+      <span class="cloF75 fl" style="width:150px; line-height:100px;">￥<?php echo $v['wprice'];?></span>
+      <span class=" fl" style="width:210px;line-height:100px;">  <?php echo date('Y-m-d H:i:s',$v['addtime']);?></span>
+      <span class=" fl" style="width:100px; height:50px; margin-top:20px;">
+      <a class="cloF75" href="<?php echo site_url('usercenter/editwork/'.$v['wid'].'');?>">查看|修改</a><br /><br />
+	  <button class="renewtime cloF75 "   value="<?php echo $v['wid'];?>">更新时间</button><br />
+      </span>
+      </li> 
+	  <?php } ?>
+      </ul>
+
+    <!--分页-->
+    <div style="margin-left:0px;" class="Page mt20 fr">
+    <?php echo $link;?>
+    </div>  
+    </div>
+    </div>
+</body>
+</html>

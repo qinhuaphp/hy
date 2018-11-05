@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">公司列表</span></td>
+              </tr>
+            </table></td>
+            <td><div align="right"><span class="STYLE1">  </span>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+	<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
+	
+			<form name="sou" method="post" action="<?php echo site_url('admin/companymng/companylist');?>">
+            
+					<tr>
+						<td width="10%" height="50"  align="center" valign="middle" bgcolor="d3eaef" class="STYLE6"><div align="center">
+						搜名称<input type="text" name="coname" size="20">&nbsp;
+						搜电话<input type="text" name="cophone" size="20">&nbsp;
+						搜地区<select name="aid">
+								<option value="0">--选择地区--</option>
+								<?php foreach($areas as $c){?>
+									<option value="<?php echo $c['aid'];?>"><?php echo $c['amark'];?>
+								<?php }?>
+							</select>&nbsp;<input type="image" name="search" src="<?php echo base_url().'application/views/admin/images/search.png'?>" title="搜索">
+							</div>
+                        </td>		
+					</tr>
+		</form>
+	</table>
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
+      <tr height="40">
+        <td width="5%"  bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">公司名称</span></div></td>
+        <td width="5%"  bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">所在地区</span></div></td>
+		<td width="5%"  bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">星级</span></div></td>
+		<td width="15%" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">电话</span></div></td>
+		<td width="5%"  bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">成交量</span></div></td>
+		<td width="5%"  bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">是否审核</span></div></td>
+		<td width="5%"  bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">是否推荐</span></div></td>
+		<td width="15%" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">操作</span></div></td>
+      </tr>
+	  
+	  <?php foreach($res as $v){?>
+      <tr height="30">
+		<td  bgcolor="#FFFFFF" class="STYLE6"><div align="left"><span class="STYLE19">
+		<?php echo strlen($v['coname'])>12?mb_substr($v['coname'],0,11 ,'utf8').'...':$v['coname'];?></span></div></td>
+        <td  bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $v['amark'];?></div></td>
+		<td  bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $v['level'].'级';?></div></td>
+		<td  bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $v['cophone'];?></div></td>
+		<td  bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $v['volume'];?></div></td>
+		<td  bgcolor="#FFFFFF" class="STYLE19"><div align="center">
+		<?php   echo $v['isaudit']==1? '<img src="'.base_url().'application/views/admin/images/dh.png">': '<img src="'.base_url().'application/views/admin/images/error.png">';?></div></td>
+		<td  bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $v['isrecom']==1?  '<img src="'.base_url().'application/views/admin/images/dh.png">':' <img src="'.base_url().'application/views/admin/images/error.png">';?>
+		</div></td>
+        <td  bgcolor="#FFFFFF"><div align="center" class="STYLE21">
+			<a href="<?php $coid=$v['coid']; echo site_url("admin/companymng/editcompany/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/detail.png" alt="编辑" title="编辑公司信息" /></a>
+			&nbsp;
+			
+			<a href="<?php $coid=$v['coid']; echo site_url("admin/companymng/editcopwd/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="修改密码" /></a>
+				&nbsp;
+			<a href="<?php $coid=$v['coid']; echo site_url("admin/companymng/addworks/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="添加作品" /></a>
+			&nbsp;
+			<a href="<?php $coid=$v['coid']; echo site_url("admin/worksmng/workslist/coid/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="查看作品" /></a>
+            &nbsp;
+            <a href="<?php $coid=$v['coid']; echo site_url("admin/promotionsmng/addpro/coid/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="添加优惠活动" /></a>
+            &nbsp;
+            <a href="<?php $coid=$v['coid']; echo site_url("admin/promotionsmng/prolist/coid/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="查看优惠活动" /></a>
+            &nbsp;
+            <a href="<?php $coid=$v['coid']; echo site_url("admin/servicemng/addservice/coid/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="添加服务说明" /></a>
+            &nbsp;
+            <a href="<?php $coid=$v['coid']; echo site_url("admin/servicemng/servicelist/coid/$coid");?>"><img src="<?php echo base_url();?>application/views/admin/images/edit.gif" alt="编辑" title="查看服务说明" /></a>
+            
+            
+			</div>
+            </td>
+	  </tr>
+	<?php } ?>
+      <tr height="30">
+		<td colspan="2" align="center" ><?php echo isset($total)?'总计'.$total.'家公司':'';?></td>
+		<td colspan="4" align="center"><?php echo isset($link)?$link:'';?></td>
+	  </tr>
+
+
+</table>
+</body>
+</html>

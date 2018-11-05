@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* 婚礼人列表样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-3*/
+
+.personalContainer,.personalDetial{ width:1200px; padding:10px; background-color:#FFF; padding-bottom:30px;}
+/*******广告图01********/
+.personalBanner,.personalBanner img{ width:1200px; height:435px; margin:0px auto; }
+/*******personalLists********/
+.personalLists { width:1200px; height:190px; padding-bottom:10px; padding-top:10px; border-bottom:1px #999 solid;}/*******公司信息********/
+.personalLists .personalListsCo dl dt, .personalLists .personalListsCo dl dt img{ width:132px; height:132px;border-radius:132px; border:1px #cecece solid;  }/*******婚礼人头像********/
+.personalLists .personalListsCo dl dd{ width:66px; height:40px; margin-top:8px;float:left; border-right:1px #eee solid; text-align:center;}
+.personalLists .pesonDe{ width:170px; height:170px; padding-top:10px; line-height:25px; }/*******婚礼人信息********/
+.personalLists .pesonDe span{ color:#f7597a;}
+.personalLists .personalListsAn{ width:585px; height:180px;margin-left:10px; }/*******作品案例********/
+.personalLists .personalListsAn img{ width:185px; height:134px;border-radius:8px;border:1px #ccc solid; }
+.personalLists .personalListsAn img:hover{ border:1px #ec728b solid;}
+.personalLists .personalListsPi,.personalLists .personalListsPi ul{ width:285px; height:180px; }/*******评论********/
+.personalLists .personalListsPi ul li{ width:265px; padding:9px 10px; height:70px; margin-bottom:10px; background-color:#f3f3f3; line-height:25px; float:left;}
+.personalLists .personalListsPi ul li img{ margin-right:10px;}
+
+/* 婚礼人详情页样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-2*/
+
+/*购物选择*/
+.choice{ width:510px; height:40px; margin-top:10px;}
+.choicea{ padding:5px 5px; margin-left:5px;border:2px #f7597a solid; border-radius:8px; float:left;}
+.choiceb{ padding:5px 5px; margin-left:5px;border:2px #666 solid; border-radius:8px; float:left;}
+
+.personalDetials{ width:1200px; height:300px;}
+/*******companyLogo********/
+.personalDetials .personalDetialsLogo{ width:195px; height:300px; background: url(../images/tImgBg.jpg);position:relative;}
+.personalDetials .personalDetialsLogo .Logo{ width:132px; height:132px; border-radius:132px; position:absolute; top:30px; left:30px;}
+.personalDetials .personalDetialsLogo .Logo img{width:132px; height:132px; border-radius:132px; } 
+.personalDetials .personalDetialsLogo .Yuyue{  position:absolute; top:208px; color:#FFF; left:45px; }
+.personalDetials .personalDetialsLogo .bao{ width:120px; height:25px; position:absolute; top:260px; left:36px;}
+/*******companyDetialsMa********/
+.personalDetials .personalDetialsMa{ width:585px; height:300px;}
+.personalDetials .personalDetialsMa span{ color:#f7597a;}
+/*******companyDetialsVe********/
+.personalDetials .personalDetialsVe{ width:400px; height:300px;}
+
+/*******companyDetialLists********/
+.personalDetialLists,.personalDetialLists ul{ width:1200px; height:50px; border-bottom:1px solid #b5b5b5; background-color:#f4f2f2;} 
+.personalDetialLists ul li{ width:135px; line-height:50px; text-align:center; float:left; margin-left:20px;}
+/*******个人简介********/
+.proDeLiPro{ width:1200px; line-height:25px;}
+.proDeLiProUp,.proDeLiCaseUp,.proDeLiActUp,.proDeLiBkUp,.proDeLiProceUp,.proDeLiIntUp,.proDeLiComUp,.proDeLiSeUp,.proDeLiScheUp{ width: 300px; height:120px; line-height:80px; background:url(../images/DetialBg.png); text-align:center; color:#FFF;}
+.proDeLiProDo{ width:1160;  padding:20px;}
+/*******作品案例********/
+.proDeLiCase{ width:1200px; height:1050px;}
+.proDeLiCaseDo{ width:1180px; height:890px; padding:10px;}
+.proDeLiCaseDo dl{ width:370px; height:290px; margin-left:20px; margin-bottom:10px;}
+.proDeLiCaseDo dl dt,.proDeLiCaseDo dl dt img{ width:370px; height:260px;}
+.proDeLiCaseDo dl dd{ width:370px; height:30px; line-height:30px; background-color:#f4f4f4; text-align:center;}
+/*******优惠活动********/
+.proDeLiAct{ width:1200px; /*height:800px;*/}
+.proDeLiActDo{ width:1180px; padding:0px 10px; /*height:640px;*/}
+.proDeLiActDo table tr,.proDeLiBkDo table tr,.proDeLiSeDo table tr{ border:#999 2px dashed;} 
+/*******服务档期********/
+.proDeLiSche{ width:1200px; height:600px;}
+.proDeLiScheDo{width:1200px; height:410px;}
+/*******日历********/
+.date-panel { width:480px; height:430px; float:left;border:2px #F75879 dotted;}
+.date-panel .bars{ width:480px; height:45px; line-height:45px; float:left; background-color:#F75879; text-align:center; font-size:24px; color:#FFF;}
+.date-panel .event{ width:200px; height:32px; margin:0px auto;line-height:32px;}
+.date-panel .event img{ margin-right:10px;}
+.evena,.evenb{ width:100px;float:left;}
+.date-panel .picTable{width:480px; height:315px;}
+.picTable table tr{ background-color:#fefefe; height:45px; display:block;}
+.picTable table th,.picTable table td{ background-color:#f3f3f3; width:69px;}
+.picTable table td{ background-color:#fff; width:68px;}
+.picTable .bg1{ background:url(../images/bgicon.png) 3px 48px ; color:#FFF;}
+.picTable .bg2{ background:url(../images/bgicon.png) 3px 0px ; color:#FFF;}
+/*******最新预订********/
+.proDeLiBkDo{ width:680px; padding:0px 10px; height:310px;}
+.proDeLiBkDo span{ color:#fa638e;}
+.proDeLiBkDo table tr{ border:1px #ccc solid;}
+/*******异地说明********/
+.proDeLiYd{ width:660px; padding:10px; background-color:#f4f2f2; height:80px; margin-right:10px; margin-top:20px;}
+/*******最新服务********/
+.proDeLiSe{ width:1200px; }
+.proDeLiSeDo{ width:1180px; padding:0px 10px; }
+.proDeLiSeDo span{ color:#fa638e;}
+/*******预约流程********/
+.proDeLiProce{ width:1200px; height:420px;}
+.proDeLiProceDo{ width:1180px; padding:0px 10px; height:280px;}
+/*******预约说明********/
+.proDeLiInt{ width:1200px; height:auto;}
+.proDeLiIntDo{ width:1180px; padding:0px 10px;}
+/*******最新评论********/
+.proDeLiCom{ width:1200px; height:auto;}
+.proDeLiComDo{ width:1180px; padding:0px 10px;}
+.proDeLiComDo .proComet{ width:1180px; height:125px; padding-bottom:10px;  border-bottom:2px #CCC dashed;}
+.proDeLiComDo .proComet dl{ width:120px; height:125px; background-color:#f4f2f2; float:left;}
+.proDeLiComDo .proComet dl dt,.Comet  dl dt img{ width:70px; height:70px;}
+.proDeLiComDo .proComet dl dt{ margin-top:15px; margin-left:25px;}
+.proDeLiComDo .proComet dl dd{ height:40px; line-height:40px; color:#f7597a; padding:0px 10px; width:100px; font-size:14px; text-align:center;}
+.proDeLiComDo .proComet .proCometa{ width:1030px; height:105px; line-height:23px; display:block; padding:10px; float:right; }
+.proDeLiComDo .star{ float:right; width:200px; height:23px; line-height:23px;}
+

@@ -1,0 +1,37 @@
+        <div class="mainCaseDown fl">
+
+          <?php foreach ($anli as $key => $value) : ?>
+            <div class="mianCaseGg01 fl mt10 ml10">
+                <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/'; ?>images/gg/caseGg0<?php echo $key==0?$key+1:$key+2; ?>.jpg"> </a>
+            </div>
+            <!--广告图片01-->
+           
+            <div class="mainCaseCase fl mt10 ml10">    <!--案例图片的集合-->
+                <ul>
+                
+                <?php foreach ($value as $k => $v) : ?>
+                    <li><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>" width="270" height="190"></a></li>           
+                 <?php endforeach; ?>
+                </ul>
+            
+          </div>
+            <div class="mainCaseCaseTitle fl mt10 ml10" style="display:none;">  <!--案例图片的标题的集合-->
+                <ul>
+                 <?php foreach ($anli[0] as $k => $v) : ?>
+                    <li><*<?php echo strlen($v['artitle'])>10?mb_substr($v['artitle'],0,9,'utf8').'...':$v['artitle']; ?>*></li>        
+                <?php endforeach; ?>    
+                </ul>
+            
+          </div>
+          <?php if ($key == 0) : ?>
+          <div class="mianCaseGg02 mt10 ml10 fl">
+             <img src="<?php echo base_url().'application/views/';?>images/gg/caseGg02.jpg">
+          </div>
+          <?php endif; ?>
+          <!--广告图片02-->
+           <?php endforeach; ?>
+           
+          <div class="mianCaseMore magi mt10">
+          <a href="<?php echo site_url('article/index/cid/36')?>">SHOW  ME  MORE   更多作品请点击进入 >></a>
+          </div>
+    </div>

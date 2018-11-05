@@ -1,0 +1,161 @@
+
+<style type="text/css">
+.zhuce{ width:800px; height:400px; margin:0px auto; text-align:center;  font-size:18px;font-family:"微软雅黑"; color:#ec728b;margin-top:120px; margin-bottom:120px;} 
+.zhuce_c {width:1200px; height:400px; margin:0px auto;   font-size:18px;font-family:"微软雅黑"; color:#ec728b;margin-top:120px; margin-bottom:120px;}
+.zhuce span{ color:#333; font-size:14px; }
+
+.zhuce2{ width:1200px; height:455px; float:left; margin-top:120px; margin-bottom:120px;}
+.zhuce2_left{ width:400px; height:455px; float:left;}
+.zhuce2_left_up{ width:400px; height:50px; float:left; line-height:50px;font-size:18px;font-family:"微软雅黑"; color:#ec728b;}
+.zhuce2_left_up span{ color:#b1b1b1; font-size:12px; }
+
+.zhuce5_right{ width:630px; height:455px; float:right;}
+.zhuce5_left_down{ width:500px; height:500px; background-color:#f6f6f6;  float:left; padding-left:20px; margin:5px 20px ;padding-top:5px; }
+
+.zhuce_co{ width:1200px; height:1000px; margin:0px auto; margin-top:50px;}
+.zhuce_de{ width:1200px;}
+
+</style>
+
+<div class="zhuce5" style='boeder:1px solid blue; clear:both;'>
+
+   <div class="zhuce5_left">
+   		<div class="zhuce5_left_up">
+        新人注册  <span>已有婚艺账号，您可以直接<span class="color"> <a href="<?php echo site_url('login/index')?>">登录</a></span></span>
+       </div>
+     <div class="zhuce5_left_down">
+       <table width="500" border="1">
+	   <form id="form2" name="form2" method="post" action="<?php echo site_url('reg/regmember');?>">
+         <tr>
+           <td width="80" height="38">登录名：</td>
+          <td width="250" height="38">
+            <label for="textfield"></label>
+            <input type="text" name="mname" id="textfield" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('mname');?>"/>
+         </td>
+           <td width="180" height="38"><?php echo form_error('mname');?></td>
+         </tr>
+		  <tr>
+           <td width="80" height="38">真实姓名：</td>
+          <td width="250" height="38">
+            <label for="textfield"></label>
+            <input type="text" name="realname" id="textfield" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('realname');?>"/>
+         </td>
+           <td width="180" height="38"><?php echo form_error('realname');?></td>
+         </tr>
+		 <tr>
+           <td width="80" height="38">手机：</td>
+          <td width="250" height="38">
+            <label for="textfield"></label>
+            <input type="text" name="phone" id="textfield" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('phone');?>"/>
+         </td>
+            <td width="180" height="38"><?php echo form_error('phone');?></td>
+         </tr>
+         <tr>
+           <td width="80" height="38"><a href="45">密码：</a></td>
+           <td height="38">
+           <input name="passwd" type="password" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('passwd');?>"/>
+           
+           
+           
+           </td>
+           <td width="220" height="38"><?php echo form_error('passwd');?></td>
+         </tr>
+         <tr>
+           <td width="80" height="38"><a href="45">确认密码：</a></td>
+           <td height="38"><input name="repeatpwd" type="password" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('repeatpwd');?>"/></td>
+         <td width="220" height="38"><?php echo form_error('repeatpwd');?></td>
+         </tr>
+         <tr>
+           <td width="80" height="38">年龄：</td>
+           <td height="38"><select name="age" type="text" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;">
+		   <?php for($i=20;$i<=50;$i++){?>
+		   <option value="<?php echo $i;?>" style="text-indent:20px;"><?php echo $i;?></option>
+			<?php } ?>
+		   </select></td>
+           <td width="220" height="38"><?php echo form_error('age');?></td>
+         </tr>
+         <tr>
+           <td width="80" height="38">昵称 ：</td>
+           <td height="38"><input name="nickname" type="text" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('nickname');?>"/></td>
+          <td width="80" height="38"><?php echo form_error('nickname');?></td>
+         </tr>
+		 <tr>
+           <td width="80" height="38">性别：</td>
+           <td height="38">男<input name="sex" type="radio" value="0"/>
+										女<input name="sex" type="radio" value="1"/>
+		   </td>
+           <td width="220" height="38"><?php echo form_error('sex');?></td>
+         </tr>
+		 	<tr>
+           <td width="80" height="38">通讯地址：</td>
+           <td height="38"><input name="address" type="text" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;" value="<?php echo set_value('address');?>"/>
+		   </td>
+          <td width="80" height="38"><?php echo form_error('address');?></td>
+         </tr>
+         <tr>
+           <td width="80" height="38">验证码：</td>
+           <td height="28"><input type="image" src="<?php echo base_url().'application/views/images';?>/zhuce_16.jpg"  align="center" name="">&nbsp;<input name="" type="text" style="width:100px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;"/></td>
+           
+         </tr>
+         <tr>
+           <td width="65" height="50">&nbsp;</td>
+           <td height="50"><a href="zhuce03.html"><input type="image" src="<?php echo base_url().'application/views/images';?>/zu_buttom.jpg"  /></a></td>
+           
+         </tr>
+		 </form>
+         <tr>
+           <td width="65" height="38">&nbsp;</td>
+           <td height="38">  
+                    
+           
+             <input type="checkbox" name="checkbox" id="checkbox" checked />
+             <label for="checkbox"></label>
+         
+           
+        <span style="font-size:12px;"><a>我已阅读并同意《婚艺协议》</a></span></td>
+            
+         </tr>
+       </table><?php echo isset($msg)?$msg:'';?>
+     </div>
+      
+   </div>
+   
+   
+   
+   <div class="zhuce5_right">
+    <img src="<?php echo base_url().'application/views/images';?>/zhuce_right_a.jpg">
+
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

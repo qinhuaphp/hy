@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* 首页样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:6-30*/
+.container{ width:1200px; padding:10px; background-color:#FFF;}
+.container .mainPu{ width:1200px; height:440px;}
+
+/***************发布需求*****************/
+.container .mainPu .mainPublish{ width:360px; height:440px; position:relative; background:url(../images/masterSBg.jpg) no-repeat;}
+.container .mainPu .mainPublish .mainPublishButtom{ position:absolute; top:362px; left:60px;}
+.container .mainPu .mainBanner{ width:830px; height:440px;}
+
+/***************轮播图*****************/
+.container .mainPu #mainBanner{ width:830px; height:440px;}
+#divSmallBox{overflow:hidden;*display:inline;*zoom:1;width:10px;height:10px;margin:0 5px;border-radius:10px;background:#ffffff;}
+#mainBanner,#Banner{ width:830px; height:440px; margin:0px auto; background:#333; position:relative; display:block;overflow:hidden;}
+#mainBanner .oUlplay { width:99999px; position:absolute; left:0; top:0;}
+#mainBanner .oUlplay li{ float:left; }
+#mainBanner .pre{ cursor:pointer; width:40px; height:40px; background:url(../images/lr.png) 0px 0px; position:absolute; top:180px; left:10px; z-index:10;}
+#mainBanner .next{ cursor:pointer; width:40px; height:40px; background:url(../images/lr.png) 0px -45px; position:absolute; top:180px; right:10px; z-index:10;}
+#mainBanner .smalltitle {width:830px; height:40px; position:absolute; bottom:0px; z-index:10;background:rgba(255,255,255,0.5);/*background-color:#000;opacity: 0.30;
+filter : progidXImageTransform.Microsoft.Alpha(style=0,opacity=30,finishOpacity=100);*/}
+#mainBanner .smalltitle ul{ width:120px; margin:0 auto; margin-top:15px;}
+#mainBanner .smalltitle ul li{ width:10px; height:10px; margin:0 5px; border-radius:10px; background:#ffffff; float:left; overflow:hidden;*display:inline;*zoom:1;}
+#mainBanner .smalltitle .thistitle{ background:#f7597a;}
+
+/***************特别提示*****************/
+.mainTip{ width:1200px; height:330px;}
+.mainTip .mainTipUp,.mainCompany .mainCompanyUp,.mianCase .mainCaseUp,.mainPeople .mainPeopleUp,.mianNews .mianNewsUp{ height:60px;line-height:60px; padding-left:70px;} /***************Up公共样式*****************/
+.mainTip .mainTipUp{ background:url(../images/masterIcon.png) -30px -140px no-repeat;}
+
+/***************4大服务*****************/
+.mainService{ width:1200px; height:490px; background:url(../images/banimages/rotaeYBg.jpg) no-repeat; position:relative;}
+.mainService .mainService01{ width:202px; height:176px; position:absolute; top:142px; left:124px;}
+.mainService .mainService02{ width:202px; height:176px; position:absolute; top:223px; left:335px;}
+.mainService .mainService03{ width:202px; height:176px; position:absolute; top:142px; left:596px;}
+.mainService .mainService04{ width:202px; height:176px; position:absolute; top:227px; left:823px;}
+.mainService img:hover{ -moz-transition: all 1s ease-in-out;-webkit-transition: all 1s ease-in-out;-o-transition: all 1s ease-in-out;-ms-transition: all 1s ease-in-out;transition: all 1s ease-in-out;-moz-transform: rotateY(-360deg);-webkit-transform: rotateY(-360deg);-o-transform: rotateY(-360deg);-ms-transform: rotateY(-360deg);transform: rotateY(-360deg);}
+
+/***************婚礼梦工厂*****************/
+.mainCompany{ width:1200px; height:1080px;}
+.mainCompany .mainCompanyUp{ width:1130px;background:url(../images/masterIcon.png) -30px -200px no-repeat; border-bottom:3px solid #66c2b6;}
+.mainCompany .mainCompanyDown,.mainCompany .mainCompanyDown dl,.mainCompanyDown dl dt,.mainCompanyDown dl dt dd{height:230px;}
+.mainCompany .mainCompanyDown{ width:1200px;}
+.mainCompanyDown dl{ width:590px; margin-left:10px;}
+.mainCompanyDown dl dt,.mainCompanyDown dl dt img{ width:370px; height:230px;}
+.mainCompanyDown dl dt{ float:left;}
+.mainCompanyDown dl dd{ width:210px;}
+.mainCompanyDown dl span{ display:block;} 
+.mainCompanyDown .ctitle{ width:210px; font-weight:bold;}
+.mainCompanyDown .price{ font-size:36px; font-family:"Impact"; color:#ec7b90;}
+.txtp{ text-indent:2em;}
+
+/***************婚礼案例*****************/
+.mianCase{ width:1200px; height:970px;}
+.mianCase .mainCaseUp{width:1130px;background:url(../images/masterIcon.png) -30px -260px no-repeat; border-bottom:3px solid #66c2b6;}
+.mianCase .mainCaseUp span{ display:block; height:25px; margin-top:17px;}
+.mianCase .mainCaseUp span ul li{line-height:25px; float:left;  margin-left:10px;padding:0px 15px;border-radius:8px;border:1px #333 solid; }
+.mianCase .mainCaseUp .style1{padding:0px 15px;border-radius:8px; background-color:#ec7b90; color:#FFF; border:1px #ec7b90 solid;}
+.mianCase .mainCaseUp .style1 a,.mianCase .mainCaseUp .style1 a:hover{ color:#fff;};
+
+
+.mianCase .mainCaseDown{ width:1200px; height:870px; position:relative;}
+.mianCase .mianCaseGg01,.mianCase .mianCaseGg01 img{ width:330px; height:390px;}
+.mianCase .mianCaseGg02,.mianCase .mianCaseGg02 img{ width:1200px; height:50px;}
+.mianCase .mainCaseCase{ width:840px; height:400px; }
+.mianCase .mainCaseCase ul li{background-color:#000; width:270px; height:190px; margin:0px 10px 10px 0px; float:left;}
+.mianCase .mainCaseCase ul li img:hover{ opacity: 0.30; filter : progidXImageTransform.Microsoft.Alpha(style=0,opacity=10,finishOpacity=100); width:270px; height:190px;}
+.mianCase .mainCaseDown .mainCaseCaseTitle{width:840px; height:400px; position:absolute; top:0px; left:350px;}
+.mianCase .mainCaseDown .mainCaseCaseTitle ul li{width:270px; height:190px; margin:0px 10px 10px 0px; float:left; text-align:center; font-size:22px; color:#FFF; line-height:190px;}
+.mianCase .mianCaseMore{ width:320px; height:30px; text-align:center; line-height:30px; }
+
+/***************婚礼人*****************/
+.mainPeople{ width:1200px; height:430px;}
+.mainPeople .mainPeopleUp{ width:1130px;background:url(../images/masterIcon.png) -30px -320px no-repeat; border-bottom:3px solid #66c2b6;}
+.mainPeople .mainPeopleDown{width:1200px; height:365px; float:left;border:1px #ebebeb solid;}
+
+.mainPeople .mainPeopleDown .hlr_down_a{width:1200px; height:35px; background-color:#e5e5e5; float:left;}
+.mainPeople .mainPeopleDown .hlr_down_a ul {width:1200px; height:35px; float:left; padding-top:5px; font-size:14px; font-weight:bold;}
+.mainPeople .mainPeopleDown .hlr_down_a ul li{ width:85px; height:25px; display:block; line-height:25px; margin-left:165px;float:left; text-align:center;}
+/*.hlr_down_a ul li a:hover{width:85px; height:25px; display:block; color: #FFF; background-color:#ec728b;border-radius:8px; } */
+.mainPeople .mainPeopleDown .hlr_down_b{ width:1200px; height:120px; float:left;}
+.mainPeople .mainPeopleDown .hlr_down_b dl{ width:100px; height:130px; float:left;  margin-left:18px; margin-top:30px; }
+.mainPeople .mainPeopleDown .hlr_down_b dt{ width:100px; height:100px; float:left; }
+.mainPeople .mainPeopleDown .hlr_down_b dt img{ width:100px; height:100px; float:left; }
+.mainPeople .mainPeopleDown .hlr_down_b dd{ width:90px; height:30px; float:left; line-height:30px; text-align:center; }
+.mainPeople .mainPeopleDown .up_right_2{width:85px; height:25px; display:block;  background-color:#ec728b;border-radius:8px; }
+.up_right_2 a{color: #FFF;}
+.mainPeople .mainPeopleDown .up_right_1{ width:85px; height:25px;display:block;  background-color:#fefefe;border-radius:8px;}
+.mainPeople .mainPeopleDown .up_right_1 a{color: #3f3f3f;}
+
+/***************婚礼学院*****************/
+.mianNews{ width:1200px; height:500px;}
+.mianNews .mianNewsUp{width:1130px;background:url(../images/masterIcon.png) -30px -370px no-repeat; border-bottom:3px solid #66c2b6;}
+.mianNews .mianNewsDown{ width:1200px; height:490px;}
+.mianNews .mianNewsDown .hlxy_down_q{ width:600px; height:207px; float:left; margin-top:10px; }
+.mianNews .mianNewsDown .hlxy_down_le{ width:280px; height:197px; float:left;}
+.mianNews .mianNewsDown .hlxy_down_le dl{ width:280px; height:197px; float:left;}
+.mianNews .mianNewsDown .hlxy_down_le dt{ width:280px ; height:197px; float:left;}
+.mianNews .mianNewsDown .hlxy_down_le dt img{ width:280px ; height:197px; float:left;}
+.mianNews .mianNewsDown .hlxy_down_ri { width:285px; height:197px; float:left; margin-left:10px;}
+.mianNews .mianNewsDown .hlxy_down_ri ul { width:290px; height:197px; }
+.mianNews .mianNewsDown .hlxy_down_ri ul li{ width:290px; height:28px; line-height:28px;font-size:16px; list-style:inside;   }

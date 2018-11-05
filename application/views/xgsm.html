@@ -1,0 +1,32 @@
+
+<div class="location mt10"><img src="<?php echo base_url().'application/views/images';?>/point.jpg" align="left"> 当前所在的位置 ：
+<a href="<?php echo site_url('hunyi/index');?>">首页</a>&gt;
+<a> 相关资讯</a>&gt;<a><?php echo $article[0]['artitle'];?></a></div>
+
+<!--资讯开始-->
+<div class="xgzx">
+	<div class="xgzx_left">
+   		<div class="xgzx_left_up">相关资讯</div>
+        <div class="xgzx_left_down">
+        	<ul>
+            	<li><a href="<?php echo site_url('article/information/24');?>">网站介绍</a></li>
+                <li><a href="<?php echo site_url('article/information/19');?>">联系我们</a></li>
+				<li><a href="<?php echo site_url('article/information/14');?>">免责申明</a></li>
+				<li><a href="<?php echo site_url('article/information/11');?>">用户协议</a></li>
+				<li><a href="<?php echo site_url('article/information/12');?>">商家协议</a></li>
+				<li><a href="<?php echo site_url('article/information/21');?>">入驻网站</a></li>
+            </ul>
+        </div>
+	</div>
+    
+    
+<div class="xgzx_right">
+<div class="xgzx_right_up"> 相关资料 &gt;<a><?php echo $article[0]['artitle'];?></a></div>
+        <div class="xgzx_right_down">
+		<?php echo $article[0]['content'];?>
+
+</div>
+</div>
+    
+</div>
+<!--相关资讯部分结束-->

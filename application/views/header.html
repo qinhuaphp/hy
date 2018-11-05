@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="<?php echo isset($arinfo[0]['ardesc'])?','.$arinfo[0]['ardesc']:'';?><?php echo isset($sites[0]['description'])?$sites[0]['description']:'';?>">
+<meta name="keywords" content="<?php echo isset($arinfo[0]['keyword'])?','.$arinfo[0]['keyword']:'';?><?php echo isset($sites[0]['keywords'])?$sites[0]['keywords']:'';?>">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title><?php echo isset($arinfo[0]['artitle'])?$arinfo[0]['artitle'].'--':'';?><?php  echo isset($sites[0]['sitetitle'])?$sites[0]['sitetitle']:'';?></title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images/';?>favicon.ico"/>
+<link rel="bookmark" href="/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/base.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/master.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/article.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/case.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/company.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/order.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/personal.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/team.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/xgzx.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/register.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/jquery.cxcalendar.css">
+
+<style type="text/css">
+.zzc{
+	position:absolute;
+	left:0;
+	top:0;
+	background:black;
+	opacity:0.6;
+	z-index:110;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+}
+.zhuce2{ 
+	width:750px;
+	height:455px;
+	display:none;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:70;
+	}
+.zhuce2_left{ width:400px; height:455px; float:left;}
+.zhuce2_left_up{ width:400px; height:50px; float:left; line-height:50px;font-size:18px;font-family:"微软雅黑"; color:#ec728b;}
+.zhuce2_left_up span{ color:#b1b1b1; font-size:12px; }
+
+.zhuce2_right{ width:320; height:455px; float:right;}
+.zhuce2_left_down{ width:500px; height:500px; background:url(<?php echo base_url().'application/views/';?>images/zhuce_right_a.jpg) no-repeat; float:left; padding-left:20px; margin:5px 20px ;padding-top:5px; }
+
+</style>
+<!--<script type="text/javascript" src="js/placeholder.js"></script> 表单预设文字JS-->
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery.cxcalendar.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+	/*禁止右键菜单和复制	
+$("body").bind("contextmenu selectstart",function(e){
+	return false;
+});*/
+/*
+	搜索框切换样式及输入框切换显示
+*/
+	$(".border1>li").click(function(){
+		var index=$(this).index()+1;
+		//alert(index)
+		$(this).find("a").css("cursor","pointer").attr("class",'style'+index).parent().siblings("li").children().removeAttr("class")
+		.end().parent().next().children().eq($(this).index()).show().siblings().hide();
+	});
+	$("input[name='hname']").css({"color":"#AAAAAA"}).attr("placeholder","请输入婚礼人的名称").focus(function(){
+		$(this).css("color","#FF44AA");
+	});
+	$("input[name='article']").css({"color":"#AAAAAA"}).attr("placeholder","请输入案例名称").focus(function(){
+		$(this).css("color","#FF44AA");
+	});
+
+/*
+	禁止提交空的查询
+*/
+	$(".search").submit(function(){
+		var text=$(":text").val();
+		if(text==''){
+			return false;
+		}
+	});
+		
+	
+/*	$("#article li").hover(function(){
+		$(this).css("background","#ec728b").siblings().removeAttr("style class");
+	});
+    */
+	/*登陆弹出层*/
+	$(".liD").find("span").click(function(){
+		$(".login").show().animate({
+			"left":$(window).width()/2-$(".login").outerWidth(true)/2+$(window).scrollLeft(),
+			"top":$(window).height()/2-$(".login").outerHeight(true)/2+$(window).scrollTop(),
+			"z-index":"130"
+		},300);		
+		var div='<div class="zzc"></div>';
+		$("body").append(div);
+		var w=$(document).width();
+		var h=$(document).height();
+		$(".zzc").width(w).height(h);
+	});
+/*关闭弹出层*/
+	$(".loginUp").find("a").css({"color":"#ec728b","cursor":"pointer"}).click(function(){
+		$(".login").slideUp("slow");
+		$(".zzc").hide("slow");
+	});
+/*弹出层自适应浏览器窗口*/
+	$(window).resize(function(){
+		if($(".login").is(":visible")){
+			$(".login").stop(true,true).animate({
+			"left":$(window).width()/2-$(".login").outerWidth(true)/2+$(window).scrollLeft(),
+			"top":$(window).height()/2-$(".login").outerHeight(true)/2+$(window).scrollTop()
+			},300);		
+		}
+		if($(".zzc").is(":visible")){
+			var w=$(document).width();
+			var h=$(document).height();
+			$(".zzc").width(w).height(h);
+		}
+		
+	});
+/*弹出层自适应滚动条*/
+	$(window).scroll(function(){
+		if($(".login").is(":visible")){
+			$(".login").stop(true,true).animate({
+			"left":$(window).width()/2-$(".login").outerWidth(true)/2+$(window).scrollLeft(),
+			"top":$(window).height()/2-$(".login").outerHeight(true)/2+$(window).scrollTop()
+			},300);		
+		}
+		if($(".zzc").is(":visible")){
+			var w=$(document).width();
+			var h=$(document).height();
+			$(".zzc").width(w).height(h);
+		}
+		if($("#bigbanner").is(":visible")){
+			$("#bigbanner").stop(true,true).animate({
+				"top":$(window).height()/2-$("#bigbanner").outerHeight(true)/2+$(window).scrollTop(),	
+				"left":0
+			},200);
+		}
+		
+	});
+	var baseurl='<?php echo base_url();?>';
+	var indexpage='<?php echo index_page();?>';
+	var lgname=false;
+    var pwd=false;
+	var expphone=/^12(\d{9})$|^13(\d{9})$|^147(\d{8})$|^15(\d{9})$|^17(\d{9})$|^18(\d{9})$/;
+	var expname=/^(\w{4,20})$/;
+    //检测手机号
+    $(":text[name=loginname]").blur(function(){
+        
+        if($(this).val()==''){
+            $("#error").append("<span style='color:red;font-size:12px;'>请输入账号</span>");
+        }
+        if(expphone.test($(this).val())==false&&$(this).val()!=''){
+            $("#error").append("<span style='color:red;font-size:12px;'>手机号格式不正确</span>");
+        }else{
+            lgname=true;
+        }
+        if(expname.test($(this).val())==false&&$(this).val()!=''){
+            $("#error").append("<span style='color:red;font-size:12px;'>用户名格式不正确</span>");
+        }else{
+            lgname=true;
+        }
+    }).focus(function(){
+        $("#error").children().remove();
+    });
+    //检测密码
+    $(":password[name=passwd]").blur(function(){
+        if($(this).val()==''){
+            $("#error").append("<span style='color:red;font-size:12px;'>请输入密码</span>");
+        }
+        if($(this).val()!=''){
+            pwd=true;
+        }
+    }).focus(function(){
+            $("#error").children().remove();
+    });
+    $("#login").submit(function(){
+        if(lgname&&pwd){
+			if(expphone.test($(":text[name=loginname]").val())){
+				$.ajax({
+					url:$(this).attr("action"),
+					type:'post',
+					data:{
+								'loginname':$.trim($(":text[name=loginname]").val()),
+								'user':$("#user").val(),
+								'passwd':$(":password[name=passwd]").val()
+							},
+					success:function(data){
+						//console.log(data)
+						if($.isNumeric(data)&&data=='0'){//判断返回值是数字并且为0
+							$("#error").append("<span style='color:red;font-size:12px;'>密码无效</span>");
+						}
+						if($.isNumeric(data)&&data=='1'){//判断返回值是数字并且为1
+								$("#error").append("<span style='color:red;font-size:12px;'>手机号码无效</span>");
+						}
+						if($.isNumeric(data)==false){//返回值不是数字则是包含登陆名的json格式的对象
+							$(".login").hide();//隐藏弹出层
+							$(".zzc").hide();//隐藏遮罩层
+							var str='欢迎<a href="<?php echo site_url('usercenter/index');?>" target="_blank">'+data.substring(0,4)+'...</a><a href="<?php echo site_url('login/quite');?>">[退出]</a>';
+							$(".liD").html(str);
+						}
+						
+					}
+				});
+			}
+			if(expname.test($(":text[name=loginname]").val())){
+				$.ajax({
+					url:baseurl+indexpage+'/login/ajaxnamelogin',
+					type:'post',
+					data:{
+								'loginname':$.trim($(":text[name=loginname]").val()),
+								'user':$("#user").val(),
+								'passwd':$(":password[name=passwd]").val()
+							},
+					success:function(data){
+						//console.log(data)
+						if($.isNumeric(data)&&data=='0'){//判断返回值是数字并且为0
+							$("#error").append("<span style='color:red;font-size:12px;'>密码无效</span>");
+						}
+						if($.isNumeric(data)&&data=='1'){//判断返回值是数字并且为1
+								$("#error").append("<span style='color:red;font-size:12px;'>登录名无效</span>");
+						}
+						if($.isNumeric(data)==false){//返回值不是数字则是包含登陆名的json格式的对象
+							$(".login").hide();//隐藏弹出层
+							$(".zzc").hide();//隐藏遮罩层
+							var str='欢迎<a href="<?php echo site_url('usercenter/index');?>" target="_blank">'+data.substring(0,4)+'...</a><a href="<?php echo site_url('login/quite');?>">[退出]</a>';
+							$(".liD").html(str);
+						}
+						
+					}
+				});
+			
+			
+			}
+        }
+        return false;
+    });
+});
+</script>
+</head>
+<body style="-moz-user-select: none;cursor: default; ">
+
+<!--Top-->
+<div class="topHeader">
+    <div class="topHeaderLogin tar">
+        <ul>
+            <li class="liA"><a href="#" target="_blank">我的购物车</a></li>
+            <li class="liB"><a href="#" target="_blank">设为主页</a></li>
+            <li class="liC"><a href="#" target="_blank">加入收藏</a></li>
+           <?php if(empty($_SESSION)||!isset($_SESSION['userid'])){?>
+            <li class="liD"><a href="<?php echo site_url('reg/index'); ?>" target="_blank">注册</a>|
+            <span style="cursor:pointer;">登录</span></li>
+           <?php }else{?>
+           <li class="liD">欢迎<a href="<?php echo site_url('usercenter/index');?>" target="_blank">
+           <?php echo strlen($_SESSION['userid']['loginname'])>4?mb_substr($_SESSION['userid']['loginname'],0,4,'utf8').'...':$_SESSION['userid']['loginname'];?>
+           </a>
+           <a href="<?php echo site_url('login/quite');?>">[退出]</a>'
+           </li>
+           <?php }?>
+        </ul>
+    </div>
+</div>
+<!--Header-->
+<div class="header">
+    <div class="headerMid">
+        <div class="headerLogin fl">
+            <img src="<?php echo base_url().'application/views/';?>images/logo.png">
+        </div>
+        <div class="headerSearch mt20 ml10">
+            <div class="searchbox">
+	              <ul class="border1">
+		               <li><a class="style1">婚礼人</a></li>
+		               <li><a>案例</a></li>
+	              </ul>
+	              <div class="bodys">
+		             
+						<form  class="search" method="post" action="">
+							<input  type="text"  name="hname"  class="one fs18"/><input style="  width:60px;height:50px; background-color:#ec728b ; color:#fff; border:none;" type="submit" value="搜 索" class="submit">
+						</form>
+						<form  class="search" method="post" action="" style="display:none;">
+							<input type="text" name="article" class="two fs18"/><input style="  width:60px;height:50px; background-color:#ec728b ; color:#fff; border:none;"  type="submit" value="搜 索" class="submit">
+						</form>
+	              </div>
+             </div>	    
+        </div>
+        <div class="headerTel fr mt20">
+           <img src="<?php echo base_url().'application/views/';?>images/tel.png" alt="全国免费咨询热线"  title="全国免费咨询热线">
+        </div>
+    </div>
+</div>
+<!--全屏广告 -->
+<div id="bigbanner" style="width:100%;z-index:105; height:500px; display:none; position:absolute;">
+    <a>
+	<div style=" float:right; cursor:pointer; width:30px; height:30px; line-height:30px; color:#fff; display:block;
+		border:1px solid #fff; position: absolute; top:0px; right:0px;">关闭</div></a>
+	<img src="<?php echo base_url().'application/views/';?>images/bigbanner.jpg" style="width:100%;"/>
+</div>
+<!--登陆表单 -->
+
+
+
+
+<div class="login">
+   		<div class="loginUp fs24">
+          
+		<span><a><img src="<?php echo base_url().'application/views/';?>images/closebg.png" /></a></span>
+       </div>
+       <div class="loginDo" >
+        <table width="340" style=" font-size:18px;" >
+	    <form  id="login" name="login" method="post" action="<?php echo site_url('login/ajaxlogin');?>">
+        
+		<tr>
+		  <td  width="90" height="45" align="right">登录类型：</td>
+          <td  width="230" height="45" align="right">
+		  <select  id="user" name="user" style="width:235px; height:40px; line-height:40px;font-size:18px; background-color:#FFF; border:2px solid #f7597a;">
+			<option   value="company">婚庆公司</option>
+			<option   value="human" >婚礼个人</option>
+			<option   value="team" >婚礼团队</option>
+			<option   value="member">新人</option>
+		    </select>
+         </td>
+          </tr>
+          
+          <tr>
+           <td> </td>
+           <td height="30" align="center" ></td><!--错误提示-->
+         </tr>
+		   
+		   
+		  <tr>
+		  <td  width="90" height="45" align="right">帐 号：</td>
+          <td  width="230" height="45" align="right">
+           <input type="text" name="loginname" id="textfield" style="width:230px; height:40px; line-height:40px; background-color:#FFF; border:2px #f7597a solid;" placeholder="请输入手机号或用户名"/>
+         </td>
+         </tr>
+         
+         <tr>
+           <td> </td>
+           <td height="30" align="center" ></td><!--错误提示-->
+         </tr>
+		 
+		 
+         <tr>
+           <td  width="90" height="45" align="right">密 码：</td>
+           <td  width="230" height="45" align="right" >
+            <input name="passwd" type="password"  style="width:230px; height:40px; line-height:40px; background-color:#FFF; border:2px #f7597a solid;"/>
+           </td>
+         </tr>
+		 
+		 <tr>
+           <td> </td>
+           <td height="30" align="center" id="error"></td><!--错误提示-->
+         </tr>
+		 
+		 <!--
+         <tr>
+           <td width="100" height="45"><a href="45">验证码：</a></td>
+           <td height="45"><input name="" type="text" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;"/></td>
+         
+         </tr>
+         border:none; 
+        -->
+        
+         <tr>
+           <td> </td>
+           <td height="50" align="center" valign="middle">
+		   <input type="submit" value="登录" style="border-radius:5px; background:#f7597a; padding:5px 25px; color:#fff; border:none; font-size:18px;" /><a href="#" style="font-size:12px;"> 忘记密码？</a>
+		   </td>    
+         </tr>
+ 
+		 </form>
+		 
+		 
+       </table>
+     </div>
+    
+</div>
+<script type="text/javascript">
+function m_over(obj, num) {
+    $("#m_"+obj).attr("class", "m_li_a");
+    if (num != 0) {
+        $("#m_"+num).attr("class", "m_li"); 
+    }
+    $("#s_"+obj).css("display", "block");
+    if (num != 0) {
+        $("#s_"+num).css("display", "none");
+    }
+}
+function m_out(obj, num) {
+    $("#m_"+obj).attr("class", "m_li");
+    if (num != 0) {
+        $("#m_"+num).attr("class", "m_li_a"); 
+    }
+    $("#s_"+obj).css("display", "none");
+    if (num != 0) {
+        $("#s_"+num).css("display", "block");
+    }
+}
+$(document).ready(function () {
+    var num = $(".m_li_a").attr("num");
+
+    $("#menu1").children().mouseover(function () {
+        var class_name = $(this).attr("class");
+        var obj = $(this).attr("num");
+        if (class_name == "m_li") {
+            m_over(obj, num);
+        }
+    });
+    $(".smenu").children().mouseover(function () {
+        var class_name = $(this).attr("class");
+        var obj = $(this).attr("num");
+        if (class_name == "s_li") {
+            m_over(obj, num);
+        }
+    });
+    $("#menu1").children().mouseout(function () {
+        var class_name = $(this).attr("class");
+        var obj = $(this).attr("num");
+        if (class_name == "m_li_a") {
+            m_out(obj, num);
+        }
+    });
+    $(".smenu").children().mouseout(function () {
+        var class_name = $(this).attr("class");
+        var obj = $(this).attr("num");
+        m_out(obj, num);
+        
+    });
+
+});
+</script>
+
+<!---Nav-->
+<div class="mainNav fs20">
+    <div id="menu">
+    <?php
+    $param = isset($controller_name)?$controller_name:"";
+    $cid = isset($cid)?$cid:"";
+    ?>
+  <ul id="menu1">
+    <li num="1" id="m_1" <?php echo $param == "hunyi" || $param == ""?"class='m_li_a'":"class='m_li' "; ?> ><a href="<?php echo site_url('hunyi/index');?>">首页</a></li>
+    <li num="3" id="m_3" <?php echo $param == "company"?"class='m_li_a'":"class='m_li'"; ?> ><a href="<?php echo site_url('company/index');?>"  >婚礼梦工场</a></li>
+    <li num="4" id="m_4" <?php echo $param == "human"?"class='m_li_a'":"class='m_li' "; ?> ><a href="javascript:void(0);">婚礼造梦师</a></li>
+    <li num="5" id="m_5" <?php echo $param == "article" && $cid == 1?"class='m_li_a'":"class='m_li'"; ?> ><a href="<?php echo site_url('article/index/cid/1')?>"  >婚礼学院</a></li>
+    <li num="6" id="m_6" <?php echo $param == "article" && ($cid == 36 || $cid == 37)?"class='m_li_a'":"class='m_li'"; ?> ><a href="javascript:void(0);">婚礼案例</a></li>
+    <li num="7" id="m_7" class='m_li'  ><a href="<?php echo site_url('invitation/index');?>">婚礼请柬</a></li>
+</ul>
+</div>
+
+<div class="chmenu">
+   <ul class="smenu">
+     <li style="padding-left:29px;" num="1" id="s_1" <?php echo $param == "hunyi" || $param == ""?"class='s_li_a'":"class='s_li' "; ?> ><marquee>欢迎光临婚艺365网站！有问题请咨询 400-9919-080</marquee>
+     </li>
+     <li style="padding-left:252px;" num="3" id="s_3" <?php echo $param == "company"?"class='s_li_a'":"class='s_li'"; ?> >
+     </li>
+     <li style="padding-left:30px;" num="4" id="s_4"  <?php echo $param == "human"?"class='s_li_a'":"class='s_li'"; ?> >
+         <a href="<?php echo site_url('human/index/cid/27');?>"  >主持人</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/index/cid/28');?>"  >化妆师</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/index/cid/30');?>"  >摄像师</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/index/cid/29');?>"  >摄影师</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/team/tlid/1');?>"   >主持人团队</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/team/tlid/2');?>"   >化妆师团队</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/team/tlid/3');?>"   >摄像师团队</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+         <a href="<?php echo site_url('human/team/tlid/4');?>"   >摄影师团队</a>&nbsp;&nbsp;
+     </li>
+     <li style="padding-left:474px;" num="5" id="s_5" <?php echo $param == "article" && $cid == 1?"class='s_li_a'":"class='s_li' "; ?> >
+     </li>
+     <li style="padding-left:530px;" num="6" id="s_6" <?php echo $param == "article" && ($cid == 36 || $cid == 37)?"class='s_li_a'":"class='s_li'"; ?> >
+        <a  href="<?php echo site_url('article/index/cid/36')?>"  >婚礼灵感</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a  href="<?php echo site_url('article/index/cid/37')?>"  >婚礼教学</a>&nbsp;&nbsp;
+      </li>
+          <li num="7" id="s_7" class='s_li'>
+     </li>
+   </ul>
+</div>
+<!--导航菜单-->
+
+	
+</div>
+<div class="container magi">

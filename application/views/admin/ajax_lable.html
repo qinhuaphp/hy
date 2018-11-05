@@ -1,0 +1,42 @@
+<table  style=" width:1200px;margin:0 auto; margin-top:20px;">
+     <td align="left" valign="middle"></td>
+     <td class="bb" colspan="2"></td>
+     <?php $arr = array('a', 'b', 'c'); foreach ($lable as $key => $value) : ?>
+        <tr>
+        <td align="top" valign="middle" width="150"><a style=" color:#f7597a; float:left;"><?php echo $value['laname'];?>：</a></td>
+        <td>
+        <?php foreach ($value['son'] as $k => $v) : ?>
+          <span class="cc" style="color:#333;">
+          <?php if ($value['laname'] == "婚礼色彩") : ?>
+          <?php elseif ($value['laname'] == "婚礼学院分类") : ?>
+            <input  type="checkbox" name="<?php echo $arr[$key]; ?>_laid[]" <?php echo in_array($v['laid'], $real_laid)?"checked='checked'":"";?> value="<?php echo $v['laid']; ?>"/>
+          <?php else : ?>
+          <input  type="radio" name="<?php echo $arr[$key]; ?>_laid" <?php echo in_array($v['laid'], $real_laid)?"checked='checked'":"";?> value="<?php echo $v['laid']; ?>"/>
+            
+          <?php endif; ?>
+          <?php echo $v['laname']; ?></span>
+        <?php endforeach; ?>
+        </td>
+      </tr>  
+        <tr >   
+          <td></td>
+          <td>         
+          <table style=" padding:10px; padding-left:0px; ">
+            <tr>
+            <?php foreach ($value['son'] as $k1 => $v1) : ?>
+              <td width="170"> 
+              <?php foreach ($v1['son'] as $k2 => $v2) : ?>
+                <span style="width:170px; height:28px; display:block;"> <input value="<?php echo $v2['laid']; ?>" <?php echo in_array($v2['laid'], $real_laid)?"checked='checked'":"";?> name="<?php echo $arr[$key]; ?>_laid" type="radio" /><?php echo $v2['laname']; ?></span>
+              <?php endforeach; ?>
+              </td>
+            <?php endforeach; ?>
+             </tr>
+           </table>
+        </td>
+        </tr>
+        <tr height="25"><td></td></tr>  <!--空格-->
+    <?php endforeach; ?>
+    
+</table>
+
+

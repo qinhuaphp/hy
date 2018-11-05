@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>团队-团队资料</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members';?>/css/MemBase.css">
+<!--<link rel="stylesheet" type="text/css"  href="<?php echo base_url().'application/views';?>/css/jquery.cxcalendar.css">-->
+<script type="text/javascript" src="<?php echo base_url().'application/views';?>/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"  src="<?php echo base_url().'application/views';?>/js/placeholder.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+	var tintrol=$(":text[name=tintrol]").val()==''?false:true;
+	var tintrolv=$(":input[name=tintrolvideo]").val()==''?false:true;
+	$(":text[name=tintrolvideo]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","视频地址必填");
+			tintrol=false;
+		}
+		if($(this).val()!=''){
+			var exp=/^http:\/\/.*\.swf$/;
+			if(!exp.test($(this).val())){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","视频地址格式无效");
+				tintrol=false;
+			}else{
+				$(this).css({
+				"border":"1px solid green",
+				});
+				tintrol=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style");
+	});
+	$(":input[name=tintrol]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","简介必填");
+			tintrolv=false;
+		}
+		if($(this).val()!=''){
+			$(this).css({
+				"border":"1px solid green",
+			});
+			tintrolv=true;
+		}
+	}).focus(function(){
+		$(this).removeAttr("style");
+	});
+	$("#tmsg").submit(function(){
+		if(tintrol&&tintrolv){
+			$.ajax({
+				url:$(this).attr("action"),
+				type:'post',
+				data:$(this).serialize(),
+				success:function(data){
+					if(data=='1'){
+						$("#tan").show().html("恭喜！更新成功").animate({
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+						//$(":rest").click();
+					}
+					if(data=='0'){
+						$("#tan").show().html("亲，没更新哟~~").animate({
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+					}
+				}
+			});
+		}
+		return false;
+	});
+})
+</script>
+<style>
+#tan{
+		display:none;
+		z-index:30;
+		position:absolute;
+		left:0;
+		top:0;
+		background:#FCFCFC;
+		border:1px solid #F7597A;
+		text-align:center;
+		line-height:300px;
+		width:400px;
+		height:300px;
+		font-size:26px;
+		color:#F7597A;
+}
+
+
+</style>
+	<div id="tan"></div>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 团队资料
+     </div>
+    <div class="memRightDo fl" style="height:2600px;" >
+     <div class="zili"> 
+  <form id="tmsg" name="" method="post" action="<?php echo site_url('usercenter/pz/teamid/'.$userinfo[0]['teamid'].'');?>">  
+	<input type="hidden" name="teamid" value="<?php echo  $userinfo[0]['teamid'];?>"/>
+    <span class="sleft">介绍视频地址 ：</span>
+  <span class="sright">
+  <input type="text" class="input"  style="width:460px;" placeholder="请以http://开头并以.swf结尾" name="tintrolvideo" value="<?php echo empty($userinfo[0]['tintrolvideo'])?'':$userinfo[0]['tintrolvideo'];?>">
+  </span>
+  <span class="sleft"  style="height:120px;">团&nbsp;队&nbsp;简&nbsp;介 ：</span>
+  <span class="sright" style="height:120px;">
+  <textarea class="textare" name="tintrol" placeholder="请输入团队简介" cols="" rows=""><?php echo empty($userinfo[0]['tintrol'])?'':$userinfo[0]['tintrol'];?></textarea>
+  </span>
+  
+
+
+  
+  <span style="width:500px; margin-left:300px;"><input class="button" type="submit"  value="提  交"></input></span>    
+ 
+  </form>   
+    </div>
+    </div>
+    </div>
+  <!--
+  <span class="sleft">服务地区（省市） ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请选择服务地区" ></input></span>JS,针对全国的省市--
+  <span class="sleft">添加服务类型 ：</span>
+  <span class="sright"><a href="#"><img src="../images/addC.jpg" align="middle"></a><a class="cloF75 fs14">&nbsp;&nbsp; &nbsp;&nbsp;想添加多个服务类型，请点击添加,最多可添加6个</a> </span>
+  
+  <div class="fuwuli">
+ 
+      <ul>
+        <li style="height:45px; line-height:45px; padding-top:0px;"> <a style="width:120px;"> 服务类型</a> <a style="width:80px;"> 服务报价</a> <a style="width:80px;" >市场报价</a>  <a style="width:325px;">服务说明 </a> </li>
+        
+        <li style="height:80px; padding-top:0px;"> 
+            <a style="width:120px; line-height:80px;">bzdgbdffbdfbfdbdf</a> 
+            <a style="width:80px;line-height:80px;"> bdbdbdb</a> <a style="width:80px;line-height:80px;" >dbdbdbdb</a> 
+            <a style="width:325px; text-align:left;">服务明服务明服务明服服务明服务明服务明 明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明服务明明服务服</a> 
+        </li>  
+        
+          
+          
+       
+      </ul>
+                           
+  </div>
+  
+  
+ 
+
+ 
+ 
+ 
+ 
+   <!------- 多次添加模块--------
+  <div class="addfuwu" style="display:none;" >
+  <span class="sleft">服务类型 ：</span> <!-----服务类型跟着职业的不同赛选相关的选择项----------
+  <span class="sright">
+  <select name="" style="height:40px; padding-left:10px;">
+    <option>西式婚礼司仪 </option>
+    <option>中式婚礼司仪 </option>
+    <option>新娘全程跟妆 </option>
+    <option>新娘半程跟妆 </option>
+    <option>单机婚礼跟拍 </option>
+    <option>双机婚礼跟拍</option>
+    <option>双机位+摇臂</option>
+    <option>摇臂</option>
+    <option>微电影 </option>
+    <option>单机高清摄像 </option>
+    <option>单机单反摄像 </option>
+    <option>单机超清摄像 </option>
+  
+  </select>
+
+  </span>
+  <span class="sleft">合作报价 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入合作报价" ></input></span>注意这个是价格区间--
+   <span class="sleft">市场报价 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入市场报价" ></input></span>
+  <span class="sleft" style="height:220px;">服务说明 ：</span>
+  <span class="sright" style="height:220px;"><textarea style="height:200px;"class="textare" name="" placeholder="请输入服务说明" cols="" rows=""></textarea></span>
+ </div>
+  <!------- 多次添加模块结束-------
+  
+  
+  <span class="sleft"> 负责人姓名 ：</span>
+  <span class="sright"> <input type="text" class="input" placeholder="请输入负责人的真实的姓名" ></input></span>
+  
+  <span class="sleft">团队成员平均主持经验 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请以年为单位" ></input></span>
+  
+  <span class="sleft" >所在地区 ：</span>
+  <span class="sright" ><input type="text" class="input" placeholder="请选择所在地区" ></input></span>  <!--JS,针对全国的省市--
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   <span class="sleft"  style="height:120px;">异地服务说明 ：</span>
+  <span class="sright" style="height:120px;"><textarea class="textare" name="" placeholder=" 限制在65个字以内" cols="" rows=""></textarea></span>
+  
+  <span class="sleft">负责人身份证号码 ：</span>
+  <span class="sright  "><input type="text" class="input" placeholder="请输入负责人身份证号码" ></input></span>
+  
+  <span class="sleft"  style="height:200px;">手持身份证照 ：</span>
+  <span class="sright" style="height:200px;">
+  
+       <span style="width:140px;height:140px; float:left;" >
+        <dl style="width:140px; height:170px; float:left;">
+        <dt class="Identitya fl" > </dt>
+        <dd class="fl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name=""  type="button" value="上传并预览" /> </dd>
+        </dl>
+      </span>
+      <span class="fl" style="width:400px; height:125px;"><img src="images/case1.png" ></span>
+      <span class="fl cloF75">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （ 注：上传的照片大小2M以内 ）</span>
+      
+  
+  </span>
+  
+  <span class="sleft"  style="height:200px;">身份证正面照 ：</span>
+  <span class="sright" style="height:200px;">
+      <span style="width:140px;height:140px; float:left;" >
+        <dl style="width:140px; height:170px; float:left;">
+        <dt class="Identitya fl" > </dt>
+        <dd class="fl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name=""  type="button" value="上传并预览" /> </dd>
+        </dl>
+      </span>
+      <span class="fl" style="width:400px; height:125px;"><img src="images/case2.png" ></span>
+      <span class="fl cloF75">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （ 注：上传的照片大小2M以内 ）</span>
+  
+  
+  
+  
+  
+  
+  </span>
+  
+  <span class="sleft"  style="height:200px;">身份证反面照 ：</span>
+  <span class="sright" style="height:200px;">
+    <span style="width:140px;height:140px; float:left;" >
+        <dl style="width:140px; height:170px; float:left;">
+        <dt class="Identitya fl" > </dt>
+        <dd class="fl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name=""  type="button" value="上传并预览" /> </dd>
+        </dl>
+      </span>
+      <span class="fl" style="width:400px; height:125px;"><img src="images/case3.jpg" ></span>
+      <span class="fl cloF75">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （ 注：上传的照片大小2M以内 ）</span>
+ 
+  </span>
+  
+  <span class="sleft">联系人Q  Q ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入您的QQ" ></input></span>
+  
+   <span class="sleft">成立时间 ：</span>
+  <span class="sright"><input type="text" id="cdd" class="input" placeholder="请选择您的成立时间" ></input><script>$('#cdd').cxCalendar();</script> </span>
+  
+   <span class="sleft">团队成员人数 ：</span>
+  <span class="sright"><input type="text" class="input" placeholder="请输入团队成员人数" ></input></span>-->
+    
+ 
+</body>
+
+
+</html>

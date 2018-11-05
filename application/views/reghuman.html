@@ -1,0 +1,202 @@
+ 
+<!----container---->
+<script type="text/javascript">
+$(function(){
+	var baseurl='<?php echo base_url();?>';
+	var indexpage='<?php echo index_page();?>';
+	var yiming=false;
+	var loginname=false;
+	var pwd=false;
+	var repwd=false;
+	var phone=false;
+	//检测艺名
+	$("form input[name='hname']").blur(function(){
+		//alert($(this).attr("placeholder"))
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid red",
+				"color":"red"
+				
+			}).attr("placeholder","艺名必填");
+		}//没输入结束
+		if($(this).val()!=''){
+			//exphname.test($(this).val())==false
+			var expyi=/^(\s{1,})$|[!\*\(\)\[\]\{\}\.\;\:\'\"\+\s\\\/\?\#\$\%\^\_\-\=\~\`\@\<\>]{1,}/ig;
+			if($(this).val().length>=8){//字符长度不通过
+				$(this).css({
+				"border":"1px solid red",
+				"color":"red"
+
+				}).val('').attr("placeholder","艺名不能超过8位");//清空输入框并更改预置的信息
+			}else if($(this).val().length<8){
+					if(expyi.test($(this).val())){
+						$(this).css({
+						"border":"1px solid red",
+						"color":"red"
+
+						}).val('').attr("placeholder","艺名为8位以下的数字和字母");
+					}else if(expyi.test($(this).val())==false){	
+						$(this).css({
+						"border":"1px solid green",
+						"color":"green"
+						});
+						yiming=true;
+					}
+			}
+		
+		}//艺名非空结束
+	}).focus(function(){
+		//移除style属性并清空输入框，更改预置信息
+		$(this).removeAttr("style").attr("placeholder","艺名为8位以下的数字和字母").val('');
+	});
+	/*检测用户名*/
+	$("form input[name='loginname']").blur(function(){
+		if($(this).val()==''){
+			$(this).css({"border":"1px solid red","color":"red"}).attr("placeholder","用户名必填");
+		}//输入为空结束
+		if($(this).val()!=''){
+			var explgname=/^\w{4,20}$/ig;
+			if(explgname.test($(this).val())==false){//正则验证不通过
+				$(this).css({"border":"1px solid red","color":"red"}).val('').attr("placeholder","用户名是以4到20位的数字和字母组成");
+			}else{
+					$.ajax({
+						url:baseurl+indexpage+'/reghuman/ajaxcheckname',
+						type:'post',
+						data:{
+							loginname:$(this).val()
+
+						},
+						success:function(data){
+							if(data=='1'){
+								$("form input[name='loginname']").css({"border":"1px solid green","color":"green"});
+								loginname=true;
+							}else if(data=='0'){
+								$("form input[name='loginname']").css({"border":"1px solid red","color":"red"}).val('').attr("placeholder","用户名已被占用");
+							}
+						}//success结束
+					});//ajax验证唯一性结束
+			}//正则验证通过结术
+		}//非空结束
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","用户名是以4到20位的数字和字母组成").val('');
+	});
+	/*检测密码*/
+	$("form input[name='passwd']").blur(function(){
+		if($(this).val()==''){
+			$(this).css({"border":"1px solid red","color":"red"}).attr("placeholder","密码必填");
+		}
+		if($(this).val()!=''){//密码过短
+			if($(this).val().length<6){
+				$(this).css({"border":"1px solid red","color":"red"}).val('').attr("placeholder","密码过短");
+			}else{
+				$(this).css({"border":"1px solid green","color":"green"});
+				pwd=true;
+			}
+		}//密码非空结束
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入您的密码");
+	});
+	/*检测确认密码*/
+	$("form input[name='repeatpwd']").blur(function(){
+		if($(this).val()==''){
+			$(this).css({"border":"1px solid red","color":"red"}).attr("placeholder","确认密码必填");
+		}else if($(this).val()!=$("form input[name='passwd']").val()){
+			$(this).css({"border":"1px solid red","color":"red"}).val('').attr("placeholder","确认密码与密码不符");
+		}else{
+			$(this).css({"border":"1px solid green","color":"green"});
+			repwd=true;
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请再次输入您的密码");
+	});
+	/*检测手机号码*/
+	$("form input[name='tellphone']").blur(function(){	
+		if($(this).val()==''){//手机号为空
+			$(this).css({"border":"1px solid red","color":"red"}).attr("placeholder","手机号必填");
+		}
+		if($(this).val()!=''){
+			var expphone=/^12(\d{9})$|^13(\d{9})$|^147(\d{8})$|^15(\d{9})$|^17(\d{9})$|^18(\d{9})$/;
+			if(expphone.test($(this).val())==false){
+				$("form input[name='tellphone']").css({"bolder":"1px solid red","color":"red"}).val('').attr("placeholder","手机号格式非法")
+			}else{
+						$.ajax({
+							url:baseurl+indexpage+'/reghuman/ajaxcheckphone',
+							type:'post',
+							data:{tellphone:$(this).val()},
+							success:function(data){
+								if(data=='1'){
+									$("form input[name='tellphone']").css({"border":"1px solid green"});
+									phone=true;
+								}else if(data=='0'){
+									$("form input[name='tellphone']").css({"border":"1px solid red"}).val('').attr("placeholder","手机号已被占用");
+								}
+							}//success结束
+						});//ajax唯一性验证手机号码结束
+					}
+		}//手机号非空结束
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入您的手机号码").val('');
+	});
+	/*
+	$("form input[name='cid']:checked").val()是获取选中的单选框的值
+	*/
+	$(".bbutton").click(function(){
+		if(yiming&&loginname&&pwd&&repwd&&phone){
+			return true;
+		}else{
+			return false;
+		}
+	
+	});
+	
+})
+</script>
+ 
+
+
+
+<div class="register magi" >
+    <div class="registerUp fl">
+        <span class="cloF75 fs28">婚礼人个人注册</span> 已有婚艺账号，您可以直接登录</span> 
+    </div>
+    
+    <div class="registerDo fl">
+      <form action="<?php echo site_url('reghuman/index');?>" name="reghuman" method="post">
+      <span class="regileft">艺  名 ：</span>
+      <span class="regiright"><input type="text" class="reinput"  placeholder="艺名为8位以下的数字和字母"  name="hname"></input></span>
+      <span class="regileft">用户名 ：</span>
+      <span class="regiright"><input type="text" class="reinput"  placeholder="用户名为4到20位的数字和字母"  name="loginname"></input></span>
+      <span class="regileft">密  码 ：</span>
+      <span class="regiright"><input  type="password"  class="reinput"  placeholder="请输入您的密码"   name="passwd"></input></span>
+      <span class="regileft">确认密码 ：</span>
+      <span class="regiright"><input  type="password" class="reinput"  placeholder="请再次输入您的密码"  name="repeatpwd"></input></span>
+      <span class="regileft">手机号码 ：</span>
+      <span class="regiright"><input  type="text" class="reinput"  placeholder="请输入您的手机号码"  name="tellphone"></input></span>
+      <span class="regileft">职  业 ：</span>
+      <span class="regiright fs12" >
+       <input name="cid" type="radio" value="27"  checked/> 主持人
+       <input name="cid" type="radio" value="28" /> 化妆师
+       <input name="cid" type="radio" value="30" /> 摄像师
+       <input name="cid" type="radio" value="29" /> 摄影师   
+      </span> <!--
+      <span class="regileft">获取验证码 ：</span>
+      <span class="regiright"><input  type="text" class="reinput fl" style="width:160px;" placeholder="请输入验证码" >
+      </input> &nbsp;&nbsp;
+	  <input class="rebutton fr"  type="button"  value="获取验证码"></input></span>-->
+      <span class="regiright" >
+      
+     <input  class="bbutton"   type="submit"  value="注 册" style="font-size:20px; margin:10px 0px 0px 150px;" ></input></span>
+    
+    
+    
+     </form>
+    
+    
+        
+    </div>
+   </div>
+
+
+
+ 
+ 

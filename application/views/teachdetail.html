@@ -1,0 +1,85 @@
+
+         <!--婚礼人广告图01-->
+         <div class="caseBanner"> <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人"></a>
+         </div>        
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> >
+	婚礼案例 > <span>  <span><a href="<?php echo site_url('article/index/cid/37'); ?>">婚礼教学</a> > </span><?php echo $arinfo[0]['artitle']; ?></span>
+</div>
+
+<div class="cb"></div>
+<!--caseCaseLe-->
+<div class="casesa magi mt10">
+
+
+<!--caseCaseRi-->
+  <div class="caseCaseRia fl" >
+  <span class="caseTitle"><?php echo $arinfo[0]['artitle']; ?></span>
+  <span class="caseTime">发布时间：<?php $time = date('Y-m-d', $arinfo[0]['addtime']);  echo $time; ?></span>
+  <span class="caseAticle">发布作者：<?php echo $arinfo[0]['author']; ?></span><br />
+  <span class="caseShare">
+      <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style=" width:350px; position:relative; left:30%;"><span class="jiathis_txt" style="font-size:18px;">分享到：</span>
+      <a class="jiathis_button_weixin"></a>
+      <a class="jiathis_button_qzone"></a>
+      <a class="jiathis_button_cqq"></a>
+      <a class="jiathis_button_tsina"></a>
+      <a class="jiathis_button_tqq"></a>
+      <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+      <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" >
+           var jiathis_config={
+	       sm:"weixin,tqq,qzone,tsina,cqq",
+	       summary:"",
+           shortUrl:false,
+	       hideMore:false
+      }
+      </script>
+      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+</span>
+  <span class="caseLable magi">
+      <ul>
+	  <?php if(!isset($arinfo[0]['lables'])||empty($arinfo[0]['lables'])){?>
+		<li>西式婚礼</li>
+		<li>中式婚礼</li>
+		<li>大红婚礼</li>
+		<li>浪漫婚礼</li>
+      <?php }else {foreach ($arinfo[0]['lables'] as $k => $v) : ?>
+          <li><?php echo $v[0]['laname']; ?></li>
+   <?php endforeach;?>
+   <?php } ?>
+      </ul>
+ </span>
+ <div class="cb"></div>
+  
+  
+ <span class="mt20" style=" width:600px;  text-indent:2em;">
+ <?php echo $arinfo[0]['content']; ?>
+ </span>
+</div>
+
+<!--左边结束->
+
+<!--右边案例-->
+<div class="caseCaseLea fr">
+    <!--经典案例-->
+    <div class="caseCaseCa fl">
+      <span>经典案例</span>
+      <!--循环开始 ,显示10条-->
+      <?php foreach ($classic as $k => $v) : ?>
+      <dl class="fl">
+         <dt><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>"></a></dt>
+         <dd><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><?php echo $v['artitle']; ?></a></dd>
+      </dl>
+ <?php endforeach;?>
+    </div>
+</div>
+
+</div>
+
+ <div class="cb"></div> 
+
+

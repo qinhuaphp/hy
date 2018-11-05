@@ -1,0 +1,87 @@
+ 
+
+         <!--婚礼学院广告图01-->
+         <div class="articleBanner"> <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人"></a>
+         </div>        
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > <a href="<?php echo site_url('article/index/cid/1'); ?>"> <a href="<?php echo site_url('article/index/cid/'.$arinfo[0]['cid']); ?>">婚礼学院</a> >  <span><?php echo $arinfo[0]['artitle']?></span>
+</div>
+
+<!--caseCaseLe-->
+<script type="text/javascript">
+$(function(){
+	$(".articleCa .fl").hover(function(){
+		$(this).css({
+		"border-left":"1px  solid #FF0000"
+		});
+		},function(){
+		$(this).removeAttr("style");
+	});
+})
+</script>
+<div class="articles mt10">
+<div class="articleLe fl">
+    <!--经典案例-->
+    <div class="articleCa fl">
+      <span>热门资讯</span>
+      <!--循环开始 ,显示8条-->
+      
+      <?php foreach ($arhot as $k => $v ) :  ?>
+     <?php if ($k > 7) : break; endif; ?>
+      <dl class="fl">
+         <dt><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>"></a></dt>
+         <dd><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].' /arid/'.$v['arid']); ?>" target="_blank"><?php echo $v['artitle']; ?></a></dd>
+      </dl>
+     <?php endforeach; ?>
+    </div>
+  
+</div>
+
+<!--caseCaseRi-->
+  <div class="articleRi fr">
+  <span class="articleTitle"><?php  echo  $arinfo[0]['artitle']; ?></span>
+  <span class="articleTime">发布时间：<?php echo date('Y-m-d', $arinfo[0]['addtime']); ?></span>
+  <span class="articleAticle">发布作者：<?php echo $arinfo[0]['author']; ?></span><br />
+  <span class="articleShare">
+      <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style=" width:350px; position:relative; left:30%;"><span class="jiathis_txt" style="font-size:18px;">分享到：</span>
+      <a class="jiathis_button_weixin"></a>
+      <a class="jiathis_button_qzone"></a>
+      <a class="jiathis_button_cqq"></a>
+      <a class="jiathis_button_tsina"></a>
+      <a class="jiathis_button_tqq"></a>
+      <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+      <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" >
+           var jiathis_config={
+	       sm:"weixin,tqq,qzone,tsina,cqq",
+	       summary:"",
+           shortUrl:false,
+	       hideMore:false
+      }
+      </script>
+      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+</span>
+  <span class="articleLable magi">
+      <ul>
+        <?php foreach ($arinfo[0]['lables'] as $k => $v ) : ?>
+          <li><?php echo $v[0]['laname']; ?></li>
+        <?php endforeach; ?>
+      </ul>
+ </span>
+ <div class="cb"></div>
+  
+  
+ <span class="mt20" style=" width:800px;">
+<?php echo $arinfo[0]['content']; ?>
+</span>
+</div>
+
+</div>
+
+ <div class="cb"></div> 
+ 
+ 

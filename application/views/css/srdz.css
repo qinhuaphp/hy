@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+.sr_content{ width:1200px; margin:0px auto; }
+.sr_head{ width:1200px; height:478px; float:left; background-image:url(../images/srdz_bg.jpg);}
+.sr_head_ri{ width:300px; height:380px; float:right; margin-right:10px; margin-top:50px; border-radius:8px; background-color:#f3f1f1; border:3px #eb768e solid; }
+
+.srdz_hq{ width:1200px; float:left; margin-top:20px;}
+.srdz_hq_up{ width:390px; height:66px; margin:0px auto; line-height:66px; text-align:center; background-image:url(../images/sr_dd_bg.jpg); clear:both;}
+.srdz_hq_up a{ color:#FFF;}
+.srdz_hq_up span{font-family:"微软雅黑"; font-size:18px; color:#FFF;}
+
+.srdz_hq_down{ width:1200px;  float:left; margin-top:20px;}
+
+.srdz_hq_down dl{ width:365px; height:295px; float:left; background-color:#fcfcfc; padding:10px 10px; margin-left:10px;  margin-top:10px; position:relative；}
+.srdz_hq_down dl dt{ width:365px; height:265px; float:left; }
+.srdz_hq_down dl dt img{width:365px; height:265px;}
+.srdz_hq_down dd{ width:365px; height:30px; line-height:30px; float:left; text-align:center;background-color:#FFF;}
+
+
+
+.srdz_hl{ width:1200px; height:850px; float:left; margin-top:20px;}
+.srdz_hl_up{ width:390px; height:66px; margin:0px auto; line-height:66px; text-align:center; background-image:url(../images/sr_dd_bg.jpg); clear:both;}
+.srdz_hl_up a{ color:#FFF;}
+.srdz_hl_up span{font-family:"微软雅黑"; font-size:18px; color:#FFF;}
+.srdz_hl_down{ width:1200px; height:770px; float:left; margin-top:20px; }
+.srdz_hl_down a:hover{ color:#f75979;}
+.srdz_hl_down dl{ width:580px; height:200px; float:left; background-color:#fcfcfc; margin-left:15px; margin-top:15px; font-size:14px;}
+.srdz_hl_down dl dt{ width:250px; height:176px; float:left; margin-right:20px;margin-top:10px;}
+.srdz_hl_down dl dt img{ width:250px; height:176px;}
+.srdz_hl_down dd{ width:300px; height:176px; line-height:25px; float:right;  margin-right:10px; margin-top:10px; }
+.srdz_hl_down dd span { color:#f75979; font-weight:bold;}
+
+
+.bottom_s{ height:30px; background-color:#f75979; font-size:12px; padding:3px;}
+.bottom_s a{ color:#FFF;}
+.bottom_s a:hover{ color:#FFF;}
+
+.hlxy_li_a .bottom_s a:hover{ color:#FFF;}
+
+
+.srdz_hl_down ul{ width:560px; height:208px; float:left; margin-top:20px; font-size:14px; margin-left:20px; }
+.srdz_hl_down ul li{ height:25px; line-height:25px; padding-left:20px; }
+.srdz_hl_down ul li span{ color:#f75979; float:right;}
+.s_dd{ background:url(../images/srdz_liast.png) 0px 0px no-repeat;}
+.s_d{ background:url(../images/srdz_liast.png) 0px -20px no-repeat;}
+
+
+
+#J_srdz .cctv1{background-color:#000;}
+

@@ -1,0 +1,65 @@
+<link href="<?php echo base_url().'application/views/';?>css/home.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/srdz.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/lrtk.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.4.2.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtk.js"></script>
+<link href="<?php echo base_url().'application/views/';?>css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtkk.js"></script>
+<link href="<?php echo base_url().'application/views/';?>css/lrtkss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/koala.min.1.5.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/default_blue.css"/>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.7.2.min.js"></script>
+<script language="javascript" src="<?php echo base_url().'application/views/';?>js/jquery.Sonline.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("body").Sonline({
+		Position:"right",//left或right
+		Top:400,//顶部距离，默认430px
+		Effect:true, //滚动或者固定两种方式，布尔值：true或false
+		DefaultsOpen:true, //默认展开：true,默认收缩：false
+		Qqlist:"1404414903|客服01" //多个QQ用','隔开，QQ和客服名用'|'隔开
+	});
+})	
+</script>
+<link rel="stylesheet" href="<?php echo base_url().'application/views/';?>css/jquery.cxcalendar.css">
+<script src="<?php echo base_url().'application/views/';?>js/jquery-1.8.2.min.js"></script> 
+<script src="<?php echo base_url().'application/views/';?>js/jquery.cxcalendar.js"></script> 
+<script>
+$.cxCalendar.defaults.startDate = 1980;  
+$.cxCalendar.defaults.language = { 
+  monthList: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], 
+  weekList: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] 
+}; 
+</script>
+
+
+
+
+<script  type="text/javascript">
+
+<!--
+
+
+function chingeTable(divName,count,currentNum,currtname){
+	for(var i=1;i<=count;i++){
+		if (currentNum==i)	{
+			document.getElementById(divName+currentNum).style.display = "";	
+			document.getElementById(currtname+currentNum).className = "up_right_2";	
+			}
+		else{
+		 document.getElementById(divName+i).style.display = "none";
+		 document.getElementById(currtname+i).className = "up_right_1";
+			}
+			}
+			}
+-->
+</script>
+	<table width="430" border="1"  class="tal_b" style="margin:0 audio;">
+		
+	  
+  <tr>
+		<td><span><?php echo isset($msg)?$msg:'';?></span></td>
+	</tr>
+	</table>

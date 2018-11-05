@@ -1,0 +1,949 @@
+ <style type="text/css">
+	.tan{
+		position:absolute;
+		left:0px;
+		top:0px;
+		width:450px;
+		height:400px;
+		background:#fff;
+		border:2px solid #ec728b;
+		z-index:114;
+		display:none;
+		border-radius:15px;
+	}
+	.tan h3{
+		width:450px; 
+		height:45px;
+		line-height:45px; 
+		color:#FFF; 
+		border:none; 
+		text-align:center;
+		font-size:18px; 
+		border-radius:15px 15px 0px 0px;
+		background-color:#ec728b;
+	} 
+	.tan h3 span{
+		width:45px; height:45px; float:right; display:block; padding-right:20x;cursor:pointer;
+	   }
+	.ddd{ font-size:18px; line-height:40px; text-align:left; padding:50px 30px;}
+	
+	}
+	
+	.zzc{
+		position:absolute;
+		left:0;
+		top:0;
+		z-index:110;
+		filter:alpha(opacity=50);
+		-moz-opacity:0.5;
+		-khtml-opacity: 0.5;
+		opacity: 0.9;
+		background:black;
+	}
+	
+	#work{
+		width:800px;
+		height:642px;
+		border:3px dashed #fa638e;
+		border-radius:10px;
+		background:#FCFCFC;
+		display:none;
+		position:absolute;
+		left:0;
+		top:0;
+		overflow:hidden;
+		z-index:120;
+	}
+	#work div{
+		position:relative;
+	}
+	
+	#work div ul{	
+		list-style:none;
+		position:absolute;
+		left:0;
+		top:42px;
+	}
+	#work span{
+		display:block;
+		z-index:124;
+		position:absolute;
+		top:5px;
+		left:765px;
+		text-align:center;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		background-color:#333;
+		color:#fff;
+		font-size:30px;
+		border:1px dashed #333;
+		border-radius:10px;
+		cursor:pointer;
+		}
+	#work div ul li{
+		border-top:2px dashed #fa638e;
+		float:left;
+		width:800px;
+	}
+	#work div ul li img{
+		float:left;
+		width:800px;
+		height:600px;
+	}
+	#work div ol{	
+	  
+		position:absolute;
+		left:0;
+		top:0;
+		height:40px;
+	}
+	#work div ol li{
+		float:left;
+		width:40px;
+		cursor:pointer;
+		text-align:center;
+		line-height:40px;
+	}
+	
+	#right{
+		position:absolute;
+		left:440px;
+		top:240px;
+		z-index:122
+	}
+	#left{
+		position:absolute;
+		//left:440px;
+		top:240px;
+		z-index:122
+	}
+	#video{
+		z-index:120;
+		
+		width:800px;
+		height:660px;
+		background:#F1F1F1;
+		display:none;
+		position:absolute; 
+		border-radius:10px;
+		border:3px dashed #FF8DA5;
+		left:0;
+		top:0;
+	}
+	#video span{
+		display:block;
+		border-radius:10px 10px 0px 0px;
+		background:#F1F1F1;
+		height:40px;
+		line-height :40px;
+		width:800px;
+		text-align:center; 
+		font-size:18px;  
+		cursor:pointer;
+	}
+</style>
+<!--personalDetial-->
+<div class="tan">
+	<h3>婚艺小秘书
+        <span>
+            <img src="<?php echo base_url().'application/views/';?>images/q.png"/>
+        </span>
+    </h3>
+	<div class="ddd">
+    欢迎来到婚艺365网站，小秘书还没有上岗哦，敬请期待.....<br />
+    如果您有什么需求，可以随时联系我们.....<br />
+    全国免费热线：<b style="font-size:24px; color:#ec728b;">400-9919-080</b><br />
+    24小时陪聊QQ：<b style="font-size:24px;color:#ec728b;">964473660</b><br />
+    24小时陪聊手机：<b style="font-size:24px;color:#ec728b;">15385183323</b><br />
+
+  </div>
+</div>
+
+
+
+
+<!--location-->
+    <div class="location mt10 ">
+        <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > <a href="<?php echo site_url('human/index/cid/'.$hws['hinfo'][0]['cid']); ?>">婚礼造梦师</a> > <span><?php echo $hws['hinfo'][0]['hname']; ?></span>
+    </div>
+<!--personalDetials-->
+
+<script type="text/javascript">
+$(function(){
+$("#dnav>li").click(function(){
+		$(this).css({"border-bottom":"2px solid red","color":"#ff8da6","cursor":"pointer"}).siblings().removeAttr("style");
+		/*子导航栏后面的所有的同级元素中的第1个子元素的距顶部的偏移量减去高度的一般，就是滚动条距上边界的值*/
+		var top=$(this).parent().parent().nextAll().eq($(this).index()).children(":first").offset().top-$(this).parent().parent().nextAll().eq($(this).index()).children(":first").height()/2;
+		$(window).scrollTop(top);
+	});
+/*固定子导航栏
+如果滚动条离上边距的值大于子导航栏相对于浏览器窗口的top的偏移量的时候就改变子导航栏的样式为
+固定定位，top为-20、left为原来的left的值，堆叠顺序增大
+如果滚动条的距离小于子导航栏的下一个同级元素的高度的时候就去掉style属性，使之恢复原来的样式
+*/
+	$(window).scroll(function(){
+		if($(this).scrollTop()>$(".personalDetialLists").offset().top){
+			$(".personalDetialLists").css({
+				"position":"fixed",
+				"top":-20,
+				"left":$(".personalDetialLists").offset().left,
+				"z-index":80
+			});
+		}
+		if($(this).scrollTop()<$(".proDeLiPro").offset().top){
+			$(".personalDetialLists").removeAttr("style");
+		}	
+	});
+	$(".tab tbody tr").not("tr:first").hover(function(){
+		//alert($(this).html())
+		$(this).css({
+			"background":"#DDDDDD",
+			"cursor":"pointer",
+			"color":"#FF0088",
+			"font-size":"18px"
+		});
+	},function(){
+		$(this).removeAttr("style");	
+	});
+	/*弹出层*/
+	$(".Yuyue input[type='image']").click(function(){
+	//alert($(window).scrollTop())
+		var w=$(document).width();
+		var h=$(document).height();
+		$("body").append("<div class='zzc'></div>");
+		$(".zzc").width(w).height(h);
+		$(".tan").show().animate({
+		"left":$(window).width()/2-$(".tan").outerWidth(true)/2+$(window).scrollLeft(),
+		"top":$(window).height()/2-$(".tan").outerHeight(true)/2+$(window).scrollTop()
+		},200);
+	});
+	/*关闭弹出层*/
+	$(".tan h3 img").click(function(){
+		$(".tan").slideUp("slow");
+		$(".zzc").remove();
+	});
+	/*自适应窗口变化*/
+	$(window).resize(function(){
+		if($(".tan").is(':visible')){
+			$(".tan").stop(true,true).animate({
+			"left":$(window).width()/2-$(".tan").outerWidth(true)/2+$(window).scrollLeft(),
+			"top":$(window).height()/2-$(".tan").outerHeight(true)/2+$(window).scrollTop()
+			},200);
+		var w=$(document).width();
+		var h=$(document).height();
+		$(".zzc").width(w).height(h);
+		}
+		
+	});
+	/*自适应滚动条变化*/
+	$(window).scroll(function(){
+		if($(".tan").is(':visible')){
+			$(".tan").stop(true,true).animate({
+			"left":$(window).width()/2-$(".tan").outerWidth(true)/2+$(window).scrollLeft(),
+			"top":$(window).height()/2-$(".tan").outerHeight(true)/2+$(window).scrollTop()
+			},200);
+		var w=$(document).width();
+		var h=$(document).height();
+		$(".zzc").width(w).height(h);
+		}
+		
+	});
+	/*点击数字导航的时候显示对应的图片*/
+	//当前显示的li的索引
+	var index=0;
+	$("#slider").prev().delegate("li","click",function(){
+		index=$(this).index();
+		$(this).css({
+			"background":"#FF0000",
+			"color":"white"
+		}).siblings().removeAttr("style");
+		//向左移动ul到指定的left
+		$("#slider").animate({"left":-$("#slider>li").width()*index},300);
+	});
+	
+	/*轮播区域移动*/
+	function moveul(){
+		if(index==$("#slider>li").length-1){
+			$("#slider").find("li").eq(0).css({
+				"position":"relative",
+				"left":$("#slider").width()
+			});
+			index=0;
+		}else{
+			index+=1;
+		}
+		$("#slider").prev().find("li").eq(index).css({
+			"background":"#FF0000",
+			"color":"white"
+		}).siblings().removeAttr("style");
+		//移动轮播区域
+		$("#slider").animate({"left":-$("#slider>li").width()*index},100,function(){
+			if(index==0){
+				$("#slider>li").eq(0).css({"position":"static","left":0}).parent().css({"left":0});
+				index=0;
+			}
+		});
+	}
+	var time=setInterval(moveul,1200);
+	/*当鼠标放于轮播区域的时候清除定时器，离开则重新设置定时器*/
+	$("#work").hover(function(){
+		clearInterval(time);
+		$("#left").show();
+		$("#right").show();
+	},function(){
+		time=setInterval(moveul,1200);
+		$("#left").hide();
+		$("#right").hide();
+	});
+	/*退出轮播区域*/
+	$("#quite").click(function(){
+		$("#work").hide();
+		clearInterval(time);
+		$(".zzc").hide();
+	});
+		//点击遮罩层关闭遮罩层和弹出框
+		$("#video").find("span").click(function(){
+			$("#video").hide();
+			$(".zzc").hide();
+		});
+	/*自适应滚动条*/
+	$(window).scroll(function(){
+		if($("#work").is(":visible")){
+			$("#work").stop(true,true).animate({
+				"left":$(window).width()/2-$("#work").outerWidth(true)/2,
+				"top":$(window).height()/2-$("#work").outerHeight(true)/2+$(window).scrollTop()
+			},200);
+		}
+		if($("#video").is(":visible")){
+			$("#video").stop(true,true).animate({
+				"left":$(window).width()/2-$("#video").outerWidth(true)/2+$(window).scrollLeft(),
+				"top":$(window).height()/2-$("#video").outerHeight(true)/2+$(window).scrollTop()
+			},200);
+		}
+	});
+	/*ajax获取作品详情*/
+	var indexpage='<?php echo index_page();?>';
+	var baseurl='<?php echo base_url();?>';
+	var hid=<?php echo $hws['hinfo'][0]['hid']; ?>;
+	$(".proDeLiCaseDo").find(".fl").css("cursor","pointer").click(function(){
+		$.ajax({
+			url:baseurl+indexpage+'/human/hwork/wid/'+$(this).find("img").attr("wid")+'/hid/'+hid,
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				$("#slider>li").remove();
+				$("#slider").prev().find("li").remove();
+				if(!$.isEmptyObject(data)&&typeof data=='object'){
+					for(var i=0;i<data.length;i++){
+						 var str='<li>'+data[i]+'</li>';
+						 $("#slider").append(str);
+					}
+					for(var a=1;a<=data.length;a++){
+						var num='<li>'+a+'</li>';
+						$("#slider").prev().append(num);
+					}
+					/*设置轮播区域的宽度width($("#slider>li").eq(0).width()).height($("#slider").height())..*/
+					$("#slider").width($("#slider>li").length*$("#slider>li").eq(0).width());
+					$("#work").show().animate({
+							"left":$(window).width()/2-$("#work").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#work").outerHeight(true)/2+$(window).scrollTop()
+							},200,function(){
+								var zzc="<div class='zzc'></div>";
+								$("body").append(zzc);
+								var w=$(document).width();
+								var h=$(document).height();
+								$(".zzc").width(w).height(h);
+							});
+				}
+				/*判断是否为字符串，若是字符串则表示返回的是视频地址*/
+				if(typeof data=='string'){
+					//把返回的字符串对象转换成数组,["src", ""http://player.youku.com...id/XOTQ0MjY2OTcy/v.swf""]
+					var vsrc=data.split('=');
+					//把双引号替换为空
+					var srcadd=vsrc[1].replace(/"/g,'');
+					var html='<embed  src="'+srcadd+'" allowFullScreen="true" quality="high" width="800" height="600" align="middle" allowScriptAccess="always" wmode="opaque" type="application/x-shockwave-flash" />';
+					//判断embed元素是否存在
+					if(!$("#video>embed").length>0){
+						$("#video").append(html);
+					}else{
+						//先删除之前的embed标签再插入新的embed标签，防止IE不兼容，替换不了embed标签的src地址
+						$("#video").find("embed").remove();
+						$("#video").append(html);
+					}
+					 $("#video").show().animate({
+						"left":$(window).width()/2-$("#work").outerWidth(true)/2+$(window).scrollLeft(),
+						"top":$(window).height()/2-$("#work").outerHeight(true)/2+$(window).scrollTop()
+					 },200,function(){
+						var zzc="<div class='zzc'></div>";
+						$("body").append(zzc);
+						var w=$(document).width();
+						var h=$(document).height();
+						$(".zzc").width(w).height(h);
+					 });
+				}
+				
+			}
+		});
+	
+	});
+})
+</script>
+<!--视频弹出层-->
+<div id="video">
+	<span>关&nbsp;&nbsp;闭</span>
+
+</div>
+<!--作品案例详情弹出层,work的宽度和ul的li的宽度一致-->
+<div id="work">
+	<!--放置轮播图片的div-->
+	<div><!--
+	<img  id="left" src="<?php echo base_url().'application/views/images/';?>l.png">
+	<img  id="right" src="<?php echo base_url().'application/views/images/';?>r.png">-->	
+	<span id="quite">×</span>
+	<!--勿删，js动态插入li， 删了是小狗!-->
+	<ol>
+	</ol>
+	<!--勿删，js动态插入li， 删了是小狗!-->
+	<ul id="slider">
+	</ul>
+
+	</div>
+</div>
+
+<div class="personalDetials mt20">
+        <!--公司LOGO-->
+        <div class="personalDetialsLogo fl">
+<div class="Logo">
+                <img src="<?php echo base_url().$hws['hinfo'][0]['hlogo']; ?>">
+             </div>
+<div class="Yuyue">
+                 <input style="width:100px; height:30px;line-height:30px; border-radius:15px;color:#FFF; border:none; text-align:center;font-size:14px;
+				 background-color:#f7597a;" type="image" src="<?php echo base_url().'application/views/';?>images/secretIco.png" >
+             </div>
+<div class="bao">
+                 <img src="<?php echo base_url().'application/views/';?>images/promicess.png" align="left"> 已缴纳保证金
+             </div>
+        </div>
+        <!--公司信息-->
+        <div class="personalDetialsMa fl ml10">
+            <table width="585" cellspacing="0" cellpadding="0">
+               <tr>
+                 <td height="40" colspan="4"><span class="fs26"><?php echo $hws['hinfo'][0]['hname']; ?></span></td>
+              </tr>
+               <tr>
+                  <td height="35" colspan="2">性别 :  <?php echo $hws['hinfo'][0]['sex'] == 0?'男':'女'; ?> </td>
+                  <td height="35" colspan="2"> 年龄 : <?php echo $hws['hinfo'][0]['age']; ?></td>
+               </tr>
+               <tr>
+                   <td height="35" colspan="2">成交量 : <span class="fs18"><?php echo $hws['hinfo'][0]['volume']; ?></span> 单 </td>
+                   <td height="35" colspan="2"> 星级 : <?php $str='<img src="'.base_url().'application/views/images'.'/star.jpg" align="center">';echo str_repeat($str,$hws['hinfo'][0]['level']);?>
+                   </tr>
+              <tr>
+                   <td height="50" colspan="4" align="left" valign="middle" bgcolor="#f4f2f2">            
+                   <span style="float:left; line-height:50px;">服务类型 :</span>
+                   <div class="choice fl">
+                   <ul id="style">  
+                   <?php foreach ($hws['service'] as $k => $v) : ?>
+                      <?php if ($k > 3) : break; endif; ?>
+                      <li class="choicea"><?php echo $v['type']; ?></li>
+                   <?php endforeach; ?>
+                   </ul>   
+                    </div>
+                      
+                   </td>
+              </tr>
+              <tr>
+                   <td height="80" colspan="4">
+                    <ul>
+                    <?php if (!empty($hws['service'])) : ?>
+                     <li><span style="line-height:25px;"> 服务说明：</span><?php echo $hws['service'][0]['explains']; ?></li>                     
+                    <?php else : ?>
+                    <li><span style="line-height:25px;"> 服务说明：</span>预约看店后，洽谈婚礼业务，签约婚礼服务并在婚艺365支付的基础上再获得婚艺365的现金优惠，订金婚艺全程担保，并对您的婚礼服务进行全程监督，保障您的权益！</li>
+                    <?php endif; ?>
+                     <li style="display:none;"><span style="line-height:25px;"> 服务说明：</span>预约看店后，洽谈婚礼业务，签约婚礼服务并在婚艺365支付的基础上再获得婚艺365的现金优惠，订金婚艺全程担保，并对您的婚礼服务进行全程监督，保障您的权益！</li>
+                   </ul> 
+                     
+                  </td>
+              </tr>
+              <tr>
+                   <td width="200" height="60" bgcolor="#f4f2f2"><span class="fs36">￥<?php echo $hws['hinfo'][0]['hprice']; ?></span></td>
+                   <td height="60" colspan="3" bgcolor="#f4f2f2">
+                <a href="" target="_blank"><image src="<?php echo base_url().'application/views/';?>images/paya.png" /></a>
+                <a href="" target="_blank"><image src="<?php echo base_url().'application/views/';?>images/payb.png" /></a></td>
+             </tr>
+           </table>
+
+</div>
+        <!--公司视屏-->
+        <div class="personalDetialsVe fl ml10">
+            <embed src="<?php echo $hws['hinfo'][0]['hintrolvideo']; ?>" allowFullScreen="true" quality="high" width="400" height="300" align="middle" allowScriptAccess="always" wmode="opaque" type="application/x-shockwave-flash"></embed>
+       
+        </div>
+    </div>
+<!--companyDetialsLists-->
+    <div class="personalDetialLists mt20 fs24">
+        <ul id="dnav">
+            <li>个人简介</li>
+            <li>作品案例</li>
+            <li>服务档期</li>
+            <li>服务内容</li>
+            <li>预约流程</li>
+            <li>预约说明</li>
+            <li>最新评价</li>
+        </ul>
+    </div>
+
+<!--公司简介-->
+    <div class="proDeLiPro mt20">
+         <div class="proDeLiProUp magi fs26">
+              个人简介
+         </div>
+         <div class="proDeLiProDo fs16">
+          <span> <img src="<?php echo base_url().'application/views/';?>images/Actib.png">所在地  : 安徽省合肥市蜀山区</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 昵称 : <?php echo $hws['hinfo'][0]['hname']; ?>   |  性别 : <?php echo $hws['hinfo'][0]['sex'] == 0?'男':'女'; ?>  |  年龄 : <?php echo $hws['hinfo'][0]['age']; ?>  |  身高 : 174CM  |  体重 : 85KG  |  工作经验：3年<hr>
+           <p>
+            <?php echo $hws['hinfo'][0]['hintrol']; ?>
+          </p>      
+  </div>
+    </div>
+
+<!--作品案例-->
+    <div class="proDeLiCase">
+        <div class="proDeLiCaseUp magi fs26">
+               作品案例
+        </div>
+          <div class="proDeLiCaseDo mt20">
+           <!--循环开始-->
+           
+           <?php foreach ($hws['hinfo'][0]['works'] as $k => $v) : ?>
+           <?php if ($k > 8) : break; endif; ?>
+              <dl class="fl">
+                  <dt><img src="<?php echo base_url().$v['cover_thumb']; ?>" wid="<?php echo $v['wid'];?>"></dt>
+                  <dd><?php echo $v['wname']; ?></dd>
+              </dl>
+            <?php endforeach; ?>
+              <!--循环结束-->
+          </div>
+    </div>
+<!--
+
+优惠活动
+<div class="proDeLiAct mt20">
+          <div class="proDeLiActUp magi fs26">
+              优惠活动
+          </div>
+          <div class="proDeLiActDo mt20">
+            <table width="1180" cellspacing="0" cellpadding="0" class="tab">
+                <tr>
+                <td width="190" height="40" align="center" valign="middle" bgcolor="#f4f2f2"><img src="<?php echo base_url().'application/views/';?>images/Actia.png" align="center"/>活动时间 </td>
+                <td width="330" height="40" align="center" valign="middle" bgcolor="#f4f2f2"><img src="<?php echo base_url().'application/views/';?>images/Actib.png" align="center" />活动地点 </td>
+                <td width="660" height="40" align="center" valign="middle" bgcolor="#f4f2f2"><img src="<?php echo base_url().'application/views/';?>images/Actic.png" align="center" />活动内容</td>
+                </tr>
+                <tr>
+                <td width="190" height="120" align="center" valign="middle">2015-7-8~2015-9-10<br /></td>
+                <td width="330" height="120" align="center" valign="middle"> 安徽省合肥市庐阳区财富广场A座408室</td>
+                <td width="660" height="120" align="left" valign="middle"> 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 4999元！低调奢华婚礼套系只需4999元！ </td>
+                </tr>
+                <tr>
+                <td width="190" height="120" align="center" valign="middle">2015-7-8~2015-9-10</td>
+                <td width="330" height="120" align="center" valign="middle"> 安徽省合肥市庐阳区财富广场A座408室</td>
+                <td width="660" height="120" align="left" valign="middle"> 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 4999元！低调奢华婚礼套系只需4999元！ </td>
+                </tr>
+                <tr>
+                <td width="190" height="120" align="center" valign="middle">2015-7-8~2015-9-10</td>
+                <td width="330" height="120" align="center" valign="middle"> 安徽省合肥市庐阳区财富广场A座408室</td>
+                <td width="660" height="120" align="left" valign="middle"> 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 4999元！低调奢华婚礼套系只需4999元！ </td>
+                </tr>
+                <tr>
+                <td width="190" height="120" align="center" valign="middle">2015-7-8~2015-9-10</td>
+                <td width="330" height="120" align="center" valign="middle"> 安徽省合肥市庐阳区财富广场A座408室</td>
+                <td width="660" height="120" align="left" valign="middle"> 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 4999元！低调奢华婚礼套系只需4999元！ </td>
+                </tr>
+                <tr>
+                <td width="190" height="120" align="center" valign="middle">2015-7-8~2015-9-10</td>
+                <td width="330" height="120" align="center" valign="middle"> 安徽省合肥市庐阳区财富广场A座408室</td>
+                <td width="660" height="120" align="left" valign="middle"> 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 重磅推出&quot;金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 金秋巨惠&quot;活动，低调奢华婚礼套系只需4999元！低调奢华婚礼套系只需4999元！ 4999元！低调奢华婚礼套系只需4999元！ </td>
+               </tr>
+            </table>
+
+          </div>
+    </div>
+    
+   --> 
+<!--服务档期-->
+    <div class="proDeLiSche mt20">
+        <div class="proDeLiScheUp magi fs26">
+            服务档期
+        </div>
+        <div class="proDeLiScheDo mt20">
+        <!--日历-->
+          <div class="date-panel">
+           
+              <div class="bars">
+              <a href="#" class="b-l fl"><input type="image" src="<?php echo base_url().'application/views/';?>images/JJC.jpg" style=" margin-left:10px;"></input></a>
+              <span class="b-c"> 2015年7月30日</span>
+              <a href="#"  class="b-r fr"> <input type="image" src="<?php echo base_url().'application/views/';?>images/addC.jpg" style="margin-right:10px;"></input></a>
+              </div>
+            
+                 <div class="picTable fl" style="height: 315px;" >
+                <table  width="480" height="315" >
+      
+                    <tr width="480">
+                      <th height="45" align="center" valign="middle" >日</th>
+                      <th height="45" align="center" valign="middle" >一</th>
+                      <th height="45" align="center" valign="middle" >二</th>
+                      <th height="45" align="center" valign="middle" >三</th>
+                      <th height="45" align="center" valign="middle">四</th>
+                      <th height="45" align="center" valign="middle">五</th>
+                      <th height="45" align="center" valign="middle">六</th>
+                    </tr>
+                    <tr width="480">
+                      <td height="45" align="center"  valign="middle"  class="bg1">27</td>
+                      <td height="45" align="center"  valign="middle" class="bg2" >28</td>
+                      <td height="45" align="center"  valign="middle" >29</td>
+                      <td height="45" align="center"  valign="middle">30</td>
+                      <td height="45" align="center"  valign="middle">31</td>
+                      <td height="45" align="center"  valign="middle">1</td>
+                      <td height="45" align="center"  valign="middle">2</td>
+                    </tr>
+                    <tr width="480">
+                      <td height="45" align="center"  valign="middle">3</td>
+                      <td height="45" align="center"  valign="middle">4</td>
+                      <td height="45" align="center"  valign="middle">5</td>
+                      <td height="45" align="center"  valign="middle">6</td>
+                      <td height="45" align="center"  valign="middle">7</td>
+                      <td height="45" align="center"  valign="middle">8</td>
+                      <td height="45" align="center"  valign="middle">9</td>
+                    </tr>
+                    <tr width="480">
+                      <td height="45" align="center"  valign="middle">10</td>
+                      <td height="45" align="center"  valign="middle">11</td>
+                      <td height="45" align="center"  valign="middle">12</td>
+                      <td height="45" align="center"  valign="middle">13</td>
+                      <td height="45" align="center"  valign="middle">14</td>
+                      <td height="45" align="center"  valign="middle">15</td>
+                      <td align="center"  valign="middle">16</td>
+                   </tr>
+                   <tr width="480">
+                      <td height="45" align="center"  valign="middle">17</td>
+                      <td height="45" align="center"  valign="middle">18</td>
+                      <td height="45" align="center"  valign="middle">19</td>
+                      <td height="45" align="center"  valign="middle">20</td>
+                      <td height="45" align="center"  valign="middle">21</td>
+                      <td height="45" align="center"  valign="middle">22</td>
+                      <td height="45" align="center"  valign="middle">23</td>
+                    </tr>
+                    <tr width="480">
+                      <td height="45" align="center"  valign="middle">24</td>
+                      <td height="45" align="center"  valign="middle">25</td>
+                      <td height="45" align="center"  valign="middle">26</td>
+                      <td height="45" align="center"  valign="middle">27</td>
+                      <td height="45" align="center"  valign="middle">28</td>
+                      <td height="45" align="center"  valign="middle">29</td>
+                      <td height="45" align="center"  valign="middle">30</td>
+                    </tr>
+                    <tr width="480">
+                      <td height="45" align="center"  valign="middle">24</td>
+                      <td height="45" align="center"  valign="middle">25</td>
+                      <td height="45" align="center"  valign="middle">26</td>
+                      <td height="45" align="center"  valign="middle">27</td>
+                      <td height="45" align="center"  valign="middle">28</td>
+                      <td height="45" align="center"  valign="middle">29</td>
+                      <td height="45" align="center"  valign="middle">30</td>
+                    </tr>
+       
+                </table>
+                </div>
+                <div class="event">
+                    <div class="evena"><img src="<?php echo base_url().'application/views/';?>images/candela.jpg" align="left">今日忙</div>
+                    <div class="evenb"><img src="<?php echo base_url().'application/views/';?>images/candelb.jpg" align="left">有1单</div>
+            </div>
+          </div>
+        <!--最新预订-->
+        <div class="proDeLiBkDo fr">
+      <table width="680" cellspacing="0" cellpadding="0" class="tab">
+           <tr>
+             <td width="320" height="50" align="center" valign="middle" bgcolor="#f4f2f2">已预订档期</td>
+             <td width="310" height="50" align="center" valign="middle" bgcolor="#f4f2f2">预定服务类型</td>
+             <td width="130" height="50" align="center" valign="middle" bgcolor="#f4f2f2">价格 </td>
+             <td width="100" height="50" align="center" valign="middle" bgcolor="#f4f2f2">预定人</td>
+             <td width="250" height="50" align="center" valign="middle" bgcolor="#f4f2f2">预定时间 </td>
+          </tr>
+          <?php foreach ($human_order as $k => $v) : ?>
+          <?php
+            if ($k > 4) : break; endif;
+            $date = explode('/', $v['odate']);
+            $date1 = intval($date[1])<10?'0'.$date[1].'-':$date[1].'-';
+            $date2 = intval($date[2])<10?'0'.$date[2]:$date[2];
+            $date = $date[0].'-'.$date1.$date2;
+            $time = $v['otime']=='am'?'07:00 至 14:00':'15:00 至 22:00';
+            $name = strlen($v['oauthor'])>1?mb_substr($v['oauthor'], 0, 1, 'utf8').'***':'';
+            
+            $addtime = date('Y-m-d H:i', $v['addtime']);
+         ?>
+          
+          <tr>
+             <td width="320" height="50" align="center" valign="middle"><span><?php echo $date;?>  <?php echo $time; ?></span></td>
+             <td width="310" height="50" align="center" valign="middle">西式婚礼司仪</td>
+            <td width="130" height="50" align="center" valign="middle"><span class="fs24">￥<?php echo $v['perprice']; ?></span> </td>
+             <td width="100" height="50" align="center" valign="middle"><?php echo $name; ?></td>
+             <td width="250" height="50" align="center" valign="middle"> <?php echo $addtime; ?></td>
+          </tr>
+          
+          <?php endforeach; ?>
+       </table>
+        </div>
+  <!--异地说明-->
+     <div class="proDeLiYd fr">
+    <span class=" fs26"> 异地费 </span><br />
+可做合肥下级4县和安徽省其他城市，费用根据远近加收异地费200-300，如需提前一天，需提供住宿费用！（默认信息为：他很懒，什么话都没留下！！！）
+     </div>      
+        
+        
+        
+        
+      </div>
+    </div>
+<!--服务内容-->
+    <div class="proDeLiSe mt20">
+        <div class="proDeLiSeUp magi fs26">
+            服务内容
+        </div>
+        <div class="proDeLiSeDo mt20">
+         <table width="1180" cellspacing="0" cellpadding="0">
+           <tr>
+             <td width="300" height="40" align="center" valign="middle" bgcolor="#f4f2f2">服务类型 </td>
+             <td width="200" height="40" align="center" valign="middle" bgcolor="#f4f2f2">服务价格</td>
+             <td width="680" height="40" align="center" valign="middle" bgcolor="#f4f2f2">服务说明</td>
+           </tr>
+           <?php foreach ($hws['service'] as $k => $v) : ?>
+          <tr>
+             <td width="300" height="60" align="center" valign="middle"><?php echo $v['type']; ?></td>
+            <td width="200" height="60" align="center" valign="middle"><span class="fs24">￥<?php echo $v['sprice']; ?>/ 场</span> </td>
+             <td width="680" height="60" align="left" valign="middle">
+             <span>服务流程：</span>前期见面沟通确认婚礼细节（建议婚礼前1个月左右），当天婚礼彩排（新人提前到场）、   婚礼主持
+                （婚礼上半场）、才艺表演与来宾互动（婚礼下半场）<br />   
+             <span>服务时间：</span>8小时<br />
+             <span>服务人数：</span>1名<br />
+             <span>补充说明：</span>如需增加督导、DJ等项目费用另算。<br /> 
+             </td>
+           </tr>
+ <?php endforeach; ?>
+       </table>
+
+      </div>
+    </div>
+
+<!--预约流程-->
+    <div class="proDeLiProce mt20">
+         <div class="proDeLiProceUp magi fs26">
+             预约流程
+         </div>
+         <div class="proDeLiProceDo">
+             <img src="<?php echo base_url().'application/views/';?>images/procepersonl.png" title="婚礼梦工厂预约流程" alt="婚礼梦工厂预约流程">
+         </div>
+    </div>
+
+<!--预约说明-->
+<div class="proDeLiInt mt20">
+         <div class="proDeLiIntUp magi fs26">
+             预约说明
+         </div>
+         <div class="proDeLiIntDo">
+         
+           <!--职业一：化妆师的服务内容-->  <!--注：不同类型的职业的服务说明不一样，分为4种-->
+           <h1 class="instructions1"> · 服务内容</h1>
+           <h6 class="instructions6">   
+            1. 预订前，可先试妆；试妆满意后，再预订；不满意，支付化妆师一定金额的试妆费；<br />
+            2. 妆面包含迎宾妆、仪式妆、敬酒妆，头饰及配饰由化妆师提供（婚礼结束后回收）；<br />
+            3. 各个化妆师使用的化妆品有一定差异，请仔细查看服务说明；<br />
+            4. 因为早上化妆时间紧张，一般化妆师只赠送一个伴娘妆或妈妈妆；<br />
+           </h6>
+           <h1 class="instructions1"> · 预订流程</h1>
+           <h6 class="instructions6">   
+            1. 联系婚艺365婚礼小秘书，免费获得婚礼咨询及全程监管服务；<br />
+            2. 注册或登录后找到理想的化妆师，可以通过电话，客服QQ找到婚艺小秘书，我们将您的基本情况与化妆师沟通，如果出现档期或服务内容不符，我们会及时与您联系并为您推荐符合您要求的化妆师。；<br />
+            3. 确定化妆师后，在线支付定金，定金由婚艺365进行担保，化妆师确认订单后，预订成功；<br />
+            4. 支付定金后，与化妆师电话或见面沟通具体化妆需求；约定试妆时间；如试装后发现不满意，支付一定试妆费，并联系婚艺小秘书，我们会继续为您推荐，直到您满意为止；<br />
+            5．如在沟通过程中因为新人需求而增加费用，婚礼结束后以现金红包形式支付给化妆师；<br />
+            6. 婚礼结束后，新人登录婚艺365确认付款，点击"确认付款"后定金才支付给化妆师；<br />
+            7. 仪式结束后，婚艺365会在7个工作日回访新人，了解化妆师服务情况；<br />
+
+           </h6>
+           <h1 class="instructions1"> · 通过婚艺365预订的优势</h1>
+           <h6 class="instructions6">   
+           1. 费用有保障<br />
+           通过婚艺365支付定金，费用由婚艺365全程担保。婚礼结束后，新人登录婚艺365确认付款，婚礼人才会收到定金，婚礼结束前婚礼人不会收到任何费用。<br />
+           2. 服务有保障<br />
+           A.婚艺365婚礼小秘书将会全程参与服务监管，确保婚礼人服务态度和服务质量；<br />
+           B.如果婚礼人恶意跳单，婚艺365直接免费提供同等级别及以上的婚礼人进行服务，同时取消与该婚礼人的合作关系，并对新人进行适当的赔偿；<br />
+           C.如果婚期临近，因婚礼人发生不可抗力事件（生病、交通事故及其它不可抗力事件），导致婚礼不能正常履行服务，婚艺365将会根据新人婚期重新推荐合适的婚礼人提供服务。<br />
+           D.若新人与婚礼人发生争议，婚艺365将会作为第三方机构进行协商，保障新人的权益；<br />
+           </h6>
+           <h1 class="instructions1"> •	婚艺365小秘书服务：</h1>
+             <h6 class="instructions6">   
+              1.人员服务监督<br />
+                A.全程监督服务商策划服务，婚礼方案、婚礼报价、婚礼布置及仪式等；<br />
+                B.监督四大金刚服务，包含主持人、摄影师、摄像师、化妆师服务内容和服务流程；<br />
+              2.婚礼流程监控<br />
+                A.婚礼筹备内容的监控，方案策划、婚礼彩排、婚礼布置等；<br />
+                B.婚礼筹备流程的监控，保证婚礼人各个节点工作有序进行。<br />
+              3.应急情况处理<br />
+                A.婚礼人在婚礼开始前出现意外，婚艺365会立即提供同等服务质量或以上的婚礼人进行服务；<br />
+                B.服务商在婚礼开始前出现意外，婚艺365将会立即启用婚礼备用程序，全面保障婚礼顺利进行。<br />
+                4.投诉建议处理<br />
+                A.7×24小时实时投诉响应，新人可随时向婚艺365客服投诉婚礼人服务问题；<br />
+                B.婚艺365将会在24小时内提供解决方案。<br />
+
+             </h6>
+              <h1 class="instructions1"> · 预订说明</h1>
+             <h6 class="instructions6">   
+              【费用说明】<br />
+1.服务费。婚礼人服务费用，定金在预订时直接支付，由婚艺365全程担保；<br />
+2.交通费。预订之后，应及时与婚礼人取得沟通。一般情况，在市区（非异地范围内）可乘坐公共交通，无须承担交通费，如距离太远、时间太早，需要报销交通费。建议婚礼结束后，以现金红包形式代替<br />
+3.异地费。如果在异地进行服务，需要提前跟婚礼人确认异地服务费金额。并建议在婚礼结束后，以现金红包形式代替；<br />
+【预订提示】
+1.请在预定前与婚艺365小秘书进行联系，确定婚礼人有空闲档期再预定，如该婚礼人没有档期，我们将根据您的需求，为您推荐最适合您的三位婚礼人供您选择；<br />
+2.预订前，请仔细查看婚礼人的服务说明、报价及档期，预订后，非特殊原因不得退订；<br />
+3.支付定金后，婚礼人确认订单后，才视为预订成功；<br />
+4.预订成功后，婚礼人因不可抗力事件（生病、事故、自然灾害等），不能正常服务新人，提供证明材料，婚艺365将会全面协调，退还定金，并推荐其他婚礼人；<br />
+5.预订成功后，新人因不可抗力事件（生病、事故、自然灾害等），不能正常举办婚礼，提供证明材料，婚艺365将出面向婚礼人协调退还定金事宜；临近婚期30天不得退还；<br />
+6.如果婚礼人恶意跳单，婚艺365将直接免费提供同等级别的婚礼人进行服务，并退回定金。<br />
+【如何预订】<br />
+1.选择婚艺365小秘书<br />
+A.每一对新人，婚艺365将会配备一个婚礼小秘书1对1服务，提供预订辅导、婚礼人推荐、服务监管以及应急情况的处理；<br />
+2.提交订单<br />
+A.真实准确填写婚期、酒店、联系方式等预订信息；<br />
+B.有关额外的预订说明，请认真填写，作为服务凭证；<br />
+3.支付定金<br />
+A.新人提交订单后，将锁定婚礼人档期1个小时，请在1个小时内支付定金，以免该档期被抢订。<br />
+B.婚艺365开通了银联支付、支付宝支付、方便又快捷；<br />
+4.预订成功<br />
+A.定金支付成功后，婚礼人确认订单后，预订才算成功；<br />
+【签约方式】<br />
+1.电子协议。预订时，婚艺365自动生成电子协议，新人、婚礼人、婚艺365三方均可查阅，跟纸质协议享有同等法律效力。<br />
+2.纸制协议。纸制协议，可以快递签订或直接到婚艺365公司进行签订，快递签订须由新人承担快递费用。<br />
+             </h6>
+         </div>
+    </div>
+<!--最新评论-->
+    <div class="proDeLiCom mt20">
+         <div class="proDeLiComUp magi fs26">
+            最新评论
+         </div>
+         <div class="proDeLiComDo">
+                <div class="proComet">
+                  <dl>
+                      <dt><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg"></dt>
+                      <dd>131243253535</dd>
+                  </dl>
+                  <div class="proCometa">
+                    服务类型：婚礼策划统筹 <span class="star">等级：<img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ></span><br /><br />
+非常感谢家豪！我的婚礼真的很用心，灯光和场景简直没爆了！几千块钱的布置，在婚庆绝对上万了！而且我喜欢的胡桃机子，家豪都自己买的，为了节约我的开支，象征性的收了点点钱！真的很感动！在资金紧张的情况下，坚决不让我加钱！他自己想了很多办法！！太感谢了！找我真的给了我一个非常棒的婚礼！<br />
+<i style="color:#ccc;">[2015-06-17 10:36]</i>
+
+                  </div>
+                </div>
+                <!--第一条评论结束-->
+                 <div class="proComet">
+                  <dl>
+                      <dt><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg"></dt>
+                      <dd>131243253535</dd>
+                  </dl>
+                  <div class="proCometa">
+                    服务类型：婚礼策划统筹 <span class="star">等级：<img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ></span><br /><br />
+非常感谢家豪！我的婚礼真的很用心，灯光和场景简直没爆了！几千块钱的布置，在婚庆绝对上万了！而且我喜欢的胡桃机子，家豪都自己买的，为了节约我的开支，象征性的收了点点钱！真的很感动！在资金紧张的情况下，坚决不让我加钱！他自己想了很多办法！！太感谢了！找我真的给了我一个非常棒的婚礼！<br />
+<i style="color:#ccc;">[2015-06-17 10:36]</i>
+
+                  </div>
+                </div>
+                <!--第2条评论结束-->
+                 <div class="proComet">
+                  <dl>
+                      <dt><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg"></dt>
+                      <dd>131243253535</dd>
+                  </dl>
+                  <div class="proCometa">
+                    服务类型：婚礼策划统筹 <span class="star">等级：<img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ></span><br /><br />
+非常感谢家豪！我的婚礼真的很用心，灯光和场景简直没爆了！几千块钱的布置，在婚庆绝对上万了！而且我喜欢的胡桃机子，家豪都自己买的，为了节约我的开支，象征性的收了点点钱！真的很感动！在资金紧张的情况下，坚决不让我加钱！他自己想了很多办法！！太感谢了！找我真的给了我一个非常棒的婚礼！<br />
+<i style="color:#ccc;">[2015-06-17 10:36]</i>
+
+                  </div>
+                </div>
+                <!--第3条评论结束-->
+                 <div class="proComet">
+                  <dl>
+                      <dt><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg"></dt>
+                      <dd>131243253535</dd>
+                  </dl>
+                  <div class="proCometa">
+                    服务类型：婚礼策划统筹 <span class="star">等级：<img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ></span><br /><br />
+非常感谢家豪！我的婚礼真的很用心，灯光和场景简直没爆了！几千块钱的布置，在婚庆绝对上万了！而且我喜欢的胡桃机子，家豪都自己买的，为了节约我的开支，象征性的收了点点钱！真的很感动！在资金紧张的情况下，坚决不让我加钱！他自己想了很多办法！！太感谢了！找我真的给了我一个非常棒的婚礼！<br />
+<i style="color:#ccc;">[2015-06-17 10:36]</i>
+
+                  </div>
+                </div>
+                <!--第4条评论结束-->
+                 <div class="proComet">
+                  <dl>
+                      <dt><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg"></dt>
+                      <dd>131243253535</dd>
+                  </dl>
+                  <div class="proCometa">
+                    服务类型：婚礼策划统筹 <span class="star">等级：<img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ><img src="<?php echo base_url().'application/views/';?>images/star.jpg" align="middle" ></span><br /><br />
+非常感谢家豪！我的婚礼真的很用心，灯光和场景简直没爆了！几千块钱的布置，在婚庆绝对上万了！而且我喜欢的胡桃机子，家豪都自己买的，为了节约我的开支，象征性的收了点点钱！真的很感动！在资金紧张的情况下，坚决不让我加钱！他自己想了很多办法！！太感谢了！找我真的给了我一个非常棒的婚礼！<br />
+<i style="color:#ccc;">[2015-06-17 10:36]</i>
+
+                  </div>
+                </div>
+                <!--第5条评论结束-->
+
+         </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

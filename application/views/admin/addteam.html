@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+#ue{
+	margin:0 auto;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 注册婚庆团队</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+			
+               <div style="background-color: #fcfcfc; padding-top:50px;">
+			   <table style="margin:0 auto; width:1200px; padding:20px;">
+                 <form name="area" method="post" enctype="multipart/form-data" action="<?php echo site_url('admin/teammng/addteam');?>">
+				<tr>
+                   <td width="160" height="30">团队名称：</td>
+                  <td width="739" colspan="2" height="30"><input type="text" name="tname" size="70" style="height:25px;"  value="<?php echo set_value('tname');?>"> &nbsp;&nbsp;<?php echo form_error('tname');?></td>
+                  
+                </tr>
+				<tr>
+                   <td height="30">团队电话：</td>
+                   <td colspan="2" height="30"><input type="text" name="phone" size="70"  style="height:25px;"  value="<?php echo set_value('phone');?>"><span>* 格式:13/15/18xxxx或0XXXX-XXXXXXXX</span> &nbsp;&nbsp;<?php echo form_error('phone');?></td>
+                
+                </tr>
+				<tr>
+                   <td>登录账户：</td>
+                   <td colspan="2"><input type="text" name="loginname" size="70"  style="height:25px;"  value="<?php echo set_value('loginname');?>"> &nbsp;&nbsp;<?php echo form_error('loginname');?></td>
+                  
+                </tr>
+				<tr>
+                    <td height="30">登录密码：</td>
+                    <td colspan="2" height="30"><input type="password" name="passwd" style="height:25px;"  size="70"  value="<?php echo set_value('passwd');?>">&nbsp;&nbsp;<?php echo form_error('passwd');?></td>
+                    
+                 </tr>
+				<tr>
+                     <td height="30">确认密码：</td>
+                     <td colspan="2" height="30"><input name="repwd" style="height:25px;" type="password"  value="<?php echo set_value('repwd');?>" size="70">&nbsp;&nbsp;<?php echo form_error('repwd');?></td>
+                     
+                </tr>
+                
+ 				<tr>
+                     <td height="30">是否优秀：</td>
+					 <td height="30" colspan="2"> <select name="isexec">
+						 
+						<option value="0" selected="selected">不优秀</option>
+						<option value="1">优秀</option>
+						 
+						</select>
+						</td>
+				</tr>
+                
+				<tr>
+                     <td height="30">选择地区：</td>
+					 <td height="30" colspan="2"><select name="aid">
+						<?php foreach($areas as $v){?>
+						<option value="<?php echo $v['aid'];?>"><?php echo $v['amark'];?></option>
+						<?php } ?>
+						</select>
+						</td>
+				</tr>
+				<tr>
+                    <td height="30">选择团队标签：</td>
+					<td height="30" colspan="2"><select name="tlid">
+						<?php foreach($tls as $v){?>
+						<option value="<?php echo $v['tlid'];?>"><?php echo $v['tlname'];?></option>
+						<?php } ?>
+						</select>
+					</td>
+				</tr>
+                
+					<tr>
+						<td height="30">设置公司属性：</td>
+						<td height="30" colspan="2" class="bb"><input type="radio" name="ischeck" value="0">未审核&nbsp;<input type="radio" name="ischeck" value="1" checked>已审核<input type="radio" name="isrecom" value="0">不推荐至首页&nbsp;<input type="radio" name="isrecom" value="1" checked>推荐至首页</td>
+						
+					</tr>
+                    
+				<tr>
+                   <td height="30">选择星级：</td>
+                   <td height="30" colspan="2">
+				     <select name="level">
+				      <option  value="1">1级</option>
+				      <option  value="2">2级</option>
+				      <option  value="3">3级</option>
+				      <option  value="4">4级</option>
+				      <option  value="5">5级</option>
+                      </select>
+				    </td>
+                </tr>	
+				<tr>
+                    <td height="30">介召视频地址：</td>
+                    <td colspan="2" height="30"><input type="text" name="tintrolvideo" style="height:25px;" size="80" value="<?php echo set_value('tintrolvideo');?>">&nbsp;&nbsp;<?php echo form_error('tintrolvideo');?></td>
+                   
+                </tr>
+				<tr>
+                    <td height="30">团队简介：</td>
+                    <td colspan="2" height="30"><textarea name="tintrol" cols="90" rows="10" ><?php echo set_value('tintrol');?></textarea> &nbsp;&nbsp;<?php echo form_error('tintrol');?></td>
+                  
+                </tr>
+				<tr>
+                     <td height="30">团队标志：</td>
+                     <td colspan="2" height="30"><input type="file" name="tlogo"   ><span>* 图片格式限制：gif|png|jpg|jpeg,不能大于30KB</span>&nbsp;&nbsp;<?php echo isset($error)?$error:'';?></td>
+                    
+                </tr>
+				
+			
+				<tr >
+                      <td height="120"></td>
+                  <td height="120"  colspan="2" align="center" valign="middle" ><input name="submit" type="image" alt="确定" src="<?php echo base_url();?>application/views/admin/images/tj.png"></td>
+				
+				</tr>
+                </form>
+				</table>
+</div>
+</body>
+</html>

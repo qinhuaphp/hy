@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>公司-公司资料</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views';?>/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"  src="<?php echo base_url().'application/views';?>/js/placeholder.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+/*初始化标记,因为不确定表单项目是否有值，所以初始化标记的时候要判断*/
+	var sty=$(":text[name=style]").val()==''?false:true;
+	var loca=$(":text[name=colocation]").val()==''?false:true;
+	var introl=$(":text[name=cointrol]").val()==''?false:true;
+	var  introlv=$(":text[name=cointrolvideo]").val()==''?false:true;
+	var account=$(":text[name=coaccount]").val()==''?false:true;
+	console.log(sty,loca,introl,introlv,account)
+	//正则验证格式，不包含指定的字符
+	var exp=/^(\s{1,})$|[\~\_\-!*\(\)\[\]\{\}\.\;\:\'\`\"\+\s\\\/\?\#\$\%\^&=]{1,}/;
+	/*验证风格*/
+	$(":text[name=style]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","擅长风格必填");
+			sty=false;
+			//console.log(sty)
+		}
+		if($(this).val()!=''){
+			if($(this).val().length<2){
+				$(this).css({
+					"border":"1px solid #F7597A",
+					"color":"red",
+					"font-size":"12px"
+				}).val('').attr("placeholder","擅长风格过短");
+				sty=false;
+				//console.log(sty)
+			}else if($(this).val().length>=2){
+				if(exp.test($(this).val())){
+					$(this).css({
+					"border":"1px solid #F7597A",
+					"color":"red",
+					"font-size":"12px"
+					}).val('').attr("placeholder","擅长风格只能为汉字");
+					sty=false;
+					//console.log(sty)
+				}else if(exp.test($(this).val())==false){
+					$(this).css({
+					"border":"1px solid green",
+					});
+					sty=true;
+					//console.log(sty)
+				}
+			}
+			
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入擅长风格");
+	});
+	/*验证地址*/
+	$(":text[name=colocation]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","公司地址必填");
+			loca=false;
+			//console.log(loca)
+		}
+		if($(this).val()!=''){
+			if($(this).val().length<2){
+				$(this).css({
+					"border":"1px solid #F7597A",
+					"color":"red",
+					"font-size":"12px"
+				}).val('').attr("placeholder","公司地址过短");
+				loca=false;
+				//console.log(loca)
+			}else if($(this).val().length>=2){
+				if(exp.test($(this).val())){
+					$(this).css({
+					"border":"1px solid #F7597A",
+					"color":"red",
+					"font-size":"12px"
+					}).val('').attr("placeholder","公司地址只能为汉字");
+					loca=false;
+					//console.log(loca)
+				}else if(exp.test($(this).val())==false){
+					$(this).css({
+					"border":"1px solid green",
+					});
+					loca=true;
+					//console.log(loca)
+				}
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入擅长风格");
+	});
+	/*验证公司简介*/
+	$(":input[name=cointrol]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","公司简介必填");
+			introl=false;
+		}
+		if($(this).val()!=''){
+			$(this).css({
+					"border":"1px solid green",
+			});
+			introl=true;
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入公司简介");
+	});
+	/*验证介绍视频地址*/
+	$(":text[name=cointrolvideo]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","介绍视频必填");
+			introlv=false;
+		}
+		if($(this).val()!=''){
+		/*正则验证视频地址的格式*/
+			var exphttp=/^http:\/\/.*\.swf$/;
+			if(exphttp.test($(this).val())){
+				$(this).css({
+					"border":"1px solid green",
+				});
+				introlv=true;
+			}else{
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","介绍视频地址格式不正确");
+			introlv=false;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入公司介绍视频地址，以http://开头并且以swf结尾");
+	});
+	/*验证银行账户*/
+	$(":text[name=coaccount]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","银行账户必填");
+			account=false;
+		}
+		if($(this).val()!=''){
+			var expac=/^(\d{16,19})$/;//正则验证银行账户
+			if(expac.test($(this).val())==false){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","银行账户格式不正确");
+			account=false;
+			}else{
+				$(this).css({
+					"border":"1px solid green",
+				});
+			account=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入银行账户");
+	});
+	/*表单提交*/
+	$("#comsg").submit(function(){
+		//console.log(sty,loca,introl,introlv,account)
+		if(sty&&loca&&introl&&introlv&&account){
+			$.ajax({
+				url:$(this).attr("action"),
+				type:'post',
+				data:$(this).serialize(),
+				success:function(data){
+					if(data=='1'){
+						$("#tan").show().html('恭喜，成功修改资料！').animate({
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"z-index":"203"
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+						$(":input").not(".button").val('');
+					}
+					if(data=='0'){
+						$("#tan").show().html('亲，没有更改资料哟~~').animate({
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"z-index":"203"
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+						$(":reset").click();
+					}
+				}
+			});
+		}
+		return false;
+	});
+})
+</script>
+<style text="text/css">
+#tan{
+		position:absolute;
+		left:0;
+		top:0;
+		width:400px;
+		height:200px;
+		background-color:#fcfcfc; 
+		border:1px #ccc solid; 
+		text-align:center;
+		line-height:200px;
+		color:black;
+		font-size:20px;
+		display:none;
+}
+
+</style>
+<div id="tan"></div>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members';?>/images/menpoint.png" align="left"> 公司资料
+     </div>
+    <div class="memRightDo fl" >
+     <div class="zili"> 
+  <form id="comsg" name="" method="post" action="<?php echo site_url('usercenter/pz/coid/'.$userinfo[0]['coid'].'');?>"> 
+  <input type="hidden" name="coid" value="<?php echo $userinfo[0]['coid'];?>"/>
+  <span class="sleft"> 擅长风格 ：</span>
+  <span class="sright cloF75 fs24"> <input type="text" class="input" placeholder="请输入贵公司擅长的风格"  name="style" value="<?php echo empty($userinfo[0]['style'])?'':$userinfo[0]['style'];?>"></span>
+  <span class="sleft">公司地址 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入贵公司地址"  name="colocation" value="<?php echo empty($userinfo[0]['colocation'])?'':$userinfo[0]['colocation'];?>"></span>
+  <span class="sleft" style="height:120px;">公司简介 ：</span>
+  <span class="sright cloF75 fs24" style="height:120px;">
+  <textarea class="textare" name="cointrol" placeholder="请输入公司简介">
+  <?php echo empty($userinfo[0]['cointrol'])?'':$userinfo[0]['cointrol'];?>
+  </textarea></span>
+  <span class="sleft">公司介绍视频地址 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input"   style="width:460px;" placeholder="请以http://开头，以http://开头并且以swf结尾""   name="cointrolvideo" value="<?php echo empty($userinfo[0]['cointrolvideo'])?'':$userinfo[0]['cointrolvideo'];?>"></span>
+  <span class="sleft">银行账号 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入公司银行账号"  name="coaccount" value="<?php echo empty($userinfo[0]['coaccount'])?'':$userinfo[0]['coaccount'];?>"></span>
+  <!--
+  <span class="sleft">支付宝账号 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入公司支付宝账号" ></input></span>
+  <span class="sleft">负责人姓名 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入负责人姓名" ></input></span>
+  <span class="sleft">负责人联系方式 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入负责人手机号" ></input></span>
+  <span class="sleft">负责人身份证号码 ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入负责人身份证号码" ></input></span>
+  <span class="sleft">公司电话：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="例如：0551-65651671 " ></input></span>
+  <span class="sleft">联系人Q  Q ：</span>
+  <span class="sright cloF75 fs24"><input type="text" class="input" placeholder="请输入您的QQ" ></input></span>
+  -->
+  <span style="width:550px; margin-left:300px;"><input class="button" type="submit"  value="提  交">&nbsp;&nbsp;<input type="reset" class="button" value="重  置"></span> 
+  </form>   
+    </div>
+    </div>
+    </div>
+  
+</body>
+</html>

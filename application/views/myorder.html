@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<title>婚艺365</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images/';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images/';?>/favicon.ico"/>
+<link href="<?php echo base_url().'application/views/';?>css/home.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/geren.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/lrtk.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.4.2.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtk.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/default_blue.css"/>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.7.2.min.js"></script>
+<script language="javascript" src="<?php echo base_url().'application/views/';?>js/jquery.Sonline.js"></script>
+
+
+</head>
+
+
+
+<body>
+ 
+
+
+
+
+<!--个人中心部分开始-->
+<div class="geren">
+
+<div class="geren_right">
+	<div class="geren_right_up">
+    · 当前所在的位置：我的预约&nbsp;|总计<?php echo $total;?>笔订单
+    </div>
+	<div class="geren_right_down">
+	  
+<table width="900" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="314" height="38" align="center" valign="middle" bgcolor="#f9f8f8"><strong>订单编号</strong></td>
+    <td width="181" height="38" align="center" valign="middle" bgcolor="#f9f8f8"><strong> 预约日期 </strong></td>
+    <td width="143" height="38" align="center" valign="middle" bgcolor="#f9f8f8"><strong>预约时间段 </strong></td>
+    <td width="141" height="38" align="center" valign="middle" bgcolor="#f9f8f8"><strong>价格</strong></td>
+    <td width="151" height="38" align="center" valign="middle" bgcolor="#f9f8f8"><strong>订单状态 </strong></td>
+  </tr>
+  <tr>
+    <td height="700" colspan="5" align="left" valign="top">
+    
+    
+    
+    <?php foreach($res as $v) {?>
+    <table width="900" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="40" colspan="5"><span class="color">预约编号：<?php echo $v['onum'];?></span>
+		<span class="color">下单时间:<?php echo date('Y-m-d H:i:s',$v['addtime']);?></span></td>
+        </tr>
+      <tr>
+      
+        <td width="306" height="135" bgcolor="#f3f3f3" style="line-height:23px;">
+		
+		<img class="yuan_tou_b" src="
+		<?php if(isset($v['hlogo'])&&!empty($v['hlogo'])){echo base_url().$v['hlogo'];}?>
+		<?php if(isset($v['cologo'])&&!empty($v['cologo'])){echo base_url().$v['cologo'];}?>
+		<?php if(isset($v['mname'])&&!empty($v['mname'])){echo base_url().'application/views/images/zhu_tou.jpg';}?>"
+		width="132" height="132" align="left" style="margin-right:5px;" />
+		<br />
+     <!---->
+          
+        <?php if('human'!=$_SESSION['userid']['user']){echo '婚礼人';}?><br />
+		<?php if(isset($v['coname'])&&!empty($v['coname'])){echo $v['coname'];}?>
+		<?php if(isset($v['hname'])&&!empty($v['hname'])){echo $v['hname'];}?>
+		<?php if(isset($v['mname'])&&!empty($v['mname'])){echo $v['mname'];}?>
+
+         <br />
+         </td>
+        <td width="170" height="135" align="center" valign="middle" bgcolor="#f3f3f3"><?php echo $v['odate'];?> </td>
+        <td width="147" height="135" align="center" valign="middle" bgcolor="#f3f3f3"><?php echo $v['otime']=='am'?'午宴':'晚宴';?></td>
+        <td width="150" height="135" align="center" valign="middle" bgcolor="#f3f3f3"><a><?php echo $v['perprice'];?> </a></td>
+        <td width="127" height="135" align="center" valign="middle" bgcolor="#F3F3F3">
+		<?php if('human'!=$_SESSION['userid']['user']){?>
+		<?php echo $v['ispay']=='1'?'已支付':'未支付';?>&nbsp;|<?php echo $v['ischeck']=='1'?'正常':'取消';?><br />
+		<a href="#"><input name="" type="button" value="付款"  style="background-color:#ea7391; border:1px solid #fff; color:#FFF; width:60px; height:25px;"/>
+		</a>
+		<?php } ?>
+		<?php if('human'==$_SESSION['userid']['user']){?>
+			<?php echo $v['ispay']=='1'?'已支付':'未支付';?>&nbsp;|<?php echo $v['ischeck']=='1'?'正常':'取消';?>
+		<?php } ?>
+		</td>
+      </tr>
+    </table>
+    <?php }?>
+    
+
+    
+    
+    <div class="page">
+	<?php echo $link;?>
+   </div>
+<!--分页部分结束-->    
+    </td>
+    </tr>
+</table>
+  
+	</div>
+	
+</div>
+<!--个人右侧部分结束-->
+</div>
+
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+    
+    
+
+</body>
+</html>

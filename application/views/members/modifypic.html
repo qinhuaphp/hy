@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>公司-公司资料</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/uploadify.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/main.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/demos.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/jquery.Jcrop.min.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views';?>/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"  src="<?php echo base_url().'application/views/members/';?>/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript"  src="<?php echo base_url().'application/views/members/';?>/js/jquery.Jcrop.min.js"></script>
+
+</head>
+<body>
+<script>
+$(function(){
+	var baseurl='<?php echo base_url();?>';
+	var src='';
+	$("#upload").uploadify({
+	/*选项：*/
+	//uploadify的路径，必须的。
+		"swf":'<?php echo base_url().'application/views/members/';?>js/uploadify.swf',
+		//uploader是指定后台接收的程序，必须的
+		'uploader':'<?php echo base_url().'application/views/members/js/uploadify.php';?>',
+		/*
+		修改uploadify.css文件中的.uploadify-queue-item .cancel a内的背景图片地址改为对应的地址
+		*/
+		//'cancelImg':'<?php echo base_url().'application/views/members/js/';?>uploadify-cancel.png',
+		//上传按钮的类名，必须的
+		'buttonClass':'uploadify-button',
+		//设置上传按钮的文字
+		'buttonText':'选择头像',
+		//设置成功上传的超时时间,默认是30秒
+		'successTimeout':30,
+		//检查上传的文件是否已存在于服务器,参数是后台的脚本
+		//'checkExisting':''.
+		 //是否开启调试,默认是false。
+        'debug' : false,
+		 //服务器端脚本使用的文件对象的名称 $_FILES个['upload']
+       //'fileObjName':'upload',
+        //是否自动上传,默认为true。设置为假如果你不想要的文件自动上传时被添加到队列中。如果设置为false,上传可以使用上传方法触发。
+        'auto':false,
+		   //附带值
+        /*'formData':{
+            'userid':'用户id',
+            'username':'用户名',
+            'rnd':'加密密文'
+        },*/
+		//设置提交方法
+		'method':'post',
+		//上传过程显示的进度条，speed是以速度显示，percentage是以百分比显示
+		'progressData' : 'speed',
+		//是否允许多文件上传,默认为true，允许
+		'multi':false,
+		//上传的文件数量限制
+		'uploadLimit':999,
+		 //浏览按钮的宽度
+        'width':'100',
+        //浏览按钮的高度
+        'height':'30',
+		 //在浏览窗口底部的文件类型下拉菜单中显示的文本
+        'fileTypeDesc':'支持的格式：',
+        //允许上传的文件后缀
+        'fileTypeExts':'*.jpg;*.jpge;*.gif;*.png',
+        //上传文件的大小限制
+        'fileSizeLimit':'1MB',
+        //队列中的文件数量,此设置直接影响是否多文件上传
+        'queueSizeLimit' : 1,
+		//上传文件域所在的父级dom元素的id
+		"queueID":"file",
+		/*方法：
+		disabled,禁用、启用按钮，参数是true和false，true为启用，false为禁用
+		$("#upload").uploadify('disable',true);
+		stop:停止正在上传的文件
+		$("#upload").uploadify('stop');
+		upload:上传文件
+		$("#upload").uploadify('upload','*');
+		cancel:取消文件被上传
+		$('#upload').uploadify('cancel');//取消队列中的第一个文件
+		$('#upload').uploadify('cancel','*')；//取消队列中的所有
+		*/
+		/*事件：*/
+		//取消事件onCancel，当从队列中删除文件时触发，参数是被取消上传的文件
+		'onCancel':function(file){
+			alert('已取消'+file+'上传')
+		},
+		//清空队列事件onClearQueue
+		//选择文件事件
+		'onSelect':function(file){
+		
+		},
+		/*选择错误事件，每次选择的文件超过限制的大小和数量而出现错误时触发*/
+		 'onSelectError':function(file, errorCode, errorMsg){
+            switch(errorCode) {
+                case -100:
+                    alert("上传的文件数量已经超出系统限制的"+$('#upload').uploadify('settings','queueSizeLimit')+"个文件！");
+                    break;
+                case -110:
+                    alert("文件 ["+file.name+"] 大小超出系统限制的"+$('#upload').uploadify('settings','fileSizeLimit')+"大小！");
+                    break;
+                case -120:
+                    alert("文件 ["+file.name+"] 大小异常！");
+                    break;
+                case -130:
+                    alert("文件 ["+file.name+"] 类型不正确！");
+                    break;
+            }
+        },
+		//上传成功事件，onUploadSuccess
+		'onUploadSuccess':function(file, data, response){
+			src=data;
+            $("img").attr("src",baseurl+data);
+			//alert($("img").attr("src"))
+        },
+		//上传出错事件，onUploadError，已上传但返回错误信息
+		'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+            alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+        }
+
+	});
+	/*图片裁剪*/
+	$('#cropbox').Jcrop({
+      aspectRatio: 1,
+      onSelect: updateCoords
+    });
+	
+	$("#cropimg").submit(function(e){
+		if($("#w").val()==''){
+			alert('请选择裁剪区域');
+		}
+		if($('#w').val()!=''){
+			$.ajax({
+				url:$(this).attr("action"),
+				type:'post',
+				data:{
+						x:$('#x').val(),
+						y:$('#y').val(),
+						w:$('#w').val(),
+						h:$('#h').val(),
+						sourceimg:src,
+						blx:$("#x").val()/$("#cropbox").width(),
+						bly:$("#y").val()/$("#cropbox").height()
+				},
+				success:function(data){
+					if(!$.isNumeric(data)){
+						$("#newpic").attr("src",baseurl+data);
+					}
+					if(data=='0'){
+						alert('没成功')
+					}
+					
+				}
+			});
+		}
+	return false;
+	});
+})
+  function updateCoords(c)
+  {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+  };
+
+
+
+</script>
+<!--头像裁切<form  id="pic" action="<?php echo site_url('usercenter/modifypic/'.$idname.'/'.$idvalue.'');?>" enctype="multipart/form-data" >	 </form>-->
+     <div class="cut fl" id="file">
+	 
+	 <input type="file" name="<?php echo $upfile;?>" id="upload" />
+	
+
+	 <!--上传按钮，调用uploadify方法-->
+	
+	 <!--
+	 <a href="javascript:$('#upload').uploadify('disable', true)">禁用按钮</a> | <a href="javascript:$('#upload').uploadify('disable', false)"> 启用按钮</a>
+	 <a href="javascript:$('#upload').uploadify('upload', '*')">开始上传文件</a> | <a href="javascript:$('#upload').uploadify('stop')">停止上传</a>
+	 <a href="javascript:$('#upload').uploadify('cancel')"> 取消队列中的第一个文件</a> | <a href="javascript:$('upload').uploadify('cancel', '*')"> 清空队列</a> 
+	 -->
+	 <img src="<?php echo base_url().'application/views/images/touImages/tou_x.jpg';?>" id="cropbox"/>	
+	  <p style=" text-aligncenter;"><a href="javascript:$('#upload').uploadify('upload')"> 上传头像</a></p>
+	 <!-- This is the form that our event handler fills -->
+		
+     </div>   
+	 <div class="cutb">
+	 <form id="cropimg" action="<?php echo site_url('usercenter/croppic/'.$idname.'/'.$idvalue.'');?>" method="post">
+			<input type="hidden" id="x" name="x" />
+			<input type="hidden" id="y" name="y" />
+			<input type="hidden" id="w" name="w" />
+			<input type="hidden" id="h" name="h" />
+			<input type="submit" value="裁剪" class="uploadify-button"  style="width:220px;height:50px;"/>
+		</form>
+	<img src="<?php echo base_url().'application/views/images/touImages/tou_x.jpg';?>" id="newpic"/>
+	</div>
+</body>
+</html>
+

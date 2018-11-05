@@ -1,0 +1,36 @@
+ 
+
+
+
+
+
+
+<div class="orderPublicSc">
+<script> 
+var t=5;//设定跳转的时间 
+setInterval("refer()",1000); //启动1秒定时 
+function refer(){ 
+if(t==0){ 
+location="http://www.hunyi365.com"; //#设定跳转的链接地址 
+} 
+document.getElementById('show').innerHTML=""+t+"秒后跳转到首页"; // 显示倒计时 
+t--; // 计数器递减 
+//本文转自： 
+} 
+</script> 
+<table width="500" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="120" height="100" ><img src="<?php echo base_url().'application/views/';?>images/clock.gif"></td>
+    <td width="380" height="100">
+     <span style="color:#333">   需求发布成功，感谢您对婚艺365的支持！</span><br />
+     <span id="show"> </span><br />
+     <span style="color:#333">  不想等待<a href="http://www.hunyi365.com">，直接去首页&gt;&gt;</a> </span> <br /> 
+     </td>
+  </tr>
+</table>
+</div>
+</div>
+
+
+
+ 

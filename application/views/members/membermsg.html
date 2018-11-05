@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>新人资料</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views';?>/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url().'application/views';?>/js/placeholder.js"></script>
+</head>
+<body>
+<style text="text/css">
+#tan{
+		position:absolute;
+		left:0;
+		top:0;
+		width:400px;
+		height:200px;
+		background-color:#fcfcfc; 
+		border:1px solid  #F7597A; 
+		text-align:center;
+		line-height:200px;
+		color:#F7597A;
+		font-size:20px;
+		display:none;
+}
+
+</style>
+<script>
+$(function(){
+	var nick=$(":text[name=nickname]").val()==''?false:true;
+	var real=$(":text[name=realname]").val()==''?false:true;
+	var address=$(":text[name=address]").val()==''?false:true;
+	console.log(nick,real,address)
+	var exp=/^(\s{1,})$|[\~\_\-!*\(\)\[\]\{\}\.\;\:\'\`\"\+\s\\\/\?\#\$\%\^&=]{1,}/;
+	for(var i=18;i<51;i++){
+		var op='<option style="width:30px;background:gray;text-align:center;" value="'+i+'">'+i+'</option>';
+		$(":input[name=age]").append(op);
+	}
+	$(":text[name=nickname]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+			}).attr("placeholder","昵称必填");
+			nick=false;
+		}
+		if($(this).val()!=''){
+			if(exp.test($(this).val())){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+				}).val('').attr("placeholder","昵称格式不正确");
+				nick=false;
+			}else{
+				$(this).css({
+					"border":"1px solid green"
+				});
+				nick=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style");
+	});
+	/*验证真实姓名*/
+	$(":text[name=realname]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+			}).attr("placeholder","真实姓名必填");
+			real=false;
+		}
+		if($(this).val()!=''){
+			if(exp.test($(this).val())){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+				}).val('').attr("placeholder","格式不正确");
+				real=false;
+			}else{
+				$(this).css({
+					"border":"1px solid green"
+				});
+				real=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style");
+	});
+	/*检测地址*/
+	$(":text[name=address]").change(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+			}).attr("placeholder","地址必填");
+			address=false;
+		}
+		if($(this).val()!=''){
+			if(exp.test($(this).val())){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+				}).val('').attr("placeholder","格式不正确");
+				address=false;
+			}else{
+				$(this).css({
+					"border":"1px solid green"
+				});
+				address=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style");
+	});
+	/*表单提交*/
+	$("#msg").submit(function(){
+		if(nick&&real&&address){
+			$.ajax({
+				url:$(this).attr("action"),
+				type:'post',
+				data:$(this).serialize(),
+				success:function(data){
+					if(data=='1'){
+						$("#tan").show().html("恭喜，更新成功!").animate({
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"z-index":"10"
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+						$(":input").not(".button").val('');
+					}
+					if(data=='0'){
+						$("#tan").show().html("亲，没有更新哟~~").animate({
+							"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+							"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+							"z-index":"10"
+						},200);
+						setTimeout(function(){
+							$("#tan").hide();
+						},3000);
+					}
+				}
+			});
+		}
+		return false;
+	});
+})
+</script>
+<div id="tan"></div>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 新人资料
+     </div>
+    <div class="memRightDo fl" >
+     <div class="zili">
+    <form id="msg" name="" method="post" action="<?php echo site_url('usercenter/pz/mid/'.$userinfo[0]['mid'].'');?>">
+	<input type="hidden" name="mid" value="<?php echo $userinfo[0]['mid'];?>">
+    <span class="sleft">昵  称 ： </span>
+    <span class="sright">
+	<input type="text" class="input" placeholder="请输入昵称" name="nickname" value="<?php echo empty($userinfo[0]['nickname'])?'':$userinfo[0]['nickname'];?>">
+	</span>
+    <span class="sleft">真实姓名： </span>
+    <span class="sright ">
+	<input type="text" class="input" placeholder="请输入您的真实姓名" name="realname" value="<?php echo empty($userinfo[0]['realname'])?'':$userinfo[0]['realname'];?>">
+	</span> 
+          <span class="sleft">性  别：</span>
+          <span class="sright">
+            <input type="radio" name="sex" value="0" id="RadioGroup10_0" <?php echo $userinfo[0]['sex']=='0'?'checked':'';?>/>
+            男
+            <input type="radio" name="sex" value="1" id="RadioGroup10_1"  <?php echo $userinfo[0]['sex']=='1'?'checked':'';?>/>
+            女</span>
+           <span class="sleft">年  龄：</span>
+           <span class="sright">
+          <select name="age">
+
+          </select>
+		  </span>
+	<span class="sleft">地&nbsp;&nbsp;址：</span>
+     <span class="sright ">
+	 <input type="text" class="input" placeholder="请输入您的地址" name="address" value="<?php echo empty($userinfo[0]['address'])?'':$userinfo[0]['address'];?>">
+	 </span>
+     <span style="width:850px; margin-left:300px;"><input class="button" type="submit"  value="提  交">&nbsp;&nbsp;&nbsp;<input class="button" type="reset"  value="重  置"></span> 
+     </form> 
+  </div>
+    </div>
+    </div>
+</body>
+</html>

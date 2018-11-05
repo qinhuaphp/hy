@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<title>婚艺365</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link href="<?php echo base_url().'application/views/';?>css/home.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/star.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/geren.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/lrtk.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.4.2.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtk.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/default_blue.css"/>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.7.2.min.js"></script>
+<script language="javascript" src="<?php echo base_url().'application/views/';?>js/jquery.Sonline.js"></script>
+<link rel="stylesheet" href="<?php echo base_url().'application/views/';?>css/jquery.cxcalendar.css">
+<script src="<?php echo base_url().'application/views/';?>js/jquery-1.8.2.min.js"></script> 
+<script src="<?php echo base_url().'application/views/';?>js/jquery.cxcalendar.js"></script> 
+</head>
+<body>
+<div class="geren_right">
+	<div class="geren_right_up">
+    · 当前所在的位置：我的成果> <a> 作品案例</a>
+    </div>
+	<div class="geren_right_down">
+  <!--案例列表开始--> 
+  <?php echo isset($msg)?$msg:'';?>
+  <form method="post" action="<?php echo site_url('usercenter/addworks/'.$idname.'/'.$idvalue.'')?>" enctype="multipart/form-data" >
+  <input type="hidden" name="<?php echo $idname;?>" value="<?php echo $idvalue;?>">
+   <table width="920" border="0" cellspacing="0"  height="35" cellpadding="0" bgcolor="#f3f3f3" >
+  <tr>
+    <td align="left" valign="middle"> <strong>新增作品案例</strong></td>
+    </tr>
+</table>
+   
+    <table width="920" border="0" cellspacing="0" cellpadding="0" >
+  <tr>
+    <td width="150" height="50"  style="line-height:50px;"><span class="color">*</span> 案例名称：</td>
+    <td width="770" height="50"  style="line-height:50px;"><input type="text" name="wname" id="textfield" / style="border:1px #e3e3e3 solid; width:280px;height:23px;" value="<?php echo set_value('wname');?>"></td>
+ </tr>
+  
+  <tr>
+  <td width="150" height="25"  style="line-height:25px;"></td>
+    <td width="770" height="25"  style="line-height:25px; text-align:left;"><?php echo form_error('wname');?></td>
+  </tr>
+  
+  <tr>
+   <td width="150" height="50"  style="line-height:50px;"><span class="color">*</span>  价格：</td>
+    <td width="770" height="50"  style="line-height:50px;"><input type="text" name="wprice" id="textfield" / style="border:1px #e3e3e3 solid; width:280px;height:23px;" value="<?php echo set_value('wprice');?>"></td>
+  </tr>
+  
+  <tr>
+ <td width="150" height="25"  style="line-height:25px;"></td>
+    <td width="770" height="25"  style="line-height:25px; text-align:left;"><?php echo form_error('wprice');?></td>
+  </tr>
+  
+  <tr>
+   <td width="150"  ><span class="color">*</span> 案例简介：</td>
+    <td width="770" >
+	 <textarea name="wintrol"  style="border:#e3e3e3 solid 1px;  width:750px;" ><?php echo set_value('wintrol');?>
+	</textarea>
+	</td>
+  </tr>
+  
+   <tr>
+	 <td width="150" height="25"  style="line-height:25px;"></td>
+    <td width="770" height="25"  style="line-height:25px; text-align:left;"><?php echo form_error('wintrol');?></td>
+  </tr>
+  
+   <tr>
+  <td width="150" height="50"  style="line-height:50px;"><span class="color">*</span> 案例内容：</td>
+    <td width="770"   style="line-height:65px;">
+	<script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor_user.config.js"></script>
+	<script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor.all.min.js"></script>
+	<textarea name="wcontent"  id="wcontent"><?php echo set_value('wcontent');?></textarea>
+					<script type="text/javascript">
+						var ue=UE.getEditor("wcontent");
+					</script>
+	
+	</td>
+  </tr>
+  
+  <tr>
+ <td width="150" height="25"  style="line-height:25px;"></td>
+    <td width="770" height="25"  style="line-height:25px; text-align:left;"><?php echo form_error('wcontent');?></td>
+  </tr>
+  
+  <tr>
+   <td width="150" height="50"  style="line-height:50px;"><span class="color">*</span>  上传封面</td>
+    <td width="770" height="50"  style="line-height:50px;">
+	 <label for="fileField"></label>
+     <input type="file" name="cover_org" id="fileField" />
+     <span class="color"> 提示：图像最宽800px,最高600px,最大存储为850KB。</span></td>
+  </tr>
+  
+  <tr>
+ <td width="150" height="25"  style="line-height:25px;"></td>
+    <td width="770" height="25"  style="line-height:25px; text-align:left;"><?php echo isset($error)?$error:'';?></td>
+	</tr>
+	
+  <tr>
+    <td width="150" height="50"  style="line-height:50px;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td width="770" height="50" align="center" valign="middle" style="line-height:50px;" ><input type="image" src="<?php echo base_url().'application/views/';?>images/wan.jpg" />&nbsp;</td>
+  </tr>
+  
+</table>
+</form>
+  <!--案例列表结束-->    
+ 
+  
+	</div>
+	
+</div>
+<!--个人右侧部分结束
+</div>-->
+
+<!--个人中心部分结束
+ 
+</div>-->
+</body>
+</html>

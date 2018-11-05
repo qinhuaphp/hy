@@ -1,0 +1,259 @@
+ 
+<script>
+$(function(){
+	var baseurl='<?php echo base_url();?>';
+	var indexpage='<?php echo index_page();?>';
+	var lgname=false;
+	var tname=false;
+	var pwd=false;
+	var repwd=false;
+	var phone=false;
+	/*检测团队名称*/
+	$(':text[name=tname]').blur(function(){
+        var exptn=/^(\s{1,})$|[!\*\(\)\[\]\{\}\.\;\:\'\"\+\s\\\/\?\#\$\%\^\_\-\=\~\`\@\<\>]{1,}/ig;
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","团队名称必填");
+		}//tname为空结束
+		if($(this).val()!=''){
+			if($(this).val().length<2||$(this).val().length>14){
+				$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","团队名称长度不正确");
+			}else{
+				if(exptn.test($(this).val())){
+					$(this).css({
+					"border":"1px solid red",
+					"color":"red",
+					"font-size":"12px"
+					}).val('').attr("placeholder","团队名称为2到14位字母和数字");
+				}else{
+					$.ajax({
+						url:baseurl+indexpage+'/regteam/ajaxchecktname',
+						type:'post',
+						data:{tname:$.trim($(this).val())},
+						success:function(data){
+							if(data=='1'){
+								$(':text[name=tname]').css({
+								"border":"1px solid green",
+								"color":"green"
+								});
+								tname=true;
+							}else if(data=='0'){
+								$(':text[name=tname]').css({
+										"border":"1px solid red",
+										"color":"red",
+										"font-size":"12px"
+										}).val('').attr("placeholder","团队名称已存在");
+							}
+						}
+					});//ajax检测团队名称结束
+				}
+			}
+
+		}//团队名称非空结束
+	}).focus(function(){
+		$(this).val('').removeAttr("style").attr("placeholder","团队名称必须是2到14位的数字和字母");
+	});
+	/*登录名检测*/
+	$(":text[name=loginname]").blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","登录名必填");
+		}
+		if($(this).val()!=''){
+			var exptname=/^\w{4,20}$/;
+			if(exptname.test($(this).val())==false){
+				$(this).css({
+					"border":"1px solid red",
+					"color":"red",
+					"font-size":"12px"
+				}).val('').attr("placeholder","登录名必须是4到20位的纯数字和字母");
+			}else{
+				$.ajax({
+					url:baseurl+indexpage+'/regteam/ajaxcheckname',
+					type:'post',
+					data:{loginname:$.trim($(this).val())},
+					success:function(data){
+						if(data=='1'){
+							$(':text[name=loginname]').css({
+							"border":"1px solid green",
+							"color":"green"
+							});
+							lgname=true;
+						}else if(data=='0'){
+							$(":text[name=loginname]").css({
+								"border":"1px solid red",
+								"color":"red",
+								"font-size":"12px"
+							}).val('').attr("placeholder","登录名被占用");
+						}
+					}
+				});
+			}
+		}
+	}).focus(function(){
+		$(this).val('').removeAttr("style").attr("placeholder","请输入登录名(必须是4到20位的数字和字母)");
+	});
+/*手机号码检测*/
+	$(':text[name=phone]').blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+			"border":"1px solid red",
+			"color":"red",
+			"font-size":"12px"
+			}).attr("placeholder","手机号码必填");
+		}
+		if($(this).val()!=''){
+			var expphone=/^18(\d{9})$|^15(\d{9})$|^13(\d{9})$|^147(\d{8})$|^12(\d{9)$|^17(\d{9})$/;
+			if(expphone.test($(this).val())==false){
+				$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","手机号码格式不正确");
+			}else{
+				$.ajax({
+					url:baseurl+indexpage+'/regteam/ajaxcheckphone',
+					type:'post',
+					data:{phone:$.trim($(this).val())},
+					success:function(data){
+						if(data=='1'){
+							$(":text[name=phone]").css({
+							"border":"1px solid green",
+							"color":"green",
+							"font-size":"12px"
+							});
+							phone=true;
+						}else if(data=='0'){
+							$(":text[name=phone]").css({
+							"border":"1px solid red",
+							"color":"red",
+							"font-size":"12px"
+							}).val('').attr("placeholder","手机号码已被占用");
+						}
+					}
+				});
+			}
+		}
+	}).focus(function(){
+		$(this).val('').removeAttr("style").attr("placeholder","请输入手机号码");
+	});
+/*检测密码*/
+	$(':password[name=passwd]').blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+			"border":"1px solid red",
+			"color":"red",
+			"font-size":"12px"
+			}).attr("placeholder","密码必填");
+		}
+		if($(this).val()!=''){
+			if($(this).val().length<6){
+				$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","密码过短");
+			}else{
+				$(this).css({
+				"border":"1px solid green",
+				"color":"green",
+				"font-size":"12px"
+				});
+				pwd=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入密码");
+	});
+/*检测确认密码*/
+	$(":password[name=repeatpwd]").blur(function(){
+    
+		if($(this).val()==''){
+			$(this).css({
+			"border":"1px solid red",
+			"color":"red",
+			"font-size":"12px"
+			}).attr("placeholder","确认密码必填");
+		}
+		if($(this).val()!=''){
+        
+			if($(this).val()!=$(":password[name=repeatpwd]").val()){
+				$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+				}).val('').attr("placeholder","两次输入的密码不一致");
+			}else{
+				$(this).css({
+				"border":"1px solid green",
+				"color":"green",
+				"font-size":"12px"
+				});
+				repwd=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").attr("placeholder","请输入确认密码");
+	});
+	/*提交*/
+	$("#regteam").submit(function(){
+		if(lgname&&tname&&phone&&pwd&&repwd){
+			return true;
+		}else{
+			return false;
+		}
+	});
+})
+</script>
+<div class="register magi" >
+    <div class="registerUp fl">
+        <span class="cloF75 fs28">婚礼人团队注册</span> 已有婚艺账号，您可以直接登录</span> 
+    </div>
+    
+    <div class="registerDo fl">
+      <form id="regteam" method="post" action="<?php echo site_url('regteam/index');?>">
+      <span class="regileft">团队名称 ：</span>
+      <span class="regiright">
+      <input type="text" class="reinput"  name="tname" placeholder="团队名称为2到14位字母和数字" ></input></span>
+      <span class="regileft">用户名 ：</span>
+      <span class="regiright"><input type="text" class="reinput"  name="loginname" placeholder="用户名为4到20位的数字和字母" ></input></span>
+      <span class="regileft">密  码 ：</span>
+      <span class="regiright"><input  type="password" id="passwd" class="reinput" name="passwd"  placeholder="请输入您的密码" ></input></span>
+      <span class="regileft">确认密码 ：</span>
+      <span class="regiright"><input  type="password" class="reinput" name="repeatpwd"  placeholder="请再次输入您的密码" ></input></span>
+      <span class="regileft">手机号码 ：</span>
+      <span class="regiright"><input  type="text" class="reinput"  name="phone" placeholder="请输入您的手机号码" ></input></span>
+      <span class="regileft">职  业 ：</span>
+      <span class="regiright fs12" >
+       <input name="tlid" type="radio" value="1" checked /> 主持人
+       <input name="tlid" type="radio" value="2" /> 化妆师
+       <input name="tlid" type="radio" value="3" /> 摄像师
+       <input name="tlid" type="radio" value="4" /> 摄影师   
+      </span>
+      <span class="regileft">获取验证码 ：</span>
+      <span class="regiright"><input  type="text" class="reinput fl" style="width:160px;" placeholder="请输入验证码" ></input> &nbsp;&nbsp;<input class="rebutton fr"  type="button"  value="获取验证码"></input></span>
+      <span class="regiright" ><input  class="bbutton"  value="注 册"  type="submit"  style="font-size:20px; margin:10px 0px 0px 150px;" ></input></span>
+    
+    
+    
+     </form>
+    
+    
+        
+    </div>
+   </div>
+
+
+
+
+ 

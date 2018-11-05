@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/chili-1.7.pack.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/jquery.easing.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/jquery.dimensions.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/jquery.accordion.js"></script><!---->
+<script language="javascript">
+
+	jQuery().ready(function(){
+		jQuery('#navigation').accordion({
+			header: '.head',
+			navigation1: true, 
+			event: 'click',
+			fillSpace: true,
+			animated: 'bounceslide'
+		});
+	});
+
+</script>
+<style type="text/css">
+<!--
+body {
+	margin:0px;
+	padding:0px;
+	font-size: 12px;
+}
+#navigation {
+	margin:0px;
+	padding:0px;
+	width:147px;
+}
+#navigation a.head {
+	cursor:pointer;
+	background:url(<?php echo base_url();?>application/views/admin/images/main_34.gif) no-repeat scroll;
+	display:block;
+	font-weight:bold;
+	margin:0px;
+	padding:5px 0 5px;
+	text-align:center;
+	font-size:12px;
+	text-decoration:none;
+}
+#navigation ul {
+	border-width:0px;
+	margin:0px;
+	padding:0px;
+	text-indent:0px;
+}
+#navigation li {
+	list-style:none; display:inline; color:#FFF;
+}
+#navigation li li a {
+	display:block;
+	font-size:12px;
+	text-decoration: none;
+	text-align:center;
+	padding:3px;
+    color:#333;
+	line-height:15px;
+}
+#navigation li li a:hover {
+	background:url(<?php echo base_url();?>application/views/admin/images/tab_bg2.gif) repeat-x;
+	color:#ec728b;
+	
+}
+-->
+</style>
+</head>
+<body>
+<div  style="height:100%;">
+  <ul id="navigation"><!--
+	<li> <a class="head">权限管理</a>
+      <ul>
+        <li class="selected"><a   href="<?php echo site_url('admin/usermng/adduser');?>" target="rightFrame">添加用户</a></li>
+        <li><a href="<?php echo site_url('admin/usermng/userlist');?>" target="rightFrame">查看用户</a></li>
+	    <li><a href="<?php echo site_url('admin/groupmng/addgroup');?>" target="rightFrame">添加用户组</a></li>
+        <li><a href="<?php echo site_url('admin/groupmng/grouplist');?>" target="rightFrame">查看用户组</a></li>
+		<li><a href="<?php echo site_url('admin/nodemng/addnode');?>" target="rightFrame">添加权限</a></li>
+        <li><a href="<?php echo site_url('admin/nodemng/nodelist');?>" target="rightFrame">查看权限</a></li>
+      </ul>
+    </li>
+	--->
+    <?php foreach($nodes as $n){?>
+	<li><?php  if($n['level']==1){?><a class="head"><?php echo $n['nmarke'];?></a><?php continue;}?>
+	  
+      <?php if($n['level']==3){?><ul>
+        <li><a href="<?php echo site_url(explode(',',$n['nname']));?>" target="rightFrame">
+		<?php echo $n['nmarke'];?></a></li></ul><?php }?>
+	  
+  </li>
+		
+	<?php }?>
+	
+	
+    <!--<!--
+	    <li> <a class="head">地区管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/areamng/addarea');?>" target="rightFrame">添加地区</a></li>
+        <li><a href="<?php echo site_url('admin/areamng/arealist');?>" target="rightFrame">查看地区</a></li>
+      </ul>
+    </li>
+	    <li> <a class="head">咨询客服管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/consultmng/addconsult');?>" target="rightFrame">添加客服</a></li>
+        <li><a href="<?php echo site_url('admin/consultmng/consultlist');?>" target="rightFrame">查看客服</a></li>
+      </ul>
+    </li>
+	<li> <a class="head">友情链接管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/linkmng/addlink');?>" target="rightFrame">添加链接</a></li>
+        <li><a href="<?php echo site_url('admin/linkmng/linklist');?>" target="rightFrame">查看链接</a></li>
+      </ul>
+    </li>
+	<li> <a class="head">分类管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/catemng/addcate');?>" target="rightFrame">添加分类</a></li>
+        <li><a href="<?php echo site_url('admin/catemng/catelist');?>" target="rightFrame">查看分类</a></li>
+      </ul>
+    </li>
+    <li> <a class="head">私人定制管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/custommng/customlist');?>" target="rightFrame">查看定制</a></li>
+        <li><a href="<?php echo site_url('admin/custommng/customrecy');?>" target="rightFrame">定制回收站</a></li>
+      </ul>
+    </li>
+	    <li> <a class="head">文章管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/articlemng/addarticle');?>" target="rightFrame">发布文章</a></li>
+		 <li><a href="<?php echo site_url('admin/articlemng/articlelist');?>" target="rightFrame">查看文章</a></li>
+		 <li><a href="<?php echo site_url('admin/lablemng/addlable');?>" target="rightFrame">添加标签</a></li>
+        <li><a href="<?php echo site_url('admin/lablemng/lablelist');?>" target="rightFrame">查看标签</a></li>
+       
+      </ul>
+    </li>
+	
+    <li> <a class="head">婚庆公司管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/companymng/addcompany');?>" target="rightFrame">注册公司</a></li>
+        <li><a href="<?php echo site_url('admin/companymng/companylist');?>" target="rightFrame">查询公司</a></li>
+      </ul>
+    </li>
+	
+	 <li> <a class="head">婚礼人管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/humanmng/addhuman');?>" target="rightFrame">个人注册</a></li>
+        <li><a href="<?php echo site_url('admin/humanmng/humanlist');?>" target="rightFrame">查询个人</a></li>
+		<li><a href="<?php echo site_url('admin/teamlablemng/addtl');?>" target="rightFrame">添加团队标签</a></li>
+        <li><a href="<?php echo site_url('admin/teamlablemng/tllist');?>" target="rightFrame">查询团队标签</a></li>
+		<li><a href="<?php echo site_url('admin/teammng/addteam');?>" target="rightFrame">团队注册</a></li>
+        <li><a href="<?php echo site_url('admin/teammng/teamlist');?>" target="rightFrame">查询团队</a></li>
+		
+      </ul>
+    </li>
+	 
+    <li> <a class="head">新人管理</a>
+      <ul>
+        <li><a href="<?php echo site_url('admin/membermng/memberlist');?>" target="rightFrame"> 查看新人</a></li>
+      </ul>
+    </li>-->
+  </ul>
+
+</div>
+</body>
+</html>

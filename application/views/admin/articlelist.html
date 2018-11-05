@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">文章列表</span></td>
+              </tr>
+            </table></td>
+            <td><div align="right"><span class="STYLE1">  </span>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+	<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
+	
+			<form name="sou" method="post" action="<?php echo site_url('admin/articlemng/articlelist');?>">
+					<tr>
+						<td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center">搜标题<input type="text" name="artitle" size="20">&nbsp;&nbsp;
+						搜栏目<select name="cid">
+								<option value="0">顶级栏目
+								<?php foreach($cates as $c){?>
+									<option value="<?php echo $c['cid'];?>" style="margin-left:<?php echo $c['lev'];?>0px;"><?php echo $c['cname'];?>
+								<?php }?>
+							</select>&nbsp;&nbsp;<input type="image" name="search" src="<?php echo base_url().'application/views/admin/images/search.png'?>" title="搜索">
+							</div></td>
+						
+							
+						
+					</tr>
+		</form>
+	</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" >
+      <tr id="ta" height="50">
+        <td width="10%"  bgcolor="d3eaef" ><div align="center"><span class="STYLE10">文章标题</span></div></td>
+        <td width="15%"  bgcolor="d3eaef"><div align="center"><span class="STYLE10">所属栏目</span></div></td>
+		<td width="15%"  bgcolor="d3eaef"><div align="center"><span class="STYLE10">发布时间</span></div></td>
+		<td width="15%"  bgcolor="d3eaef" ><div align="center"><span class="STYLE10">是否热门</span></div></td>
+		<td width="15%"  bgcolor="d3eaef" ><div align="center"><span class="STYLE10">是否推荐</span></div></td>
+		<td width="15%"  bgcolor="d3eaef" ><div align="center"><span class="STYLE10">操作</span></div></td>
+      </tr>
+	  
+	  <?php foreach($res as $v){?>
+      <tr height="25" bgcolor="#FFFFFF">
+		<td><div align="left"><span class="STYLE19" style="color:green;">
+		<?php echo strlen($v['artitle'])>18?mb_substr($v['artitle'],0,16,'utf8'):$v['artitle'];?></span></div></td>
+        <td class="STYLE19"><div id="div" align="center"><?php echo isset($v['cname'])?$v['cname']:'顶级栏目';?></div></td>
+		<td bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo date('Y/m/d H:i:s',$v['addtime']);?></div></td>
+		<td bgcolor="#FFFFFF" class="STYLE19"><div align="center">
+		<?php   echo $v['ishot']==1? '<img src="'.base_url().'application/views/admin/images/dh.png">': '<img src="'.base_url().'application/views/admin/images/error.png">';?></div></td>
+		<td bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $v['isrecom']==1?  '<img src="'.base_url().'application/views/admin/images/dh.png">':' <img src="'.base_url().'application/views/admin/images/error.png">';?>
+		</div></td>
+        <td  bgcolor="#FFFFFF"><div align="center" class="STYLE21">
+			<a href="<?php $arid=$v['arid']; echo site_url("admin/articlemng/editarticle/$arid");?>"><img src="<?php echo base_url();?>application/views/admin/images/detail.png" alt="编辑" title="查看|编辑" /></a></div></td>
+      </tr>
+	<?php } ?>
+      <tr height="20">
+		<td colspan="2" align="center" ><?php echo isset($total)?'总计'.$total.'篇文章':'';?></td>
+		<td colspan="4" align="center"><?php echo isset($link)?$link:'';?></td>
+	  </tr>
+
+
+</table>
+</body>
+</html>

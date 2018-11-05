@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<title>婚艺365</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/';?>/favicon.ico"/>
+<link href="<?php echo base_url().'application/views/';?>css/home.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/star.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/geren.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/lrtk.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.4.2.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtk.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/default_blue.css"/>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.7.2.min.js"></script>
+<script language="javascript" src="<?php echo base_url().'application/views/';?>js/jquery.Sonline.js"></script>
+<link rel="stylesheet" href="<?php echo base_url().'application/views/';?>css/jquery.cxcalendar.css">
+<script src="<?php echo base_url().'application/views/';?>js/jquery-1.8.2.min.js"></script> 
+<script src="<?php echo base_url().'application/views/';?>js/jquery.cxcalendar.js"></script> 
+
+</head>
+
+
+
+<body>
+
+<div class="geren_right">
+	<div class="geren_right_up">
+    · 当前所在的位置：我的成果> <a> 作品案例</a>
+    </div>
+	<div class="geren_right_down">
+  <!--案例列表开始--> 
+ <table width="920" border="0" cellspacing="0"  height="35" cellpadding="0" bgcolor="#f3f3f3" >
+  <tr>
+    <td width="230" align="center" valign="middle">作品案例</td>
+    <td width="230" align="center" valign="middle"> 案例名称</td>
+    <td width="230" align="center" valign="middle">价格</td>
+    <td width="230" align="center" valign="middle"> 发布时间 </td>
+  </tr>
+</table>
+   <?php foreach($res as $v){?>
+ <table width="920" border="0" cellspacing="0"  height="180" cellpadding="0" style="border-bottom:1px #f3f3f3 solid; margin-top:15px;" >
+	<tr>
+    <td width="230" align="center" valign="middle"><a href="<?php echo site_url(''.$controller.'/'.$func.'/'.$fieldone.'/'.$v['wid'].'/'.$fieldtwo.'/'.$fieldtwovalue.'');?>" target="_blank">
+	<img src="<?php echo base_url().$v['cover_thumb'];?>" width="140" height="102" 
+	style=" padding:5px;border:1px solid #f3f3f3;"/></a>
+	</td>
+    <td width="230" align="center" valign="middle"> <a href="<?php echo site_url(''.$controller.'/'.$func.'/'.$fieldone.'/'.$v['wid'].'/'.$fieldtwo.'/'.$fieldtwovalue.'');?>" target="_blank">
+	<?php echo strlen($v['wname'])>12?mb_substr($v['wname'],0,12,'utf8').'...':$v['wname'];?></a>
+	</td>
+    <td width="230" align="center" valign="middle"><?php echo $v['wprice'];?></td>
+    <td width="230" align="center" valign="middle"> <a><?php echo date('Y-m-d H:i:s',$v['addtime']);?></a></p></td>
+	</tr>
+</table>
+<?php } ?>
+</div>
+	</div>
+ <!--案例列表结束-->    
+<!--分页部分开始--> 
+   <div class="page">
+		<?php echo $link;?>
+   </div>
+<!--分页部分结束-->    
+</body>
+</html>

@@ -1,0 +1,113 @@
+ 
+
+         <!--婚礼人广告图01-->
+         <div class="caseBanner"> <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人"></a>
+         </div>        
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > <a href="<?php echo site_url('article/index/cid/'.$arinfo[0]['cid']); ?>">成功案例 > </a> <span><?php echo $arinfo[0]['artitle']; ?></span>
+</div>
+
+<!--caseCaseLe-->
+<script type="text/javascript">
+$(function(){
+  $(".caseCaseCa .fl").hover(function(){
+    $(this).css({
+    "border-bottom":"1px solid #A20055"
+    //"border-top":"1px solid #A20055"
+    });
+  },function(){
+    $(this).removeAttr("style");
+  });
+  $(".caseCaseTe ul li").hover(function(){
+    $(this).css({
+    //"background":"#DDDDDD",
+    "border-left":"1px  solid #FF0000",
+    "color":"#FF88C2"
+    });
+  },function(){
+    $(this).removeAttr("style");
+  });
+})
+</script>
+<div class="cases mt10">
+<div class="caseCaseLe fl">
+    <!--经典案例-->
+    <div class="caseCaseCa fl">
+      <span>经典案例</span>
+      <!--循环开始 ,显示5条-->
+   <?php foreach ($classic as $k => $v ) : ?>
+      <?php if ($k > 4) : break; endif; ?>
+      <dl class="fl">
+         <dt><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>"></a></dt>
+         <dd><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><?php echo $v['artitle']; ?></a></dd>
+      </dl>
+    <?php endforeach; ?> 
+    </div>
+
+    <!--优秀团队-->
+    <div class="caseCaseTe fl">  
+      <span>优秀团队</span>
+      <ul>
+<!---团队成员开始-->
+
+<?php foreach ($execteam as $k => $v) : ?>
+          <li> <a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v['teamid']); ?>"><img  style="margin-right:8px;" class="tImg70" src="<?php echo base_url().$v['tlogo']; ?>" align="left"></a>
+          <a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v['teamid']); ?>"><?php echo $v['tname'];?></a><br />
+          等级：<?php $str='<img src="'.base_url().'application/views/images'.'/star.jpg" align="center">';echo str_repeat($str,$v['level']);?><br />
+          成交量： <?php echo $v['volume']; ?> 单<br />
+          </li>
+    <?php endforeach; ?>    
+ 
+          
+          
+      </ul>
+    </div>
+</div>
+
+<!--caseCaseRi-->
+  <div class="caseCaseRi fr">
+  <span class="caseTitle"><?php echo $arinfo[0]['artitle']; ?></span>
+  <span class="caseTime">发布时间：<?php echo date('Y-m-d', $arinfo[0]['addtime']); ?></span>
+  <span class="caseAticle">发布作者：<?php echo $arinfo[0]['author']?></span><br />
+  <span class="caseShare">
+      <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style=" width:350px; position:relative; left:30%;"><span class="jiathis_txt" style="font-size:18px;">分享到：</span>
+      <a class="jiathis_button_weixin"></a>
+      <a class="jiathis_button_qzone"></a>
+      <a class="jiathis_button_cqq"></a>
+      <a class="jiathis_button_tsina"></a>
+      <a class="jiathis_button_tqq"></a>
+      <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+      <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" >
+           var jiathis_config={
+         sm:"weixin,tqq,qzone,tsina,cqq",
+         summary:"",
+           shortUrl:false,
+         hideMore:false
+      }
+      </script>
+      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+</span>
+  <span class="caseLable magi">
+      <ul>
+        <?php foreach ($arinfo[0]['lables'] as $k => $v ) : ?>
+          <li><?php echo $v[0]['laname']; ?></li>
+        <?php endforeach; ?>
+      </ul>
+ </span>
+ <div class="cb"></div>
+  
+  
+ <span class="mt20" style=" width:800px; ">
+<?php echo  $arinfo[0]['content'] ; ?>
+</span>
+</div>
+
+</div>
+
+ <div class="cb"></div> 
+ 

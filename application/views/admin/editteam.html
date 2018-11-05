@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+#ue{
+	margin:0 auto;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 注册婚庆公司</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+			<form name="area" method="post" enctype="multipart/form-data" action="<?php $teamid=$cs[0]['teamid'];echo site_url("admin/teammng/editteam/$teamid");?>">
+			<input type="hidden" name="teamid" value="<?php echo $cs[0]['teamid'] ;?>">
+			<div style="background-color: #DDDDDD;">
+				
+			<table style="margin:0 auto;">
+				<tr><td>团队名称&nbsp;&nbsp;</td><td><input type="text" name="tname" size="40"  value="<?php echo $cs[0]['tname'];?>"></td><td class="bb">
+				
+				</td></tr>
+			
+			
+				<tr><td>成交量&nbsp;&nbsp;</td><td><input type="text" name="volume" size="40"  value="<?php echo $cs[0]['volume'];?>"></td><td class="bb">
+				
+				</td>
+				</tr>
+				<tr><td>团队电话&nbsp;&nbsp;</td><td><input type="text" name="phone" size="20"  value="<?php echo $cs[0]['phone'];?>"><span>* 格式:13/15/18xxxx或0XXXX-XXXXXXXX</span></td><td class="bb">
+				
+				</td>
+				</tr>
+                
+                <tr><td>是否优秀</td>
+					<td><select name="isexec">
+						 
+						<option value="0" <?php echo $cs[0]['isexec']==0?'selected="selected"':""  ?>>不优秀</option>
+						<option value="1" <?php echo $cs[0]['isexec']==1?'selected="selected"':"" ?>>优秀</option>
+						 
+						</select>
+						</td>
+				</tr>
+			
+				<tr><td>选择地区：</td>
+					<td><select name="aid">
+						<?php foreach($areas as $v){?>
+						<option value="<?php echo $v['aid'];?>" <?php  echo $v['aid']==$cs[0]['aid']?'selected':'';?>><?php echo $v['amark'];?></option>
+						<?php } ?>
+						</select>
+						</td>
+				</tr>
+				<tr><td>选择团队标签：</td>
+					<td><select name="tlid">
+						<?php foreach($tls as $v){?>
+						<option value="<?php echo $v['tlid'];?>" <?php  echo $v['tlid']==$cs[0]['tlid']?'selected':'';?>><?php echo $v['tlname'];?></option>
+						<?php } ?>
+						</select>
+						</td>
+				</tr>
+
+					<tr>
+						<td>设置公司属性:</td>
+						<td class="bb"colspan="2">
+						<input type="radio" name="ischeck" value="0" <?php echo $cs[0]['ischeck']==0?'checked':''?>>未审核&nbsp;
+						<input type="radio" name="ischeck" value="1" <?php echo $cs[0]['ischeck']==1?'checked':''?>>已审核
+						<input type="radio" name="isrecom" value="0" <?php echo $cs[0]['isrecom']==0?'checked':''?>>不推荐至首页&nbsp;
+						<input type="radio" name="isrecom" value="1" <?php echo $cs[0]['isrecom']==1?'checked':''?>>推荐至首页
+						</td>
+						
+					</tr>
+				
+				<td class="bb"></td></tr>
+				<tr><td>选择星级:&nbsp;&nbsp;</td><td colspan="2">
+				<select name="level">
+				<option  value="1" <?php echo $cs[0]['level']==1?'selected':''?>>1级</option>
+				<option  value="2" <?php echo $cs[0]['level']==2?'selected':''?>>2级</option>
+				<option  value="3" <?php echo $cs[0]['level']==3?'selected':''?>>3级</option>
+				<option  value="4" <?php echo $cs[0]['level']==4?'selected':''?>>4级</option>
+				<option  value="5" <?php echo $cs[0]['level']==5?'selected':''?>>5级</option>
+				</td></tr>	
+				<tr><td>介召视频地址&nbsp;&nbsp;</td><td><input type="text" name="tintrolvideo" size="100" value="<?php echo $cs[0]['tintrolvideo'];?>"></td><td class="bb"></td></tr>
+				<tr><td>公司简介&nbsp;&nbsp;</td><td><textarea name="tintrol" ><?php echo $cs[0]['tintrol'];?></textarea></td><td class="bb">
+				</td></tr>
+				<tr><td>公司标志&nbsp;&nbsp;</td><td><input type="file" name="tlogo"   ><span>* 图片格式限制：gif|png|jpg|jpeg,不能大于20KB</span></td><td class="bb"> <?php echo isset($error)?$error:'';?></td></tr>
+				<tr><td><img src="<?php echo base_url().$cs[0]['tlogo'];?>"></td></tr>
+				<tr colspan="3"><td align="center" ><input name="submit" type="image" alt="确定" src="<?php echo base_url();?>application/views/admin/images/tj.png"></td>
+				
+				</tr>
+				</table>
+			</form>
+			
+			</div>
+</body>
+</html>

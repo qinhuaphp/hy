@@ -1,0 +1,274 @@
+<!--friendlink-->
+    <div class="friendLink">
+	    <div class="friendLink_up"><a>友情链接</a></div>
+        <div class="friendLink_down">
+             <ul>
+	 <?php foreach($links as $v){?>
+     <li><a href="<?php echo $v['urladdress'];?>" target="_blank"><?php echo $v['lname'];?></a></li>
+	 <?php }?>
+           </ul>
+     </div>
+    </div>
+<!--friendLink over-->       
+</div>    
+</div>
+<!--container over--> 
+<div class="endFooter">
+<!--bottomBar-->
+ <div class="bottomBar">
+    <div class="bottomBarUp">
+      <ul>
+      	<li><img src="<?php echo base_url().'application/views/';?>images/b_01.gif" align="left"><br /><strong>平台实名认证</strong><br />
+      	  司仪 | 化妆师 | 摄像 | 摄影 | </li>
+        <li><img src="<?php echo base_url().'application/views/';?>images/b_02.gif" align="left"><br /><strong>免费婚礼策划方案</strong> <br />
+场地设计 | 人员配置 </li>
+        <li><img src="<?php echo base_url().'application/views/';?>images/b_03.gif" align="left"><br /><strong>婚礼全程统筹</strong> <br />
+组建团队 | 现场督导 </li>
+        <li><img src="<?php echo base_url().'application/views/';?>images/b_04.jpg" align="left"><br /><strong>资金托管安全省心</strong> <br />
+        第三方平台 | 资金托管</li>
+        
+      </ul>
+    </div>
+ </div>
+<!--footer-->
+<div class="footer">
+<div class="footerList">
+	 <img src="<?php echo base_url().'application/views/';?>images/point_footer.jpg"> 关于我们
+           <ul>
+            	<li><a href="<?php echo site_url('article/information/24');?>" target="_blank">网站介绍</a></li>
+                <li><a href="<?php echo site_url('article/information/19');?>" target="_blank">联系我们</a></li>
+                <li><a href="<?php echo site_url('article/information/14');?>" target="_blank">免责申明</a></li>
+                <li><a href="<?php echo site_url('article/information/12');?>" target="_blank">商家协议</a></li>
+                <li><a href="<?php echo site_url('article/information/11');?>" target="_blank">用户协议</a></li>
+          
+           </ul>
+</div> 
+<!--1-->
+<div class="footerList">
+	 <img src="<?php echo base_url().'application/views/';?>images/point_footer.jpg"> 商家合作
+           <ul>
+                <li><a href="<?php echo site_url('article/information/10');?>" target="_blank">入驻网站</a></li>
+                <li><a href="<?php echo site_url('article/information/21');?>" target="_blank">入驻说明 </a></li>
+                <li><a href="<?php echo site_url('article/information/10');?>" target="_blank">入驻申请</a></li>
+             
+           </ul>
+</div> 
+
+
+
+<!--2-->
+        
+   <div class="footerWeixin fl"> 
+        <img src="<?php echo base_url().'application/views/';?>images/rrr.jpg"> <!--&nbsp;&nbsp;
+        <img src="<?php echo base_url().'application/views/';?>images/weibo.jpg">    --> 
+   </div>  
+   
+<!--3-->
+   <div class="footerTel"> 
+        <img src="<?php echo base_url().'application/views/';?>images/tel.png">
+   </div>   
+<!--4-->   
+</div>   
+    
+<!--copyright-->
+     <div class="copyright"> 
+        COPYRIGHT ©2015-2018 GOLDEN HARBOR AD-AGENCY CO.,LTD. <br />
+        版权所有 ©2015-2018婚艺网站<br />
+        皖ICP备11004538号-5 站长统计<br />
+        <img src="<?php echo base_url().'application/views/';?>images/beiAn1.gif"><img src="<?php echo base_url().'application/views/';?>images//beiAn2.jpg">
+
+      </div>
+      
+</div>
+<!-- 右侧返回顶部开始 -->
+<div id="side-bar" class="side-pannel side-bar">
+  <a href="javascript:;" class="gotop" style="display:none;"><s class="g-icon-top" ></s></a>
+  <?php $consults = $_SESSION['consult']; foreach ($consults as $k => $v) : ?>
+  <?php if ($k > 3) : break; endif; ?>
+  
+  <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $v['con_qq']; ?>&site=qq&menu=yes"  target="_blank" class="text"><s class="g-icon-qq1">
+  </s><span>在线咨询</span></a>
+ <?php endforeach; ?>
+  <a href="javascript:;" class="qr"><s class="g-icon-qr1"></s><i></i></a>
+  <a href="http://weibo.com/u/5601807460" target="_blank" class="text weibo"><s class="g-icon-weibo1"></s><span>微博</span></a>
+  
+</div>
+<!---导航搜索框特效---->
+
+<!---轮播图特效---->
+<script type="text/javascript">
+function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}
+	else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+/*
+function getByClass(oParent,nClass)
+{
+	var eLe = oParent.getElementsByTagName('*');
+	var aRrent  = [];
+	for(var i=0; i<eLe.length; i++)
+	{
+		if(eLe[i].className == nClass)
+		{
+			aRrent.push(eLe[i]);
+		}
+	}
+	return aRrent;
+}
+
+function startMove(obj,att,add)
+{
+	clearInterval(obj.timer)
+	obj.timer = setInterval(function(){
+	   var cutt = 0 ;
+	   if(att=='opacity')
+	   {
+		   cutt = Math.round(parseFloat(getStyle(obj,att)));
+	   }
+	   else
+	   {
+		   cutt = Math.round(parseInt(getStyle(obj,att)));
+	   }
+	   var speed = (add-cutt)/4;
+	   speed = speed>0?Math.ceil(speed):Math.floor(speed);
+	   if(cutt==add)
+	   {
+		   clearInterval(obj.timer)
+	   }
+	   else
+	   {
+		   if(att=='opacity')
+		   {
+			   obj.style.opacity = (cutt+speed)/100;
+			   obj.style.filter = 'alpha(opacity:'+(cutt+speed)+')';
+		   }
+		   else
+		   {
+			   obj.style[att] = cutt+speed+'px';
+		   }
+	   }
+	   
+	},30)
+}
+
+  window.onload = function()
+  {
+	  var oDiv = document.getElementById('Banner');
+	  var oPre = getByClass(oDiv,'pre')[0];
+	  var oNext = getByClass(oDiv,'next')[0];
+	  var oUlBig = getByClass(oDiv,'oUlplay')[0];
+	  var aBigLi = oUlBig.getElementsByTagName('li');
+	  var oDivSmall = getByClass(oDiv,'smalltitle')[0]
+	  var aLiSmall = oDivSmall.getElementsByTagName('li');
+	  
+	  function tab()
+	  {
+	     for(var i=0; i<aLiSmall.length; i++)
+	     {
+		    aLiSmall[i].className = '';
+	     }
+	     aLiSmall[now].className = 'thistitle'
+	     startMove(oUlBig,'left',-(now*aBigLi[0].offsetWidth))
+	  }
+	  var now = 0;
+	  for(var i=0; i<aLiSmall.length; i++)
+	  {
+		  aLiSmall[i].index = i;
+		  aLiSmall[i].onclick = function()
+		  {
+			  now = this.index;
+			  tab();
+		  }
+	 }
+	  oPre.onclick = function()
+	  {
+		  now--
+		  if(now ==-1)
+		  {
+			  now = aBigLi.length;
+		  }
+		   tab();
+	  }
+	   oNext.onclick = function()
+	  {
+		   now++
+		  if(now ==aBigLi.length)
+		  {
+			  now = 0;
+		  }
+		  tab();
+	  }
+	  var timer = setInterval(oNext.onclick,6000) //滚动间隔时间设置
+	  oDiv.onmouseover = function()
+	  {
+		  clearInterval(timer)
+	  }
+	   oDiv.onmouseout = function()
+	  {
+		  timer = setInterval(oNext.onclick,6000) //滚动间隔时间设置
+	  }
+  }
+*/
+</script>
+<!--婚礼人选择TAB-->
+<script  type="text/javascript">
+
+<!--
+
+
+function chingeTable(divName,count,currentNum,currtname){
+	for(var i=1;i<=count;i++){
+		if (currentNum==i)	{
+			document.getElementById(divName+currentNum).style.display = "";	
+			document.getElementById(currtname+currentNum).className = "up_right_2";	
+			}
+		else{
+		 document.getElementById(divName+i).style.display = "none";
+		 document.getElementById(currtname+i).className = "up_right_1";
+			}
+			}
+			}
+-->
+</script>
+<!--右侧返回顶部-->
+<script>
+	$(function(){
+	/*初始化侧边栏的位置*/
+		$(".side-pannel").css({
+			"position":"absolute",
+			"left":$(window).width()-$(".side-pannel").outerWidth(true),//浏览器窗口的宽度减去侧边栏的真实宽度就是left的值
+			"top":$(window).height()/2-$(".side-pannel").outerHeight(true)/2+$(window).scrollTop(),
+		});
+		$(window).scroll(function(){
+		/*空闲top的值是浏览器窗口的高度减去导航栏的偏移量中的top的值就是滚动条距离浏览器窗口底部的距离
+		当滚动条距顶部的值大于空闲top的值就显示返回顶部的按钮
+		否则隐藏返回顶部的按钮
+		*/
+			if($(window).scrollTop()>($(window).height()-$(".mainNav").offset().top)){  
+				$("#side-bar .gotop").fadeIn();	
+			}
+			else{
+				$("#side-bar .gotop").hide();
+			}
+			/*让侧边栏自适应滚动条的变化*/
+			if($("#side-bar").is(":visible")){
+				$("#side-bar").stop(true,true).animate({
+					"top":$(window).height()/2-$("#side-bar").outerHeight()/2+$(window).scrollTop()
+				});
+			}
+		});
+		$("#side-bar .gotop").click(function(){
+			$('html,body').stop(true,true).animate({'scrollTop':0}); //返回顶部动画 数值越小时间越短
+		});
+	});
+</script>
+
+</body>
+</html>

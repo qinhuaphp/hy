@@ -1,0 +1,435 @@
+<script>
+$(function(){
+    	/*横幅特效
+	$(document).ready(function(){
+		//if($(this).scrollTop()==0){		}
+			$("#bigbanner").stop(true,true).show().animate({
+				"top":$(window).height()/2-$("#bigbanner").outerHeight()/2+$(window).scrollTop(),
+				"left":0
+			},200);
+
+		
+	});
+	/*关闭横幅
+		$("#bigbanner a").click(function(){
+			$(this).parent().animate({
+				 //"left":parseInt($("#bigbanner").css("left"),10)==0?-$("#bigbanner").outerWidth():0
+				 "width":"toggle"
+			},"slow");
+		});
+*/
+
+
+
+})
+
+</script>
+ 
+    <div class="mainPu">
+        <!----发布需求---->
+        <div class="mainPublish fl">
+            <div class="mainPublishButtom">
+              <!-- <a href=""> <image src="<?php echo base_url().'application/views/';?>images/fabu_buttom.png" /></a>-->
+            </div>
+       </div>
+       <!----轮播图---->
+       <div id="mainBanner">
+       <div id="Banner">
+            <div class="pre"></div>
+            <div class="next"></div>
+            <div class="smalltitle">
+            <ul>
+              <li class="thistitle"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+           </ul>
+           </div>
+           <ul class="oUlplay">
+             <li><a href="#" target="_blank"><img 
+             src="<?php echo base_url().'application/views/';?>images/banimages/banner01.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img 
+             src="<?php echo base_url().'application/views/';?>images/banimages/banner02.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img 
+             src="<?php echo base_url().'application/views/';?>images/banimages/banner03.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img 
+             src="<?php echo base_url().'application/views/';?>images/banimages/banner04.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img 
+             src="<?php echo base_url().'application/views/';?>images/banimages/banner05.jpg" /></a></li>
+          </ul>
+       </div> 
+       </div> 
+       <!--over-->       
+    </div>
+<!--特别提示-->
+    <div class="mainTip mt10">
+        <div class="mainTipUp fs26">
+             特别提示
+        </div>
+        <div class="mainTipDown mt10">
+            <img src="<?php echo base_url().'application/views/';?>images/banimages/tipImages.jpg" title="婚艺365会员提醒" alt="婚艺365会员提醒">
+        </div>
+    </div>
+ <!--4大服务-->   
+    <div class="mainService">
+        <div class="mainService01">
+            <img src="<?php echo base_url().'application/views/';?>images/Service01.png">
+        </div>
+        <div class="mainService02">
+            <img src="<?php echo base_url().'application/views/';?>images/Service02.png">
+        </div>
+        <div class="mainService03">
+            <img src="<?php echo base_url().'application/views/';?>images/Service03.png">
+        </div>
+        <div class="mainService04">
+            <img src="<?php echo base_url().'application/views/';?>images/Service04.png">
+        </div>
+        
+    </div>
+<!--婚礼梦工厂-->
+    <div class="mainCompany mt10">
+     <div class="mainCompanyUp fs26 fl">
+            婚礼梦工场 
+            <div class="more mt20"><a href="http://www.hunyi365.com/company/index.html" target="_blank">查看更多>></a></div>
+      </div>
+      <div class="mainCompanyDown fl">
+          <?php foreach ($cless as $k => $v) {?>
+  <dl class="mt10 fl">
+            <dt><a href="<?php echo site_url('company/detail/'.$v['coid']);?>" target="_blank">
+            <img src="<?php echo base_url().$v['cover_thumb'];?>"></a></dt>
+            <dd class="ml10 fl">
+              <span class="ctitle fs16"><a href="<?php echo site_url('company/detail/'.$v['coid']);?>" target="_blank"><?php echo $v['coname']; ?></a></span><br />
+                <span class="price">￥<?php echo $v['wprice']; ?></span><br />
+                <span class="txtp"><?php echo strlen($v['cointrol'])>55?mb_substr($v['cointrol'],0,54,'utf8').'...':$v['cointrol'];?></span><br />
+                <span class="smore"><a href="<?php echo site_url('company/detail/'.$v['coid'].'');?>" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/more.png"></a></span>
+            </dd
+          ></dl>
+          <?php } ?>
+        </div>
+    </div>
+ <!--婚礼案例-->   
+    <div class="mianCase">
+        <div class="mainCaseUp fs26 fl">
+            婚礼案例
+            <span class="fr fs18">
+            
+                <ul id="article_label">
+                    <li class="style1" id="25"><a href="javascript:void(0);" >中式</a></li>
+                    <li id="26"><a href="javascript:void(0);">西式</a></li>
+                    <li id="27"><a href="javascript:void(0);">个性</a></li>
+                    <li id="28"><a href="javascript:void(0);">主题</a></li>
+                </ul>
+                
+            </span>
+        </div>
+        <!--案例图片-->
+        <div id="article_ajax">
+        
+        </div>
+</div>
+<script type="text/javascript">
+    function article_ajax(id){
+    $("#article_ajax").html('<img style=" margin-left:575px; margin-top:350px;" src="<?php echo base_url().'application/views/images/loading3.gif'; ?>">');
+        var url = "<?php echo site_url('hunyi/article_ajax'); ?>";
+        $.ajax({
+            url: url,
+            data: {id: id},
+            type: 'post',
+            datatype: 'html',
+            success: function (html) {
+                $("#article_ajax").html(html);
+            }
+        });
+    }
+    $(document).ready(function () {
+        article_ajax(25);
+        var error = false;
+        $("#article_label > li").click(function () {
+            if (error) {
+                alert("数据加载中，请稍等！");
+                return false;
+            }
+            error = true;
+            $("#article_label > li").removeClass('style1');
+            var id = $(this).attr('id');
+            article_ajax(id);
+            error = false;
+            $(this).addClass('style1');
+        });
+    });
+</script>
+
+ <!--婚礼人团队-->  
+ 
+<!--
+  <div class="mainPeople mt10">
+      <div class="mainPeopleUp fs26" >
+          婚礼造梦师
+           <div class="more mt20"><a href="<?php echo site_url('human/index/cid/2'); ?>" target="_blank">查看更多>></a></div>
+      </div>
+      <div class="mainPeopleDown fl mt10">
+      
+          <div class="hlr_down_a">
+          	<ul>
+            	<li class="up_right_2" id="aa1" onMouseOver="chingeTable('bb',4,1,'aa')"> <a href="javascript:void(0)">司仪</a></li>
+                <li class="up_right_1" id="aa2" onMouseOver="chingeTable('bb',4,2,'aa')"> <a href="javascript:void(0)">化妆</a></li>
+                <li class="up_right_1" id="aa3" onMouseOver="chingeTable('bb',4,3,'aa')"> <a href="javascript:void(0)">摄像</a></li>
+                <li class="up_right_1" id="aa4" onMouseOver="chingeTable('bb',4,4,'aa')"> <a href="javascript:void(0)">摄影</a></li>
+            </ul>
+          </div>
+          
+          
+         
+           <div class="hlr_down_b"  id="bb1" style=" display:;">
+           
+          <?php foreach ($zcr as $k => $v) {?>
+          	<dl>
+            	<dt><a href="<?php echo site_url('human/detail/'.$v['hid'])?>" target="_blank">
+                <img  src="<?php echo base_url().$v['hlogo']?>" class="tImg100" style="width:100px; height:100px;" ></a></dt>
+                <dd><?php echo $v['hname']?></dd>
+            </dl>
+           
+            <?php } ?>
+ 
+      
+         
+          </div>
+          
+  
+
+      
+           <div class="hlr_down_b" id="bb2" style=" display:none;">
+           
+          
+          <?php foreach ($hzs as $k => $v) {?>
+          	<dl>
+            	<dt><a href="<?php echo site_url('human/detail/'.$v['hid'])?>" target="_blank">
+                <img  src="<?php echo base_url().$v['hlogo']?>" class="tImg100" ></a></dt>
+                <dd><?php echo $v['hname']?></dd>
+            </dl>
+           
+            <?php } ?>
+ 
+ 
+      
+         
+          </div>
+          
+
+               
+          
+      
+           <div class="hlr_down_b" id="bb3" style=" display:none;">
+           
+          
+          <?php foreach ($sxs as $k => $v) {?>
+          	<dl>
+            	<dt><a href="<?php echo site_url('human/detail/'.$v['hid'])?>" target="_blank">
+                <img  src="<?php echo base_url().$v['hlogo']?>"  class="tImg100"></a></dt>
+                <dd><?php echo $v['hname']?></dd>
+            </dl>
+           
+            <?php } ?>
+          
+      
+         
+          </div>
+          
+       
+          
+        
+           <div class="hlr_down_b"  id="bb4" style=" display:none;">
+           
+          
+          <?php foreach ($sys as $k => $v) {?>
+          	<dl>
+            	<dt><a href="<?php echo site_url('human/detail/'.$v['hid'])?>" target="_blank">
+                <img  src="<?php echo base_url().$v['hlogo']?>" class="tImg100" ></a></dt>
+                <dd><?php echo $v['hname']?></dd>
+            </dl>
+           
+            <?php } ?>
+            
+          </div>
+          
+      </div>
+  </div>-->
+
+  
+  
+  
+
+  
+<!--婚礼学院-->    
+   <div class="mianNews mt10">
+       <div class="mianNewsUp fs26">
+           婚礼学院
+            <div class="more mt20"><a href="<?php echo site_url('article/index/cid/1'); ?>" target="_blank">查看更多>></a></div>
+       </div>
+       <div class="mianNewsDown">
+         <!--循环开始-->
+         
+         <?php foreach ($xy as $k => $v) : ?>
+         <div class="hlxy_down_q">
+	      <div class="hlxy_down_le">
+    	     <dl>
+        	      <dt><a href="<?php echo site_url('article/detail/cid/'.$v[0]['cid'].'/arid/'.$v[0]['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v[0]['cover_thumb']?>"></a></dt>
+             </dl>
+          </div>
+   
+         <div class="hlxy_down_ri">
+              <ul>
+              <?php foreach ($v as $key => $value) : ?>
+               <li><a href="<?php echo site_url('article/detail/cid/'.$value['cid'].'/arid/'.$value['arid']); ?>" target="_blank"><?php echo strlen($value['artitle'])>15?mb_substr($value['artitle'], 0, 15, 'utf8').'...':$value['artitle']?></a></li> 
+            <?php endforeach; ?>
+            </ul>
+            </div>
+       </div>
+       <?php endforeach; ?>
+       
+       </div>
+   </div>
+
+    <!--婚礼人选择TAB-->
+<script  type="text/javascript">
+
+<!--
+
+
+function chingeTable(divName,count,currentNum,currtname){
+	for(var i=1;i<=count;i++){
+		if (currentNum==i)	{
+			document.getElementById(divName+currentNum).style.display = "";	
+			document.getElementById(currtname+currentNum).className = "up_right_2";	
+			}
+		else{
+		 document.getElementById(divName+i).style.display = "none";
+		 document.getElementById(currtname+i).className = "up_right_1";
+			}
+			}
+			}
+-->
+</script>
+<!---轮播图特效---->
+<script type="text/javascript">
+function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}
+	else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+
+function getByClass(oParent,nClass)
+{
+	var eLe = oParent.getElementsByTagName('*');
+	var aRrent  = [];
+	for(var i=0; i<eLe.length; i++)
+	{
+		if(eLe[i].className == nClass)
+		{
+			aRrent.push(eLe[i]);
+		}
+	}
+	return aRrent;
+}
+
+function startMove(obj,att,add)
+{
+	clearInterval(obj.timer)
+	obj.timer = setInterval(function(){
+	   var cutt = 0 ;
+	   if(att=='opacity')
+	   {
+		   cutt = Math.round(parseFloat(getStyle(obj,att)));
+	   }
+	   else
+	   {
+		   cutt = Math.round(parseInt(getStyle(obj,att)));
+	   }
+	   var speed = (add-cutt)/4;
+	   speed = speed>0?Math.ceil(speed):Math.floor(speed);
+	   if(cutt==add)
+	   {
+		   clearInterval(obj.timer)
+	   }
+	   else
+	   {
+		   if(att=='opacity')
+		   {
+			   obj.style.opacity = (cutt+speed)/100;
+			   obj.style.filter = 'alpha(opacity:'+(cutt+speed)+')';
+		   }
+		   else
+		   {
+			   obj.style[att] = cutt+speed+'px';
+		   }
+	   }
+	   
+	},30)
+}
+
+  window.onload = function()
+  {
+	  var oDiv = document.getElementById('Banner');
+	  var oPre = getByClass(oDiv,'pre')[0];
+	  var oNext = getByClass(oDiv,'next')[0];
+	  var oUlBig = getByClass(oDiv,'oUlplay')[0];
+	  var aBigLi = oUlBig.getElementsByTagName('li');
+	  var oDivSmall = getByClass(oDiv,'smalltitle')[0]
+	  var aLiSmall = oDivSmall.getElementsByTagName('li');
+	  
+	  function tab()
+	  {
+	     for(var i=0; i<aLiSmall.length; i++)
+	     {
+		    aLiSmall[i].className = '';
+	     }
+	     aLiSmall[now].className = 'thistitle'
+	     startMove(oUlBig,'left',-(now*aBigLi[0].offsetWidth))
+	  }
+	  var now = 0;
+	  for(var i=0; i<aLiSmall.length; i++)
+	  {
+		  aLiSmall[i].index = i;
+		  aLiSmall[i].onclick = function()
+		  {
+			  now = this.index;
+			  tab();
+		  }
+	 }
+	  oPre.onclick = function()
+	  {
+		  now--
+		  if(now ==-1)
+		  {
+			  now = aBigLi.length;
+		  }
+		   tab();
+	  }
+	   oNext.onclick = function()
+	  {
+		   now++
+		  if(now ==aBigLi.length)
+		  {
+			  now = 0;
+		  }
+		  tab();
+	  }
+	  var timer = setInterval(oNext.onclick,6000) //滚动间隔时间设置
+	  oDiv.onmouseover = function()
+	  {
+		  clearInterval(timer)
+	  }
+	   oDiv.onmouseout = function()
+	  {
+		  timer = setInterval(oNext.onclick,6000) //滚动间隔时间设置
+	  }
+  }
+</script>
+

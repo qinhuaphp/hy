@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+#ue{
+	margin:0 auto;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">注册婚庆公司</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+             <div style="background-color: #fcfcfc;  padding-top:100px;">
+               <table style="margin:0 auto; width:1200px; padding:50px;border-radius:10px;"  cellspacing="0" cellpadding="0" >
+                <form  id="invitation" name="invitation" method="post" enctype="multipart/form-data" action="<?php echo site_url('admin/invitationmng/edit');?>">
+                <input type="hidden" name="inid" value="<?php echo $res[0]['inid'];?>">
+                
+				<tr>
+                   <td width="144" height="40">请柬标题 ：&nbsp;&nbsp;</td>
+                 <td width="706"><input type="text" name="intitle" size="40"  value="<?php echo $res[0]['intitle']; ?>"></td>
+                   <td width="334" class="bb"></td>
+                </tr>
+                
+			    <tr>
+                   <td height="270" align="left" valign="middle">请柬封面：&nbsp;&nbsp;</td>
+                   <td align="center" valign="middle" style="line-height:35px;">
+                  
+                   <br />
+
+                   <table width="550" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="276" style="line-height:25px; font-size:14px;"> 
+                        <input type="file" name="cover_thumb"><br /><br />
+
+                         <span>注：* 图片格式限制：gif|png|jpg|jpeg,<br />
+                         图片尺寸：290*515px,<br />
+                         图片大小：不能大于300KB</span>
+                     </td>
+                      <td width="362"> <img src="<?php echo base_url().$res[0]['cover_thumb'];?>" width="150" height="266" align="right">
+                    </td>
+                      </tr>
+                  </table>
+ 
+                   </td>
+                   <td class="bb"></td>
+                </tr>
+                
+				<tr>
+                   <td height="40">原价 </td>
+                 <td><input type="text" name="ori_price" size="40"  value="<?php echo $res[0]['ori_price'];?>"></td>
+                   <td class="bb"></td>
+                </tr>
+                
+				<tr>
+                   <td height="40">现价 </td>
+                 <td><input type="text" name="pre_price" size="40"  value="<?php echo $res[0]['pre_price'];?>"></td>
+                   <td class="bb"></td>
+                </tr>
+                
+                <tr>
+                   <td height="40">请柬链接：&nbsp;&nbsp;</td>
+                 <td><input type="text" name="url" size="80"  value="<?php echo $res[0]['inurl']; ?>"></td>
+                   <td class="bb"></td>
+                </tr>
+                
+                <tr>
+                   <td height="230" align="center" valign="middle">链接二维码：&nbsp;&nbsp;</td>
+                   <td align="center" valign="middle">
+                    <table width="550" cellspacing="0" cellpadding="0">
+                     <tr>
+                    <td width="276" style="line-height:25px; font-size:14px;"> 
+                         <input type="file" name="qr_code"   ><br /><br />
+                     <span>注：* 图片格式限制：gif|png|jpg|jpeg<br />
+图片尺寸：200*200px<br />
+图片大小：不能大于300KB)</span>
+                     </td>
+                      <td width="362"> <span><img src="<?php echo base_url().$res[0]['qr_code'];?>"></span>
+                    </td>
+                      </tr>
+                  </table>
+
+                  </td>
+                   <td class="bb"></td>
+                </tr>
+                
+				<tr height="65" >
+                   <td colspan="3" align="center" ><input name="submit"  type="image" alt="确定修改" src="<?php echo base_url();?>application/views/admin/images/tj.png"></td>
+                </tr>
+               </form> 
+               
+			</table>            
+</div>
+            
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var reg = /^(https:|http:)\/\/\S+/;
+        $("input:image[name='submit']").click(function () {
+            $(".bb").text("");
+            if ($("input:text[name='intitle']").val() == "") {
+                $("input:text[name='intitle']").parent().next().text("标题不能为空");
+                $("input:text[name='intitle']").focus();
+                return false;
+            }
+
+            if ($("input:text[name='ori_price']").val() == "" || isNaN($("input:text[name='ori_price']").val())) {
+
+                $("input:text[name='ori_price']").parent().next().text("原价不能为空且必须是数字");
+                $("input:text[name='ori_price']").focus();
+                return false;
+            }
+            if ($("input:text[name='pre_price']").val() == "" || isNaN($("input:text[name='pre_price']").val())) {
+                $("input:text[name='pre_price']").parent().next().text("现价不能为空且必须是数字");
+                $("input:text[name='pre_price']").focus();
+                return false;
+            }
+            if (!reg.test($("input:text[name='url']").val())) {
+                $("input:text[name='url']").parent().next().text("链接不能为空且必须加 http//或者 https//");
+                $("input:text[name='url']").focus();
+                return false;
+            }
+
+        });
+    });
+</script>
+</html>

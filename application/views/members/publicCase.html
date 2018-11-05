@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>统一-发布案例</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript"  src="<?php echo base_url().'application/views';?>/js/placeholder.js"></script><!--预制文字--->
+<script src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script> 
+</head>
+<body>
+<script>
+$(function(){
+	var baseurl='<?php echo base_url();?>';
+	var indexpage='<?php echo index_page();?>';
+	var wna=false;
+	var wpric=false;
+	var wintr=false;
+	//检测案例名称
+	$(":text[name=wname]").blur(function(){
+		//alert(typeof $(this).val()+','+$(this).val())
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+			}).attr("placeholder","请输入案例名称");
+		}
+		if($(this).val()!=''){
+			if($(this).val().length<4){
+				$(this).css({
+					"border":"1px solid #F7597A",
+					"color":"#F7597A",
+					"font-size":"12px"
+				}).val('').attr("placeholder","案例名称过短");
+			}
+			//正则验证格式，不包含指定的字符
+			var exp=/^(\s{1,})$|[\~\_\-!*\(\)\[\]\{\}\.\;\:\'\`\"\+\s\\\/\?\#\$\%\^\d\w&=]{1,}/;
+			if(exp.test($(this).val())){
+					$(this).css({
+						"border":"1px solid #F7597A",
+						"color":"#F7597A",
+						"font-size":"12px"
+					}).val('').attr("placeholder","案例名称格式无效");
+			}else if(!exp.test($(this).val())&&$(this).val().length>=4){
+					$.ajax({//ajax检测名称是否重复
+						url:baseurl+indexpage+'/ajaxcenter/ajaxcheckwname',
+						type:'post',
+						data:{
+									wname:$.trim($(this).val())
+								},
+						success:function(data){
+							if(data=='1'){
+								$(":text[name=wname]").css("border","1px solid green");
+								wna=true;
+							}
+							if(data=='0'){
+								$(':text[name=wname]').css({
+									"border":"1px solid #F7597A",
+									"color":"#F7597A",
+									"font-size":"12px"
+								}).val('').attr("placeholder","名被占用，请更换名称");
+							}
+						}
+					});
+			}	
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").val('').attr("placeholder","请输入案例名称");
+	});
+	//检测案例价格
+	$(":text[name=wprice]").blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+			}).attr("placeholder","请输入案例价格,格式为xxxx");
+		}
+		if($(this).val()!=''){
+			var exppric=/^([^0\-]\d{1,4})$/ig;//不能以0和-开头最多4为数字
+			if(!exppric.test($(this).val())){
+				$(this).css({
+				"border":"1px solid #F7597A",
+				"color":"#F7597A",
+				"font-size":"12px"
+				}).val('').attr("placeholder","价格格式无效");
+			}else{
+				$(this).css("border","1px solid green");
+				wpric=true;
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").val('').attr("placeholder","请输入案例价格,格式为xxxx");
+	});
+	//检测案例简介
+	$(":input[name=wintrol]").blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+				"border":"1px solid red",
+				"color":"red",
+				"font-size":"12px"
+			}).attr("placeholder","请输入案例简介");
+		}else{
+			wintr=true;
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").val('').attr("placeholder","请输入案例简介");
+	});
+	//表单提交
+	$("#addworks").submit(function(){
+		if(wintr&&wna&&wpric){
+			return true;
+		}else{
+			return false;
+		}
+	});		
+	//定时器
+	function dingshi(){
+			$("#tan").hide();
+	}
+	//弹出结果
+	if($("#msg").text()=='1'){
+		$("#tan").text('恭喜，发布成功').show().animate({
+			"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+			"top":20,
+			"z-index":"203"
+		},200);
+	setTimeout(dingshi,3000);
+	$(":reset").click();
+	//$(":input").val('');
+	}
+	if($("#msg").text()=='0'){
+		$("#tan").text('很遗憾，发布失败').show().animate({
+			"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+			"top":20,
+			"z-index":"203"
+		},200);
+	setTimeout(dingshi,3000);
+	$(":reset").click();
+	}
+})
+</script>
+<style text="text/css">
+#tan{
+		position:absolute;
+		left:0;
+		top:0;
+		width:400px;
+		height:200px;
+		background-color:#fcfcfc; 
+		border:1px #ccc solid; 
+		text-align:center;
+		line-height:200px;
+		color:black;
+		font-size:20px;
+		display:none;
+}
+
+</style>
+<div id="tan"></div>
+     <div class="companyConents fl">
+	 <div id="msg" style="display:none;"><?php echo isset($msg)?$msg:'';?></div>
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 发布案例
+     </div>
+    <div class="memRightDo fl"  >
+     <div class="ziliq"    >
+    
+    <form id="addworks" name="" method="post" action="<?php echo site_url('usercenter/addworks/'.$idname.'/'.$idvalue.'')?>" enctype="multipart/form-data">   
+	<input type="hidden" name="<?php echo $idname;?>" value="<?php echo $idvalue;?>">
+  <span class="sleftt" > 案例名称 ：</span>
+  
+  <span class="srightt">
+	<input type="text" class="input" style="border:1px solid #ff0000;"  placeholder="请输入案例名称"  name="wname"  value="<?php echo set_value('wname');?>">
+	<?php echo form_error('wname');?>
+  </span>
+  
+  
+  <span class="sleftt">价  格 ：</span>
+  <span class="srightt">
+  <input type="text" class="input"  placeholder="请输入案例价格,格式为xxxx"  value="<?php echo set_value('wprice');?>" name="wprice"></input>
+  <?php echo form_error('wprice');?>
+  </span>
+    <span class="sleftt">案例简介：</span>
+  <span class="srightt">
+  <textarea type="text" class="input"  placeholder="请输入案例价格" name="wintrol"> <?php echo set_value('wintrol');?></textarea><?php echo form_error('wintrol');?>
+ </span>
+   <span class="sleftt">上传封面 ：</span>
+   <span class="srightt">
+   <input name="cover_org"  type="file" /><?php echo isset($error)?$error:'';?>
+   </span>
+   <span class="sleftt"  style="height:auto;">案例内容：</span>
+   
+   <span class="srightt"  style="width:760px;height:auto; " >
+  </br>
+   <script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor_user.config.js"></script>
+	<script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor.all.min.js"></script>
+   <textarea  name="wcontent"  id="wcontent"><?php echo set_value('wcontent');?></textarea>
+   <script type="text/javascript">
+						var ue=UE.getEditor("wcontent");
+	</script>
+
+   
+   </span>
+   
+   
+   
+   
+   
+   
+   <!--
+   <span class="srightt" style="height:auto;" id="error"> <?php echo form_error('wcontent');?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+   <span class="srightt" style="height:auto;">
+   <script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor_user.config.js"></script>
+	<script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor.all.min.js"></script>
+   <textarea  name="wcontent"  id="wcontent"><?php echo set_value('wcontent');?></textarea>
+   <script type="text/javascript">
+						var ue=UE.getEditor("wcontent");
+	</script>
+  
+   </span>
+   -->
+   
+   
+   <span style="width:500px; margin-left:300px; float:left; "><input style="margin-top:30px;" class="button" type="submit"  value="提  交">&nbsp;&nbsp;
+   <input style="margin-top:30px;" class="button" type="reset"  value="重置"></span>       
+ </form>
+   </div>   
+    </div>
+    </div>
+<!--选择日期JS
+ <script>
+$.cxCalendar.defaults.startDate = 1980;  
+$.cxCalendar.defaults.language = { 
+  monthList: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], 
+  weekList: ['Sun', 'Mon', 'Tur', 'Wed', 'Thu', 'Fri', 'Sat'] 
+}; 
+</script> -->    
+</body>
+</html>

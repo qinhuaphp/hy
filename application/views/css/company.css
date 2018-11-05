@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* 婚礼梦工厂样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-2*/
+
+.companyContainer,.companyDetial{ width:1200px; padding:10px; background-color:#FFF; padding-bottom:30px;}
+/*******轮播图********/
+.companyMain{ width:1200px; height:440px;}
+#companyBanner,#Banner{ width:830px; height:440px; margin:0px auto; background:#333; position:relative; display:block;overflow:hidden;}
+.companyMain #companyBanner .oUlplay { width:99999px; position:absolute; left:0; top:0;}
+.companyMain #companyBanner .oUlplay li{ float:left; }
+.companyMain #companyBanner .pre{ cursor:pointer; width:40px; height:40px; background:url(../images/lr.png) 0px 0px; position:absolute; top:180px; left:10px; z-index:10;}
+.companyMain #companyBanner .next{ cursor:pointer; width:40px; height:40px; background:url(../images/lr.png) 0px -45px; position:absolute; top:180px; right:10px; z-index:10;}
+.companyMain #companyBanner .smalltitle {width:830px; height:40px; position:absolute; bottom:0px; z-index:10;background:rgba(255,255,255,0.5);/*background-color:#000;opacity: 0.30;
+filter : progidXImageTransform.Microsoft.Alpha(style=0,opacity=30,finishOpacity=100);*/}
+.companyMain #companyBanner .smalltitle ul{ width:120px; margin:0 auto; margin-top:15px;}
+.companyMain #companyBanner .smalltitle ul li{ width:10px; height:10px; margin:0 5px; border-radius:10px; background:#ffffff; float:left; overflow:hidden;*display:inline;*zoom:1;}
+.companyMain #companyBanner .smalltitle .thistitle{ background:#f7597a;}
+/*******婚贷广告********/
+.companyMain .companyGg,.companyMain .companyGg img{ width:360px; height:440px;}
+/*******companyLists********/
+.companyLists{ width:1200px; height:180px; padding:20px 0px; background-color:#fcfcfc; border-bottom:1px #cecece solid;}
+.companyLists .companyListsCo,.companyLists .companyListsCo dl{ width:450px; height:180px;}
+.companyLists .companyListsCo dl dt{ margin-top:24px;}/*******公司信息********/
+.companyLists .companyListsCo dl dd{ margin-top:34px;}
+.companyLists .companyListsCo dl dt,.companyLists .companyListsCo dl dt img{ width:132px; height:132px;border-radius:132px; border:1px #cecece solid;}
+.companyLists .companyListsCo dl dd span{ color:#f7597a;}
+.companyLists .companyListsCo dl dd{ width:300px; height:122px;  line-height:30px;}
+.companyLists .companyListsAn{ width:400px; height:156px; padding-top:24px;  margin-left:10px;}/*******作品案例********/
+.companyLists .companyListsAn img{ width:185px; height:134px;border-radius:8px;border:1px #ccc solid; }
+.companyLists .companyListsAn img:hover{ border:1px #ec728b solid;}
+.companyLists .companyListsPi,.companyLists .companyListsPi ul{ width:320px; height:180px;}/*******评论********/
+.companyLists .companyListsPi ul li{ width:300px; padding:9px 10px; height:70px; margin-bottom:10px; background-color:#f3f3f3; line-height:25px; float:left;}
+.companyLists .companyListsPi ul li img{ margin-right:10px;}
+
+
+/* 婚礼梦工厂详情页样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-2*/
+
+.companyDetials{ width:1200px; height:300px;}
+/*******companyLogo********/
+.companyDetials .companyDetialsLogo{ width:195px; height:300px; background: url(../images/tImgBg.jpg);position:relative;}
+.companyDetials .companyDetialsLogo .Logo{ width:132px; height:132px; border-radius:132px; position:absolute; top:30px; left:30px;}
+.companyDetials .companyDetialsLogo .Logo img{width:132px; height:132px; border-radius:132px; } 
+.companyDetials .companyDetialsLogo .Yuyue{  position:absolute; top:208px; color:#FFF; left:45px; }
+.companyDetials .companyDetialsLogo .bao{ width:120px; height:25px; position:absolute; top:260px; left:36px;}
+/*******companyDetialsMa********/
+.companyDetials .companyDetialsMa{ width:585px; height:300px;}
+.companyDetials .companyDetialsMa span{ color:#f7597a;}
+/*******companyDetialsVe********/
+.companyDetials .companyDetialsVe{ width:400px; height:300px; z-index:10px;}
+.companyDetials .addGouwu{ width:110px; height:26px; border:1px solid #f7597a;margin-top:25px;}
+.companyDetials .addGouwu .addGouwua,.companyDetials .addGouwu .addGouwuc{ width:26px; height:26px; float:left;}
+.companyDetials .addGouwu .addGouwub{ width:55px; height:26px; float:left;}
+
+/*******companyDetialLists********/
+.companyDetialLists,.companyDetialLists ul{ width:1200px; height:50px; border-bottom:1px solid #b5b5b5; background-color:#f4f2f2;} 
+.companyDetialLists ul li{ width:135px; line-height:50px; text-align:center; float:left; margin-left:20px;}
+/*******公司简介********/
+.comDeLiPro{ width:1200px; /*height:260px;*/ line-height:25px;}
+.comDeLiProUp,.comDeLiCaseUp,.comDeLiActUp,.comDeLiBkUp,.comDeLiProceUp,.comDeLiIntUp,.comDeLiComUp{ width: 300px; height:120px; line-height:80px; background:url(../images/DetialBg.png); text-align:center; color:#FFF;}
+.comDeLiProDo{ width:1160; /*height:100px;*/ padding:20px; text-indent:2em;} 
+/*******作品案例********/
+.comDeLiCase{ width:1200px; height:1050px;}
+.comDeLiCaseDo{ width:1180px; height:890px; padding:10px;}
+.comDeLiCaseDo dl{ width:370px; height:290px; margin-left:20px; margin-bottom:10px;}
+.comDeLiCaseDo dl dt,.comDeLiCaseDo dl dt img{ width:370px; height:260px;}
+.comDeLiCaseDo dl dd{ width:370px; height:30px; line-height:30px; background-color:#f4f4f4; text-align:center;}
+/*******优惠活动********/
+.comDeLiAct{ width:1200px; /*height:800px;*/}
+.comDeLiActDo{ width:1180px; padding:0px 10px; /*height:640px;*/}
+.comDeLiActDo table tr,.comDeLiBkDo table tr{ border:#999 2px dashed;} 
+/*******最新预订********/
+.comDeLiBk{ width:1200px; /*height:500px;*/}
+.comDeLiBkDo{ width:1180px; padding:0px 10px;/*height:340px;*/}
+.comDeLiBkDo span{ color:#fa638e;}
+/*******预约流程********/
+.comDeLiProce{ width:1200px; height:420px;}
+.comDeLiProceDo{ width:1180px; padding:0px 10px; height:280px;}
+/*******预约说明********/
+.comDeLiInt{ width:1200px; height:auto;}
+.comDeLiIntDo{ width:1180px; padding:0px 10px;}
+/*******最新评论********/
+.comDeLiCom{ width:1200px; height:auto;}
+.comDeLiComDo{ width:1180px; padding:0px 10px;}
+.comDeLiComDo .Comet{ width:1180px; height:125px; padding-bottom:10px;  border-bottom:2px #CCC dashed;}
+.comDeLiComDo .Comet dl{ width:120px; height:125px; background-color:#f4f2f2; float:left;}
+.comDeLiComDo .Comet dl dt,.Comet  dl dt img{ width:70px; height:70px;}
+.comDeLiComDo .Comet dl dt{ margin-top:15px; margin-left:25px;}
+.comDeLiComDo .Comet dl dd{ height:40px; line-height:40px; color:#f7597a; padding:0px 10px; width:100px; font-size:14px; text-align:center;}
+.comDeLiComDo .Comet .Cometa{ width:1030px; height:105px; line-height:23px; display:block; padding:10px; float:right;}
+.comDeLiComDo .star{ float:right; width:200px; height:23px; line-height:23px;}
+

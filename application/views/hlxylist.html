@@ -1,0 +1,182 @@
+<style type="text/css">
+#mainlevel_04{border-right:1px solid #fff; display:block; line-height:50px; background:#de627b; color:#FFF;}
+#mainlevel_04 a{ color:#FFF;}
+</style>
+<body>
+  <div class="hlxy_content">
+          <div class="hlxy_banner">  
+          	<div class="hlxy_banner_left"> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/hlxy_guang.jpg"></a> 
+            </div>
+            
+            <div class="hlxy_banner_right">  
+                   <div id="playBox">
+    <div class="pre"></div>
+    <div class="next"></div>
+    <div class="smalltitle">
+      <ul>
+        <li class="thistitle"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <ul class="oUlplay">
+       <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/images'?>/1.jpg" /></a></li>
+       <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/images'?>/2.jpg"/></a></li>
+       <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/images'?>/1.jpg" /></a></li>
+       <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/images'?>/4.jpg" /></a></li>
+       <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/images'?>/1.jpg" /></a></li>
+       <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/images'?>/6.jpg" /></a></li>
+    </ul>
+  </div>
+             </div>
+          </div>
+<!--轮播图部分结束-->  
+  <div class="point"><img src="<?php echo base_url().'application/views/images'?>/point.jpg" align="left"> 当前所在的位置 ：<a href="<?php  echo site_url('hunyi/index');?>">首页</a> &gt;
+婚礼学院</div>
+   <!--位置信息部分结束-->
+   
+   
+   
+   
+<!---浮框部分开始-->
+  			<div class="fukuang">
+        		<div class="fukuang_con">
+                  你想要一个完美的婚礼吗？<br />
+                  1.提交个人信息<br />
+                  2.专业客服为您定制<br />
+                  3.线下沟通，统筹您的婚礼<br /><br />
+                  联系QQ:   <br />
+					<?php foreach($consults as $con){?>
+				  <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $con['con_qq'];?>&site=qq&menu=yes"><img border="0" src="<?php echo base_url().'application/views/images'?>/qq.png" align="middle" alt="点击这里给我发消息" title="<?php echo $con['con_name'];?>"/></a>
+					<?php }?>
+				  <br /><br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="#"><img src="<?php echo base_url().'application/views/images'?>/d_buttom.png"></a>
+
+
+
+                </div> 
+        </div> 
+  
+<!--浮框结束-->
+ 
+ 
+ 
+ 
+ 
+<!---分类部分开始-->
+<div class="dd_dd"> 
+
+<div class="hlxy_fenlei_a">
+     <div class="hlxy_fenlei_a_up">完美的婚礼筹备步骤</div>
+     <div class="hlxy_fenlei_a_down">
+     
+     <ul>
+       <li><a>准新娘</a></li>
+       <li><a>订婚期</a></li>
+       <li><a>定预算</a></li>
+       <li> <a>选择场地</a></li>
+       <li><a>选择婚艺网私人订制</a></li>
+       <li> <a>签合同</a></li>
+    
+    
+    </ul>
+
+</div>
+</div> 
+ 
+ 
+ <div class="hlxy_fenlei_a">
+     <div class="hlxy_fenlei_a_up">完美的婚礼流程</div>
+     <div class="hlxy_fenlei_a_down">
+     
+     <ul>
+       <li><a>婚纱礼服  </a></li>
+       <li><a>  化妆造型  </a></li>
+       <li><a>婚礼影像</a></li>
+       <li> <a>场地布置 </a></li>
+       <li><a>婚礼用品</a></li>
+       <li> <a>亲友团  </a></li>
+        <li> <a>婚礼致辞 </a></li>
+    
+    
+    </ul>
+
+</div>
+</div> 
+ 
+ 
+<!--分类部分结束--> 
+    <div class="hlxy_li"> 
+	<?php foreach($res['rs'] as $v){?>
+  <div class="hlxy_li_a"> 
+   <dl>
+   	<dt><a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid'].'');?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb'];?>"></a></dt>
+    <dd>
+     <span><strong> <a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid'].'');?>" target="_blank"><?php echo $v['artitle'];?></a></strong></span> <br />
+
+
+     <?php echo date('Y-m-d',$v['addtime']);?><br />
+      <a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid'].'');?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <?php echo strlen($v['ardesc'])>50?mb_substr($v['ardesc'],0,50,'utf8'):$v['ardesc'];?>
+	  </a><br /><br />
+
+      <span class="bottom_s"> <a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid'].'');?>" target="_blank">MORE+</a></span>
+    </dd>
+   </dl>
+    </div>
+	<?php } ?>
+  
+ 
+  
+  </div>
+  <!--翻页开始-->
+  <div class="page">
+  <?php echo $link;?>
+  </div>
+  <!---翻页结束-->
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+  
+  <!--婚礼列表
+  <div class="hlxy_li_ri">   
+  <div class="hlxy_li_ri_up">  <a href="#">热门资讯 </a></div>
+  <div class="hlxy_li_ri_down">  
+  <ul>
+ 
+ <li class="s_dd"> <a href="#">相信你一定对婚礼风尚春节巨制《中国新印象深刻 </a>   </li>
+ <li class="s_dd"> <a href="#">相信你一定对婚礼风尚春节巨制印象深刻 </a>   </li>
+ <li class="s_dd"> <a href="#">相信你一定对婚礼风尚春新娘》印象深刻 </a>  </li>
+ <li class="s_d"> <a href="#">相信你一定对婚礼风尚春印象深刻 </a>  </li>
+ <li class="s_d"> <a href="#">相信你一定对婚礼风尚春节巨制中国新娘</a>  </li>
+ <li class="s_d"> <a href="#">相信你一定对婚礼风尚春节巨制印象深刻 </a>   </li>
+ <li class="s_d"><a href="#">相信你一定对婚礼风尚春新娘》印象深刻 </a>   </li>
+ <li class="s_d">  <a href="#">相信你一定对婚礼风尚春印象深刻 </a>  </li>
+ 
+ </ul>
+  
+   </div>
+  </div>-->  
+  
+
+<!--婚礼列表右边-->  
+
+
+
+
+
+
+  
+  </div>
+<!--婚礼学院结束-->  
+
+ 

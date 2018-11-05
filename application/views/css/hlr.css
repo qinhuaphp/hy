@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+.hlr_content{ width:1200px; margin:0px auto; font-size:14px;}
+.hlr_content_f1{ width:1000px; margin-left:50px; height:28px; float:left; font-weight:bold;}
+.hlr_content_f1 ul li{ width:110px; height:28px; line-height:28px; float:left; text-align:center; margin-right:35px;}
+.u2{ background-color:#ec728b; line-height:28px; color:#FFF;}
+.u2 a{color:#FFF;}
+.u2 a:hover{color:#FFF;background-color:#ec728b; }
+
+.u1{ background-color:#f3f3f3; line-height:28px; }
+.u1{ color:#333;}
+
+
+.hlr_content_f2{ width:1150px; height:180px; float:left; line-height:30px; border:1px #f0f0f0 solid; padding-left:50px; padding-top:20px;}
+.hlr_content_f2 ul li span a:hover{background-color:#ec728b; color:#FFF;}
+.hlr_content_f2 ul li span{ display:block; float:left; width:80px; height:28px; }
+
+.hlr_content_f3{ width:1200px; height:38px; float:left; line-height:38px; border:1px #f0f0f0 solid; border-left:none; font-weight:bold; }
+.hlr_content_f3 ul li{ width:120px; text-align:center; float:left; border-left:#f0f0f0 1px solid;}
+.hlr_content_f3 ul li a:hover{ color:#ec728b;}
+
+
+/* 个人 */
+.hlr_x{ width:1200px; height:220px; padding-bottom:20px; border-bottom:#f1f1f1 solid 1px;line-height:30px; float:left;}
+
+.hlr_x_a{ width:300px; height:200px; float:left;}
+.hlr_x_a dl{width:110px; height:170px; float:left; }
+.hlr_x_a dt{width:110px; height:110px; float:left; }
+.hlr_x_a dd{width:40px; margin-left:10px; margin-top:5px; height:50px; float:left; border-right:#f3f3f3 1px solid; line-height:20px }
+.hlr_x_a dd a:hover{ color:#ec728b;}
+.hlr_x_a span{ width:180px; height:160px; display:block; float:right; }
+.hlr_x_a span a{ color:#ec728b;}
+
+
+.hlr_x_b{ width:575px; height:200px; float:left; margin-left:10px;   line-height:30px; }
+
+.hlr_x_c{ width:300px; height:200px; float:right; line-height:22px;  font-size:12px; }
+.hlr_x_c span { font-weight:bold;}
+
+.zhuchiren{ width:1200px; float:left;}
+
+/* 团队 */
+
+.hlr_x_a_t{ width:420px; height:200px; float:left;   }
+.hlr_x_a_t dl{width:150px; height:200px; float:left; }
+.hlr_x_a_t dt{width:150px; height:150px; float:left; }
+.hlr_x_a_t dd{width:40px; height:40px; float:left; margin-left:40px; border-right:#f3f3f3 1px solid; line-height:20px }
+.hlr_x_a_t dd a:hover{ color:#ec728b;}
+.hlr_x_a_t span{ width:255px; height:160px; margin-top:20px;display:block; float:right; }
+.hlr_x_a_t span a{ color:#ec728b;}
+
+.hlr_x_b_t{ width:350px; height:200px;  float:left; line-height:22px;  margin-left:20px; }
+.hlr_x_c_t{ width:400px; height:200px; margin-left:10px;  float:right; line-height:30px;}
+.hlr_x_c_t span { font-weight:bold;}
+
+
+
+
+
+
+
+.yuding{ width:1100px; height:700px; margin:0px auto; border:1px #ec728b solid; font-size:14px;}
+
+
+
+
+.hlsj_a{ width:50px; height:20px ; text-align:center;margin-left:5px; display:block; float:left; text-align:center; }
+.hlsj_a a{color:#FFF}
+.hlsj_b{ width:50px; height:20px ; text-align:center;margin-left:5px;background-color:#f3f3f3;display:block;float:left; }
+.hlsj_b a{color:#666;}
+
+	
+.select01 {
+    display: inline-block;
+    margin-right: 5px; float:left;
+	
+	}
+/* 分享按钮 */
+/*支付*/
+.dd_yd,dd_yd_a{ width:1200px; }
+.dd_yd{height:880px; margin:0px auto; border:1px solid #ec728b;}
+.dd_yd h1{ font-size:20px; } 
+.dd_yd span{ font-size:18px;}
+.dd_yd_a{ height:50px; line-height:50px; background-color:#ec728b; color:#FFF; text-align:center; font-size:25px;}
+.yd{ width:1000px; height:auto; margin-left:100px;border:1px solid #efe68b; margin-top:10px;}
+.zysx{ width:900px;  float:left; background-color:#feffe5; border:1px solid #efe68b; line-height:20px; padding:10px 65px 10px 35px; margin-left:100px; margin-top:20px;}
+.bd_wrap { border: 1px solid #EEE; padding: 5px 9px; width: 170px;float: left;}
+.bg22 { border: medium none;background: transparent url("../images/apply2.jpg") no-repeat scroll 0% 0%;height: 38px;width: 130px;display: inline-block;cursor: pointer;}
+.bg1 { border: medium none;background: transparent url("../images/apply1.jpg") no-repeat scroll 0% 0%;height: 38px; width: 130px;display: inline-block;cursor: pointer;}
+.yd label, .yd input {vertical-align: middle;}

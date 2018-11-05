@@ -1,0 +1,582 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>按节日_袭人花店官网</title>
+<meta name="keywords" content="鲜花,花店,网上花店,花艺培训,合肥花店,袭人花店,袭人中国花店联盟">
+<meta name="description" content="鲜花,花店,网上花店,花艺培训,合肥花店,袭人花店,袭人中国花店联盟">
+<link rel="stylesheet" type="text/css" href="http://www.xiren.com.cn/public/front_css/style.css">
+<link rel="stylesheet" type="text/css" href="http://www.xiren.com.cn/public/front_css/top_footer.css">
+<link rel="stylesheet" type="text/css" href="http://www.xiren.com.cn/public/front_css/superfish.css">
+<script type="text/javascript" src="http://www.xiren.com.cn/public/front_js/jquery-1.4.4.min.js"></script>
+<!--菜单 js-->
+<script type="text/javascript" src="http://www.xiren.com.cn/public/front_js/superfish.js"></script>
+<!--PNG透明-->
+<!--[if lte IE 6]>
+<script src="jhttp://www.xiren.com.cn/public/front_s/DD_belatedPNG_0.0.8a.js" charset="GBK" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('*');
+    </script>
+<![endif]-->
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="http://www.xiren.com.cn/public/front_css/weebox.css">
+<script type="text/javascript" src="http://www.xiren.com.cn/public/front_js/bgiframe.js"></script>
+<script type="text/javascript" src="http://www.xiren.com.cn/public/front_js/common.js"></script>
+<script type="text/javascript" src="http://www.xiren.com.cn/public/front_js/weebox.js"></script>
+<script> 
+function AddFavorite(sURL, sTitle) {   
+    try {   
+        window.external.addFavorite(sURL, sTitle);   
+    } catch (e) {   
+        try {   
+            window.sidebar.addPanel(sTitle, sURL, "");   
+        } catch (e) {   
+            alert("加入收藏失败，请使用Ctrl+D进行添加");   
+        }   
+    }   
+}   
+function Trim(str){
+	if(str.charAt(0) == " "){
+	str = str.slice(1);
+	str = Trim(str);
+	}
+	return str;
+}
+function searchs(){
+	var keyword = document.getElementById('keyword');
+	if(Trim(keyword.value) == '' || Trim(keyword.value) == '输入产品编号或名称'){
+		alert('请输入搜索内容');
+		keyword.focus();
+		return false;
+	}
+	if(Trim(keyword.value).indexOf('!') >= 0
+	){
+		alert('请重新输入');
+		keyword.focus();
+		return false;
+	}
+	location.href = 'http://www.xiren.com.cn/hefei/search/' + encodeURIComponent(keyword.value);
+}
+function orderSearch(){
+	$.weeboxs.open('http://www.xiren.com.cn/ucenter/orderSearch', {title:'订单查询', contentType:'ajax',width:525,height:210});
+}
+</script>
+<div id="header">
+  <div class="logo">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+      <tr>
+        <td width="165"><a href="http://www.xiren.com.cn/hefei"><img src="http://www.xiren.com.cn/public/front_images/logo.jpg" width="165" height="110" /></a></td>
+        <td><font class="font14 fontAD">&nbsp;&nbsp;合肥</font><br/>
+          <a href="http://www.xiren.com.cn/" style="color:#999">【切换城市】</a></td>
+        <td align="right"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="95">
+            <tr>
+              <td align="right" colspan="3" valign="top" class="top">您好，袭人花店欢迎您！
+			  <a href="http://www.xiren.com.cn/ucenter/login" rel="nofollow"><strong>登录</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.xiren.com.cn/ucenter/reg" rel="nofollow"><strong>注册</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.xiren.com.cn/ucenter/order" rel="nofollow">我的订单</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="orderSearch()" rel="nofollow">订单查询</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="AddFavorite(window.location,document.title)" rel="nofollow">收藏本站</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.xiren.com.cn/">返回总站</a></td>
+            </tr>
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="62%" align="right"><strong style="background:url(http://www.xiren.com.cn/public/front_images/phone.jpg) no-repeat left; font-size:24px; letter-spacing:2px; font-family:Arial, Helvetica, sans-serif; color:#B49F12; padding-left:20px; line-height:100%;">0551-62677036</strong>&nbsp;&nbsp;<font class="font33">客服热线</font></td>
+              <td width="12%"><a href="http://wpa.qq.com/msgrd?v=3&uin=2633828880&site=qq&menu=yes" target="_blank" id="kf" rel="nofollow">在线客服</a></td>
+              <td width="26%"><span class="gw"><a href="http://www.xiren.com.cn/ucenter/cart" rel="nofollow">购物车 <strong class="fontCC fontEn cartNum">0</strong> <font class="font33">件</font></a></span></td>
+            </tr>
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+          </table></td>
+      </tr>
+    </table>
+  </div>
+  <!-- logo end -->
+  <div class="menu">
+    <div class="menu_left">
+      <table id="navP" width="745" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr height="30">
+          <td align="center"><a href="http://www.xiren.com.cn/hefei" class="navP">首 页</a></td>
+          		  		  <td onMouseOver="showMenu('1');" onMouseOut="hiddMenu('1');"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center"><a id="menuA1" href="http://www.xiren.com.cn/hefei/product/001" class="navP" >按花材</a></td>
+              </tr>
+            </table>
+			            <table id="menu1" class="navFloat" border="0" cellspacing="0" cellpadding="0" align="center">
+              			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001002">红玫瑰</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001003">粉玫瑰</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001006">蓝玫瑰</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001007">康乃馨</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001008">马蹄莲</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001009">百合花</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001010">郁金香</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001011">向日葵</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/001005">香槟玫瑰</a></td>
+              </tr>
+			              </table></td>
+		   		  		  		  <td onMouseOver="showMenu('2');" onMouseOut="hiddMenu('2');"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center"><a id="menuA2" href="http://www.xiren.com.cn/hefei/product/002" class="navP" >按支数</a></td>
+              </tr>
+            </table>
+			            <table id="menu2" class="navFloat" border="0" cellspacing="0" cellpadding="0" align="center">
+              			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002001">1枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002008">3枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002002">9枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002003">11枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002004">19枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002005">33枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002006">66枝</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/002007">99枝</a></td>
+              </tr>
+			              </table></td>
+		   		  <td onmouseout="hiddMenu('9');" onmouseover="showMenu('9');"><table cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+				  <tr>
+					<td align="center"><a class="navP" href="http://www.xiren.com.cn/hefei/price" id="menuA9">按价格</a></td>
+				  </tr>
+				</tbody>
+			  </table>
+			  <table width="93px" cellspacing="0" cellpadding="0" border="0" align="center" class="navFloat" id="menu9" style="visibility: hidden;">
+				<tbody>
+				  <tr height="20">
+					<td nowrap="true" align="center"><a href="http://www.xiren.com.cn/hefei/price/1">200元以下</a></td>
+				  </tr>
+				  <tr height="20">
+					<td nowrap="true" align="center"><a href="http://www.xiren.com.cn/hefei/price/2">200-300元</a></td>
+				  </tr>
+				  <tr height="20">
+					<td nowrap="true" align="center"><a href="http://www.xiren.com.cn/hefei/price/3">300-500元</a></td>
+				  </tr>
+				  <tr height="20">
+					<td nowrap="true" align="center"><a href="http://www.xiren.com.cn/hefei/price/4">500-800元</a></td>
+				  </tr>
+				  <tr height="20">
+					<td nowrap="true" align="center"><a href="http://www.xiren.com.cn/hefei/price/5">800-1000元</a></td>
+				  </tr>
+				  <tr height="20">
+					<td nowrap="true" align="center"><a href="http://www.xiren.com.cn/hefei/price/6">1000元以上</a></td>
+				  </tr>
+				</tbody>
+			  </table></td>
+					  		  		  <td onMouseOver="showMenu('3');" onMouseOut="hiddMenu('3');"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center"><a id="menuA3" href="http://www.xiren.com.cn/hefei/product/004" class="navP" >按类型</a></td>
+              </tr>
+            </table>
+			            <table id="menu3" class="navFloat" border="0" cellspacing="0" cellpadding="0" align="center">
+              			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/004001">精美花束</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/004002">礼仪花篮</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/004003">创意礼盒</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/004004">年宵绿植</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/004005">开业花篮</a></td>
+              </tr>
+			              </table></td>
+		   		  		  		  <td onMouseOver="showMenu('4');" onMouseOut="hiddMenu('4');"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center"><a id="menuA4" href="http://www.xiren.com.cn/hefei/product/005" class="navCurrent" >按节日</a></td>
+              </tr>
+            </table>
+			            <table id="menu4" class="navFloat" border="0" cellspacing="0" cellpadding="0" align="center">
+              			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005001">春节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005003">情人节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005004">元旦节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005005">妇女节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005007">母亲节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005008">父亲节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005009">七夕节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005010">中秋节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005011">教师节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005012">圣诞节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005013">感恩节</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/005014">520情人节</a></td>
+              </tr>
+			              </table></td>
+		   		  		  		  <td onMouseOver="showMenu('5');" onMouseOut="hiddMenu('5');"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center"><a id="menuA5" href="http://www.xiren.com.cn/hefei/product/006" class="navP" >节日活动</a></td>
+              </tr>
+            </table>
+			            <table id="menu5" class="navFloat" border="0" cellspacing="0" cellpadding="0" align="center">
+              			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/006002">限时抢购</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/006003">个性定制</a></td>
+              </tr>
+			  			  <tr height="20">
+                <td align="center" nowrap="true"><a href="http://www.xiren.com.cn/hefei/product/006001">进口专区</a></td>
+              </tr>
+			              </table></td>
+		   		  		            <td align="center"><a href="http://www.xiren.com.cn/hefei/article/011" class="navP">鲜花定制</a></td>
+        </tr>
+      </table>
+    </div>
+    <!-- menu_left -->
+    <div class="menu_right">
+			<a href="http://www.xiren.com.cn/hefei/article/006">品牌故事</a>
+			<a href="http://www.xiren.com.cn/hefei/article/007">品牌资讯</a>
+			<a href="http://www.xiren.com.cn/hefei/article/008">购物保障</a>
+	</div>
+    <!-- menu_right --> 
+  </div>
+  <!-- menu end -->
+  <div class="menu_Area">
+  <span class="fl" style='margin-right:10px;width:600px;'> <img src="http://www.xiren.com.cn/public/front_images/ico.jpg" style="position:relative;top:2px; ">
+	<MARQUEE height='20'  scrollAmount=0 direction=up behavior=alternate width="500px" >
+<MARQUEE direction=left scrollAmount=2 style="color:#c00">【温馨提示】：亲爱的顾客，您好！由于520即将到来，部分产品已经罄空，下单前请咨询客服是否有货，祝您节日快乐</MARQUEE>
+</MARQUEE>
+	</span>
+
+  <span class="fl">热门搜索：<a href="http://www.xiren.com.cn/hefei/search"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <input id="keyword" type="text" class="search_text" value="输入产品编号或名称" onfocus="if(this.value=='输入产品编号或名称'){this.value=''}" onblur="if(this.value==''){this.value='输入产品编号或名称'}" />
+    <input name="" type="image" src="http://www.xiren.com.cn/public/front_images/search_button.jpg" onclick="searchs()" />
+  </div>
+  <!-- menu_Area end -->
+</div>
+<!-- heaer end -->
+<div class="height20"></div>
+<div class="pagebody">
+  <div class="Left">
+  <div class="Left_center">
+    <div>销售排行</div>
+    <ul>
+	        <li><span class="Lc_ico">1</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr6005"><img src="http://www.xiren.com.cn/upload/20140730/20140730183137.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr6005<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr6005" class="fontB">情窦初开</a><br/>
+        <strong class="fontCC fontS">￥331</strong><br/>死生契阔，与子成说。执子之手，...</span></li>
+	        <li><span class="Lc_ico">2</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr6006"><img src="http://www.xiren.com.cn/upload/20131211/20131211100439.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr6006<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr6006" class="fontB">爱琴海之吻</a><br/>
+        <strong class="fontCC fontS">￥442</strong><br/>爱一个人，是一辈子。如果我的等...</span></li>
+	        <li><span class="Lc_ico">3</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr6003"><img src="http://www.xiren.com.cn/upload/20131210/20131210114543.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr6003<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr6003" class="fontB">长相思</a><br/>
+        <strong class="fontCC fontS">￥386</strong><br/>每一次呼吸、每一次闭上眼、我都...</span></li>
+	        <li><span class="Lc_ico">4</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0095"><img src="http://www.xiren.com.cn/upload/20140513/20140513104349.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0095<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0095" class="fontB">依世璀璨</a><br/>
+        <strong class="fontCC fontS">￥198</strong><br/></span></li>
+	        <li><span class="Lc_ico">5</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0058"><img src="http://www.xiren.com.cn/upload/20131214/20131214141559.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0058<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0058" class="fontB">祝福</a><br/>
+        <strong class="fontCC fontS">￥251</strong><br/>感恩吧，感谢父母们给予的一点一...</span></li>
+	        <li><span class="Lc_ico">6</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0050"><img src="http://www.xiren.com.cn/upload/20140503/20140503163445.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0050<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0050" class="fontB">守护爱情</a><br/>
+        <strong class="fontCC fontS">￥272</strong><br/>见证和守护爱情！爱情是一种美丽...</span></li>
+	        <li><span class="Lc_ico">7</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0015"><img src="http://www.xiren.com.cn/upload/20131212/20131212090243.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0015<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0015" class="fontB">爱到永久</a><br/>
+        <strong class="fontCC fontS">￥308</strong><br/>无论世界如何在改变，我都爱你每...</span></li>
+	        <li><span class="Lc_ico">8</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0026"><img src="http://www.xiren.com.cn/upload/20140113/20140113114035.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0026<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0026" class="fontB">那时花开</a><br/>
+        <strong class="fontCC fontS">￥244</strong><br/>美丽正炫耀着,活力正漫延着,蓝...</span></li>
+	        <li><span class="Lc_ico">9</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0005"><img src="http://www.xiren.com.cn/upload/20140503/20140503161228.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0005<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0005" class="fontB">妈妈的吻</a><br/>
+        <strong class="fontCC fontS">￥239</strong><br/>您的爱，我永远报答不了；您对我...</span></li>
+	        <li><span class="Lc_ico">10</span><span class="Lc_photo"><a href="http://www.xiren.com.cn/hefei/item/xr0069"><img src="http://www.xiren.com.cn/upload/20140513/20140513090904.jpg" width="58" height="90" /></a></span><span class="Lc_text">编号：xr0069<br/>
+        <a href="http://www.xiren.com.cn/hefei/item/xr0069" class="fontB">爱情证书</a><br/>
+        <strong class="fontCC fontS">￥328</strong><br/>你就是我的唯一，无论世界怎样改...</span></li>
+      </ul>
+  </div>
+  <!-- Left_center end -->
+  <div class="height15"></div>
+  <div class="Left_bottom">
+    <div>您浏览过的商品</div>
+    <ul>
+      </ul>
+  </div>
+  <!-- Left_bottom end -->
+</div>
+<!-- Left end -->
+  <div class="Right">
+    <div class="rt_top">当前位置：<a href="http://www.xiren.com.cn/hefei">首页</a> > <a href="http://www.xiren.com.cn/hefei/product/005">按节日</a> > <font class="fontAD">情人节</font></div>
+    <!-- rt_top end -->
+    <div class="height10"></div>
+    <div class="rt_menu">
+      <table width="100%" border="0" cellspacing="7" cellpadding="0">
+        <tr>
+          <td width="60"><font class="fontAD font14">按节日：</font></td>
+          <td><div class="rt_menu_nav">
+		  <a href="http://www.xiren.com.cn/hefei/product/005/1">全部</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005001/1">春节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005003/1" id="activeNav">情人节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005004/1">元旦节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005005/1">妇女节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005007/1">母亲节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005008/1">父亲节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005009/1">七夕节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005010/1">中秋节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005011/1">教师节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005012/1">圣诞节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005013/1">感恩节</a>
+		  		  <a href="http://www.xiren.com.cn/hefei/product/005014/1">520情人节</a>
+		  </div>
+		  </td>
+        </tr>
+      </table>
+    </div>
+    <!-- rb_menu end -->
+    <div class="height10"></div>
+    <div class="rt_bottom">
+      <div class="Sequence">
+        <ul>
+          <li><a href="http://www.xiren.com.cn/hefei/product/005003/1" id="navE">按销量</a></li>
+          <li><a href="http://www.xiren.com.cn/hefei/product/005003/2">按价格</a></li>
+          <li><a href="http://www.xiren.com.cn/hefei/product/005003/3">按新品</a></li>
+        </ul>
+      </div>
+      <!-- Sequence end -->
+      <div class="pro_list_main">
+        <ul>
+		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr6005"><img src="http://www.xiren.com.cn/upload/20140730/20140730183137.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr6005<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr6005">情窦初开</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥331</strong></span> <span class="plm_detail">死生契阔，与子成说。执子之手，与子偕老。 </span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr6006"><img src="http://www.xiren.com.cn/upload/20131211/20131211100439.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr6006<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr6006">爱琴海之吻</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥442</strong></span> <span class="plm_detail">爱一个人，是一辈子。如果我的等待可以换来多年前你一...</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr6003"><img src="http://www.xiren.com.cn/upload/20131210/20131210114543.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr6003<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr6003">长相思</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥386</strong></span> <span class="plm_detail">每一次呼吸、每一次闭上眼、我都会把我对你的思念加深</span> </li>
+		  		            <li style="padding:0px;"><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0095"><img src="http://www.xiren.com.cn/upload/20140513/20140513104349.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0095<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0095">依世璀璨</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥198</strong></span> <span class="plm_detail"></span> </li>
+	    </ul><ul>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0050"><img src="http://www.xiren.com.cn/upload/20140503/20140503163445.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0050<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0050">守护爱情</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥272</strong></span> <span class="plm_detail">见证和守护爱情！爱情是一种美丽的遇见,缘定三生共婵...</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0015"><img src="http://www.xiren.com.cn/upload/20131212/20131212090243.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0015<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0015">爱到永久</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥308</strong></span> <span class="plm_detail">无论世界如何在改变，我都爱你每个日月年，牵你手直到...</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0026"><img src="http://www.xiren.com.cn/upload/20140113/20140113114035.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0026<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0026">那时花开</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥244</strong></span> <span class="plm_detail">美丽正炫耀着,活力正漫延着,蓝色的天空等着你期待着...</span> </li>
+		  		            <li style="padding:0px;"><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0069"><img src="http://www.xiren.com.cn/upload/20140513/20140513090904.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0069<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0069">爱情证书</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥328</strong></span> <span class="plm_detail">你就是我的唯一，无论世界怎样改变，我对你的爱始终如...</span> </li>
+		  		  </ul><ul>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr6014"><img src="http://www.xiren.com.cn/upload/20131221/20131221091318.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr6014<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr6014">相依相偎</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥390</strong></span> <span class="plm_detail">一首爱的恋曲，一份心的期待；几许期许，几许感悟</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr6004"><img src="http://www.xiren.com.cn/upload/20140307/20140307131026.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr6004<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr6004">爱的承诺</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥442</strong></span> <span class="plm_detail">淡雅清丽的雪山玫瑰，皎洁的清香，像是冰凉的高山之雪...</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0028"><img src="http://www.xiren.com.cn/upload/20131217/20131217161254.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0028<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0028">心有所属</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥271</strong></span> <span class="plm_detail">不论空间如何改变，我对你的爱不变,你是我的唯一！</span> </li>
+		  		            <li style="padding:0px;"><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0010"><img src="http://www.xiren.com.cn/upload/20131216/20131216142220.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0010<br/>
+
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0010">天长地久</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥852</strong></span> <span class="plm_detail">99朵靓丽的红玫瑰，献给你的至爱！</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0009"><img src="http://www.xiren.com.cn/upload/20131210/20131210150256.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0009<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0009">爱的诺言</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥312</strong></span> <span class="plm_detail">真正的爱，是接受，不是忍受；是支持，不是支配；是慰...</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0067"><img src="http://www.xiren.com.cn/upload/20131213/20131213160617.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0067<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0067">青春飞扬</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥329</strong></span> <span class="plm_detail">青春是迷人的，它令幼稚仰慕、它使衰老嫉妒！青春是饱...</span> </li>
+		  		            <li><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0052"><img src="http://www.xiren.com.cn/upload/20140106/20140106144214.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0052<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0052">邂逅西雅图</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥283</strong></span> <span class="plm_detail">西雅图，被认为是最美的城市，也是星巴克的故乡，这里...</span> </li>
+		  		            <li style="padding:0px;"><span class="fl"><a href="http://www.xiren.com.cn/hefei/item/xr0084"><img src="http://www.xiren.com.cn/upload/20140513/20140513102815.jpg" width="173" height="260" /></a></span> <span class="plm_text">编号：xr0084<br/>
+            <strong><a href="http://www.xiren.com.cn/hefei/item/xr0084">生生圣洁</a></strong><br/>
+            商城价：<strong class="fontS fontCC font14">￥265</strong></span> <span class="plm_detail"></span> </li>
+		  		          </ul>
+      </div>
+      <!-- pro_list_main end -->
+      <div class="fy_page"><a href="javascript:;" id="navPG" class="page">1</a><a class="page" href="http://www.xiren.com.cn/hefei/product/005003/1/16">2</a><a class="page" href="http://www.xiren.com.cn/hefei/product/005003/1/32">3</a><a class="page" href="http://www.xiren.com.cn/hefei/product/005003/1/16">下一页</a></div>
+    </div>
+    <!-- rt_top end -->
+  </div>
+  <!-- Right end -->
+</div>
+<!-- pagebody end -->
+<div class="height20"></div>
+<div id="footer">
+  <div class="f_menu">
+    <ul>
+	        <li> <span class="ft_nav_1 Common" rel="nofollow">购物指南</span>
+        <ul>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/001001" rel="nofollow">购买流程</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/001002" rel="nofollow">支付方式</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/001004" rel="nofollow">常见问题</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/001005" rel="nofollow">服务条款</a></li>
+	          </ul>
+      </li>
+	        <li> <span class="ft_nav_2 Common" rel="nofollow">配送方式</span>
+        <ul>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/002001" rel="nofollow">配送时间</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/002002" rel="nofollow">配送范围</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/002003" rel="nofollow">配送费用</a></li>
+	          </ul>
+      </li>
+	        <li> <span class="ft_nav_3 Common" rel="nofollow">优惠制度</span>
+        <ul>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/003001" rel="nofollow">会员制度</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/003002" rel="nofollow">积分奖励</a></li>
+	          </ul>
+      </li>
+	        <li> <span class="ft_nav_4 Common" rel="nofollow">售后服务</span>
+        <ul>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/004001" rel="nofollow">客户服务</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/004002" rel="nofollow">投诉处理</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/004003" rel="nofollow">隐私保障</a></li>
+		            <li><a href="http://www.xiren.com.cn/hefei/article/004004" rel="nofollow">退款说明</a></li>
+	          </ul>
+      </li>
+	        <li> <span class="ft_nav_5 Common" rel="nofollow">关于我们</span>
+        <ul>
+          <li><a href="http://www.xiren.com.cn/hefei/article/005001" rel="nofollow">关于我们</a></li>
+          <li><a href="http://www.xiren.com.cn/hefei/article/005002" rel="nofollow">联系我们</a></li>
+          <li><a href="http://www.xiren.com.cn/hefei/article/005004" rel="nofollow">商户加盟</a></li>
+          <li><a href="http://www.xiren.com.cn/hefei/article/005005" rel="nofollow">网站地图</a></li>
+          <li><a href="http://www.xiren.com.cn/baidugoods" target="_blank" rel="nofollow">百度地图</a></li>
+        </ul>
+      </li>
+      <li style="border:0px;"> <span class="ft_nav_6 Common" rel="nofollow">友情链接</span>
+        <ul>
+          <li><a href="http://www.xiren.com.cn" target="_blank" rel="nofollow">袭人官网</a></li>
+          <li><a href="http://www.xirenls.com/" target="_blank" rel="nofollow">加盟袭人</a></li>
+          <li><a href="http://peixun.xiren.com.cn" target="_blank" rel="nofollow">花艺培训</a></li>
+、        </ul>
+      </li>
+    </ul>
+  </div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#DDF1C4">
+    <tr>
+      <td align="center"><table width="1030" border="0" cellspacing="0" cellpadding="0" align="center" height="90">
+          <tr>
+            <td align="left">订购热线：<strong class="fontCC">0551-62677036</strong> &nbsp;地址：安徽省合肥市桐城路76号袭人花店运营中心 <br/>7*24小时在线订购 客服工作时间：8:00-18:00<br/>COPYRIGHT ©  2013　袭人花店（www.xiren.com.cn） All Rights Reserved 皖ICP备05003530号  
+			<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+			document.write(unescape("%3Cspan id='cnzz_stat_icon_1253234500'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/stat.php%3Fid%3D1253234500%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fec010f7bcbad5d4eb57245df157e5baf' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+            </td>
+            <td align="right"><a href="http://wpa.qq.com/msgrd?v=3&uin=2633828880&site=qq&menu=yes" target="_blank" rel="nofollow"><img src="http://www.xiren.com.cn/public/front_images/ft_qq.jpg" width="92" height="24" /></a></td>
+            <td align="right"><a href="http://weibo.com/xirenhuadian1991" target="_blank" rel="nofollow"><img src="http://www.xiren.com.cn/public/front_images/ft_wb.jpg" width="92" height="24" /></a></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?uid=1383641412386487&type=left&amp;move=0&amp;btn=l5.gif" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<div style="display: none" id=goTopBtn><img border=0 src="http://www.xiren.com.cn/public/front_images/top.png"></div>
+<!-- top js start -->
+<script type=text/javascript src="http://www.xiren.com.cn/public/front_js/scrolltop.js"></script>
+<!-- top js end -->
+<script type="text/javascript">goTopEx();</script>
+<!-- footer end -->
+<script language=JavaScript> 
+lastScrollY=0;
+function heartBeat(){ 
+var diffY;
+if (document.documentElement && document.documentElement.scrollTop)
+    diffY = document.documentElement.scrollTop;
+else if (document.body)
+    diffY = document.body.scrollTop
+else
+    {/*Netscape stuff*/}
+    
+//alert(diffY);
+percent=.1*(diffY-lastScrollY); 
+if(percent>0)percent=Math.ceil(percent); 
+else percent=Math.floor(percent); 
+document.getElementById("lovexin12").style.top=parseInt(document.getElementById("lovexin12").style.top)+percent+"px";
+ 
+lastScrollY=lastScrollY+percent; 
+//alert(lastScrollY);
+}
+suspendcode12="<DIV id=\"lovexin12\" style='right:5px;POSITION:absolute;TOP:200px;z-index:100'>";
+var recontent='<div style="width:99px;">' + 
+'<p style="padding:0px; margin:0px;">'+'<a onclick="far_close()" style="cursor:pointer">'+'<img src="http://www.xiren.com.cn/public/front_images/header01.jpg" width="99" height="45" />'+'</a>'+'</p>'+
+'<p style="background:url(http://www.xiren.com.cn/public/front_images/bg.jpg); padding:5px 5px; pdding-bottom:8px;text-align:center;">'+'客服平平'+'</p>'+
+'<p style="background:url(http://www.xiren.com.cn/public/front_images/bg.jpg); padding:0px 0 8px 10px; margin:0px;">'+'<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2633828880&site=qq&menu=yes">'+'<img border="0" src="http://wpa.qq.com/pa?p=2:2633828880:41 &r=0.4316049171089671" alt="点击这里给我发消息" title="点击这里给我发消息">'+'</a>'+'</p>'+
+'<p style="background:url(http://www.xiren.com.cn/public/front_images/bottom.jpg); height:25px; padding:55px 0px 0px 10px; margin:0px; color:#F00; font-weight:bold; font-family:Arial;">'+'0551-62677036'+'</p>'+
+'</div>';
+ 
+document.write(suspendcode12); 
+document.write(recontent); 
+document.write("</div>"); 
+window.setInterval("heartBeat()",1);
+ 
+function far_close()
+{
+	document.getElementById("lovexin12").innerHTML="";
+}
+ 
+function setfrme()
+{
+	var tr=document.getElementById("lovexin12");
+	var twidth=tr.clientWidth;
+	var theight=tr.clientHeight;
+	var fr=document.getElementById("frame55la");
+	fr.width=twidth-1;
+	fr.height=theight-30;
+}
+//setfrme()
+</script>
+<script type="text/javascript"> var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fec010f7bcbad5d4eb57245df157e5baf' type='text/javascript'%3E%3C/script%3E")) </script></body>
+</html>

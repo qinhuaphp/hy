@@ -1,0 +1,64 @@
+<style type="text/css">
+#mainlevel_01{border-right:1px solid #fff; display:block; line-height:50px; background:#de627b; color:#FFF;}
+#mainlevel_01 a{ color:#FFF;}
+</style>
+<body>
+<!--导航结束-->
+<div class="sr_content">
+	<div class="sr_head">
+		<div class="sr_head_ri">
+<iframe height="500" width="305" frameborder="no" border="0" marginwidth="0" marginheight="0"   scrolling="no" allowtransparency="yes"src="<?php echo site_url('hunyi/customform')?>">
+ </iframe> 
+    </div>
+</div>
+    <!--私人订制头部结束-->
+<div class="point"><img src="<?php echo base_url().'application/views/images';?>/point.jpg" align="left"> 当前所在的位置 ：<a href="<?php echo site_url('hunyi/index');?>">首页</a>&gt;私人订制 </div>
+<div class="srdz_hq">
+  <div class="srdz_hq_up"> <span><a href="http://www.hunyi365.com/article/index/cid/2.html">成功案例</a></span></div>
+  <div class="srdz_hq_down">
+  
+  <?php foreach($anli as $v){?>
+   <dl>
+   	<dt><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid'].'');?>" target="_blank"> <img src="<?php echo base_url().$v['cover_thumb'];?>" width="365"> </a>
+	
+	</dt>
+	<dd><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid'].'');?>" target="_blank"> <?php echo $v['artitle'];?></a></dd>
+     <!-- <dd><span>发布时间:</span>王磊<span class="ceng" style="width:60px;"></span><span> 
+ <div class="s_price"><span style="font-size:12px;"></span></div>   -->
+   </dl> 
+   <?php } ?>
+ 
+ </div>
+</div>
+<!--婚庆公司-->
+
+<div class="srdz_hl">
+  <div class="srdz_hl_up"><span><a href="http://www.hunyi365.com/article/index/cid/1.html">婚礼知识</a></span></div>
+  <div class="srdz_hl_down">
+  
+  <?php foreach($xy as $v){?>
+   <dl>
+   	<dt><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid'].'');?>"  target="_blank"><img src="<?php echo base_url().$v['cover_thumb'];?>"></a></dt>
+    <dd>
+     <span><strong> <a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid'].'');?>"  target="_blank"><?php echo $v['artitle'];?></a></strong></span><br /><br />
+
+      <?php date('Y-m-d',$v['addtime']);?><br />
+      <a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid'].'');?>"  target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 <?php echo strlen($v['ardesc'])?mb_substr($v['ardesc'],0,26,'utf8').'...':$v['ardesc'];?></a><br />
+
+  
+      <span class="bottom_s"> <a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid'].'');?>" target="_blank">MORE+</a></span>
+    </dd>
+   </dl>
+   <?php } ?>
+ <!--1--> 
+
+  </div>
+</div>
+<!--婚礼学院结束-->
+
+
+
+</div>
+<!--私人订制内容部分结束-->
+</body>

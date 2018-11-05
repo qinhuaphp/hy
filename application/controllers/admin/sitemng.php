@@ -1,0 +1,39 @@
+<?php
+class Sitemng extends MY_Controller{
+	function display(){
+		$this->checklogin();
+		$this->load->model('Site_model','site');
+		$row=$this->site->fetchrow('sitetitle,keywords,description','1');
+		//print_r($row);
+		if(!empty($row)){
+				$d['sitetitle']=$row[0]['sitetitle'];
+				$d['keywords']=$row[0]['keywords'];
+				$d['description']=$row[0]['description'];
+		}else{
+				$d='';
+		}
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('sitetitle','网站标题','required');
+		$this->form_validation->set_rules('keywords','关键词','required');
+		$this->form_validation->set_rules('description','描述','required');
+		$res=$this->form_validation->run();
+		if($res==false){
+			$this->form_validation->set_error_delimiters('<span>','</span>');
+			$this->load->view('admin/site.html',$d);
+			}else{
+					//print_r($this->input->post());				
+					$this->load->model('Site_model');
+					$data['sitetitle']=$this->input->post('sitetitle');
+					$data['keywords']=$this->input->post('keywords');
+					$data['description']=$this->input->post('description');
+					//print_r($data);exit;
+					$result=$this->Site_model->renew($data,'1');
+					if($result>0){
+						$dat['msg']='设置成功';
+						$this->load->view('admin/msg.html',$dat);
+					}
+			}
+	}
+
+}
+?>

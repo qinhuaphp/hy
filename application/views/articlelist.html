@@ -1,0 +1,135 @@
+<style>
+
+</style>
+
+    <div class="articleMain magi">
+         <!--本网站结婚优势广告广告-->
+         <div class="articleGg fl"> 
+             <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/gg/YoushiGg.jpg"></a>
+         </div>
+<!--公司轮播图-->
+         <div id="artBanner" class="fr">
+           <div id="Banner">
+              <div class="pre"></div>
+              <div class="next"></div>
+              <div class="smalltitle">
+              <ul>
+              <li class="thistitle"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+             </ul>
+             </div>
+            <ul class="oUlplay">
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner01.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner02.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner03.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner04.jpg" /></a></li>
+             <li><a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/banner05.jpg" /></a></li>
+            </ul>
+         </div>
+         </div>
+         
+  </div>
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > <span>婚礼学院</span>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".articleLists ul li").hover(function(){
+		$(this).css({
+		"background":"#DDDDDD",
+		"color":"#FF88C2"
+		});
+	},function(){
+		$(this).removeAttr("style");
+	});
+	$(".articleCa .fl").hover(function(){
+		$(this).css({
+		"border-left":"1px solid #A20055",
+		"border-right":"1px solid #A20055"
+		});
+	},function(){
+		$(this).removeAttr("style");
+	});
+})
+</script>
+<div class="articleLLe mt20 fl">
+   <!--婚礼步骤-->
+    <div class="articleSteap">
+       <div class="articleSteapUp"> 
+       </div>
+       <a name="lable"></a>
+       <div class="articleSteapDo">
+           <ul>
+           <!--class="gghh"-->
+          <?php foreach ($lables[0]['son'] as $k => $v) : ?>
+             <li <?php echo  $laid == $v['laid']?'class="gghh"':''; ?> >  <a href="<?php echo site_url('/article/index/cid/1/laid/'.$v['laid'])."#lable"; ?>" ><?php echo $v["laname"]; ?></a></li>
+             <?php if ($k == 5) : ?>
+           </ul> 
+       </div>
+  </div>
+<!--婚礼流程-->
+
+    <div class="articleSteap">
+       <div class="articleSteapUp" style="background:url(<?php echo base_url().'application/views/';?>images/step.jpg) 0px -45px no-repeat;"> 
+       </div>
+       <div class="articleSteapDo">
+           <ul>
+           <?php endif; ?>
+             <?php endforeach; ?>
+           </ul> 
+       </div>
+  </div>
+ 
+<!--案例列表-->
+<div class="articleLists">
+<!--循环开始-->
+ <ul>
+     
+     <?php foreach ($res['rs'] as $k => $v) : ?>
+     <li> <a href="<?php echo site_url('article/detail/cid/1/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>" align="left" width="250" height="176" style="margin-right:10px;">
+       </a>
+       <h1><a href="<?php echo site_url('article/detail/cid/1/arid/'.$v['arid']); ?>"> <?php echo $v['artitle']; ?></a></h1><br />
+       <?php echo date('Y-m-d', $v['addtime']); ?> <br /><br />
+      <?php echo strlen($v['ardesc'])>103?mb_substr($v['ardesc'], 0, 102, 'utf8').'...':$v['ardesc']; ?><br/><br/>
+      <a href="<?php echo site_url('article/detail/cid/1/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/more.png"></a>
+      </span>
+    </li> 
+ <?php endforeach; ?>
+ </ul>
+<!--循环结束-->
+</div>
+ 
+<!--分页-->  
+<div style="margin-left:0px;" class="Page mt20 fr">
+  <?php echo $link; ?>
+  </div> 
+ 
+ 
+ 
+ 
+ 
+  </div>
+<!--左边部分结束-->
+
+<div class="articleLec fr mt20">
+    <!--经典案例-->
+    <div class="articleCa">
+      <span>经典案例</span>
+      <!--循环开始 ,显示10条-->
+      
+      <?php foreach ($classic as $k => $v) : ?>
+      <dl class="fl">
+         <dt><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><img src="<?php echo base_url().$v['cover_thumb']; ?>"></a></dt>
+         <dd><a href="<?php echo site_url('article/detail/cid/'.$v['cid'].'/arid/'.$v['arid']); ?>" target="_blank"><?php echo mb_substr($v['artitle'], 0, 12, 'utf8'); ?></a></dd>
+      </dl>
+ <?php endforeach; ?>
+    </div>    
+</div>
+<!--右边部分结束-->
+<div class="cb"></div>
+
+ 

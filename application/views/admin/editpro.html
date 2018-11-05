@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 编辑优惠活动</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+			<form name="area" method="post" action="<?php echo site_url('admin/promotionsmng/edit');?>"><div style="background-color: #DDDDDD;">
+			 <input type="hidden" name="prid" value="<?php echo $res[0]['prid']; ?>" >
+            <table style="margin:0 auto;">
+            <?php $arr = explode('/', $res[0]['ptime']); ?>
+				<tr><td>活动时间:&nbsp;&nbsp;</td><td width="400">开始时间
+                <select name="startyear">
+                <?php for ($i = 2015; $i < 2050; $i++) { ?>
+                    <option value="<?php echo $i; ?>" <?php echo $i==(int)$arr[0]?'selected="selected"':"" ; ?>><?php echo $i; ?></option>
+                 <?php } ?>
+                </select>
+                <select name="startmonth">
+                <?php for ($i = 1; $i < 13; $i++) { ?>
+                    <option value="<?php echo $i<10?'0'.$i:$i; ?>" <?php echo $i==(int)$arr[1]?'selected="selected"':""; ?>><?php echo $i<10?'0'.$i:$i; ?></option>
+                 <?php } ?>
+                </select>
+                <select name="startday">
+                <?php for ($i = 1; $i < 31; $i++) { ?>
+                    <option value="<?php echo $i<10?'0'.$i:$i; ?>" <?php echo $i==(int)$arr[2]?'selected="selected"':""; ?>><?php echo $i<10?'0'.$i:$i; ?></option>
+                 <?php } ?>
+                </select> 
+                <br>
+                结束时间
+                <select name="stopyear">
+                <?php for ($i = 2015; $i < 2050; $i++) { ?>
+                    <option value="<?php echo $i; ?>" <?php echo $i==(int)$arr[3]?'selected="selected"':""; ?>><?php echo $i; ?></option>
+                 <?php } ?>
+                </select>
+                <select name="stopmonth">
+                <?php for ($i = 1; $i < 13; $i++) { ?>
+                    <option value="<?php echo $i<10?'0'.$i:$i; ?>" <?php echo $i==(int)$arr[4]?'selected="selected"':""; ?>><?php echo $i<10?'0'.$i:$i; ?></option>
+                 <?php } ?>
+                </select>
+                <select name="stopday">
+                <?php for ($i = 1; $i < 31; $i++) { ?>
+                    <option value="<?php echo $i<10?'0'.$i:$i; ?>" <?php echo $i==(int)$arr[5]?'selected="selected"':""; ?>><?php echo $i<10?'0'.$i:$i; ?></option>
+                 <?php } ?>
+                </select>                
+                </td></tr>
+				<tr><td>活动地址:&nbsp;&nbsp;</td><td  width="200" height="10">
+					<textarea name="paddress" width="200"><?php echo $res[0]['paddress']; ?></textarea>
+				</td> </tr>
+				 
+                <tr><td >活动内容:&nbsp;&nbsp;</td> 
+ 
+				 <td width="200">
+                    <textarea  id="orderext" name="pcontains" width="200"><?php echo $res[0]['pcontains']; ?></textarea>
+ 
+				</td> </tr>
+                <tr>
+                <td>是否显示：&nbsp;&nbsp;</td>
+                <td>
+                不显示<input type="radio" name="isdisplay" value="0" <?php echo $res[0]['isdisplay']==0?'checked':''?> >
+                 显示<input type="radio" name="isdisplay" value="1" <?php echo $res[0]['isdisplay']==1?'checked':''?> >
+                </td></tr>
+                
+				<tr colspan="3"><td align="right" ><input name="submit" type="image" alt="确定" src="<?php echo base_url();?>application/views/admin/images/tj.png"></td>
+				
+				</tr>
+			</form>
+			</table>
+			</div>
+</body>
+</html>

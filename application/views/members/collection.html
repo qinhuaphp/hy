@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>统一-我的收藏</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images/';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images/';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 我的收藏
+        
+     </div>
+    <div class="memRightDo fl" >
+    <table width="900" cellspacing="0" cellpadding="0" class="shopping">
+
+  <tr>
+    <th width="500" height="45" align="center" valign="middle" bgcolor="#fbfafa">名称+类型</th>
+    <th width="200" height="45" align="center" valign="middle" bgcolor="#fbfafa">收藏时间 </th>
+    <th width="200" height="45" align="center" valign="middle" bgcolor="#fbfafa">操作</th>
+  </tr>
+  <?php foreach($res as $k=>$v){?>
+  <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+	<?php if(!empty($v['hlogo'])){?>
+  <a href="<?php echo site_url('human/detail/'.$v['hid'].'');?>" target="_blank">
+  <img class="tImg100" style="margin-right:20px;" src="<?php echo base_url().$v['hlogo'];?>"  align="left"  title="点击查看"/></a>
+	<?php } ?>
+	<?php if(!empty($v['tlogo'])){?>
+  <a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v['teamid'].'');?>" target="_blank">
+  <img class="tImg100" style="margin-right:20px;" src="<?php echo base_url().$v['tlogo'];?>"  align="left"  title="点击查看"/></a>
+	<?php } ?>
+  <br /><?php if(!empty($v['hname'])){echo $v['hname'];}?><?php if(!empty($v['tname'])){echo $v['tname'];}?><br />
+  <br /><span class="cloF75">	
+	<?php if(!empty($v['cname'])){echo $v['cname'];}?>
+	<?php if(!empty($v['tlmark'])){echo $v['tlmark'];}?></span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle"><?php echo date('Y-m-d H:i:s',$v['fatime']);?> </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75">
+	<?php if(!empty($v['hlogo'])){?>
+  <a href="<?php echo site_url('human/detail/'.$v['hid'].'');?>" target="_blank">进入主页</a>
+	<?php } ?>
+	<?php if(!empty($v['tlogo'])){?>
+  <a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v['teamid'].'');?>" target="_blank">进入主页</a>
+	<?php } ?>
+	<br />
+      		<?php if(!empty($v['hid'])){?>
+		<a href="<?php echo site_url('order/index/hid/'.$v['hid'].'');?>" target="_blank">
+		<img src="<?php echo base_url().'application/views/images';?>/yue.jpg"  align="center" /></a>
+		<?php } ?>
+	  </td>
+  </tr>
+  <?php } ?>
+  <!--
+   <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">婚礼服务商</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">摄影师</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">化妆师</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">婚礼服务商</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">婚礼服务商</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">婚礼服务商</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">摄像师</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">摄影师</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+
+ <tr>
+    <td width="400" height="150" style="padding-left:100px;"  align="left" valign="middle" >
+  <img class="tImg100" style="margin-right:20px;" src="../images/touImages/tou_x.jpg"  align="left" /></span><br />合肥锦玉喜堂时尚婚礼中心<br /><br /><span class="cloF75">化妆师</span>
+     </td>
+    <td width="200" height="150" align="center" valign="middle">2015-07-29 18:00:30 </td>
+    <td width="200" height="150" align="center" valign="middle" class="cloF75"><a href="#" target="_blank">进入主页</a><br />
+      删除</td>
+  </tr>
+-->
+</table>
+
+   <!--分页-->
+  <div style="margin-left:0px;" class="Page mt20 fr">
+ <?php echo $link;?>
+  </div>    
+    </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<title>婚艺365</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link href="<?php echo base_url().'application/views/';?>css/home.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/geren.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url().'application/views/';?>css/lrtk.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.4.2.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url().'application/views/';?>js/lrtk.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/default_blue.css"/>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.7.2.min.js"></script>
+<script language="javascript" src="<?php echo base_url().'application/views/';?>js/jquery.Sonline.js"></script>
+</head>
+<body>
+<div class="geren_right">
+	<div class="geren_right_up">
+    · 当前所在的位置：会员中心> <a> 安全中心</a>
+	<?php echo isset($msg)?$msg:'';?>
+    </div>
+	<div class="geren_right_down">
+    <form name="updatepwd" method="post" action="<?php echo site_url('usercenter/updatepwd/'.$idname.'/'.$idvalue.'');?>">
+		<input type="hidden" name="<?php echo $idname;?>" value="<?php echo $idvalue;?>">
+	  <table width="905" height="205" border="1" >
+      <tr>
+        <td height="48" colspan="4" bgcolor="#f9f8f8"><strong>修改密码</strong> </td>
+        </tr>
+     
+     
+      <tr>
+        <td width="126" height="80" align="left">原密码：</td>
+        <td width="280" >
+          <input type="password" name="<?php echo $pwd;?>" id="textfield" / style="border:1px #e3e3e3 solid; width:250px;height:30px;"></td>
+          <td width="477"><?php echo form_error(''.$pwd.'');?>  </td>
+      </tr>
+        
+        
+      <tr>
+        <td align="left">新密码：</td>
+        <td height="60" align="left"><label for="textfield2"></label>
+          <input type="password" name="newpwd" id="textfield" / style="border:1px #e3e3e3 solid; width:250px;height:30px;" value="<?php echo set_value('newpwd');?>"></td>
+          <td><?php echo form_error('newpwd');?> </td>
+      </tr>
+        
+        
+      <tr>
+        <td align="left">确认密码：</td>
+        <td height="60" align="left">
+          <input type="password" name="repwd" id="textfield" / style="border:1px #e3e3e3 solid; width:250px; height:30px;" value="<?php echo set_value('repwd');?>"></td>
+          <td><?php echo form_error('repwd');?></td>
+      </tr>
+        
+        
+      <tr>
+        <td height="60"  align="left" valign="middle">&nbsp;</td>
+        <td height="60"  align="center" valign="middle"><input type="image" src="<?php echo base_url().'application/views/';?>images/wan.jpg"  align="center" /></td>
+        <td> </td>
+        </tr>
+    
+  
+     
+      </table>
+	  </form>
+	</div>
+	
+</div>
+<!--个人右侧部分结束
+</div>-->
+
+ <!--结尾结束
+
+</div>-->
+</body>
+</html>

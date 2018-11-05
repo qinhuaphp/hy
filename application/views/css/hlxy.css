@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+.hlxy_content{ width:1200px; margin:0px auto; clear:both; }
+.hlxy_banner{ width:1200px; height:440px; float:left;}
+
+
+
+.hlxy_banner_left{ width:360px; height:440px; float:left; }
+.hlxy_banner_right{ width:830px; height:440px; float:right;}
+
+.hlxy_li{ width:800px; min-height:500px; float:left; }
+
+
+
+.hlxy_li_a{ width:780px; height:265px; float:left; padding:10px; border-bottom:1px #f3f3f3 solid; }
+.hlxy_li_a a:hover{ color:#f75979;}
+.hlxy_li_a dl{ width:780px; height:176px; float:left; margin-left:15px; margin-top:45px; font-size:14px; }
+.hlxy_li_a dl dt{ width:250px; height:176px; float:left; margin-right:20px;}
+.hlxy_li_a dl dt img{ width:250px; height:176px;}
+.hlxy_li_a dd{ width:500px; height:176px; line-height:25px; float:right;  margin-right:10px;  }
+.hlxy_li_a dd span { color:#f75979; font-weight:bold;}
+
+
+.hlxy_li_ri{ width:350px; min-height:200px;  background-color:#fbfbfb;float:right; }
+.hlxy_li_ri_up{ width:80px; height:30px; line-height:30px; font-size:14px; font-weight:bold; border-bottom:2px #F00 solid; clear:both; text-align:center; margin-left:10px;}
+.hlxy_li_ri_down{ width:300px; padding:10px; float:left;}
+.hlxy_nei_right_down img{ max-width:750px;}
+.hlxy_li_ri_down ul li{ width:280px; padding-left:20px; float:left; height:26px; line-height:26px;}
+.hlxy_li_ri_down ul li a:hover{ color:#f7597a;}
+
+.hlxy_fenlei_a{ width:800px; height:120px; float:left; }
+.hlxy_fenlei_a_up{ width:180px; height:33px; float:33px; line-height:33px; background:url(../images/fenlei_bg.jpg) no-repeat; text-align:center; color:#FFF; font-size:14px; font-weight:bold;}
+.hlxy_fenlei_a_down{ width:800px; height:57px;font-size:14px; font-weight:bold; float:left; margin-top:20px;}
+.hlxy_fenlei_a_down ul li {min-width:60px;height:4px; display:block; padding:0px 5px 0px 5px; float:left;}
+.hlxy_fenlei_a_down ul li a{  height:23px;  background-color:#fefefe;border-radius:8px;-moz-border-radius:8px;
+    -webkit-border-radius:8px;
+padding:5px 5px 5px 5px; border:1px #e0e0e0 solid ; line-height:57px; text-align:center; }
+.hlxy_fenlei_a_down ul li a:hover{ color:#f75979;}
+
+.dd_dd{ width:800px; float:left; padding-bottom:20px;}
+.hlxy_nei_left{width:350px; float:left;}
+.hlxy_nei_right{ width:830px; float:right;font-size:14px;}
+.hlxy_nei_right_up{width:800px; height:260px; text-align:center; line-height:50px; font-size:24px; color:#f7597a;}
+.hlxy_nei_right_up span{ font-size:18px; color:#666; text-align:center;}
+
+.hlxy_nei_right_down{width:800px; font-size:16px; min-height:500px; padding:15px; float:right; text-indent:2em;  line-height:25px;}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="demo-2 no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<title>婚礼请柬</title>
+
+
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/lrtk.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/';?>css/component.css" />
+<script src="<?php echo base_url().'application/views/';?>js/snap.svg-min.js"></script>
+<script src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+<body>
+<div class="container">
+
+	<header class="codrops-header">
+		<h1>婚礼请柬<span>一生一世情缘</span></h1>
+		<nav class="codrops-demos">
+			<a href="index.html">请柬案例</a>
+			
+		</nav>
+	</header>
+	
+	<section id="grid" class="grid clearfix">
+    <?php foreach ($res as $k => $v) : ?>
+		<a target="_blank" href="<?php echo site_url("invitation/detail/inid/".$v['inid']); ?>" data-path-hover="m 0,0 0,47.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z">
+			<figure>
+				<img src="<?php echo base_url().$v["cover_thumb"]; ?>" />
+				<svg viewBox="0 0 180 360" preserveAspectRatio="none"><path d="m 0,0 0,171.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"/></svg>
+				<figcaption>
+					<h2><?php echo $v['intitle']; ?></h2>
+					<p> <span>原价：￥<?php echo $v['ori_price']; ?> </span><?php echo $v['pre_price'] == 0?"免费":$v['pre_price']; ?></p>
+					<button>查看案例</button>
+				</figcaption>
+			</figure>
+		</a>
+    <?php endforeach; ?>	
+	</section>
+
+</div>
+
+<ul id="side-bar" class="side-pannel side-bar">
+  <a href="javascript:;" class="gotop" style="display:none;"><s class="g-icon-top"></s></a>
+  <a href="javascript:;" class="qr"><s class="g-icon-qr1"></s><i></i></a>
+  <a href="http://www.hunyi365.com/" class="text survey" target="_blank"><s class="g-icon-survey1"></s><span>网站首页</span></a>
+</ul>
+
+<script>
+	$(function(){
+		$(window).scroll(function(){
+			if($(window).scrollTop()>100){  //距顶部多少像素时，出现返回顶部按钮
+				$("#side-bar .gotop").fadeIn();	
+			}
+			else{
+				$("#side-bar .gotop").hide();
+			}
+		});
+		$("#side-bar .gotop").click(function(){
+			$('html,body').animate({'scrollTop':0},500); //返回顶部动画 数值越小时间越短
+		});
+	});
+</script>
+
+<script type="text/javascript">
+(function() {
+
+	function init() {
+		var speed = 330,
+			easing = mina.backout;
+
+		[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+			var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+				pathConfig = {
+					from : path.attr( 'd' ),
+					to : el.getAttribute( 'data-path-hover' )
+				};
+
+			el.addEventListener( 'mouseenter', function() {
+				path.animate( { 'path' : pathConfig.to }, speed, easing );
+			} );
+
+			el.addEventListener( 'mouseleave', function() {
+				path.animate( { 'path' : pathConfig.from }, speed, easing );
+			} );
+		} );
+	}
+
+	init();
+
+})();
+</script>
+
+
+
+</body>
+</html>

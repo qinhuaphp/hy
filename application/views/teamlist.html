@@ -1,0 +1,257 @@
+
+         <!--婚礼人广告图01-->
+         <div class="teamBanner">
+              <img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人">
+         </div>        
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > 婚礼造梦师 > <span>
+    <?php 
+    if ($tl) {
+    
+    echo $tl[0]['tlmark'];
+    } else {
+    echo '团队';
+    }
+    
+    
+    ?></span>
+</div>
+<!--companySort--->
+<style type="text/css">
+.hover1{
+  background:#f1f1f1;
+}
+.style3{
+    color:black;
+    font-weight:10;
+    font-size:16px;
+}
+#finfo {
+	position:absolute;
+	left:0;
+	top:0;
+	background:#f1f1f1;
+	display:none;
+	border:2px solid red;
+	-moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+	text-align:center;
+	width:350px;
+	height:200px;
+	line-height:200px;
+	font-size:22px;
+	color:#EC728B;
+}
+</style>
+<script type="text/javascript">
+//点击切换样式
+$(function(){ 
+  $("#paixu>li").css("cursor","pointer").click(function(){
+    $(this).attr("class","style1").find("a").addClass("style3").
+    next().text("  ↑").parent().siblings().removeAttr("class").find("span").removeAttr("style").text("  ↓");
+  });
+  $(".teamLists").hover(function(){
+    $(this).css("background","#f1f1f1");
+  },function(){
+    $(this).removeAttr("style");
+  });
+  /*ajax分页*/
+  $(".Page").delegate("a","click",function(){
+    var baseurl='<?php echo base_url();?>';
+    var indexpage='<?php echo index_page();?>';
+    $.ajax({
+     url:$(this).attr("href"),
+     type:'get',
+     dataType:'json',
+     success:function(data){
+        console.log(data)
+        var link=data.link.replace(/&nbsp;/ig,'');
+        $(".Page").html(link);
+        $(".sort").nextAll(".teamLists").remove();
+        for(var a=0;a<data.res.length;a++){
+        var str='<div class="teamLists mt20"><div class="teamListsCo fl"><dl class="fl"><dt><a href="'+baseurl+indexpage
+        +'/human/tdetail/tlid/'+data.res[a].tlid+'/teamid/'+data.res[a].teamid+'.html" target="_blank"><img src="'+baseurl
+        +data.res[a].tlogo+'"></a></dt><dd><a href="'+baseurl+indexpage+'/favorites/add/teamid/'+data.res[a].teamid
+        +'.html" target="_blank"><img src="'+baseurl
+        +'application/views/images/store.jpg"></a><br />收藏</dd><dd style="border-right:none;"><img src="'+baseurl
+        +'application/views/images/share.jpg"><br />分享</dd></dl> <div class="teamDe ml10 fl"> 团队名称：<a href="'
+        +baseurl+indexpage+'/human/tdetail/tlid/'+data.res[a].tlid+'/teamid/'+data.res[a].teamid+'.html" target="_blank">'
+        +data.res[a].tname+'</a><br />成交量：<span class="fs18">'+data.res[a].volume+'</span> 单<br />等级：'+data.res[a].level
+        +' <br /></div> </div><div class="teamListsAn fr">团队案例<br /><br />';
+          if($.isEmptyObject(data.res[a].works)==false){
+            for(var b=0;b<data.res[a].works.length;b++){
+              str+='<a href="'+baseurl+indexpage+'/human/tdetail/tlid/'+data.res[a].tlid+'/teamid/'+data.res[a].teamid
+              +'.html" target="_blank"><img src="'+baseurl+data.res[a].works[b].cover_thumb+'"></a>&nbsp;';
+            }
+          }else{
+            str+='<img src="'+baseurl+'application/views/images/companyCase.jpg" > &nbsp;<img src="'
+            +baseurl+'application/views/images/companyCase.jpg" >';
+          }//案例循环结束
+          str+=' </div> <div class="teamListsYu fl">团队成员<br /><br />';
+          if($.isEmptyObject(data.res[a].thuman)==false){
+            for(var c=0;c<data.res[a].thuman.length;c++){
+                str+='<a href="'+baseurl+indexpage+'/human/detail/'+data.res[a].thuman[c].hid
+                +'.html" target="_blank"><img class="tImg70" src="'+baseurl+data.res[a].thuman[c].hlogo
+                +'"></a>';
+            }
+            
+          }else{
+                str+='<img class="tImg70"  src="'+baseurl+'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'
+                +baseurl+'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg"><img class="tImg70"  src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg">';
+            }
+          str+='</div></div>';
+          $(".sort").after(str);
+        }//外层循环结束
+    
+     }//success结束
+    });//ajax结束
+    return false;
+  });
+  $(window).ajaxSuccess(function(){
+    $(this).scrollTop($(".sort").offset().top);
+  });
+	/*ajax收藏*/
+  $(".fav").click(function(){
+		$.ajax({
+			url:$(this).attr("href"),
+			type:'get',
+			success:function(data){
+				console.log(data)
+				if($.isNumeric(data)){
+					if(data=='0'){//没登录
+						$(".login").show().animate({
+							"left":$(window).width()/2-$(".login").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$(".login").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							var div='<div class="zzc"></div>';
+							$("body").append(div);
+							var w=$(document).width();
+							var h=$(document).height();
+							$(".zzc").width(w).height(h);
+							$(".zzc").show();
+						});
+					}
+					if(data=='1'){//已收藏
+						$("#finfo").html("您已收藏，请勿重复收藏！").show().animate({
+							"left":$(window).width()/2-$("#finfo").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#finfo").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							setTimeout(function(){$("#finfo").hide();},2500);
+						});
+					}
+					if(data=="2"){
+						$("#finfo").html("'收藏成功!").show().animate({
+							"left":$(window).width()/2-$("#finfo").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#finfo").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							setTimeout(function(){$("#finfo").hide();},2500);
+						});
+					}
+				}else{
+					$("#finfo").html(data).show().animate({
+							"left":$(window).width()/2-$("#finfo").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#finfo").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							setTimeout(function(){$("#finfo").hide();},2500);
+						});
+				}
+			}
+		});
+		return false;
+	});
+ })
+
+</script>
+<div id="finfo"></div>
+<div class="sort mt10">
+   <ul id="paixu">
+        <li><a>综合排序</a><span></span></li>
+        <li><a>成交量</a><span></span></li>
+        <li><a>等级</a><span></span></li>
+    </ul>
+</div>
+<a name="aa"></a>
+<!--companyLists-->
+<!--循环开始-->
+<?php foreach ($res as $k => $v) : ?>
+<div class="teamLists mt20">
+    <div class="teamListsCo fl">    
+            <dl class="fl">
+               <dt><a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v['teamid']); ?>" 
+               target="_blank">
+               <img src="<?php echo base_url().$v['tlogo']?>"></a></dt>
+               <dd>
+			   <a class="fav" href="<?php echo site_url('favorites/add/teamid/'.$v['teamid'].'');?>">
+				<img src="<?php echo base_url().'application/views/';?>images/store.png"><br />收藏</a></dd>
+               <dd style="border-right:none;"><img src="<?php echo base_url().'application/views/';?>images/share.png"><br />
+               分享</dd> 
+            </dl>   
+            <div class="teamDe ml10 fl">
+                 团队名称：<a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v['teamid']); ?>" 
+                 target="_blank"><?php echo $v['tname']?></a><br />
+                 成交量：<span class="fs18"><?php echo $v['volume']; ?></span> 单<br />
+                 等级：<?php $str='<img src="'.base_url().'application/views/images'.'/star.png" align="center">';echo str_repeat($str,$v['level']);?><br />
+ 
+            </div> 
+    </div>
+  
+    <div class="teamListsAn fr"> 
+          团队案例<br /><br />
+          <?php if (!empty($v['works'])) : ?>
+          <?php foreach ($v['works'] as $k1 => $v1) : ?>
+          <a href="<?php echo site_url('human/tdetail/tlid/'.$v['tlid'].'/teamid/'.$v1['teamid']); ?>" target="_blank">
+          <img src="<?php echo base_url().$v1['cover_thumb']?>"></a>&nbsp; 
+          <?php endforeach; ?>
+          <?php else : ?>
+            <img src="<?php echo base_url().'application/views/images'?>/companyCase.jpg" width="185" height="134">
+	        <img src="<?php echo base_url().'application/views/images'?>/companyCase.jpg" width="185" height="134">
+	  
+          <?php endif; ?>
+    </div>
+     
+     <div class="teamListsYu fl">
+          团队成员<br /><br />
+          <?php if (!empty($v['thuman'])) : ?>
+          <?php foreach ($v['thuman'] as $k2 => $v2) : ?>
+          <a href="<?php echo site_url('human/detail/'.$v2['hid']); ?>" target="_blank">
+          <img class="tImg70" src="<?php echo base_url().$v2['hlogo']?>" ></a>
+           <?php endforeach; ?>
+           <?php else : ?>
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+             <img  class="tImg70" src="<?php echo base_url().'application/views/images'?>/touImages/tou_x.jpg">
+ 
+          <?php endif; ?>
+    </div>
+</div>
+<?php endforeach; ?>
+ 
+ 
+ 
+
+
+
+
+<!--循环结束-->
+    <!--分页-->
+ <div class="Page mt20">
+ <?php echo $link;?>
+  </div>
+ 

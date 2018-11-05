@@ -1,0 +1,112 @@
+
+<div class="zhuce2">
+   <div class="zhuce2_left">
+   		<div class="zhuce2_left_up">
+        登录婚艺  <span class="color">还没有婚艺账号，您可以前往  <a href="<?php echo site_url('reg/index')?>">注册</a></span>
+       </div>
+     <div class="zhuce2_left_down">
+       <table width="400" style="font-size:18px; color:#ec728b;">
+       
+       
+	   <form name="login" method="post" action="<?php echo site_url('login/index');?>">
+         
+        
+
+          <tr>
+          <td width="100" height="55" align="left" valign="middle">
+              登录类型：
+          </td> 
+           <td width="300" height="55"   align="left" >  
+           <select name="user" style="width:200px; height:35px; text-indent:1em; border:1px solid #ec728b; background-color:#fcfcfc; font-size:14px;">
+           	<option value="member" style="text-indent:1em">新人</option>
+            <option value="human" style="text-indent:10px">婚礼个人</option>
+			<option value="team" style="text-indent:10px">婚礼团队</option>
+		    <option value="company" style="text-indent:10px">婚礼服务商</option>
+		   </select>
+           </td>  
+           </tr>
+         
+         
+         
+         
+           
+          <tr>
+          <td width="100" height="55" align="left" valign="middle">
+              账 号：
+          </td> 
+          <td width="300" height="55" align="left" valign="middle">
+            <label for="textfield"></label>
+            <input type="text" name="loginname" id="textfield" placeholder="请输入您的真实姓名"  style="width:280px;height:35px; line-height:35px; text-indent:1em; background-color:#FFF; border:1px #ec728b solid;"/>
+         </td>
+         </tr>
+         
+         
+         
+         
+         
+         
+           <tr>
+           <td width="100" height="65" align="left" valign="middle">密 码：</td>
+           <td width="300" height="65" align="left" valign="middle">
+           <input name="passwd" type="password"   placeholder="请输入您的登录密码"  style="width:280px; height:35px;line-height:35px; background-color:#FFF; border:1px #ec728b solid; text-indent:1em;"/> 
+           </td> 
+           </tr>
+         
+         
+         
+         
+		  <tr>
+          <td width="400" height="30" colspan="2" align="center" valign="middle"><?php echo form_error('passwd');?></td>   
+          </tr>
+          
+          
+		 <!--
+         <tr>
+           <td width="80" height="45"><a href="45">验证码：</a></td>
+           <td height="45"><input name="" type="text" style="width:200px; height:25px; background-color:#FFF; border:1px #e2e2e2 solid;"/></td>
+         
+         </tr>
+         
+        -->
+        
+        
+         <tr>
+          <td width="400" height="55" colspan="2" align="center" valign="middle"><input type="image" src="<?php echo base_url().'application/views/images';?>/login_b.jpg" width="185" height="39" /></td>   
+         </tr>
+         
+         
+       
+		 </form>
+         
+         
+         
+          <tr>
+          <td width="400" height="45" colspan="2" align="center" valign="middle"><a href="#"> 忘记密码？</a></td>   
+         </tr>
+          
+         
+       
+       </table>
+       
+     </div>
+      
+   </div>
+   
+   
+   
+   <div class="zhuce2_right">
+    <img src="<?php echo base_url().'application/views/images';?>/zhuce_right_a.jpg">
+
+   </div>
+
+</div>
+
+
+
+
+
+    
+    
+</div>
+</body>
+</html>

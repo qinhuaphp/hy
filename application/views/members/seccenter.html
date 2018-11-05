@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>统一安全中心</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="bookmark" href="<?php echo base_url().'application/views/images';?>/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+var indexpage='<?php echo index_page();?>';
+var baseurl='<?php echo base_url();?>';
+/*选项卡切换*/
+	$(".memRightUp").find("li").css("cursor","pointer").click(function(){
+		$(this).addClass("spanSty1").siblings().removeClass("spanSty1").parents(".memRightUp").next().find(".Security").eq($(this).index()).show().siblings().hide();
+	});
+
+	
+/*修改密码表单验证*/
+	if($("#updatepwd").is(":visible")){
+		var pwd=false;
+		var repwd=false;
+		var  newpwd=false;
+		//检测原密码
+		$("#updatepwd :password").eq(0).blur(function(){
+			if($(this).val()==''){
+				$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+				}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">原密码必填</em>');
+			}
+			if($(this).val()!=''){
+				$.ajax({
+					url:baseurl+indexpage+'/ajaxcenter/ajaxcheckpwd',
+					type:'post',
+					data:{
+							<?php echo $idname;?>:$("input:hidden").val(),
+							<?php echo $pwd;?>:$(":password").eq(0).val()
+					},
+					success:function(data){
+						if(data=='0'){
+							$("#updatepwd :password").eq(0).css({
+								"border":"1px solid red",
+								"color":"FBFAFA"
+							}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">原密码不正确</em>');
+						}
+						if(data=='1'){
+							$("#updatepwd :password").eq(0).css("border","1px solid green");
+							pwd=true;
+						}
+						
+					}
+				});
+				
+			}
+		}).focus(function(){
+			$(this).removeAttr("style").parent().next("em").remove();
+		});
+		//检测新密码
+		$(":password[name=newpwd]").blur(function(){
+			if($(this).val()==''){
+				$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+				}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">新密码必填</em>');
+			}
+			if($(this).val()!=''){
+				if($(this).val().length<6){
+					$(this).css({
+					"border":"1px solid red",
+					"font-size":"12",
+					"color":"#FBFAFA"
+					}).parent().after('<em style="color:red; font-size:12px;  margin:200px; ">新密码过短</em>');
+				}else{
+					$(this).css("border","1px solid green");
+					newpwd=true;
+				}
+			}
+		}).focus(function(){
+			$(this).removeAttr("style").parent().next("em").remove();
+		});
+		/*验证确认密码*/
+		$(":password[name=repwd]").blur(function(){
+			if($(this).val()==''){
+				$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+				}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">确认密码必填</em>');
+			}
+			if($(this).val()!=''){
+			//alert( $(":password[name=repwd]").val())
+				if($(this).val()!=$(":password[name=newpwd]").val()){
+					$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+					}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">确认密码与新密码不符</em>');
+				}else{
+					$(this).css("border","1px solid green");
+					repwd=true;
+				}
+			}
+		}).focus(function(){
+			$(this).removeAttr("style").parent().next("em").remove();
+		});
+		//alert($("#reset")[0])
+		/*表单提交$(this).serialize()*/
+		$("#updatepwd").submit(function(){
+		//console.log(pwd,repwd,newpwd)
+			if(pwd&&repwd&&newpwd){
+				$.ajax({
+					url:$(this).attr("action"),
+					type:'post',
+					data:$(this).serialize(),
+					success:function(data){
+						if(data=='1'){
+							$("#tan").show().html("恭喜，密码更新成功！").animate({
+								"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+								"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+								"z-index":"3"
+							},200);
+							/*定时器*/ 
+							 function dingshi(){
+								if($("#tan").is(":visible")){
+									$("#tan").hide();
+								}
+							 }
+							setTimeout(dingshi,3000);
+							$(":reset").click();//调用reset按钮重置表单
+						}
+						if(data=='0'){
+							$("#tan").show().html("密码未更新").animate({
+								"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+								"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+								"z-index":"3"
+							},200);
+							/*定时器*/ 
+							 function dingshi(){
+								if($("#tan").is(":visible")){
+									$("#tan").hide();
+								}
+							 }
+							setTimeout(dingshi,3000);
+							$(":reset").click();//调用reset按钮重置表单
+						}
+					}
+				
+				});
+			}
+			return false;
+		});
+	
+	}
+
+/*修改手机号码*/
+var oldphone=false;
+var newph=false;
+var expphone=/^12(\d{9})$|^13(\d{9})$|^147(\d{8})$|^15(\d{9})$|^16(\d{9})$|^17(\d{9})$|^18(\d{9})$/;
+//检测原手机号
+	$("#upphone :text").eq(0).blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+			}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">原手机号必填</em>');
+		}
+		if($(this).val()!=''){
+			if(expphone.test($(this).val())==false){
+				$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+				}).val('').parent().after('<em style="color:red; font-size:12px; margin:200px; ">手机号格式无效</em>');
+			}else{
+				$.ajax({
+					url:baseurl+indexpage+'/ajaxcenter/ajaxcheckphone',
+					type:'post',
+					data:{
+							<?php echo $idname;?>:$("#upphone input:hidden").val(),
+							<?php echo $phone;?>: $("#upphone :text").eq(0).val()
+							},
+					success:function(data){
+						if(data=='1'){
+							$("#upphone :text").eq(0).css({
+									"border":"1px solid green"
+							});
+							oldphone=true;
+						}
+						if(data=='0'){
+							$("#upphone :text").eq(0).css({
+								"border":"1px solid red",
+								"color":"FBFAFA"
+							}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">原手机号不正确</em>');
+						}
+					}
+				});
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").parent().next("em").remove();
+	});
+//检测新手机号
+	$(":text[name=newphone]").blur(function(){
+		if($(this).val()==''){
+			$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+			}).parent().after('<em style="color:red; font-size:12px; margin:200px; ">新手机号必填</em>');
+		}
+		if($(this).val()!=''){
+			if(expphone.test($(this).val())==false){
+				$(this).css({
+					"border":"1px solid red",
+					"color":"#FBFAFA"
+				}).val('').parent().after('<em style="color:red; font-size:12px; margin:200px; ">手机号格式无效</em>');
+			}else{
+				$.ajax({
+					url:baseurl+indexpage+'/ajaxcenter/ajaxcheckuse',
+					type:'post',
+					data:{
+							<?php echo $idname;?>:$("#upphone input:hidden").val(),
+							newphone:$(":text[name=newphone]").val()
+					},
+					success:function(data){
+						if(data=='0'){
+							$(":text[name=newphone]").css({
+								"border":"1px solid red",
+								"color":"#FBFAFA"
+							}).val('').parent().after('<em style="color:red; font-size:12px; margin:200px; ">手机号被占用</em>');
+						}
+						if(data=='1'){
+							$(":text[name=newphone]").css({
+								"border":"1px solid green"
+							});
+							newph=true;
+						}
+					}
+				});
+
+			}
+		}
+	}).focus(function(){
+		$(this).removeAttr("style").parent().next("em").remove();
+	});
+//修改手机表单ajax提交
+	$("#upphone").submit(function(){
+		if(newph&&oldphone){
+			$.ajax({
+				url:$(this).attr("action"),
+				type:'post',
+				data:$(this).serialize(),
+				success:function(data){
+					if(data=='1'){
+						$("#tan").show().html("恭喜，手机号更新成功！").animate({
+								"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+								"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+								"z-index":"3"
+							},200);
+							/*定时器*/ 
+							 function dingshi(){
+								if($("#tan").is(":visible")){
+									$("#tan").hide();
+								}
+							 }
+							setTimeout(dingshi,3000);
+							$(":reset").click();//调用reset按钮重置表单
+					}
+					if(data=='0'){
+						$("#tan").show().html("手机号未更新").animate({
+								"left":$(window).width()/2-$("#tan").outerWidth(true)/2,
+								"top":$(window).height()/2-$("#tan").outerHeight(true)/2,
+								"z-index":"3"
+							},200);
+							/*定时器*/ 
+							 function dingshi(){
+								if($("#tan").is(":visible")){
+									$("#tan").hide();
+								}
+							 }
+							setTimeout(dingshi,3000);
+							$(":reset").click();//调用reset按钮重置表单
+					}
+				}
+			});
+		}
+		return false;
+	});
+	
+})
+</script>
+<style type="text/css">
+#tan{
+	position:absolute;
+	width:300px;
+	hight:300px;
+	background-color:#fcfcfc; 
+	border:1px #ccc solid; 
+	text-align:center;
+	display:none;
+	left:0;
+	top:0;
+	line-height:300px;
+}
+</style>
+<div id="tan"></div>
+     <div class="companyConents fl">
+     <div class="memRightUp fl" >
+         <img src="<?php echo base_url().'application/views/members/';?>images/menpoint.png" align="left"> 安全中心
+         <span>
+            <ul>
+                <li class="spanSty1">修改密码</li>
+                <li>修改手机号码</li>
+            </ul>
+         </span>
+     </div>
+    <div class="memRightDo fl" >
+    <!--修改密码-->
+         <div class="Security" >
+          <form id="updatepwd" name="" method="post" action="<?php echo site_url('usercenter/updatepwd/'.$idname.'/'.$idvalue.'');?>">  
+		<input type="hidden" name="<?php echo $idname;?>" value="<?php echo $idvalue;?>">
+          <span class="cloF75 fs26" style="text-align:center;">修改密码</span>   
+          <span>当前密码 : <input type="password"  class="input" placeholder="请输入原密码"  name="<?php echo $pwd;?>"></input></span>
+		  
+          <span>  新密码 :  <input type="password" class="input" placeholder="请输入新密码"  name="newpwd" value="<?php echo set_value('newpwd');?>"></input>
+          
+		  </span>
+          <span>确认新密码 : <input type="password" class="input" placeholder="请再次输入新密码"  name="repwd" value="<?php echo set_value('repwd');?>"></input>
+		 <?php echo form_error(''.$pwd.'');?><?php echo form_error('newpwd');?> <?php echo form_error('repwd');?>
+		 
+		  </span> 
+		  
+		  
+		  <span style="height:10px;"></span>
+          <span style="text-align:center;"> <input class="button" type="submit"  value="修改">&nbsp;&nbsp;<input id="reset" class="button" type="reset"  value="重置"> </span>
+            </form>    
+         </div>
+       <!--修改手机号码-->
+          <div class="Security" style="display:none;">
+          <form id="upphone" name="" method="post" action="<?php echo site_url('usercenter/updatephone');?>">  
+		  <input type="hidden" name="<?php echo $idname;?>" value="<?php echo $idvalue;?>">
+          <span class="cloF75 fs26" style="text-align:center;">修改手机</span>   
+          <span>原号码 :  <input type="text" class="input" placeholder="请输入原手机号码" name="<?php echo $phone;?>"></input></span>
+          <span> 新号码 :  <input type="text" class="input" placeholder="请输入新手机号码" name="newphone"></input></span>
+		  <!--
+          <span>验证码 :  <input style="width:200px;" type="text" class="input" placeholder="请输入获取的验证码" > <input style="width:95px; height:40px; border:1px solid #f7597a; background-color:#FFF; color:#f7597a;text-align:center;"  type="button"  value="获取验证" ></input></span> 
+          -->
+
+		  <span style="text-align:center;"> <input class="button" type="submit"  value="修改">&nbsp;&nbsp;<input id="reset" class="button" type="reset"  value="重置"> </span>
+            </form>    
+         </div>
+     
+     
+     
+     
+     
+    </div>
+    </div>
+</body>
+</html>

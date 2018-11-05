@@ -1,0 +1,217 @@
+
+         <!--婚礼人广告图01-->
+         <div class="personalBanner">
+              <img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人">
+         </div>        
+<!--location-->
+<div class="location mt10">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a> > 婚礼造梦师 ><span><?php echo $cate[0]['cname'];?></span>
+</div>
+<!--companySort--->
+<style type="text/css">
+.hover1{
+	background:#f1f1f1;
+}
+#finfo {
+	position:absolute;
+	left:0;
+	top:0;
+	background:#f1f1f1;
+	display:none;
+	border:2px solid red;
+	-moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+	text-align:center;
+	width:350px;
+	height:200px;
+	line-height:200px;
+	font-size:22px;
+	color:#EC728B;
+}
+</style>
+<script type="text/javascript">
+//点击切换样式
+$(function(){
+	$("#paixu>li").css("cursor","pointer").click(function(){
+		$(this).attr("class","style1").find("span").css({"color":'red',"font-weight":"10","font-size":"16px"}).text("  ↑")
+		.parent().siblings().removeAttr("class").find("span").removeAttr("style").text("  ↓");
+	});
+	$(".personalLists").hover(function(){
+		$(this).addClass("hover1");
+	},function(){
+		$(this).removeClass("hover1");
+	});
+/*ajax分页*/
+	$(".Page").on("click","a",function(){
+        var baseurl='<?php echo base_url();?>';
+        var indexpage='<?php echo index_page();?>';
+        $.ajax({
+            url:$(this).attr("href"),
+            type:'get',
+            dataType:'json',
+            success:function(data){
+                //console.log(data)
+               var link=data.link.replace(/&nbsp;/ig,'');
+               $(".Page").html(link);
+               $(".sort").nextAll(".personalLists").remove();
+               for(var a=0;a<data.res.length;a++){
+                var str='<div class="personalLists mt20"><div class="personalListsCo fl"><dl class="fl"><dt><a href="'
+                +baseurl+indexpage+'/human/detail/'+data.res[a].hid+'.html" target="_blank"><img src="'+baseurl
+                +data.res[a].hlogo+'"></a></dt> <dd><a href="'+baseurl+indexpage+'favorites/add/hid/'+data.res[a].hid
+                +'.html" target="_blank"> <img src="'+baseurl
+                +'application/views/images/store.jpg"><br />收藏</a></dd> <dd style="border-right:none;"><img src="'
+                +baseurl+'application/views/images/share.jpg"><br />分享</dd> </dl><div class="pesonDe ml10 fl">姓名：<a href="'
+                +baseurl+indexpage+'/human/detail/'+data.res[a].hid+'.html" target="_blank">'+data.res[a].hname+'</a><br />性别：'
+                +data.res[a].sex+'<br />成交量：<span class="fs18">'+data.res[a].volume+'</span> 单<br />婚艺价：<span class="fs24">￥'
+                +data.res[a].hprice+'</span> <br />等级：'+data.res[a].level
+                +'</div> </div> <div class="personalListsAn fl">个人案例<br /><br /> ';
+                if($.isEmptyObject(data.res[a].works)==false){
+                  for(var b=0;b<data.res[a].works.length;b++){
+                    str+=' <a href="'+baseurl+indexpage+'/human/detail/'+data.res[a].hid+'.html" target="_blank"><img src="'
+                    +baseurl+data.res[a].works[b].cover_thumb+'"></a>'
+                  }
+                }else{
+                    str+='<img src="'+baseurl+'application/views/images/zp_.jpg">&nbsp;<img src="'+baseurl
+                    +'application/views/images/zp_.jpg">&nbsp;<img src="'+baseurl+'application/views/images/zp_.jpg">';
+                }
+                str+='</div><div class="personalListsPi fr"> <ul><li><img class="tImg70" src="'+baseurl
+                +'application/views/images/touImages/tou_x.jpg" align="left"> "赶快评论我吧，我非常期待您的评论！"</li><li><img class="tImg70" src="'
+                +baseurl+'application/views/images/touImages/tou_x.jpg" align="left"> "赶快评论我吧，我非常期待您的评论！"</li></ul></div></div>';
+                $(".sort").after(str);
+               }//外层循环结束s
+            }
+        });
+        return false;
+    });
+    $(window).ajaxSuccess(function(){
+        $(this).scrollTop($(".sort").offset().top);
+    });
+	/*ajax收藏*/
+	$(".fav").click(function(){
+		$.ajax({
+			url:$(this).attr("href"),
+			type:'get',
+			success:function(data){
+				console.log(data)
+				if($.isNumeric(data)){
+					if(data=='0'){//没登录
+						$(".login").show().animate({
+							"left":$(window).width()/2-$(".login").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$(".login").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							var div='<div class="zzc"></div>';
+							$("body").append(div);
+							var w=$(document).width();
+							var h=$(document).height();
+							$(".zzc").width(w).height(h);
+							$(".zzc").show();
+						});
+					}
+					if(data=='1'){//已收藏
+						$("#finfo").html("您已收藏，请勿重复收藏！").show().animate({
+							"left":$(window).width()/2-$("#finfo").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#finfo").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							setTimeout(function(){$("#finfo").hide();},2500);
+						});
+					}
+					if(data=="2"){
+						$("#finfo").html("'收藏成功!").show().animate({
+							"left":$(window).width()/2-$("#finfo").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#finfo").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							setTimeout(function(){$("#finfo").hide();},2500);
+						});
+					}
+				}else{
+					$("#finfo").html(data).show().animate({
+							"left":$(window).width()/2-$("#finfo").outerWidth(true)/2+$(window).scrollLeft(),
+							"top":$(window).height()/2-$("#finfo").outerHeight(true)/2+$(window).scrollTop(),
+							"z-index":"130"
+						},200,function(){
+							setTimeout(function(){$("#finfo").hide();},2500);
+						});
+				}
+			}
+		});
+		return false;
+	});
+})
+
+</script>
+<!--收藏提示框-->
+<div id="finfo">
+	
+</div>
+<div class="sort mt10">
+    <ul id="paixu">
+        <li class="style1">综合排序<span></span></li>
+        <li>成交量<span></span></li>
+        <li>等级<span></span></li>
+         <li>价格<span></span></li>
+    </ul>
+</div>
+<!--companyLists-->
+<!--循环开始-->
+
+<?php foreach ($res as $k => $v) : ?>
+<div class="personalLists mt20">
+    <div class="personalListsCo fl">
+            <dl class="fl">
+               <dt><a href="<?php echo site_url('human/detail/'.$v['hid']); ?>" target="_blank">
+               <img src="<?php echo base_url().$v['hlogo']; ?>"></a></dt>
+               <dd><a   class="fav" href="<?php echo site_url('favorites/add/hid/'.$v['hid'].'');?>" target="_blank">
+               <img src="<?php echo base_url().'application/views/';?>images/store.png"><br />收藏
+               
+               </a></dd>
+               <dd style="border-right:none;">
+               <img src="<?php echo base_url().'application/views/';?>images/share.png"><br />分享</dd> 
+            </dl>   
+            <div class="pesonDe ml10 fl">
+                 姓名：<a href="<?php echo site_url('human/detail/'.$v['hid']); ?>" target="_blank">
+                 <?php echo $v['hname']?></a><br />
+                 性别：<?php echo $v['sex'] == 0?'男':'女'; ?> <br />
+                 成交量：<span class="fs18"><?php echo $v['volume']; ?></span> 单<br />
+                 婚艺价：<span class="fs24">￥<?php echo $v['hprice'];?></span> <br />
+                 等级：<?php $str='<img src="'.base_url().'application/views/images/star.png" align="center">'
+                 ;echo str_repeat($str,$v['level']); ?>
+                
+                </div> 
+    </div>
+  
+    <div class="personalListsAn fl"> 
+          个人案例<br /><br />
+          <?php if (!empty($v['works'])) : ?>
+          <?php foreach ($v['works'] as $key => $value) : ?>
+          <?php if ($key > 2) : break; endif; ?>
+              <a href="<?php echo site_url('human/detail/'.$v['hid']); ?>" target="_blank">
+              <img src="<?php echo base_url().$value['cover_thumb']; ?>"></a>
+          <?php endforeach; ?>
+          <?php else : ?>
+                     <img src="<?php echo base_url().'application/views/';?>images/zp_.jpg">
+                     <img src="<?php echo base_url().'application/views/';?>images/zp_.jpg">
+                     <img src="<?php echo base_url().'application/views/';?>images/zp_.jpg">
+                    
+                    <?php endif; ?>
+    </div>
+    
+     <div class="personalListsPi fr">
+        <ul>
+           <li><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg" align="left"> "赶快评论我吧，我非常期待您的评论！"</li>
+           <li><img class="tImg70" src="<?php echo base_url().'application/views/';?>images/touImages/tou_x.jpg" align="left"> "这里的环境很温馨很舒适，让顾客都有一种回到家的感觉。酒店的服务态度也很"</li>
+        </ul>
+    </div>
+</div>
+ <?php endforeach; ?> 
+
+<!--循环结束-->
+    <!--分页-->
+ <div class="Page mt20">
+   <?php echo $link; ?>
+  </div>
+    
+ 

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+#ue{
+	margin:0 auto;
+}
+</style>
+<script type="text/javascript">
+    function get_lable(laid){
+            var url = "<?php echo site_url('admin/articlemng/ajax_lable'); ?>";
+            var real_laid = "<?php echo $article[0]['laid']; ?>";
+            
+            $.ajax({
+                url: url,
+                data: {laid:laid, real_laid:real_laid},
+                type: "post",
+                datatype: "html",
+                success: function (html) {
+                    
+                    $("#ajax_lable").html(html);
+                } 
+            });
+    
+    }
+   $(document).ready(function () {
+   
+        $("#cid").change(function () {
+            var laid = $(this).children('option:selected').attr("laid");
+            
+            get_lable(laid);
+        });
+        var laid = $("#cid option:selected").attr("laid");
+           
+        get_lable(laid);
+
+    }); 
+</script>
+</head>
+
+<body>
+<form name="area" method="post"  enctype="multipart/form-data"  action="<?php $arid=$article[0]['arid']; echo site_url("admin/articlemng/editarticle/$arid");?>">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 编辑文章</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+            
+               <div style="background-color:#fcfcfc; padding-top:20px;">
+               
+               <table style="margin:0 auto; width:1100px;padding:50px; border-radius:10px;">
+                
+                  <input type="hidden" name="arid" value="<?php echo $article[0]['arid'];?>">
+				<tr>
+                  <td width="133" height="30">文章标题 ：</td>
+                  <td width="629" height="30"><input type="text" name="artitle" size="60"  style="height:25px" value="<?php echo $article[0]['artitle'];?>"></td>
+                  <td width="422" height="30" class="bb"></td>
+                </tr>
+                
+				<tr>
+                   <td height="30">关键字 ：</td>
+                   <td height="30"><input type="text" name="keyword" size="60" style="height:25px" value="<?php echo $article[0]['keyword'];?>"></td>
+                   <td height="30" class="bb"></td>
+                </tr>
+                	
+				<tr>
+                   <td height="30">作者 ：</td>
+                   <td height="30"><input type="text" name="author" size="20"  style="height:25px" value="<?php echo $article[0]['author'];?>"></td>
+                   <td height="30" class="bb"></td>
+                </tr>
+                    
+                <tr>
+                   <td height="30">是否经典 ：</td>
+                   <td height="30" colspan="2">
+                     <select name="isclassic">
+                      <option value="0" <?php echo $article[0]['isclassic']==0?'selected="selected"':""; ?>>不是经典</option>
+                      <option value="1" <?php echo $article[0]['isclassic']==1?'selected="selected"':""; ?>>是经典</option>
+                     </select>
+                  </td>
+                </tr>
+                
+				<tr>
+                   <td height="30">选择栏目 ：</td>
+                   <td height="30" colspan="2">
+                      <select name="cid" id="cid">
+					  <option <?php echo $article[0]['cid'] == 1?"selected='selected'":""; ?>  value="1" laid="38"   >婚礼学院</option>
+					  <option <?php echo $article[0]['cid'] == 36?"selected='selected'":""; ?>  value="36" laid="39" >婚礼灵感</option>
+                      <option <?php echo $article[0]['cid'] == 37?"selected='selected'":""; ?> value="37" laid="45"   >婚礼教学</option>
+					  </select>
+					</td>
+                 </tr>   
+                 
+			     <tr>
+				      <td height="30">设置文章属性 ：</td>
+					  <td height="30" colspan="2" class="bb"><input type="radio" name="ishot" value="0" <?php  echo $article[0]['ishot']==0?'checked':'';?>>非热门&nbsp;
+						<input type="radio" name="ishot" value="1" <?php  echo $article[0]['ishot']==1?'checked':'';?>>热门
+						<input type="radio" name="isrecom" value="0" <?php  echo $article[0]['isrecom']==0?'checked':'';?>>非推荐&nbsp;
+						<input type="radio" name="isrecom" value="1" <?php  echo$article[0]['isrecom']==1? 'checked':'';?>>推荐</td>	
+				 </tr>
+                 
+			   	<tr>
+                    <td height="30" colspan="3">选择标签&nbsp;：</td>
+                </tr>
+                
+            <tr>
+                <td id="ajax_lable" colspan="3" >  </td>
+            </tr>
+            
+			</table>
+            
+
+  
+              <table style="margin:0 auto; width:1200px;">
+				<tr>
+                  <td width="116" >摘要&nbsp;：&nbsp;</td>
+                  <td  colspan="2" ><textarea name="ardesc" cols="120" rows="10" ><?php echo $article[0]['ardesc'];?></textarea></td>
+               
+                </tr>
+                
+				<tr height="60">
+                   <td>封面&nbsp;：&nbsp;</td>
+               <td><input type="file" name="onvertitle"   ><span>* 图片格式限制：gif|png|jpg|jpeg,宽370px,高260px.不能大于200KB</span></td>
+                   <td class="bb"> <?php echo isset($error)?$error:'';?></td>
+                </tr>
+                
+				<tr>
+                   <td colspan="3" align="center"><img src="<?php echo base_url().$article[0]['cover_thumb'];?>"></td>
+                </tr>
+                
+				<tr>
+                   <td>内容 ：&nbsp;</td>
+                 <td>	</td>
+                   <td class="bb"></td>
+                </tr>
+				</table>
+                
+                
+				<table id="ue" style="margin:0 auto; width:1100px; padding:50px;">
+	            <script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor.config.js"></script>
+				   <script  type="text/javascript" src="<?php echo base_url();?>ueditor/ueditor.all.min.js"></script>
+				   <tr  height="30">
+                    <td  colspan="3" >
+					<textarea name="content" cols="100" rows="1"  id="kcontent"><?php echo $article[0]['content'];?></textarea>
+					<script type="text/javascript">
+						var ue=UE.getEditor("kcontent");
+					</script>
+					</td>
+				</tr>
+                
+				<tr>
+                  <td align="center" height="65" colspan="3"> <input name="submit" type="image" alt="确定" src="<?php echo base_url();?>application/views/admin/images/tj.png"></td>
+                </tr>
+                
+				</table>
+                
+		  </table>
+</form>
+			
+</div>
+
+</body>
+</html>

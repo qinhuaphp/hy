@@ -1,0 +1,536 @@
+
+   <div class="point"><img src="<?php echo base_url().'application/views/images'?>/point.jpg" align="left"> 当前所在的位置 ：<a href="<?php echo site_url('hunyi/index')?>">首页</a>  &gt;
+<a href="<?php echo site_url('human/team/tlid/'.$workinfo[0]['tlid'].'')?>"><?php echo $workinfo[0]['tlmark'];?></a>&gt; 
+  <a href="<?php echo site_url('human/tdetail/tlid/'.$workinfo[0]['tlid'].'/teamid/'.$workinfo[0]['teamid'].'');?>"><?php echo $workinfo[0]['tname']?></a>&gt;
+  <a><?php echo $workinfo[0]['wname'];?></a>
+  </div>
+   <!--位置信息部分结束-->
+<div class="gsxx"> 
+ 
+ 	 <div class="gsxx_a margin">
+     	 <div class="gsxx_a_a">
+       <img  class="yuan_tou_c" src="<?php echo base_url().$workinfo[0]['tlogo'];?>"><br />
+     <strong>团队名称：</strong><?php echo $workinfo[0]['tname'];?><br />
+             <strong>成交量:</strong> <span class="color"><?php echo $workinfo[0]['volume'];?></span> <br />
+             <strong>星级:</strong><?php $str='<img src="'.base_url().'application/views/images/star.jpg" align="center">';echo str_repeat($str,$workinfo[0]['level']);?><br />
+             <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <input type="image" src="<?php echo base_url().'application/views/images'?>/yuding_bu.jpg"></a>
+         </div> 
+
+ <!--公司LOGO部分开始-->
+ 
+       <div class="gsxx_a_b">
+      <strong> 个人介绍</strong><br /><br />
+
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $workinfo[0]['tintrol']?></span>
+  </div>
+  
+   
+ <!--公司视屏部分开始-->  
+    <div class="gsxx_a_c">
+      <embed src="<?php echo $workinfo[0]['tintrolvideo']?>" allowFullScreen="true" quality="high" width="400" height="345" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+  </div>
+
+    </div>   
+<!--公司介绍部分结束-->     
+   
+   
+<!--公司作品案例开始 -->   
+   
+ <div class="gsxx_b margin">  
+ 	 <div class="gsxx_b_up"> 
+     	<ul>
+            	<li class="up_right_2" id="kk1" onclick="chingeTable('jj',3,1,'kk')" ><a>作品案例</a></li>
+				<!--
+                <li class="up_right_1" id="kk2" onclick="chingeTable('jj',3,2,'kk')"> <a>我的档期</a></li>
+                <li class="up_right_1" id="kk3" onclick="chingeTable('jj',3,3,'kk')"> <a>评价</a></li>
+				--->
+        </ul>
+   <div class="bao">
+  	<img src="<?php echo base_url().'application/views/images'?>/bao_icon.jpg" align="center" alt="已缴纳保证金">
+  已缴纳保证金</div>
+  </div>    
+   <!--作品案例开始 --> 
+  	 <div class="gsxx_b_down" id="jj1"  style="display:">
+    
+  
+
+  
+   
+      <div  class="gsxx_right_up">
+<?php echo $workinfo[0]['wname']?><br />
+<span> <?php echo date('Y-m-d',$workinfo[0]['addtime']);?><br />
+
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24" style=" width:350px; position:relative; left:37%;"><span class="jiathis_txt" style="font-size:18px;">分享到：</span>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_cqq"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	sm:"weixin,tqq,qzone,tsina,cqq",
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+
+
+<br /></span>
+
+
+
+<div class="biaoqian" >
+<ul>
+<li>新娘</li> 
+<li>新郎</li> 
+<li>西式浪漫婚礼</li> 
+<li>西式浪漫婚礼</li> 
+</ul> 
+</div>
+</div>
+   <div class="gsxx_c">  
+      <?php echo $workinfo[0]['wcontent'];?>
+</div>     
+</div>   
+     
+
+<div class="page">
+</div>
+<!--分页部分结束-->
+    
+    </div> 
+ <!--作品案例结束 --> 
+ 
+ 
+ 
+ 
+ <!--优惠活动开始 -->  
+  	 <div class="gsxx_b_down" id="jj2" style="display:none"><img src="<?php echo base_url().'application/views/images'?>/d.jpg">
+    <div class="yhhd_a"> 
+    <ul>
+        <li class="bg"><span>我的档期</span>  <span>价格</span>	<span>预订人</span>	<span>预订时间</span></a></li>
+    	<li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+        <li class="bg2"> <span><a href="#">2015-09-19 07:00 至 14:00</a></span>   <span class="color">  1110</span>      <span>梅**</span>       <span>2015-04-24 23:24</span> </a> </li>
+    	 
+    	  
+    
+    	
+    </ul>
+    <div class="page">
+</div>    
+    <!--分页部分结束-->    
+    
+
+</div>       
+    </div> 
+  <!--优惠活动结束 -->    
+  <!--评价开始 -->    
+      	 <div class="gsxx_b_down" id="jj3" style="display:none">
+          <img src="<?php echo base_url().'application/views/images'?>/p.jpg">
+ 
+ 
+ 
+ 
+     
+  <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1）</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1） </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   
+   
+  <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1） </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div>  
+   
+   
+  <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1）</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+  <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1） </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   
+   <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1）</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1）</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1）</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div> 
+   
+   
+   <div class="pingjia">
+  
+  	 <div class="pingjia_left">
+     <table width="50" border="1">
+  <tr>
+    <td height="50"><img class="yuan_tou_d" src="<?php echo base_url().'application/views/images'?>/gs_logo.jpg"></td>
+  </tr>
+   <tr>
+       <td height="30">会说话的鱼</td>
+  </tr>
+</table>
+
+   </div> 
+  	 <div class="pingjia_right">
+  <table width="1050" border="1">
+  <tr>
+    <td colspan="2"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"> <img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center"><img src="<?php echo base_url().'application/views/images'?>/star_02.jpg" align="center">策划：4（非常好）  布置：4（非常好） 服务：4（非常好）</td>
+  </tr>
+  <tr>
+    <td width="600" height="85">找到艾嘉的时候婚期已经很近了，当天李佳接待的我们，感觉阿姐人很爽气，头势也很清爽，于是愉快的就定了他家。司仪威廉腔调很足的，魔术师也很OK，化妆师涓涓我老婆也一路好评。<br />
+    婚礼当天的布置之间只和李佳沟通过颜色，其它的都来不及沟通了，但是李佳在.</td>
+    <td width="450" height="85"><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /><img src="<?php echo base_url().'application/views/images'?>/p_img.jpg" width="105" height="85" /></td>
+  </tr>
+  <tr>
+    <td>总花费：10000元<span> 2015-04-10</span>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td> <a href="#"><img src="<?php echo base_url().'application/views/images'?>/xiang.jpg" align="center" width="20" height="20" /></a>赞（1） </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+   </div>
+   </div>  
+  <div  class="page">
+  </div> 
+ <!--翻页结束，每页10条-->  
+    
+   
+   
+    </div> 
+   <!--评价结束-->   
+  </div>   
+  <!--公司作品案例结束 --> 
+

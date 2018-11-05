@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺365网站后台管理中心</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/admin/images/'?>favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/admin/css/style.css"/>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin//js.js"></script>
+</head>
+
+<body>
+<div>
+	<div class="login_a">
+    </div>
+
+<div class="login_b">
+
+     <div class="login_b_g">
+     
+<form id="login" name="login" action="<?php  echo site_url('admin/login/checkuser');?>" method="post">     
+     <table width="425" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="88" height="60">用户名：</td>
+    <td colspan="2"> <label>
+	<input  type="text"  name="uname" id="user" value="<?php echo set_value('uname');?>" 
+	style="width:315px; height:32px; border-radius:12px;border:1px solid #ec728b; background-color:#FFF; line-height:32px;"  />
+	</label></td>
+    </tr>
+  <tr>
+    <td height="60"> 密 &nbsp; 码：</td>
+    <td colspan="2"> <label>
+	<input type="password" name="passwd" id="pwd" value="<?php echo set_value('passwd');?>" 
+	style="width:315px; height:32px;border-radius:12px; border:1px solid #ec728b; background-color:#FFF; line-height:32px;"  /> 
+	    </label></td>
+    </tr>
+	<tr><td></td><td colspan="2" align="center"><?php  echo form_error('passwd');?> </td></tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td width="149" align="center" valign="middle"> <input type="submit" value="登  录"  style="width:96px; height:35px; color:#FFF; background-color:#ec728b; font-size:16px;border-radius:12px; border:none;"></td>
+    <td width="188" height="90" align="center" valign="middle"> <input type="reset"  value="重  置" style="width:96px; height:35px; color:#FFF; background-color:#7a7a7a; font-size:16px;border-radius:12px; border:none;"> </td>
+  </tr>
+</table>
+</form>
+     
+     
+     
+     
+   
+     </div>
+</div>
+
+<div class="login_c">
+   技术支持：安徽狐捷网络科技有限公司（技术部：程启明、秦桦）<br />
+Copyright © 2015 hunyi365.com All Rights Reserved　
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

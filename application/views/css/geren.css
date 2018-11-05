@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.geren{ width:1200px; min-height:880px; margin:0px auto;}
+.geren_left{ width:225px; height:auto; float:left; border:1px #e7e6e6 solid;}
+.geren_right{ width:965px; float:right;min-height:850px;border:1px #e7e6e6 solid;} 
+.geren_left_tou { width:170px; height:192px; float:left; padding:25px; background-color:#FFF;}
+.geren_left_tou dl{ width:170px; height:182px; text-align:center; float:left;}
+.geren_left_tou dt{ width:170px; height:132px; float:left;}
+.geren_left_tou dt img{ width:132px; height:132px;}
+.geren_left_tou dd{ width:170px; height:25px; line-height:25px; text-align:center; float:left;}
+
+
+.geren_left_list{ width:225px; float:left; background-color:#f9f8f8;}
+.geren_left_list ul li{ width:223px; border-bottom:1px #e7e6e6 solid; font-size:14px; font-weight:bold; text-align:center; margin-top:20px; }
+.geren_left_list ul li ul li{ width:223px; height:20px; display:block;border-bottom:none; line-height:20px; text-align:center;font-size:12px; font-weight:normal;margin-top:0px;  }
+.geren_left_list ul li ul { margin-top:20px; margin-bottom:20px;  }
+.geren_left_list ul li ul li a{ width:223px; height:20px; display:block; color:#7b7b7b;}
+.geren_left_list ul li ul li a:hover{ width:223px; height:20px; display:block; color:#FFF; background-color:#ec728b;}
+
+
+.geren_right_up{ width:935px; height:45; padding:0px 15px 0px 15px; line-height:45px; float:left;border-bottom:1px #e7e6e6 solid;} 
+.geren_right_up a{color:#ec728b;}
+.geren_right_down{ width:905px; min-height:730px; padding:15px; float:left;} 
+
+
+.geren_right_down td{ padding-left:15px; padding-right:15px;}
+.geren_right_down td a{ color:#ec728b;}
+.geren_right_down td a:hover{ color:#ec728b; font-weight:bold;}
+
+
+.geren_right_down td ul li{ float:left; margin-left:15px; line-height:25px;}
+
+
+
+.cang{width:905px; min-height:730px; padding:15px; float:left;}
+.cang table{ border:none;}
+.cang tr{ border-bottom:1xp solid #CCC;}
+
+
+
+
+
+.pingjia_a{ width:930px; height:240px; float:left; font-size:12px;}
+.pingjia_a_left{ width:60px; height:80px; float:left;}
+.pingjia_a_right{ width:850px; height:240px; float:right; line-height:25px;}
+.pingjia_a_right span{ float:right; color:#ec728b}
+.pingjia_a_right img{ margin-right:6px;}
+
+
+
+.up_right_2_2{width:85px; height:25px; display:block; background-color:#ec728b;border-radius:5px; color:#FFF;}
+.up_right_1_1{ width:85px; height:2 5px;display:block;  background-color:#f3f3f3;border-radius:5px;}

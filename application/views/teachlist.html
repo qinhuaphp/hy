@@ -1,0 +1,32 @@
+
+         <!--成功案例广告图01-->
+         <div class="caseBanner"> <a href="#" target="_blank"><img src="<?php echo base_url().'application/views/';?>images/banimages/personalban.jpg"  alt="婚礼人" title="婚礼人"></a>
+         </div>        
+<!--location-->
+<div class="location mt10 magi">
+    <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="<?php echo site_url('hunyi/index'); ?>">首页</a>  >  婚礼案例 > <span>婚礼教学</span>
+</div>
+
+
+<!-- caseCases -->
+<div class="caseCases">
+   <div class="caseCasesUp fs30">
+    - 婚礼教学CASE -
+       </div>
+    <div class="caseCasesDo">
+    <?php $num = 91; foreach ( $res['rs'] as $k => $v ) : ?>
+    <div class="everyTech">
+       <h1><?php echo $v['artitle'];?></h1>
+       <a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid']); ?>" target="_blank"><img  src="<?php echo base_url().$v['cover_thumb']; ?>" width="370px" height="247px"></a>
+       <p><a href="<?php echo site_url('article/detail/cid/'.$cid.'/arid/'.$v['arid']); ?>" target="_blank"><?php echo strlen($v['ardesc'])>65?mb_substr($v['ardesc'], 0, 64, 'utf8').'...':$v['ardesc']; ?></a></p>
+       <span> <img title="收藏" src="<?php echo base_url().'application/views/';?>images/teach01.png"  align="center"><?php echo $num+($k*2+$k*$k)-43; ?><img title="分享" src="<?php echo base_url().'application/views/';?>images/teach02.png"  align="center"><?php echo $num+($k*2+1)-24; ?><img title="查看次数" src="<?php echo base_url().'application/views/';?>images/teach03.png"  align="center"><?php echo $num+($k*2+1)-26; ?></span>
+    </div>
+    <?php endforeach; ?>
+    </div>
+
+
+</div>
+ <div class="Page mt20">
+    <?php echo $link; ?>
+ </div>   
+

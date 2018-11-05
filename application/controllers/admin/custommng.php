@@ -1,0 +1,74 @@
+<?php
+class Custommng extends MY_Controller{
+	function customlist(){
+		$this->checklogin();
+		  $this->load->model('Custom_model','custom');
+		  //加载分页类
+		  $this->load->library('pagination');
+		  //配置分页项目
+		  $config['per_page']=32;
+		   $config['base_url']=site_url('admin/custommng/customlist');
+		  $config['first_link']='<<';
+		  $config['num_links']=2;
+		  $config['prev_link']='<';
+		  $config['next_link']='>';
+		  $config['last_link']='>>';
+		  $config['uri_segment']=4;
+		  $config['display_pages']=true;
+		 //获取偏移量
+		  $offset=intval($this->uri->segment(4));
+		  $fields='cusid,name,phone,address,marrydate,budget';
+		  $where=array('isdel'=>0);
+		  //把查询字段，偏移量和每页的行数传入分页方法内获取相应的数据
+		  $array=$this->custom->getlimit($fields,$offset,$config['per_page'],$where);
+		 //从查询到的数组中出去最后一个单元，最后一个单元是总行数
+		 $arr=array_pop($array);
+		 //print_r($array);
+		 //echo $arr;
+		 //把总行数传入分页类
+		 $config['total_rows']=$arr;
+		 $this->pagination->initialize($config);
+		 $data['res']=$array;
+		 //创建链接
+		  $data['link']=$this->pagination->create_links();
+		  $data['total']=$config['total_rows'];
+		$this->load->view('admin/customlist.html',$data);
+	}
+	//放入回收站
+	function recy($cusid){
+		$cusid=$cusid+0;
+		$data['isdel']=1;
+		$this->load->model('Custom_model','custom');
+		$rs=$this->custom->renew($data,$cusid);
+		if($rs>0){
+			$dat['msg']='已删除';		
+		}else{
+			$dat['msg']='未删除';
+		}
+		$this->load->view('admin/msg.html',$dat);
+	}
+	//回收站
+	function customrecy(){
+		$this->checklogin();
+		$this->load->model('Custom_model','custom');
+		$where=array('isdel'=>1);
+	    $fields='cusid,name,phone,address,marrydate,budget';
+		$data['res']=$this->custom->fetchall($fields,$where);
+		//print_r($data);
+		$this->load->view('admin/customrecy.html',$data);
+	}
+	//还原
+	function reduction($cusid){
+		$cusid=$cusid+0;
+		$data['isdel']=0;
+		$this->load->model('Custom_model','custom');
+		$rs=$this->custom->renew($data,$cusid);
+		if($rs>0){
+			$dat['msg']='已还原';		
+		}else{
+			$dat['msg']='未还原';
+		}
+		$this->load->view('admin/msg.html',$dat);
+	}
+}
+?>

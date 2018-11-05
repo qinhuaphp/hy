@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="keywords" content="婚艺365 婚艺 全国婚艺 结婚 婚庆公司 婚礼人">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<title>公司-基本信息</title>
+<link rel="shortcut icon" href="<?php echo base_url().'application/views/images/';?>favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+</head>
+<!----memberscontainer---->
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url().'application/views/';?>css/base.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url().'application/views/members/';?>css/MemBase.css">
+<script type="text/javascript" src="<?php echo base_url().'application/views/';?>js/jquery-1.11.1.min.js"></script>
+<div class="memContainer magi">
+    <div class="location">
+     <img src="<?php echo base_url().'application/views/';?>images/point.jpg" align="left">当前所在的位置 ：<a href="#">会员中心</a>  > 公司信息管理<!--个人信息管理--><!--婚礼人信息管理--><!--婚礼团队信息管理-->  > <span>基本信息</span>
+    </div>
+    <!--左边开始-->
+    <div class="memLeft mt10 fl">
+         <!--头像-->
+         <div class="memLeftTOu" >
+             <dl>
+                 <dt><img  class="tImg132" src="<?php echo empty($userinfo['logo'])?base_url().'application/views/images/touImages/tou_x.jpg': base_url().$userinfo['logo'];?>"></dt>  <!--新人头像- / 公司头像- / 婚礼人头像- / 婚礼人团队头像-->
+                 <dd><?php echo $userinfo['name']?></dd>  
+                 <!--  <dd>昵 称：渴死的鱼</dd>  新人-->
+                 <!-- <dd>艺 名：杨  坤</dd>  个人-->
+                 <!--  <dd>合肥神马主持人团队</dd>  团队-->
+                 <dd>等级：
+				 <?php $str='<img src="'.base_url().'application/views/images'.'/star.jpg" align="center">';echo str_repeat($str,$userinfo['level']);?>
+				 </dd>  <!--个人 / 团队 / 公司--><!--新人没有这一项-->
+                 <dd>成交量：<span class="cloF75"><?php echo $userinfo['volume'];?></span></dd> 
+                 <!-- <dd>联系方式：13745678993</dd>  新人-->
+                 <!-- <dd>成立时间：2015-7-14</dd>    团队-->
+             </dl>
+         </div>
+        <!--内容列表-->
+        <div class="memLeftuUL" >
+           <ul>
+           
+              <li> <span>基本信息管理</span><!--个人信息管理--><!--婚礼人信息管理--><!--婚礼团队信息管理-->
+                     <ul>
+                         <li><a href="<?php echo site_url('usercenter/baseinfo/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">基本信息</a></li>
+                         <li><a href="<?php echo site_url('usercenter/pz/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">资料管理</a></li>
+						 <li><a href="<?php echo site_url('usercenter/modifypic/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">修改头像</a></li>
+                         <li><a href="<?php echo site_url('usercenter/updatepwd/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">安全中心</a></li>
+                     </ul>
+              </li>
+			  <?php if('member'!=$_SESSION['userid']['user']){?>
+               <li> <span>我的案例</span>
+                     <ul>
+                         <li><a href="<?php echo site_url('usercenter/addworks/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">发布案例</a></li>
+                         <li><a href="<?php echo site_url('usercenter/workslist/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">查看案例</a></li>
+                     </ul>
+              </li> 
+			<?php } ?>
+              
+              
+              
+              <li> <span>订单管理</span>
+                     <ul>
+                         <li><a href="#">我的购物车</a></li>
+                         <li><a href="#">我的订单</a></li>  <!--本公司预定婚礼人订单-->
+                         <li><a href="#">确认订单</a></li>  <!--预定本公司订单-->
+						  <?php if($_SESSION['userid']['user']=='company'||'member'==$_SESSION['userid']['user']){?>
+                         <li><a href="<?php echo site_url('usercenter/myfavo/'.$idname.'/'.$userinfo['id'].'');?>" target="iframepage">我的收藏</a></li>
+						 <?php } ?>
+                         <li><a href="#">到店预约</a></li>
+                  <!--    <li><a href="#">我的婚礼</a></li>    新人-->  
+                         
+                         <li><a href="#">我的消息</a></li>
+                     </ul>
+              </li>
+               
+               <li> <span>婚礼筹备</span>
+                     <ul>
+                         <li><a href="#">筹备婚礼</a></li>
+                         <li><a href="#">修改筹备</a></li>
+                     </ul>
+              </li> 
+                             <!-- 
+               <li> <span>档期管理</span>
+                     <ul>
+                         <li><a href="#">记录档期</a></li>
+                         <li><a href="#">我的档期</a></li>  
+                     </ul>
+              </li> 婚礼人档期管理
+			<li> <span>评价管理</span>
+                     <ul>
+                         <li><a href="#">待评价</a></li>
+                         <li><a href="#">已评价</a></li>
+                         <li><a href="#">已收到评价</a></li>
+                     </ul>
+              </li>             -->  
+           </ul>   
+        </div>    
+    </div>
+<!--框架自适应-->
+<script type="text/javascript">
+$(function(){
+	$("#iframepage").load(function(){
+		var h=$("#iframepage").contents().has("body").height();
+		$("#iframepage").height(h);
+	
+	});
+	$(".memLeftuUL>ul").children().css({"cursor":"pointer","margin-bottom":"2px"}).first().children().show().parent().nextAll().children("ul").hide();
+	$(".memLeftuUL>ul").children().find("span").click(function(){
+		$(this).next().show().parent().siblings().children("ul").hide();
+	});
+})
+</script>
+    <!--右边开始-->
+     <div class="memRight mt10 fr" >
+     <iframe src="<?php echo site_url('usercenter/baseinfo/'.$idname.'/'.$userinfo['id'].'');?>" frameborder="0" scrolling="no" allowtransparency="no" width="920"  id="iframepage" name="iframepage"></iframe>
+     <!-- </iframe>
+   内联框架，链接文件内容--> 
+    <div class="cb"></div> 
+ </div> 
+    <div class="cb"></div> 
+ </div>  
+<!--memberscontainer over--> 
+

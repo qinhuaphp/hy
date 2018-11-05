@@ -1,0 +1,101 @@
+<style type="text/css">
+#mainlevel_03{border-right:1px solid #fff; display:block;background:#de627b; color:#FFF;}
+#mainlevel_03 a{ color:#FFF;}
+</style>
+<body>
+<div class="hlr_content">
+
+    <div class="point"><img src="<?php echo base_url().'application/views/images'?>/point.jpg" align="left"> 
+	当前所在的位置 ：<a href="<?php echo site_url('hunyi/index');?>">首页</a>&gt;造梦师&gt;<?php echo $cate[0]['cname'];?></div>
+
+    
+   <div class="zhuchiren" id="dd1" style=" display:;">
+  
+  
+    <div class="hlr_content_f3 margin">
+    	<ul>
+            <li><a href="<?php echo site_url('human/index/cid/'.$cid.'/order/volume');?>"> 成交量  </a></li>
+            <li><a href="<?php echo site_url('human/index/cid/'.$cid.'/order/level');?>">星级 </a></li>
+			<li><a href="<?php echo site_url('human/index/cid/'.$cid.'/order/hprice');?>">价格 </a></li>
+        </ul>
+	</div>
+   <!---综合排序分类结束-->   
+    <!---分类结束-->   
+    
+ <!---第1行开始-->  
+ <?php foreach($res as $v){?>
+<div class="hlr_x margin">   
+   <div class="hlr_x_a margin">    
+      <dl>
+      	<dt> <a href="<?php echo site_url('human/detail/'.$v['hid'].'')?>"><img class="yuan_tou_b " src="<?php echo base_url().$v['hlogo'];?>" title="<?php echo $v['hname'];?>"></a> </dt>
+        <dd><a href="<?php echo site_url('favorites/add/hid/'.$v['hid'].'')?>" target="_blank">
+        <img src="<?php echo base_url().'application/views/images'?>/cang.jpg" align="center"></a><br />
+        收藏</dd>
+        <dd style="margin-left:10px; border-right:none; padding-top:10px; padding-left:5px;">
+        
+  
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<br>
+ 分享</dd>
+      </dl>
+
+    <span>
+       姓名:<strong><?php echo $v['hname'];?></strong><br />
+	   性别:<strong><?php echo $v['sex']==0?'男':'女';?></strong><br />
+     成交: <a><?php echo $v['volume']?></a> 单<br />
+      婚艺价：<a>￥<?php echo $v['hprice'];?></a><br />
+      等级：<?php $str='<img src="'.base_url().'application/views/images'.'/star.jpg" align="center">';echo str_repeat($str,$v['level']);?><br />
+      <a href="#"><img src="<?php echo base_url().'application/views/images'?>/hlr_y.jpg"></a>
+      </span>
+    
+    </div> 
+	
+   <!--婚礼人信息部分结束-->
+
+     <div class="hlr_x_b margin"> <strong>个人案例</strong><br />
+	 <?php  if(empty($v['works'])){?>
+		<img src="<?php echo base_url().'application/views/images'?>/zp_.jpg">
+		<img src="<?php echo base_url().'application/views/images'?>/zp_.jpg">
+		<img src="<?php echo base_url().'application/views/images'?>/zp_.jpg">
+	 <?php }else{foreach($v['works'] as $val){?>
+       <a href="<?php echo site_url('human/hwork/hid/'.$v['hid'].'/wid/'.$val['wid'].'')?>"><img src="<?php echo base_url().$val['cover_thumb'];?>" width="185" height="134"></a> 
+	
+       <?php }} ?>
+	   </div>  
+  
+<!--个人案例结束-->  
+    
+    <div class="hlr_x_c margin">
+   <span> 新人评论 </span><img src="<?php echo base_url().'application/views/images'?>/liuyan.jpg"><br /><br />
+    <a href="#">01-感觉特别棒，场景布置的特别置的特置的特的漂亮！</a><br />
+ <span style=" color:#d2d2d2; font-weight:normal;">  加菲猫  [2015-4-9]</span><br />
+ <a href="#">02-感觉特别棒，场景布置布置的特的特别的漂亮！</a><br />
+ <span style=" color:#d2d2d2; font-weight:normal;">  加菲猫  [2015-4-9]</span><br /> 
+ <a href="#">03-感觉特别棒，场景布置的特别!置的特别的漂亮！</a><br />
+ <span style=" color:#d2d2d2; font-weight:normal;">  加菲猫  [2015-4-9]</span><br />   
+    </div> 
+    
+<!--评论部分结束-->       
+ </div>      
+   <?php } ?>
+ <!--第1行分结束-->     
+    
+
+  <!--分页部分开始-->
+ <div class="page"><?php echo $link;?>
+ </div>
+ <!--分页部分结束-->
+ </div>      
+
+
+   
+
+ </div>      
+
+<!--婚礼人内容部分-->

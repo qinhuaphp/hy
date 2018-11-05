@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+.sample_popup{
+ border: 8px solid #ec728b;
+  width: 300px; 
+  height:350px;
+  position:fixed;
+  background-color:#FFF;
+  color:#333;
+  top:500px; 
+  right:400px;
+  border-radius:5px;
+  z-index: +1; 
+  }
+
+.menu_form_header{
+ border-bottom: 0px;
+  cursor: default;
+  width: 300px;
+  height:30px;
+  line-height: 30px;
+  background-color:#ec728b;
+  color:#FFF; text-align:center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size:14px;
+  float:left;
+	
+	}
+
+
+.menu_form_body{ 
+ width: 280px; 
+  height:300px; padding:10px;
+  font-size:14px;
+  float:left;
+  }
+.buttom{ width:90px; height:25px; margin:0px auto;clear:both; margin-top:10px;}
+.menu_form_exit{ width:25px; height:25px; float:right;}
+.a{  
+width:280px; 
+  height:260px;
+  font-size:14px;
+  line-height:23px;
+  float:left;}

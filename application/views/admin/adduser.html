@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>婚艺网后台管理中心</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 3px;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+}
+.STYLE1 {
+	color: #e1e2e3;
+	font-size: 12px;
+}
+.STYLE6 {color: #000000; font-size: 12; }
+.STYLE10 {color: #000000; font-size: 12px; }
+.STYLE19 {
+	color: #344b50;
+	font-size: 12px;
+}
+.STYLE21 {
+	font-size: 12px;
+	color: #3b6375;
+}
+.STYLE22 {
+	font-size: 12px;
+	color: #295568;
+}
+-->
+
+}
+.bb{
+	color:red;
+	font-size:10px;
+	
+}
+span{
+	color:red;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24" bgcolor="#353c44">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="6%" height="19" valign="bottom"><div align="center"><img src="<?php echo base_url();?>application/views/admin/images/tb.gif" width="14" height="14" /></div></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 注册用户</span></td>
+              </tr>
+            </table></td></tr>
+			</table>
+			</table></table>
+            <div style="background-color: #fcfcfc;height:750px; padding-top:50px; ">
+                <table style="margin:0 auto; width:800px; border:1px #ec728b solid;border-radius:10px; padding-top:20px;">
+			    <form name="area" method="post" action="<?php echo site_url('admin/usermng/adduser');?>">
+                <tr height="30">
+                   <td width="160" align="right">登录名（英文）：&nbsp;&nbsp;</td>
+                   <td><input type="text" name="uname" size="65" value="<?php echo set_value('uname');?>"></td><td width="165" class="bb"><?php echo form_error('uname');?></td>
+                </tr>
+				<tr height="30">
+                  <td align="right">登录名中文备注 ：&nbsp;&nbsp;</td><td  width="459" height="10"><input type="text" name="umarke" size="65" value="<?php echo set_value('umarke');?>"></td>
+                   <td class="bb"><?php echo form_error('umarke');?></td>
+                </tr>
+				<tr height="30">
+                    <td align="right">登录密码 ：&nbsp;&nbsp;</td>
+                  <td width="459" ><input type="password" name="passwd" size="65" value="<?php echo set_value('passwd');?>"></td>
+                    <td class="bb"><?php echo form_error('passwd');?></td></tr>
+				<tr height="30">
+                     <td align="right">确认密码 ：&nbsp;&nbsp;</td>
+                  <td  width="459" ><input type="password" name="repwd" size="65" value="<?php echo set_value('repwd');?>"></td>
+                     <td class="bb"><?php echo form_error('repwd');?></td>
+                </tr>
+				<tr height="30">
+                     <td align="right">状态 ：&nbsp;&nbsp;</td>
+                     <td  width="459" >
+				      启用<input type="radio" name="status" value="1" checked>
+				      禁用<input type="radio" name="status" value="0"></td>
+				     <td class="bb"></td></tr>
+		
+			    <tr height="30">
+                     <td align="right">所属用户组：&nbsp;&nbsp;</td>
+                     <td  width="459">
+					     <select name="gid">
+						 <?php foreach($gs as $g){?>
+						    <option value="<?php echo $g['gid'];?>"><?php echo $g['gmarke'];?></option>
+						    <?php } ?>
+							</select>
+					</td>
+				<td class="bb"></td>
+                </tr> 
+				<tr height="80">
+                  <td></td>
+                  <td align="center" ><input name="submit" type="image" alt="确定" src="<?php echo base_url();?>application/views/admin/images/tj.png"></td>
+                  <td></td>
+                
+                
+               
+				
+				</tr>
+			</form>
+			</table>
+			</div>
+</body>
+</html>

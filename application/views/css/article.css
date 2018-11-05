@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* 婚礼学院列表样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-6*/
+
+.articleContainer{ width:1200px; padding:10px; background-color:#FFF; padding-bottom:30px;}
+/*******轮播图********/
+.articleMain{ width:1200px; height:440px;}
+#artBanner,#Banner{ width:830px; height:440px; margin:0px auto; background:#333; position:relative; display:block;overflow:hidden;}
+#artBanner .oUlplay { width:99999px; position:absolute; left:0; top:0;}
+#artBanner .oUlplay li{ float:left; }
+#artBanner .pre{ cursor:pointer; width:40px; height:40px; background:url(../images/lr.png) 0px 0px; position:absolute; top:180px; left:10px; z-index:10;}
+#artBanner .next{ cursor:pointer; width:40px; height:40px; background:url(../images/lr.png) 0px -45px; position:absolute; top:180px; right:10px; z-index:10;}
+#artBanner .smalltitle {width:830px; height:40px; position:absolute; bottom:0px; z-index:10;background:rgba(255,255,255,0.5);/*background-color:#000;opacity: 0.30;
+filter : progidXImageTransform.Microsoft.Alpha(style=0,opacity=30,finishOpacity=100);*/}
+#artBanner .smalltitle ul{ width:120px; margin:0 auto; margin-top:15px;}
+#artBanner .smalltitle ul li{ width:10px; height:10px; margin:0 5px; border-radius:10px; background:#ffffff; float:left; overflow:hidden;*display:inline;*zoom:1;}
+#artBanner .smalltitle .thistitle{ background:#f7597a;}
+
+/*******本网站结婚优势广告位********/
+.articleBanner,.articleBanner img{ width:1200px; height:435px; margin:0px auto; }
+/*******婚礼流程步骤********/
+.articleSteap{ width:800px; height:120px;}
+.articleSteapUp{ width:800px; height:43px; background:url(../images/step.jpg) 0px 0px no-repeat;}
+.articleSteapDo{ width:780px; height:57px; padding:10px; }
+.articleSteapDo ul li { padding:5px 15px; text-align:center; margin-right:15px; border-radius:15px; font-size:14px; color:#999; float:left;border:1px #999 solid; }
+/**.articleSteapDo ul li a:hover{border-radius:15px; font-size:14px; float:left;border:1px #f7597a solid;color:#f7597a ;}**/
+
+.gghh{ background-color:#f7597a;}
+.gghh a{ color:#fff;}
+
+.gghhh{ color:#f7597a;}
+
+
+.articleLists{ width:800px; padding:10px; height:auto;}
+.articleLists ul li{ height:800px; height:176px; padding:50px 10px; border-bottom:1px #ccc solid;}
+.articleLists ul li span{ width:530px; display:block;}
+.articleLLe { width:820px; height:auto; } 
+/*******经典案例********/
+.articleLec{ width:300px; padding:20px; height:2070px; background-color:#f6f6f6;}
+.articleLec span { width:100px; height:60px; line-height:60px; text-align:center; color:#f7597a; font-size:24px; font-weight:bold; border-bottom:#f7597a solid 2px;}
+.articleLec dl { width:250px; height:176px; padding:13px 25px 13px 25px; background-color:#FFF; }
+.articleLec dl dt,.articleLec dl dt img{ width:250px; height:176px;}
+.articleLec dl dd{ width:250px; height:30px; line-height:30px; font-size:16px; text-align:center; margin-top:-30px;background-color:#fff;filter:Alpha(Opacity=50);position:absolute;opacity:0.5;}  
+
+.artBg{border:1px #f7597a solid; color:#f7597a ;}
+
+
+
+/* 婚礼学院详情样式文件 */
+/* 版本v1.0 :*/
+/* 最新日期:7-6*/
+.articleLe{ width:300px; padding:20px; height:2070px; background-color:#f6f6f6; }
+.articleLe span { width:100px; height:60px; line-height:60px; text-align:center; color:#f7597a; font-size:24px; font-weight:bold; border-bottom:2px #f7597a solid;}
+.articleLe dl { width:250px; height:226px; padding:25px 25px 0px 25px; background-color:#FFF; }
+.articleLe dl dt,.articleLe dl dt img{ width:250px; height:176px;}
+.articleLe dl dd{ width:250px; height:50px; line-height:20px;background-color:#fff;}  
+.articleLe .articleCa,.articleLe .articleTe{ width:300px; }
+.articleLe .articleTe ul li{ border-bottom:1px dashed #999; background-color:#FFF; width:280px; height:80px; padding:10px;}
+.articles{ width:1180px; padding:10px; margin:0px auto; height:auto; }
+.articleRi{ width:800px; padding:10px; height:auto;  line-height:28px; font-size:16px; }
+.articleRi img{ max-width:800px; }
+.articleRi span{ display:block;}
+.articleRi .articleTitle,.articleRi .articleTime,.articleRi .articleAticle,.articleRi .articleShare,.articleRi .articleLable,.articleRi .articleLable ul{ width:800px; text-align:center;}
+.articleRi .articleLable,.articleRi .articleLable ul{ width:480px;}
+.articleRi .articleShare{ height:60px; line-height:60px;}
+.articleRi .articleTitle{color:#f7597a; font-size:26px; font-weight:bold; height:60px; line-height:80px;}  
+.articleRi .articleTime,.articleRi .articleAticle { height:25px; line-height:25px;}
+.articleRi .articleLable ul li{ width:100px; height:30px; line-height:30px; text-align:center; border-radius:15px; font-size:14px; color:#f7597a; border:1px #f7597a solid; margin-left:15px;float:left; }
